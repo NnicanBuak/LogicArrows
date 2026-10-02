@@ -384,7 +384,7 @@ st a, phase
 ldi c, 4
 ldi d, pulse_update
 jmp set_bank
-; Два байта ребра: индекс A с цветом в старших битах, индекс B.
+; Два индекса A, B; движок чередует синий и красный независимо от модели.
 edge_begin:
 ld b, ep
 ldi a, 5
@@ -393,41 +393,33 @@ ldi c, 7
 ldi d, resume_edge_begin_1
 jmp read_byte
 resume_edge_begin_1:
-mov d, a
-ldi c, 63
-and a, c
 st a, first
-mov a, d
-shr a
-shr a
-shr a
-shr a
-shr a
-shr a
-st a, color
 inc b
 ldi a, 5
 st a, io_bank
 ldi c, 7
-ldi d, resume_edge_begin_15
+ldi d, resume_edge_begin_4
 jmp read_byte
-resume_edge_begin_15:
+resume_edge_begin_4:
 st a, second
 inc b
 st b, ep
 ld a, color
+ldi b, 3
+xor a, b
+st a, color
 ld b, active
 and a, b
 jz edge_done
 ld a, first
 ldi c, 5
 st c, ret0_bank
-ldi d, resume_edge_begin_24
+ldi d, resume_edge_begin_16
 st d, ret0_addr
 ldi c, 2
 ldi d, vertex_begin
 jmp set_bank
-resume_edge_begin_24:
+resume_edge_begin_16:
 ld a, wx
 st a, x0
 ld a, wy
@@ -435,12 +427,12 @@ st a, y0
 ld a, second
 ldi c, 5
 st c, ret0_bank
-ldi d, resume_edge_begin_30
+ldi d, resume_edge_begin_22
 st d, ret0_addr
 ldi c, 2
 ldi d, vertex_begin
 jmp set_bank
-resume_edge_begin_30:
+resume_edge_begin_22:
 ld a, wx
 st a, x1
 ld a, wy
@@ -457,17 +449,20 @@ jnz edge_begin
 ldi c, 1
 ldi d, plane_done
 jmp set_bank
+padding5 db 0,0,0,0,0,0,0,0
 
 ; Банк 6 — общий код, одинаковый для всех моделей.
 ; Прочитать число вершин и рёбер; найти таблицу рёбер после XYZ.
 mesh_start:
+ldi a, 1
+st a, color
 ldi b, 128
 ldi a, 6
 st a, io_bank
 ldi c, 7
-ldi d, resume_mesh_start_1
+ldi d, resume_mesh_start_3
 jmp read_byte
-resume_mesh_start_1:
+resume_mesh_start_3:
 mov c, a
 shl a
 add a, c
@@ -478,16 +473,16 @@ inc b
 ldi a, 6
 st a, io_bank
 ldi c, 7
-ldi d, resume_mesh_start_9
+ldi d, resume_mesh_start_11
 jmp read_byte
-resume_mesh_start_9:
+resume_mesh_start_11:
 st a, ec
 test a
-jnz resume_mesh_start_12
+jnz resume_mesh_start_14
 ldi c, 1
 ldi d, plane_done
 jmp set_bank
-resume_mesh_start_12:
+resume_mesh_start_14:
 ldi c, 5
 ldi d, edge_begin
 jmp set_bank
@@ -554,8 +549,8 @@ rcr a
 ld c, ret1_bank
 ld d, ret1_addr
 jmp set_bank
-padding6 db 0,0,0,0,0,0,0,0,0,0
+padding6 db 0,0,0,0,0,0
 
 ; Банк 7 — заменяемая модель crystal, 44 из 128 байт.
-; Два счётчика, XYZ₂ по 3 байта, рёбра по 2 байта: (A | цвет<<6), B.
-model db 6,12,246,0,246,10,0,246,10,0,10,246,0,10,0,15,0,0,241,0,129,0,132,1,64,4,133,0,193,5,194,1,196,2,66,5,67,2,68,3,131,5,128,3
+; Два счётчика, XYZ₂ по 3 байта, рёбра по 2 байта: A, B; цвета выбирает движок.
+model db 6,12,246,0,246,10,0,246,10,0,10,246,0,10,0,15,0,0,241,0,0,1,1,4,4,0,0,5,5,1,1,2,2,4,5,2,2,3,3,4,5,3,3,0
