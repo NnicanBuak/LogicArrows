@@ -1,0 +1,29 @@
+__pycache__/
+*.pyc
+
+# Local generators, dependencies and experiments
+/src/
+/tools/
+/vendor/
+/requirements.txt
+/library/
+/experimental/
+/BENCHMARK.md
+/compact/baseline/
+/compact/experiments/
+/compact/tests/
+/build/stress/
+/build/triangle_stress/
+/build/depth_order/
+
+# Intermediate build and verification output
+*.bin
+*.hex
+*.compile.json
+layout.json
+*.layout.json
+verification.json
+*.log
+scale-comparison.png
+/compact/preview-screen.png
+/compact/engine.diskette.txt

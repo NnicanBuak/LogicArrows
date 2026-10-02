@@ -1,0 +1,6 @@
+/build/
+/patches/
+
+__pycache__/
+*.py[cod]
+*.log
