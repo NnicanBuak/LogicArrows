@@ -92,6 +92,24 @@ class Native:
         self.machine.update([self.single], 60)
         self.idle()
 
+    @property
+    def blink_phase(self):
+        return self.machine.memory[self.layout['constants']['BLINK_PHASE']]
+
+    def advance_blink(self):
+        self.idle()
+        assert self.machine.memory[self.layout['constants']['BLINK_ACTIVE']], 'No cursor to blink'
+        previous = self.blink_phase
+        self.machine.pause = False
+        for _ in range(100):
+            self.machine.update([], 60)
+            self.batches += 1
+            if self.blink_phase != previous:
+                self.idle()
+                assert self.blink_phase != previous
+                return
+        raise RuntimeError('Native cursor blink timeout')
+
     def word(self, address):
         v = self.machine.memory[address] | (self.machine.memory[address + 1] << 8)
         return v - 65536 if v & 32768 else v

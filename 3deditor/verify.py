@@ -147,7 +147,7 @@ def reference(m):
     for i in elements:
         if m.ram[c['SELECT'] + offset + i]:
             selected |= primitive(mode, i)
-    current = primitive(mode, m.variable('cursor'))
+    current = primitive(mode, m.variable('cursor')) if m.blink_phase else set()
     result = bytearray(64)
     for y in range(16):
         for x in range(16):
@@ -391,6 +391,93 @@ def mode_rendering():
     print('mode-only rendering passed', flush=True)
 
 
+def blinking():
+    m = Machine()
+    m.idle()
+    c = m.layout['constants']
+    phase_address = c['BLINK_PHASE']
+    transitions = 0
+    periods = []
+
+    def protected_state():
+        # All banked working data except the phase must survive an idle blink.
+        return (bytes(m.ram[m.layout['native_bytes']:phase_address]),
+                bytes(m.ram[phase_address + 1:c['PROGRAM']]), list(m.console),
+                tuple(m.ram[m.layout['common'][n]] for n in ['PC_BANK', 'PC_ADDR', 'SP', 'RSP']))
+
+    for mode in '123':
+        type_keys(m, mode)
+        for selected in (False, True):
+            if selected:
+                type_keys(m, [10])
+            expect(m.blink_phase == 1, 'red phase starts after render')
+            red = bytes(m.front)
+            before = protected_state()
+            original_write = m.write
+            if selected:
+                cursor_mask = bytes(r & ~b for r, b in zip(red[:32], red[32:]))
+
+                def traced_write(address, value):
+                    original_write(address, value)
+                    if 64 <= address < 128 and m.devices & 16:
+                        expect(not any(r & b & mask for r, b, mask in
+                                       zip(m.front[:32], m.front[32:], cursor_mask)),
+                               'selected cursor never mixes red and blue during LCD writes')
+
+                m.write = traced_write
+            periods.append(m.advance_blink())
+            transitions += 1
+            frame(m)
+            expect(m.blink_phase == 0 and bytes(m.front) != red, ('cursor blinks without keys', mode, selected))
+            expect(all(not (r & ~b) for r, b in zip(m.front[:32], m.front[32:])), 'off phase has no red pixels')
+            if selected:
+                expect(any(b & ~r for r, b in zip(m.front[:32], m.front[32:])), 'selected cursor returns to blue')
+            else:
+                expect(m.front[:32] == m.front[32:], 'unselected cursor returns to purple')
+            expect(protected_state() == before, 'blink preserves model, selections, terminal, VM state and caches')
+            periods.append(m.advance_blink())
+            transitions += 1
+            frame(m)
+            expect(bytes(m.front) == red and protected_state() == before, 'red phase repeats with no mutation')
+            m.write = original_write
+
+    # The same cached scene blinks while a transform waits for terminal input.
+    type_keys(m, 'gx', False)
+    before = protected_state()
+    m.advance_blink()
+    transitions += 1
+    frame(m)
+    expect(m.variable('tool') == ord('g') and protected_state() == before, 'blink preserves unfinished tool input')
+    type_keys(m, [27])
+    type_keys(m, [27])
+    expect(not any(m.ram[c['SELECT']:c['SELECT'] + 128]), 'Esc clears selection after blink')
+    m.advance_blink()
+    transitions += 1
+    frame(m)
+    expect(m.front[:32] == m.front[32:], 'cleared cursor returns to purple')
+
+    # A key arriving mid-copy must remain available to the normal input loop.
+    m.until(lambda cpu: cpu.at(m.layout, 'vm_blink_loop'), limit=4_000_000)
+    m.keys.append(9)
+    m.step()
+    m.until(lambda cpu: not cpu.keys and cpu.at(m.layout, 'vm_key_wait'), limit=12_000_000)
+    checks['keyboard_events'] += 1
+    frame(m)
+    expect(m.variable('cursor') == 1, 'Tab is handled when it arrives during blink copy')
+    type_keys(m, '1a')
+    type_keys(m, [127])
+    before = protected_state()
+    empty_start = m.steps
+    m.until(lambda cpu: cpu.steps >= empty_start + 2_000_000 and cpu.at(m.layout, 'vm_key_wait'),
+            limit=2_100_000)
+    expect(not m.ram[c['BLINK_ACTIVE']] and bytes(m.front) == bytes(64), 'empty scene never flashes a stale cursor')
+    expect(protected_state() == before, 'empty idle preserves state')
+    checks.update(blink_transitions=transitions, blinking_cursor_restores_selection_colors=True,
+                  blink_lcd_writes_never_mix_selected_red_and_blue=True,
+                  blink_instruction_period_range=[min(periods), max(periods)])
+    print('automatic cursor blinking passed', flush=True)
+
+
 def main():
     compiled = json.loads((ROOT / '3deditor.compile.json').read_text())
     image = (ROOT / '3deditor.bin').read_bytes()
@@ -400,6 +487,7 @@ def main():
     geometry()
     topology()
     mode_rendering()
+    blinking()
     views()
     checks.update(program_sha256=hashlib.sha256(image).hexdigest(), bytes=len(image), limit=32768,
                   native_escape_keydown_tested=False, escape_test='ISA code 27 only; native test adapter uses F2',

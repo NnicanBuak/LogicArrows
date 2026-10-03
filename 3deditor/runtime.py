@@ -459,12 +459,92 @@ READ_REG
 st a, PC_ADDR
 ''' + go())
     b('op_key', '''
+READ CONTEXT_BANK CTX_BLINK_ACTIVE
+st a, dx
+clr a
+st a, ret0_bank
+st a, ret0_addr
+ldi a, 2
+st a, dy
 vm_key_wait:
 ld a, 62
 test a
+IF nz vm_key_ready
+ld a, dx
+test a
 IF z vm_key_wait
+ld a, ret0_addr
+inc a
+st a, ret0_addr
+IF nz vm_key_wait
+ld a, ret0_bank
+inc a
+st a, ret0_bank
+IF nz vm_key_wait
+ld a, dy
+dec a
+st a, dy
+IF nz vm_key_wait
+ldi a, 2
+st a, dy
+CALL 1 vm_blink
+GO vm_key_wait
+vm_key_ready:
 st a, U0
 ''' + zero() + '\n' + push())
+    # Slot 0 is free while KEY waits: its two return bytes count idle polls.
+    # Both frames are cached by render(). No API calls or device-mode writes
+    # are needed here, so a key arriving during the copy remains in port 62.
+    # Clear blue before adding red, and red before adding blue. A selected
+    # cursor must not transiently turn purple while the LCD planes change.
+    b('vm_blink', '''
+READ CONTEXT_BANK CTX_BLINK_PHASE
+ldi b, 1
+xor a, b
+st a, sy
+WRITE CONTEXT_BANK CTX_BLINK_PHASE
+ldi a, 160
+ldi b, 96
+ld c, sy
+test c
+IF nz vm_blink_source
+ldi a, 192
+ldi b, 64
+vm_blink_source:
+st a, x0
+st b, y0
+ldi a, 64
+st a, x1
+vm_blink_loop:
+ldi c, BLINK_FRAMES_BANK
+ld b, x0
+READ_REG
+ld b, y0
+st a, b
+ld a, x0
+inc a
+st a, x0
+ld a, y0
+inc a
+IF ns vm_blink_dest
+ldi a, 128
+st a, x0
+ldi a, 64
+vm_blink_dest:
+st a, y0
+ld a, x1
+dec a
+st a, x1
+IF nz vm_blink_loop
+RETURN 1
+''')
+    b('op_blink', '''
+CALL 2 vm_pop
+ld a, U0
+WRITE CONTEXT_BANK CTX_BLINK_ACTIVE
+ldi a, 1
+WRITE CONTEXT_BANK CTX_BLINK_PHASE
+''' + go())
     b('op_putc', '''
 CALL 2 vm_pop
 ldi a, 49

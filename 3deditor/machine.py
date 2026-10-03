@@ -60,6 +60,19 @@ class Machine(CPU):
             self.step()
             self.until(lambda c: not c.keys and c.at(self.layout, 'vm_key_wait'), limit=12_000_000)
 
+    @property
+    def blink_phase(self):
+        return self.ram[self.layout['constants']['BLINK_PHASE']]
+
+    def advance_blink(self):
+        self.idle()
+        assert self.ram[self.layout['constants']['BLINK_ACTIVE']], 'No cursor to blink'
+        previous = self.blink_phase
+        start = self.steps
+        self.until(lambda c: c.blink_phase != previous and c.at(self.layout, 'vm_key_wait'),
+                   limit=4_000_000)
+        return self.steps - start
+
     def word(self, address):
         v = int.from_bytes(self.ram[address:address + 2], 'little')
         return v - 65536 if v & 32768 else v

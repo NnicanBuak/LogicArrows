@@ -1,44 +1,49 @@
 {
-  "image_bytes": 25529,
+  "image_bytes": 26124,
   "limit": 32768,
-  "bytecode_bytes": 8249,
-  "native_bytes": 5504,
+  "bytecode_bytes": 8332,
+  "native_bytes": 5760,
   "constants": {
-    "DISPATCH": 5504,
-    "STACK": 5632,
-    "RETURN_STACK": 5760,
-    "CONTEXT": 5888,
-    "STATE": 6016,
-    "TRI_STATE": 6144,
-    "GLOBAL_WORDS": 6272,
-    "STRINGS": 7296,
-    "COUNTS": 8320,
-    "VERTICES": 8323,
-    "VLIVE": 8515,
-    "EDGES": 8547,
-    "ELIVE": 8675,
-    "FACES": 8739,
-    "MESH": 8320,
+    "DISPATCH": 5760,
+    "STACK": 5888,
+    "RETURN_STACK": 6016,
+    "CONTEXT": 6144,
+    "STATE": 6272,
+    "TRI_STATE": 6400,
+    "GLOBAL_WORDS": 6528,
+    "STRINGS": 7552,
+    "COUNTS": 8576,
+    "VERTICES": 8579,
+    "VLIVE": 8771,
+    "EDGES": 8803,
+    "ELIVE": 8931,
+    "FACES": 8995,
+    "MESH": 8576,
     "MESH_BYTES": 579,
-    "SELECT": 8899,
-    "ORDER": 9027,
-    "MARKS": 9059,
-    "POINTS": 9091,
-    "TRIAL": 9219,
-    "UNDO": 9411,
-    "BASE_MASK": 9990,
-    "SELECT_MASK": 10022,
-    "INPUT": 10054,
-    "SINE": 10070,
-    "PROGRAM": 17280,
-    "PROJECT_RESULT": 5892,
-    "DISPATCH_BANK": 43,
-    "STACK_BANK": 44,
-    "RETURN_STACK_BANK": 45,
-    "CONTEXT_BANK": 46,
-    "STATE_BANK": 47,
-    "TRI_STATE_BANK": 48,
-    "PROGRAM_BANK": 135,
+    "SELECT": 9155,
+    "ORDER": 9283,
+    "MARKS": 9315,
+    "POINTS": 9347,
+    "TRIAL": 9475,
+    "UNDO": 9667,
+    "BASE_MASK": 10246,
+    "SELECT_MASK": 10278,
+    "BLINK_FRAMES": 10368,
+    "STEADY_FRAME": 10432,
+    "INPUT": 10496,
+    "SINE": 10512,
+    "PROGRAM": 17792,
+    "PROJECT_RESULT": 6148,
+    "BLINK_PHASE": 6152,
+    "BLINK_ACTIVE": 6153,
+    "DISPATCH_BANK": 45,
+    "STACK_BANK": 46,
+    "RETURN_STACK_BANK": 47,
+    "CONTEXT_BANK": 48,
+    "STATE_BANK": 49,
+    "TRI_STATE_BANK": 50,
+    "BLINK_FRAMES_BANK": 81,
+    "PROGRAM_BANK": 139,
     "CTX0": 128,
     "CTX1": 129,
     "CTX2": 130,
@@ -47,7 +52,9 @@
     "CTX5": 133,
     "CTX6": 134,
     "CTX7": 135,
-    "LUT_BASE": 47,
+    "CTX_BLINK_PHASE": 136,
+    "CTX_BLINK_ACTIVE": 137,
+    "LUT_BASE": 49,
     "LUT_ADDR": 151,
     "CAMERA_DISTANCE": 32,
     "STATE_TX": 140,
@@ -56,7 +63,7 @@
     "STATE_PROJECTION": 136,
     "TRI_STATE_END": 140,
     "VERTEX_BASE": 1,
-    "APP_BANK": 33,
+    "APP_BANK": 37,
     "TRI_STATE0": 128,
     "TRI_STATE1": 129,
     "TRI_STATE2": 130,
@@ -71,150 +78,151 @@
     "TRI_STATE11": 139
   },
   "variables": {
-    "absolute.v": 6272,
-    "clear_selection.i": 6274,
-    "order_count": 6276,
-    "limit.m": 6278,
-    "alive.i": 6280,
-    "alive.m": 6282,
-    "selection_base.m": 6284,
-    "vertex_component.i": 6286,
-    "vertex_component.a": 6288,
-    "projected_component.i": 6290,
-    "projected_component.a": 6292,
-    "center.i": 6294,
-    "center.m": 6296,
-    "center.a": 6298,
-    "center.v": 6300,
-    "center.w": 6302,
-    "center.n": 6304,
-    "center.k": 6306,
-    "center.total": 6308,
-    "nearest.i": 6310,
-    "nearest.best": 6312,
-    "nearest.score": 6314,
-    "nearest.m": 6316,
-    "nearest.x": 6318,
-    "nearest.y": 6320,
-    "nearest.d": 6322,
-    "cursor": 6324,
-    "mode": 6326,
-    "navigate.x": 6328,
-    "navigate.y": 6330,
-    "navigate.best": 6332,
-    "navigate.score": 6334,
-    "navigate.i": 6336,
-    "navigate.dx": 6338,
-    "navigate.dy": 6340,
-    "navigate.k": 6342,
-    "navigate.forward": 6344,
-    "navigate.sideways": 6346,
-    "navigate.d": 6348,
-    "cycle.n": 6350,
-    "cycle.i": 6352,
-    "cycle.candidate": 6354,
-    "toggle.address": 6356,
-    "toggle.selected": 6358,
-    "toggle.i": 6360,
-    "toggle.j": 6362,
-    "mark_vertices.i": 6364,
-    "mark_vertices.k": 6366,
-    "mark_vertices.total": 6368,
-    "pivot.n": 6370,
-    "px": 6372,
-    "py": 6374,
-    "pz": 6376,
-    "origin_pivot": 6378,
-    "pivot.i": 6380,
-    "integer.v": 6382,
-    "integer.d": 6384,
-    "integer.started": 6386,
-    "integer.digit": 6388,
-    "fixed.v": 6390,
-    "fixed.fraction": 6392,
-    "fixed.d": 6394,
-    "tool": 6396,
-    "terminal.i": 6398,
-    "input_length": 6400,
-    "terminal.n": 6402,
-    "error.code": 6404,
-    "last_error": 6406,
-    "error.i": 6408,
-    "draw_element.m": 6410,
-    "draw_element.i": 6412,
-    "draw_element.a": 6414,
-    "draw_element.b": 6416,
-    "draw_element.c": 6418,
-    "render.i": 6420,
-    "view_yaw": 6422,
-    "view_pitch": 6424,
-    "zoom": 6426,
-    "render.x": 6428,
-    "render.y": 6430,
-    "render.current": 6432,
-    "render.selected": 6434,
-    "render.base": 6436,
-    "undo_valid": 6438,
-    "fraction_q4.result": 6440,
-    "fraction_q4.i": 6442,
-    "fraction_q4.numerator": 6444,
-    "fraction_q4.denominator": 6446,
-    "rotate_coordinate.a": 6448,
-    "rotate_coordinate.c": 6450,
-    "rotate_coordinate.b": 6452,
-    "rotate_coordinate.d": 6454,
-    "rotate_coordinate.major": 6456,
-    "rotate_coordinate.minor": 6458,
-    "parse.a": 6460,
-    "axis": 6462,
-    "parse.p": 6464,
-    "parse.sign": 6466,
-    "parse.digits": 6468,
-    "parse.whole": 6470,
-    "parse.fraction": 6472,
-    "parse.denominator": 6474,
-    "parse.decimals": 6476,
-    "amount": 6478,
-    "parse.maximum": 6480,
-    "transform.problem": 6482,
-    "transform.angle": 6484,
-    "transform.sine": 6486,
-    "transform.cosine": 6488,
-    "transform.i": 6490,
-    "transform.x": 6492,
-    "transform.y": 6494,
-    "transform.z": 6496,
-    "transform.a": 6498,
-    "transform.b": 6500,
-    "edge_index.i": 6502,
-    "edge_index.v": 6504,
-    "edge_index.w": 6506,
-    "edge_index.a": 6508,
-    "edge_index.b": 6510,
-    "delete_selected.x": 6512,
-    "delete_selected.y": 6514,
-    "delete_selected.i": 6516,
-    "delete_selected.n": 6518,
-    "delete_selected.k": 6520,
-    "delete_selected.a": 6522,
-    "delete_selected.b": 6524,
-    "free_slot.i": 6526,
-    "free_slot.m": 6528,
-    "new_vertex.i": 6530,
-    "create_connection.slot": 6532,
-    "create_connection.i": 6534,
-    "create_connection.k": 6536,
-    "create_connection.matches": 6538,
-    "create_connection.needed": 6540,
-    "create_connection.a": 6542,
-    "create_connection.b": 6544,
-    "create_connection.available": 6546,
-    "create_connection.e": 6548,
-    "main.k": 6550,
-    "main.problem": 6552,
-    "main.x": 6554,
-    "main.y": 6556,
-    "main.i": 6558
+    "absolute.v": 6528,
+    "clear_selection.i": 6530,
+    "order_count": 6532,
+    "limit.m": 6534,
+    "alive.i": 6536,
+    "alive.m": 6538,
+    "selection_base.m": 6540,
+    "vertex_component.i": 6542,
+    "vertex_component.a": 6544,
+    "projected_component.i": 6546,
+    "projected_component.a": 6548,
+    "center.i": 6550,
+    "center.m": 6552,
+    "center.a": 6554,
+    "center.v": 6556,
+    "center.w": 6558,
+    "center.n": 6560,
+    "center.k": 6562,
+    "center.total": 6564,
+    "nearest.i": 6566,
+    "nearest.best": 6568,
+    "nearest.score": 6570,
+    "nearest.m": 6572,
+    "nearest.x": 6574,
+    "nearest.y": 6576,
+    "nearest.d": 6578,
+    "cursor": 6580,
+    "mode": 6582,
+    "navigate.x": 6584,
+    "navigate.y": 6586,
+    "navigate.best": 6588,
+    "navigate.score": 6590,
+    "navigate.i": 6592,
+    "navigate.dx": 6594,
+    "navigate.dy": 6596,
+    "navigate.k": 6598,
+    "navigate.forward": 6600,
+    "navigate.sideways": 6602,
+    "navigate.d": 6604,
+    "cycle.n": 6606,
+    "cycle.i": 6608,
+    "cycle.candidate": 6610,
+    "toggle.address": 6612,
+    "toggle.selected": 6614,
+    "toggle.i": 6616,
+    "toggle.j": 6618,
+    "mark_vertices.i": 6620,
+    "mark_vertices.k": 6622,
+    "mark_vertices.total": 6624,
+    "pivot.n": 6626,
+    "px": 6628,
+    "py": 6630,
+    "pz": 6632,
+    "origin_pivot": 6634,
+    "pivot.i": 6636,
+    "integer.v": 6638,
+    "integer.d": 6640,
+    "integer.started": 6642,
+    "integer.digit": 6644,
+    "fixed.v": 6646,
+    "fixed.fraction": 6648,
+    "fixed.d": 6650,
+    "tool": 6652,
+    "terminal.i": 6654,
+    "input_length": 6656,
+    "terminal.n": 6658,
+    "error.code": 6660,
+    "last_error": 6662,
+    "error.i": 6664,
+    "draw_element.m": 6666,
+    "draw_element.i": 6668,
+    "draw_element.a": 6670,
+    "draw_element.b": 6672,
+    "draw_element.c": 6674,
+    "render.i": 6676,
+    "view_yaw": 6678,
+    "view_pitch": 6680,
+    "zoom": 6682,
+    "render.x": 6684,
+    "render.y": 6686,
+    "render.current": 6688,
+    "render.selected": 6690,
+    "render.original": 6692,
+    "render.base": 6694,
+    "undo_valid": 6696,
+    "fraction_q4.result": 6698,
+    "fraction_q4.i": 6700,
+    "fraction_q4.numerator": 6702,
+    "fraction_q4.denominator": 6704,
+    "rotate_coordinate.a": 6706,
+    "rotate_coordinate.c": 6708,
+    "rotate_coordinate.b": 6710,
+    "rotate_coordinate.d": 6712,
+    "rotate_coordinate.major": 6714,
+    "rotate_coordinate.minor": 6716,
+    "parse.a": 6718,
+    "axis": 6720,
+    "parse.p": 6722,
+    "parse.sign": 6724,
+    "parse.digits": 6726,
+    "parse.whole": 6728,
+    "parse.fraction": 6730,
+    "parse.denominator": 6732,
+    "parse.decimals": 6734,
+    "amount": 6736,
+    "parse.maximum": 6738,
+    "transform.problem": 6740,
+    "transform.angle": 6742,
+    "transform.sine": 6744,
+    "transform.cosine": 6746,
+    "transform.i": 6748,
+    "transform.x": 6750,
+    "transform.y": 6752,
+    "transform.z": 6754,
+    "transform.a": 6756,
+    "transform.b": 6758,
+    "edge_index.i": 6760,
+    "edge_index.v": 6762,
+    "edge_index.w": 6764,
+    "edge_index.a": 6766,
+    "edge_index.b": 6768,
+    "delete_selected.x": 6770,
+    "delete_selected.y": 6772,
+    "delete_selected.i": 6774,
+    "delete_selected.n": 6776,
+    "delete_selected.k": 6778,
+    "delete_selected.a": 6780,
+    "delete_selected.b": 6782,
+    "free_slot.i": 6784,
+    "free_slot.m": 6786,
+    "new_vertex.i": 6788,
+    "create_connection.slot": 6790,
+    "create_connection.i": 6792,
+    "create_connection.k": 6794,
+    "create_connection.matches": 6796,
+    "create_connection.needed": 6798,
+    "create_connection.a": 6800,
+    "create_connection.b": 6802,
+    "create_connection.available": 6804,
+    "create_connection.e": 6806,
+    "main.k": 6808,
+    "main.problem": 6810,
+    "main.x": 6812,
+    "main.y": 6814,
+    "main.i": 6816
   },
   "common": {
     "ret0_bank": 25,
@@ -302,6 +310,11 @@
       "address": 225,
       "physical": 225
     },
+    "triangle_inside_no": {
+      "bank": 1,
+      "address": 249,
+      "physical": 249
+    },
     "vm_project_args": {
       "bank": 2,
       "address": 128,
@@ -341,6 +354,11 @@
       "bank": 2,
       "address": 241,
       "physical": 369
+    },
+    "triangle_inside": {
+      "bank": 2,
+      "address": 247,
+      "physical": 375
     },
     "gfx_rotate_pair": {
       "bank": 3,
@@ -532,2048 +550,2114 @@
       "address": 247,
       "physical": 1015
     },
-    "triangle_save": {
+    "op_key": {
       "bank": 8,
       "address": 128,
       "physical": 1024
     },
-    "io_triangle_save_1": {
+    "io_op_key_0": {
       "bank": 8,
-      "address": 142,
-      "physical": 1038
-    },
-    "io_triangle_save_6": {
-      "bank": 8,
-      "address": 161,
-      "physical": 1057
-    },
-    "io_triangle_save_21": {
-      "bank": 8,
-      "address": 193,
-      "physical": 1089
-    },
-    "io_triangle_save_31": {
-      "bank": 8,
-      "address": 219,
-      "physical": 1115
-    },
-    "op_key": {
-      "bank": 8,
-      "address": 225,
-      "physical": 1121
+      "address": 140,
+      "physical": 1036
     },
     "vm_key_wait": {
       "bank": 8,
-      "address": 225,
-      "physical": 1121
+      "address": 151,
+      "physical": 1047
     },
-    "resume_op_key_7": {
+    "resume_op_key_28": {
       "bank": 8,
-      "address": 249,
-      "physical": 1145
+      "address": 200,
+      "physical": 1096
     },
-    "op_triangle": {
+    "vm_key_ready": {
+      "bank": 8,
+      "address": 202,
+      "physical": 1098
+    },
+    "resume_op_key_34": {
+      "bank": 8,
+      "address": 221,
+      "physical": 1117
+    },
+    "vm_jump": {
+      "bank": 8,
+      "address": 227,
+      "physical": 1123
+    },
+    "jump_low": {
+      "bank": 8,
+      "address": 242,
+      "physical": 1138
+    },
+    "triangle_save": {
       "bank": 9,
       "address": 128,
       "physical": 1152
     },
-    "resume_op_triangle_0": {
+    "io_triangle_save_1": {
       "bank": 9,
       "address": 142,
       "physical": 1166
     },
-    "resume_op_triangle_3": {
+    "io_triangle_save_6": {
       "bank": 9,
-      "address": 160,
-      "physical": 1184
+      "address": 161,
+      "physical": 1185
     },
-    "resume_op_triangle_6": {
+    "io_triangle_save_21": {
       "bank": 9,
-      "address": 178,
-      "physical": 1202
+      "address": 193,
+      "physical": 1217
     },
-    "resume_op_triangle_9": {
+    "io_triangle_save_31": {
       "bank": 9,
-      "address": 196,
-      "physical": 1220
+      "address": 219,
+      "physical": 1243
     },
-    "resume_op_triangle_12": {
+    "sine_fetch": {
       "bank": 9,
-      "address": 214,
-      "physical": 1238
+      "address": 225,
+      "physical": 1249
     },
-    "op_jmp": {
+    "sine_address_ready": {
       "bank": 9,
-      "address": 224,
-      "physical": 1248
+      "address": 240,
+      "physical": 1264
     },
-    "resume_op_jmp_0": {
-      "bank": 9,
-      "address": 238,
-      "physical": 1262
-    },
-    "op_project": {
+    "vm_blink": {
       "bank": 10,
       "address": 128,
       "physical": 1280
     },
-    "resume_op_project_0": {
+    "io_vm_blink_0": {
       "bank": 10,
-      "address": 142,
-      "physical": 1294
+      "address": 140,
+      "physical": 1292
     },
-    "resume_op_project_3": {
+    "io_vm_blink_4": {
       "bank": 10,
-      "address": 160,
-      "physical": 1312
+      "address": 157,
+      "physical": 1309
     },
-    "resume_op_project_6": {
+    "vm_blink_source": {
+      "bank": 10,
+      "address": 170,
+      "physical": 1322
+    },
+    "vm_blink_loop": {
       "bank": 10,
       "address": 178,
       "physical": 1330
     },
-    "resume_op_project_9": {
+    "io_vm_blink_20": {
       "bank": 10,
-      "address": 196,
-      "physical": 1348
+      "address": 190,
+      "physical": 1342
     },
-    "resume_op_project_12": {
+    "vm_blink_dest": {
       "bank": 10,
-      "address": 214,
-      "physical": 1366
+      "address": 209,
+      "physical": 1361
     },
-    "op_drop": {
-      "bank": 10,
-      "address": 224,
-      "physical": 1376
-    },
-    "resume_op_drop_0": {
-      "bank": 10,
-      "address": 238,
-      "physical": 1390
-    },
-    "sine_return": {
-      "bank": 10,
-      "address": 244,
-      "physical": 1396
-    },
-    "sine_done": {
-      "bank": 10,
-      "address": 250,
-      "physical": 1402
-    },
-    "op_mul": {
+    "op_triangle": {
       "bank": 11,
       "address": 128,
       "physical": 1408
     },
-    "resume_op_mul_0": {
+    "resume_op_triangle_0": {
       "bank": 11,
       "address": 142,
       "physical": 1422
     },
-    "mul16_loop": {
+    "resume_op_triangle_3": {
       "bank": 11,
-      "address": 151,
-      "physical": 1431
+      "address": 160,
+      "physical": 1440
     },
-    "mul16_skip": {
+    "resume_op_triangle_6": {
       "bank": 11,
-      "address": 177,
-      "physical": 1457
+      "address": 178,
+      "physical": 1458
     },
-    "resume_op_mul_37": {
+    "resume_op_triangle_9": {
       "bank": 11,
-      "address": 216,
-      "physical": 1496
+      "address": 196,
+      "physical": 1476
     },
-    "gfx_divide_projection": {
+    "resume_op_triangle_12": {
       "bank": 11,
-      "address": 222,
-      "physical": 1502
+      "address": 214,
+      "physical": 1494
     },
-    "division_positive": {
+    "triangle_area": {
       "bank": 11,
-      "address": 234,
-      "physical": 1514
+      "address": 224,
+      "physical": 1504
     },
-    "triangle_row": {
+    "op_project": {
       "bank": 12,
       "address": 128,
       "physical": 1536
     },
-    "triangle_rewind": {
+    "resume_op_project_0": {
+      "bank": 12,
+      "address": 142,
+      "physical": 1550
+    },
+    "resume_op_project_3": {
       "bank": 12,
       "address": 160,
       "physical": 1568
     },
-    "resume_triangle_row_20": {
+    "resume_op_project_6": {
       "bank": 12,
-      "address": 174,
-      "physical": 1582
+      "address": 178,
+      "physical": 1586
     },
-    "resume_triangle_row_34": {
+    "resume_op_project_9": {
       "bank": 12,
-      "address": 210,
-      "physical": 1618
+      "address": 196,
+      "physical": 1604
     },
-    "triangle_done": {
+    "resume_op_project_12": {
       "bank": 12,
-      "address": 216,
-      "physical": 1624
+      "address": 214,
+      "physical": 1622
     },
-    "op_set": {
+    "triangle_init1": {
       "bank": 12,
-      "address": 222,
-      "physical": 1630
+      "address": 224,
+      "physical": 1632
     },
-    "resume_op_set_0": {
+    "triangle_init2": {
       "bank": 12,
-      "address": 236,
-      "physical": 1644
+      "address": 238,
+      "physical": 1646
     },
-    "resume_op_set_1": {
-      "bank": 12,
-      "address": 250,
-      "physical": 1658
-    },
-    "project_translate": {
+    "op_mul": {
       "bank": 13,
       "address": 128,
       "physical": 1664
     },
-    "io_project_translate_0": {
+    "resume_op_mul_0": {
       "bank": 13,
-      "address": 140,
-      "physical": 1676
+      "address": 142,
+      "physical": 1678
     },
-    "io_project_translate_4": {
+    "mul16_loop": {
       "bank": 13,
-      "address": 157,
-      "physical": 1693
+      "address": 151,
+      "physical": 1687
     },
-    "io_project_translate_8": {
+    "mul16_skip": {
       "bank": 13,
-      "address": 174,
-      "physical": 1710
+      "address": 177,
+      "physical": 1713
     },
-    "bridge_project_translate_18": {
+    "resume_op_mul_37": {
       "bank": 13,
-      "address": 197,
-      "physical": 1733
+      "address": 216,
+      "physical": 1752
     },
-    "bridge_project_translate_21": {
+    "gfx_divide_projection": {
       "bank": 13,
-      "address": 208,
-      "physical": 1744
+      "address": 222,
+      "physical": 1758
     },
-    "vm_operands": {
+    "division_positive": {
       "bank": 13,
-      "address": 214,
-      "physical": 1750
+      "address": 234,
+      "physical": 1770
     },
-    "resume_vm_operands_0": {
-      "bank": 13,
-      "address": 228,
-      "physical": 1764
-    },
-    "resume_vm_operands_5": {
-      "bank": 13,
-      "address": 250,
-      "physical": 1786
-    },
-    "vm_triangle_args": {
+    "triangle_row": {
       "bank": 14,
       "address": 128,
       "physical": 1792
     },
-    "resume_vm_triangle_args_0": {
-      "bank": 14,
-      "address": 142,
-      "physical": 1806
-    },
-    "resume_vm_triangle_args_3": {
+    "triangle_rewind": {
       "bank": 14,
       "address": 160,
       "physical": 1824
     },
-    "resume_vm_triangle_args_6": {
+    "resume_triangle_row_20": {
       "bank": 14,
-      "address": 178,
-      "physical": 1842
+      "address": 174,
+      "physical": 1838
     },
-    "resume_vm_triangle_args_7": {
+    "resume_triangle_row_34": {
       "bank": 14,
-      "address": 192,
-      "physical": 1856
+      "address": 210,
+      "physical": 1874
     },
-    "resume_vm_triangle_args_8": {
+    "triangle_done": {
       "bank": 14,
-      "address": 206,
-      "physical": 1870
+      "address": 216,
+      "physical": 1880
     },
-    "op_ret": {
+    "op_set": {
       "bank": 14,
-      "address": 212,
-      "physical": 1876
+      "address": 222,
+      "physical": 1886
     },
-    "io_op_ret_7": {
+    "resume_op_set_0": {
       "bank": 14,
-      "address": 231,
-      "physical": 1895
+      "address": 236,
+      "physical": 1900
     },
-    "io_op_ret_13": {
+    "resume_op_set_1": {
       "bank": 14,
-      "address": 248,
-      "physical": 1912
+      "address": 250,
+      "physical": 1914
     },
-    "native_continuation_1": {
+    "project_translate": {
       "bank": 15,
       "address": 128,
       "physical": 1920
     },
-    "resume_native_continuation_1_0": {
+    "io_project_translate_0": {
       "bank": 15,
-      "address": 138,
-      "physical": 1930
+      "address": 140,
+      "physical": 1932
     },
-    "resume_native_continuation_1_3": {
+    "io_project_translate_4": {
       "bank": 15,
-      "address": 152,
-      "physical": 1944
+      "address": 157,
+      "physical": 1949
     },
-    "resume_native_continuation_1_6": {
+    "io_project_translate_8": {
       "bank": 15,
-      "address": 170,
-      "physical": 1962
+      "address": 174,
+      "physical": 1966
     },
-    "resume_native_continuation_1_7": {
+    "bridge_project_translate_18": {
       "bank": 15,
-      "address": 184,
-      "physical": 1976
+      "address": 197,
+      "physical": 1989
     },
-    "resume_native_continuation_1_8": {
+    "bridge_project_translate_21": {
       "bank": 15,
-      "address": 198,
-      "physical": 1990
+      "address": 208,
+      "physical": 2000
     },
-    "vm_pop": {
+    "vm_operands": {
       "bank": 15,
-      "address": 204,
-      "physical": 1996
+      "address": 214,
+      "physical": 2006
     },
-    "io_vm_pop_7": {
+    "resume_vm_operands_0": {
       "bank": 15,
-      "address": 223,
-      "physical": 2015
+      "address": 228,
+      "physical": 2020
     },
-    "io_vm_pop_13": {
+    "resume_vm_operands_5": {
       "bank": 15,
-      "address": 240,
-      "physical": 2032
+      "address": 250,
+      "physical": 2042
     },
-    "line_pixel": {
+    "vm_triangle_args": {
       "bank": 16,
       "address": 128,
       "physical": 2048
     },
-    "resume_line_pixel_4": {
+    "resume_vm_triangle_args_0": {
       "bank": 16,
-      "address": 150,
-      "physical": 2070
+      "address": 142,
+      "physical": 2062
     },
-    "bridge_line_pixel_8": {
+    "resume_vm_triangle_args_3": {
       "bank": 16,
-      "address": 163,
-      "physical": 2083
+      "address": 160,
+      "physical": 2080
     },
-    "bridge_line_pixel_11": {
+    "resume_vm_triangle_args_6": {
       "bank": 16,
-      "address": 174,
-      "physical": 2094
+      "address": 178,
+      "physical": 2098
     },
-    "op_store8": {
+    "resume_vm_triangle_args_7": {
       "bank": 16,
-      "address": 204,
-      "physical": 2124
+      "address": 192,
+      "physical": 2112
     },
-    "resume_op_store8_0": {
+    "resume_vm_triangle_args_8": {
       "bank": 16,
-      "address": 218,
-      "physical": 2138
+      "address": 206,
+      "physical": 2126
     },
-    "resume_op_store8_10": {
+    "op_const": {
       "bank": 16,
-      "address": 250,
-      "physical": 2170
+      "address": 212,
+      "physical": 2132
     },
-    "gfx_project_vertex": {
+    "resume_op_const_0": {
+      "bank": 16,
+      "address": 226,
+      "physical": 2146
+    },
+    "resume_op_const_5": {
+      "bank": 16,
+      "address": 248,
+      "physical": 2168
+    },
+    "native_continuation_1": {
       "bank": 17,
       "address": 128,
       "physical": 2176
     },
-    "resume_gfx_project_vertex_6": {
+    "resume_native_continuation_1_0": {
       "bank": 17,
-      "address": 154,
-      "physical": 2202
+      "address": 142,
+      "physical": 2190
     },
-    "resume_gfx_project_vertex_17": {
+    "resume_native_continuation_1_3": {
       "bank": 17,
-      "address": 188,
-      "physical": 2236
+      "address": 160,
+      "physical": 2208
     },
-    "vm_division_done": {
+    "resume_native_continuation_1_6": {
       "bank": 17,
-      "address": 202,
-      "physical": 2250
+      "address": 178,
+      "physical": 2226
     },
-    "div_quotient": {
+    "resume_native_continuation_1_7": {
       "bank": 17,
-      "address": 219,
-      "physical": 2267
+      "address": 192,
+      "physical": 2240
     },
-    "div_sign": {
+    "resume_native_continuation_1_8": {
       "bank": 17,
-      "address": 221,
-      "physical": 2269
+      "address": 206,
+      "physical": 2254
     },
-    "div_finish": {
+    "op_ret": {
       "bank": 17,
-      "address": 236,
-      "physical": 2284
+      "address": 212,
+      "physical": 2260
     },
-    "resume_vm_division_done_22": {
+    "io_op_ret_7": {
       "bank": 17,
-      "address": 250,
-      "physical": 2298
+      "address": 231,
+      "physical": 2279
     },
-    "op_lt": {
+    "io_op_ret_13": {
+      "bank": 17,
+      "address": 248,
+      "physical": 2296
+    },
+    "line_pixel": {
       "bank": 18,
       "address": 128,
       "physical": 2304
     },
-    "resume_op_lt_0": {
+    "resume_line_pixel_4": {
       "bank": 18,
-      "address": 142,
-      "physical": 2318
+      "address": 150,
+      "physical": 2326
     },
-    "lt_opposite": {
+    "bridge_line_pixel_8": {
       "bank": 18,
-      "address": 165,
-      "physical": 2341
+      "address": 163,
+      "physical": 2339
     },
-    "lt_no": {
+    "bridge_line_pixel_11": {
       "bank": 18,
-      "address": 170,
-      "physical": 2346
+      "address": 174,
+      "physical": 2350
     },
-    "lt_yes": {
+    "op_store8": {
       "bank": 18,
-      "address": 173,
-      "physical": 2349
+      "address": 204,
+      "physical": 2380
     },
-    "lt_done": {
+    "resume_op_store8_0": {
       "bank": 18,
-      "address": 175,
-      "physical": 2351
+      "address": 218,
+      "physical": 2394
     },
-    "resume_op_lt_27": {
+    "resume_op_store8_10": {
       "bank": 18,
-      "address": 194,
-      "physical": 2370
+      "address": 250,
+      "physical": 2426
     },
-    "vm_dispatch": {
-      "bank": 18,
-      "address": 196,
-      "physical": 2372
-    },
-    "resume_vm_dispatch_0": {
-      "bank": 18,
-      "address": 210,
-      "physical": 2386
-    },
-    "io_vm_dispatch_7": {
-      "bank": 18,
-      "address": 227,
-      "physical": 2403
-    },
-    "io_vm_dispatch_12": {
-      "bank": 18,
-      "address": 242,
-      "physical": 2418
-    },
-    "vm_divide": {
+    "gfx_project_vertex": {
       "bank": 19,
       "address": 128,
       "physical": 2432
     },
-    "resume_vm_divide_0": {
+    "resume_gfx_project_vertex_6": {
       "bank": 19,
-      "address": 142,
-      "physical": 2446
+      "address": 154,
+      "physical": 2458
     },
-    "div_u_positive": {
+    "resume_gfx_project_vertex_17": {
       "bank": 19,
-      "address": 168,
-      "physical": 2472
+      "address": 188,
+      "physical": 2492
     },
-    "div_v_positive": {
+    "vm_division_done": {
       "bank": 19,
-      "address": 185,
-      "physical": 2489
+      "address": 202,
+      "physical": 2506
     },
-    "op_shr": {
-      "bank": 19,
-      "address": 200,
-      "physical": 2504
-    },
-    "resume_op_shr_0": {
-      "bank": 19,
-      "address": 214,
-      "physical": 2518
-    },
-    "shr_loop": {
+    "div_quotient": {
       "bank": 19,
       "address": 219,
       "physical": 2523
     },
-    "shr_done": {
+    "div_sign": {
+      "bank": 19,
+      "address": 221,
+      "physical": 2525
+    },
+    "div_finish": {
       "bank": 19,
       "address": 236,
       "physical": 2540
     },
-    "resume_op_shr_16": {
+    "resume_vm_division_done_22": {
       "bank": 19,
       "address": 250,
       "physical": 2554
     },
-    "op_copy": {
+    "op_lt": {
       "bank": 20,
       "address": 128,
       "physical": 2560
     },
-    "resume_op_copy_0": {
+    "resume_op_lt_0": {
       "bank": 20,
       "address": 142,
       "physical": 2574
     },
-    "resume_op_copy_5": {
+    "lt_opposite": {
       "bank": 20,
-      "address": 164,
-      "physical": 2596
+      "address": 165,
+      "physical": 2597
     },
-    "resume_op_copy_10": {
+    "lt_no": {
       "bank": 20,
-      "address": 186,
-      "physical": 2618
+      "address": 170,
+      "physical": 2602
     },
-    "op_shl": {
+    "lt_yes": {
       "bank": 20,
-      "address": 200,
-      "physical": 2632
+      "address": 173,
+      "physical": 2605
     },
-    "resume_op_shl_0": {
+    "lt_done": {
       "bank": 20,
-      "address": 214,
-      "physical": 2646
+      "address": 175,
+      "physical": 2607
     },
-    "shl_loop": {
+    "resume_op_lt_27": {
       "bank": 20,
-      "address": 219,
-      "physical": 2651
+      "address": 194,
+      "physical": 2626
     },
-    "shl_done": {
+    "vm_dispatch": {
       "bank": 20,
-      "address": 236,
-      "physical": 2668
+      "address": 196,
+      "physical": 2628
     },
-    "resume_op_shl_16": {
+    "resume_vm_dispatch_0": {
       "bank": 20,
-      "address": 250,
-      "physical": 2682
+      "address": 210,
+      "physical": 2642
     },
-    "sine_mask": {
+    "io_vm_dispatch_7": {
+      "bank": 20,
+      "address": 227,
+      "physical": 2659
+    },
+    "io_vm_dispatch_12": {
+      "bank": 20,
+      "address": 242,
+      "physical": 2674
+    },
+    "vm_divide": {
       "bank": 21,
       "address": 128,
       "physical": 2688
     },
-    "io_sine_mask_0": {
+    "resume_vm_divide_0": {
       "bank": 21,
-      "address": 140,
-      "physical": 2700
+      "address": 142,
+      "physical": 2702
     },
-    "sine_bit": {
+    "div_u_positive": {
       "bank": 21,
-      "address": 146,
-      "physical": 2706
+      "address": 168,
+      "physical": 2728
     },
-    "sine_bit_zero": {
+    "div_v_positive": {
       "bank": 21,
-      "address": 158,
-      "physical": 2718
+      "address": 185,
+      "physical": 2745
     },
-    "sine_value": {
+    "op_shr": {
       "bank": 21,
-      "address": 190,
-      "physical": 2750
+      "address": 200,
+      "physical": 2760
     },
-    "triangle_load0": {
+    "resume_op_shr_0": {
       "bank": 21,
-      "address": 198,
-      "physical": 2758
+      "address": 214,
+      "physical": 2774
     },
-    "triangle_load_loop": {
+    "shr_loop": {
       "bank": 21,
-      "address": 206,
-      "physical": 2766
+      "address": 219,
+      "physical": 2779
     },
-    "io_triangle_load0_5": {
+    "shr_done": {
       "bank": 21,
-      "address": 218,
-      "physical": 2778
+      "address": 236,
+      "physical": 2796
     },
-    "triangle_registers": {
+    "resume_op_shr_16": {
       "bank": 21,
-      "address": 243,
-      "physical": 2803
+      "address": 250,
+      "physical": 2810
     },
-    "op_text": {
+    "op_copy": {
       "bank": 22,
       "address": 128,
       "physical": 2816
     },
-    "resume_op_text_0": {
+    "resume_op_copy_0": {
       "bank": 22,
       "address": 142,
       "physical": 2830
     },
-    "text_loop": {
+    "resume_op_copy_5": {
       "bank": 22,
-      "address": 148,
-      "physical": 2836
+      "address": 164,
+      "physical": 2852
     },
-    "resume_op_text_5": {
+    "resume_op_copy_10": {
       "bank": 22,
-      "address": 162,
-      "physical": 2850
+      "address": 186,
+      "physical": 2874
     },
-    "resume_op_text_9": {
+    "op_shl": {
       "bank": 22,
-      "address": 181,
-      "physical": 2869
+      "address": 200,
+      "physical": 2888
     },
-    "text_done": {
+    "resume_op_shl_0": {
       "bank": 22,
-      "address": 183,
-      "physical": 2871
+      "address": 214,
+      "physical": 2902
     },
-    "op_load8": {
+    "shl_loop": {
       "bank": 22,
-      "address": 195,
-      "physical": 2883
+      "address": 219,
+      "physical": 2907
     },
-    "resume_op_load8_0": {
+    "shl_done": {
       "bank": 22,
-      "address": 209,
-      "physical": 2897
+      "address": 236,
+      "physical": 2924
     },
-    "resume_op_load8_5": {
-      "bank": 22,
-      "address": 231,
-      "physical": 2919
-    },
-    "resume_op_load8_9": {
+    "resume_op_shl_16": {
       "bank": 22,
       "address": 250,
       "physical": 2938
     },
-    "vm_load_word": {
+    "sine_mask": {
       "bank": 23,
       "address": 128,
       "physical": 2944
     },
-    "resume_vm_load_word_0": {
+    "io_sine_mask_0": {
       "bank": 23,
-      "address": 142,
-      "physical": 2958
+      "address": 140,
+      "physical": 2956
     },
-    "resume_vm_load_word_2": {
+    "sine_bit": {
+      "bank": 23,
+      "address": 146,
+      "physical": 2962
+    },
+    "sine_bit_zero": {
       "bank": 23,
       "address": 158,
       "physical": 2974
     },
-    "resume_vm_load_word_3": {
+    "sine_value": {
       "bank": 23,
-      "address": 172,
-      "physical": 2988
+      "address": 190,
+      "physical": 3006
     },
-    "resume_vm_load_word_5": {
+    "triangle_load0": {
       "bank": 23,
-      "address": 188,
-      "physical": 3004
+      "address": 198,
+      "physical": 3014
     },
-    "gfx_sine_product": {
+    "triangle_load_loop": {
       "bank": 23,
-      "address": 194,
-      "physical": 3010
+      "address": 206,
+      "physical": 3022
     },
-    "sine_positive": {
+    "io_triangle_load0_5": {
       "bank": 23,
-      "address": 209,
-      "physical": 3025
+      "address": 218,
+      "physical": 3034
     },
-    "sine_folded": {
+    "triangle_registers": {
       "bank": 23,
-      "address": 227,
-      "physical": 3043
+      "address": 243,
+      "physical": 3059
     },
-    "bridge_gfx_sine_product_31": {
-      "bank": 23,
-      "address": 241,
-      "physical": 3057
-    },
-    "sine_zero": {
-      "bank": 23,
-      "address": 249,
-      "physical": 3065
-    },
-    "vm_division_loop": {
+    "op_text": {
       "bank": 24,
       "address": 128,
       "physical": 3072
     },
-    "div_subtract": {
+    "resume_op_text_0": {
+      "bank": 24,
+      "address": 142,
+      "physical": 3086
+    },
+    "text_loop": {
+      "bank": 24,
+      "address": 148,
+      "physical": 3092
+    },
+    "resume_op_text_5": {
       "bank": 24,
       "address": 162,
       "physical": 3106
     },
-    "div_skip": {
+    "resume_op_text_9": {
       "bank": 24,
       "address": 181,
       "physical": 3125
     },
-    "vm_restore": {
+    "text_done": {
       "bank": 24,
-      "address": 194,
-      "physical": 3138
+      "address": 183,
+      "physical": 3127
     },
-    "io_vm_restore_0": {
+    "op_load8": {
       "bank": 24,
-      "address": 206,
-      "physical": 3150
+      "address": 195,
+      "physical": 3139
     },
-    "io_vm_restore_2": {
+    "resume_op_load8_0": {
       "bank": 24,
-      "address": 220,
-      "physical": 3164
+      "address": 209,
+      "physical": 3153
     },
-    "io_vm_restore_4": {
+    "resume_op_load8_5": {
       "bank": 24,
-      "address": 234,
-      "physical": 3178
+      "address": 231,
+      "physical": 3175
     },
-    "io_vm_restore_6": {
+    "resume_op_load8_9": {
       "bank": 24,
-      "address": 248,
-      "physical": 3192
+      "address": 250,
+      "physical": 3194
     },
-    "gfx_mul16": {
+    "vm_load_word": {
       "bank": 25,
       "address": 128,
       "physical": 3200
     },
-    "mul_u_positive": {
+    "resume_vm_load_word_0": {
       "bank": 25,
-      "address": 141,
-      "physical": 3213
+      "address": 142,
+      "physical": 3214
     },
-    "mul_v_positive": {
+    "resume_vm_load_word_2": {
       "bank": 25,
-      "address": 147,
-      "physical": 3219
+      "address": 158,
+      "physical": 3230
     },
-    "mul_loop": {
+    "resume_vm_load_word_3": {
       "bank": 25,
-      "address": 153,
-      "physical": 3225
+      "address": 172,
+      "physical": 3244
     },
-    "mul_skip": {
-      "bank": 25,
-      "address": 166,
-      "physical": 3238
-    },
-    "mul_done": {
+    "resume_vm_load_word_5": {
       "bank": 25,
       "address": 188,
       "physical": 3260
     },
-    "vm_save": {
+    "gfx_sine_product": {
       "bank": 25,
       "address": 194,
       "physical": 3266
     },
-    "io_vm_save_1": {
+    "sine_positive": {
       "bank": 25,
-      "address": 208,
-      "physical": 3280
+      "address": 209,
+      "physical": 3281
     },
-    "io_vm_save_3": {
+    "sine_folded": {
       "bank": 25,
-      "address": 222,
-      "physical": 3294
+      "address": 227,
+      "physical": 3299
     },
-    "io_vm_save_5": {
+    "bridge_gfx_sine_product_31": {
       "bank": 25,
-      "address": 236,
-      "physical": 3308
+      "address": 241,
+      "physical": 3313
     },
-    "io_vm_save_7": {
+    "sine_zero": {
       "bank": 25,
-      "address": 250,
-      "physical": 3322
+      "address": 249,
+      "physical": 3321
     },
-    "op_loads": {
+    "vm_division_loop": {
       "bank": 26,
       "address": 128,
       "physical": 3328
     },
-    "resume_op_loads_0": {
+    "div_subtract": {
       "bank": 26,
-      "address": 142,
-      "physical": 3342
+      "address": 162,
+      "physical": 3362
     },
-    "resume_op_loads_5": {
+    "div_skip": {
       "bank": 26,
-      "address": 164,
-      "physical": 3364
+      "address": 181,
+      "physical": 3381
     },
-    "loads_positive": {
+    "vm_restore": {
       "bank": 26,
-      "address": 171,
-      "physical": 3371
+      "address": 194,
+      "physical": 3394
     },
-    "resume_op_loads_13": {
+    "io_vm_restore_0": {
       "bank": 26,
-      "address": 187,
-      "physical": 3387
+      "address": 206,
+      "physical": 3406
     },
-    "triangle_scan": {
+    "io_vm_restore_2": {
       "bank": 26,
-      "address": 193,
-      "physical": 3393
+      "address": 220,
+      "physical": 3420
     },
-    "triangle_pixel": {
+    "io_vm_restore_4": {
       "bank": 26,
-      "address": 193,
-      "physical": 3393
+      "address": 234,
+      "physical": 3434
     },
-    "resume_triangle_scan_1": {
+    "io_vm_restore_6": {
       "bank": 26,
-      "address": 207,
-      "physical": 3407
+      "address": 248,
+      "physical": 3448
     },
-    "resume_triangle_scan_4": {
-      "bank": 26,
-      "address": 224,
-      "physical": 3424
-    },
-    "triangle_advance": {
-      "bank": 26,
-      "address": 224,
-      "physical": 3424
-    },
-    "bridge_triangle_scan_11": {
-      "bank": 26,
-      "address": 240,
-      "physical": 3440
-    },
-    "resume_triangle_scan_12": {
-      "bank": 26,
-      "address": 254,
-      "physical": 3454
-    },
-    "gfx_line": {
+    "gfx_mul16": {
       "bank": 27,
       "address": 128,
       "physical": 3456
     },
-    "full_x_positive": {
+    "mul_u_positive": {
       "bank": 27,
-      "address": 139,
-      "physical": 3467
+      "address": 141,
+      "physical": 3469
     },
-    "full_y_positive": {
+    "mul_v_positive": {
       "bank": 27,
-      "address": 154,
-      "physical": 3482
+      "address": 147,
+      "physical": 3475
     },
-    "line_x_major": {
+    "mul_loop": {
       "bank": 27,
-      "address": 172,
-      "physical": 3500
+      "address": 153,
+      "physical": 3481
     },
-    "line_major_ready": {
+    "mul_skip": {
       "bank": 27,
-      "address": 174,
-      "physical": 3502
+      "address": 166,
+      "physical": 3494
     },
-    "op_call": {
+    "mul_done": {
       "bank": 27,
-      "address": 190,
-      "physical": 3518
+      "address": 188,
+      "physical": 3516
     },
-    "resume_op_call_0": {
+    "vm_save": {
       "bank": 27,
-      "address": 204,
-      "physical": 3532
+      "address": 194,
+      "physical": 3522
     },
-    "io_op_call_6": {
+    "io_vm_save_1": {
       "bank": 27,
-      "address": 221,
-      "physical": 3549
+      "address": 208,
+      "physical": 3536
     },
-    "io_op_call_12": {
+    "io_vm_save_3": {
       "bank": 27,
-      "address": 238,
-      "physical": 3566
+      "address": 222,
+      "physical": 3550
     },
-    "op_line": {
+    "io_vm_save_5": {
+      "bank": 27,
+      "address": 236,
+      "physical": 3564
+    },
+    "io_vm_save_7": {
+      "bank": 27,
+      "address": 250,
+      "physical": 3578
+    },
+    "op_loads": {
       "bank": 28,
       "address": 128,
       "physical": 3584
     },
-    "resume_op_line_0": {
+    "resume_op_loads_0": {
       "bank": 28,
       "address": 142,
       "physical": 3598
     },
-    "resume_op_line_3": {
+    "resume_op_loads_5": {
       "bank": 28,
-      "address": 160,
-      "physical": 3616
+      "address": 164,
+      "physical": 3620
     },
-    "resume_op_line_6": {
+    "loads_positive": {
       "bank": 28,
-      "address": 178,
-      "physical": 3634
+      "address": 171,
+      "physical": 3627
     },
-    "triangle_advance_x": {
+    "resume_op_loads_13": {
       "bank": 28,
-      "address": 188,
-      "physical": 3644
+      "address": 187,
+      "physical": 3643
     },
-    "advance_x_0": {
+    "triangle_scan": {
       "bank": 28,
-      "address": 198,
-      "physical": 3654
+      "address": 193,
+      "physical": 3649
     },
-    "advance_x_1": {
+    "triangle_pixel": {
       "bank": 28,
-      "address": 216,
-      "physical": 3672
+      "address": 193,
+      "physical": 3649
     },
-    "advance_x_2": {
+    "resume_triangle_scan_1": {
       "bank": 28,
-      "address": 234,
-      "physical": 3690
+      "address": 207,
+      "physical": 3663
     },
-    "triangle_inside_yes": {
+    "resume_triangle_scan_4": {
       "bank": 28,
-      "address": 248,
-      "physical": 3704
+      "address": 224,
+      "physical": 3680
     },
-    "triangle_advance_y": {
+    "triangle_advance": {
+      "bank": 28,
+      "address": 224,
+      "physical": 3680
+    },
+    "bridge_triangle_scan_11": {
+      "bank": 28,
+      "address": 240,
+      "physical": 3696
+    },
+    "resume_triangle_scan_12": {
+      "bank": 28,
+      "address": 254,
+      "physical": 3710
+    },
+    "gfx_line": {
       "bank": 29,
       "address": 128,
       "physical": 3712
     },
-    "advance_y_0": {
+    "full_x_positive": {
       "bank": 29,
-      "address": 138,
-      "physical": 3722
+      "address": 139,
+      "physical": 3723
     },
-    "advance_y_1": {
+    "full_y_positive": {
       "bank": 29,
-      "address": 156,
-      "physical": 3740
+      "address": 154,
+      "physical": 3738
     },
-    "advance_y_2": {
+    "line_x_major": {
+      "bank": 29,
+      "address": 172,
+      "physical": 3756
+    },
+    "line_major_ready": {
       "bank": 29,
       "address": 174,
       "physical": 3758
     },
-    "op_eq": {
+    "op_call": {
       "bank": 29,
-      "address": 188,
-      "physical": 3772
+      "address": 190,
+      "physical": 3774
     },
-    "resume_op_eq_0": {
+    "resume_op_call_0": {
       "bank": 29,
-      "address": 202,
-      "physical": 3786
+      "address": 204,
+      "physical": 3788
     },
-    "eq_done": {
+    "io_op_call_6": {
       "bank": 29,
-      "address": 222,
-      "physical": 3806
+      "address": 221,
+      "physical": 3805
     },
-    "resume_op_eq_17": {
+    "io_op_call_12": {
       "bank": 29,
-      "address": 241,
-      "physical": 3825
+      "address": 238,
+      "physical": 3822
     },
-    "triangle_inside": {
-      "bank": 29,
-      "address": 247,
-      "physical": 3831
-    },
-    "project_choose": {
+    "op_line": {
       "bank": 30,
       "address": 128,
       "physical": 3840
     },
-    "bridge_project_choose_5": {
+    "resume_op_line_0": {
       "bank": 30,
-      "address": 144,
-      "physical": 3856
+      "address": 142,
+      "physical": 3854
     },
-    "bridge_project_choose_11": {
+    "resume_op_line_3": {
       "bank": 30,
       "address": 160,
       "physical": 3872
     },
-    "io_project_choose_12": {
+    "resume_op_line_6": {
       "bank": 30,
-      "address": 172,
-      "physical": 3884
+      "address": 178,
+      "physical": 3890
     },
-    "bridge_project_choose_14": {
+    "triangle_advance_x": {
       "bank": 30,
-      "address": 181,
-      "physical": 3893
+      "address": 188,
+      "physical": 3900
     },
-    "vm_store_word": {
+    "advance_x_0": {
       "bank": 30,
-      "address": 187,
-      "physical": 3899
+      "address": 198,
+      "physical": 3910
     },
-    "resume_vm_store_word_1": {
+    "advance_x_1": {
       "bank": 30,
-      "address": 203,
-      "physical": 3915
+      "address": 216,
+      "physical": 3928
     },
-    "resume_vm_store_word_2": {
+    "advance_x_2": {
       "bank": 30,
-      "address": 217,
-      "physical": 3929
+      "address": 234,
+      "physical": 3946
     },
-    "resume_vm_store_word_4": {
+    "triangle_inside_yes": {
       "bank": 30,
-      "address": 233,
-      "physical": 3945
+      "address": 248,
+      "physical": 3960
     },
-    "triangle_init0": {
-      "bank": 30,
-      "address": 239,
-      "physical": 3951
-    },
-    "project_perspective": {
+    "triangle_advance_y": {
       "bank": 31,
       "address": 128,
       "physical": 3968
     },
-    "resume_project_perspective_2": {
+    "advance_y_0": {
       "bank": 31,
-      "address": 146,
-      "physical": 3986
+      "address": 138,
+      "physical": 3978
     },
-    "resume_project_perspective_7": {
+    "advance_y_1": {
       "bank": 31,
-      "address": 167,
-      "physical": 4007
+      "address": 156,
+      "physical": 3996
     },
-    "op_begin": {
+    "advance_y_2": {
       "bank": 31,
-      "address": 179,
-      "physical": 4019
+      "address": 174,
+      "physical": 4014
     },
-    "resume_op_begin_0": {
+    "op_eq": {
       "bank": 31,
-      "address": 193,
-      "physical": 4033
+      "address": 188,
+      "physical": 4028
     },
-    "resume_op_begin_1": {
+    "resume_op_eq_0": {
       "bank": 31,
-      "address": 207,
-      "physical": 4047
+      "address": 202,
+      "physical": 4042
     },
-    "resume_op_begin_2": {
+    "eq_done": {
       "bank": 31,
-      "address": 221,
-      "physical": 4061
+      "address": 222,
+      "physical": 4062
     },
-    "vm_address": {
+    "resume_op_eq_17": {
       "bank": 31,
-      "address": 229,
-      "physical": 4069
+      "address": 241,
+      "physical": 4081
     },
-    "vm_address_low": {
-      "bank": 31,
-      "address": 239,
-      "physical": 4079
-    },
-    "vm_address_banked": {
+    "project_invisible": {
       "bank": 31,
       "address": 247,
       "physical": 4087
     },
-    "vm_address_done": {
-      "bank": 31,
-      "address": 250,
-      "physical": 4090
-    },
-    "op_present": {
+    "project_choose": {
       "bank": 32,
       "address": 128,
       "physical": 4096
     },
-    "resume_op_present_0": {
+    "bridge_project_choose_5": {
       "bank": 32,
-      "address": 142,
-      "physical": 4110
+      "address": 144,
+      "physical": 4112
     },
-    "resume_op_present_1": {
+    "bridge_project_choose_11": {
       "bank": 32,
-      "address": 156,
-      "physical": 4124
+      "address": 160,
+      "physical": 4128
     },
-    "resume_op_present_2": {
+    "io_project_choose_12": {
       "bank": 32,
-      "address": 170,
-      "physical": 4138
+      "address": 172,
+      "physical": 4140
     },
-    "op_not": {
+    "bridge_project_choose_14": {
       "bank": 32,
-      "address": 178,
-      "physical": 4146
+      "address": 181,
+      "physical": 4149
     },
-    "resume_op_not_0": {
+    "vm_store_word": {
       "bank": 32,
-      "address": 192,
-      "physical": 4160
+      "address": 187,
+      "physical": 4155
     },
-    "not_done": {
+    "resume_vm_store_word_1": {
       "bank": 32,
-      "address": 202,
-      "physical": 4170
+      "address": 203,
+      "physical": 4171
     },
-    "resume_op_not_11": {
+    "resume_vm_store_word_2": {
       "bank": 32,
-      "address": 221,
-      "physical": 4189
+      "address": 217,
+      "physical": 4185
     },
-    "op_load16": {
+    "resume_vm_store_word_4": {
       "bank": 32,
-      "address": 227,
-      "physical": 4195
+      "address": 233,
+      "physical": 4201
     },
-    "resume_op_load16_0": {
+    "triangle_init0": {
       "bank": 32,
-      "address": 241,
-      "physical": 4209
+      "address": 239,
+      "physical": 4207
     },
-    "op_add": {
+    "project_perspective": {
       "bank": 33,
       "address": 128,
       "physical": 4224
     },
-    "resume_op_add_0": {
+    "resume_project_perspective_2": {
       "bank": 33,
-      "address": 142,
-      "physical": 4238
+      "address": 146,
+      "physical": 4242
     },
-    "resume_op_add_9": {
+    "resume_project_perspective_7": {
       "bank": 33,
-      "address": 170,
-      "physical": 4266
+      "address": 167,
+      "physical": 4263
     },
-    "op_sub": {
+    "op_begin": {
       "bank": 33,
-      "address": 176,
-      "physical": 4272
+      "address": 179,
+      "physical": 4275
     },
-    "resume_op_sub_0": {
+    "resume_op_begin_0": {
       "bank": 33,
-      "address": 190,
-      "physical": 4286
+      "address": 193,
+      "physical": 4289
     },
-    "resume_op_sub_9": {
+    "resume_op_begin_1": {
       "bank": 33,
-      "address": 218,
-      "physical": 4314
+      "address": 207,
+      "physical": 4303
     },
-    "main": {
+    "resume_op_begin_2": {
       "bank": 33,
-      "address": 224,
-      "physical": 4320
+      "address": 221,
+      "physical": 4317
     },
-    "project_invisible": {
+    "vm_address": {
+      "bank": 33,
+      "address": 229,
+      "physical": 4325
+    },
+    "vm_address_low": {
+      "bank": 33,
+      "address": 239,
+      "physical": 4335
+    },
+    "vm_address_banked": {
       "bank": 33,
       "address": 247,
       "physical": 4343
     },
-    "op_and": {
+    "vm_address_done": {
+      "bank": 33,
+      "address": 250,
+      "physical": 4346
+    },
+    "op_present": {
       "bank": 34,
       "address": 128,
       "physical": 4352
     },
-    "resume_op_and_0": {
+    "resume_op_present_0": {
       "bank": 34,
       "address": 142,
       "physical": 4366
     },
-    "resume_op_and_9": {
+    "resume_op_present_1": {
+      "bank": 34,
+      "address": 156,
+      "physical": 4380
+    },
+    "resume_op_present_2": {
       "bank": 34,
       "address": 170,
       "physical": 4394
     },
-    "op_or": {
+    "op_not": {
       "bank": 34,
-      "address": 176,
-      "physical": 4400
+      "address": 178,
+      "physical": 4402
     },
-    "resume_op_or_0": {
+    "resume_op_not_0": {
       "bank": 34,
-      "address": 190,
-      "physical": 4414
+      "address": 192,
+      "physical": 4416
     },
-    "resume_op_or_9": {
+    "not_done": {
       "bank": 34,
-      "address": 218,
-      "physical": 4442
+      "address": 202,
+      "physical": 4426
     },
-    "sine_fetch": {
+    "resume_op_not_11": {
       "bank": 34,
-      "address": 224,
-      "physical": 4448
+      "address": 221,
+      "physical": 4445
     },
-    "sine_address_ready": {
+    "op_load16": {
       "bank": 34,
-      "address": 239,
-      "physical": 4463
+      "address": 227,
+      "physical": 4451
     },
-    "op_xor": {
+    "resume_op_load16_0": {
+      "bank": 34,
+      "address": 241,
+      "physical": 4465
+    },
+    "op_add": {
       "bank": 35,
       "address": 128,
       "physical": 4480
     },
-    "resume_op_xor_0": {
+    "resume_op_add_0": {
       "bank": 35,
       "address": 142,
       "physical": 4494
     },
-    "resume_op_xor_9": {
+    "resume_op_add_9": {
       "bank": 35,
       "address": 170,
       "physical": 4522
     },
-    "op_dup": {
+    "op_sub": {
       "bank": 35,
       "address": 176,
       "physical": 4528
     },
-    "resume_op_dup_0": {
+    "resume_op_sub_0": {
       "bank": 35,
       "address": 190,
       "physical": 4542
     },
-    "resume_op_dup_1": {
-      "bank": 35,
-      "address": 204,
-      "physical": 4556
-    },
-    "resume_op_dup_2": {
+    "resume_op_sub_9": {
       "bank": 35,
       "address": 218,
       "physical": 4570
     },
-    "vm_jump": {
+    "gfx_present": {
       "bank": 35,
       "address": 224,
       "physical": 4576
     },
-    "jump_low": {
+    "editor_present_loop": {
       "bank": 35,
-      "address": 239,
-      "physical": 4591
+      "address": 232,
+      "physical": 4584
     },
-    "op_jz": {
+    "op_mod": {
+      "bank": 35,
+      "address": 244,
+      "physical": 4596
+    },
+    "op_and": {
       "bank": 36,
       "address": 128,
       "physical": 4608
     },
-    "resume_op_jz_0": {
+    "resume_op_and_0": {
       "bank": 36,
-      "address": 138,
-      "physical": 4618
+      "address": 142,
+      "physical": 4622
     },
-    "resume_op_jz_1": {
+    "resume_op_and_9": {
       "bank": 36,
-      "address": 152,
-      "physical": 4632
+      "address": 170,
+      "physical": 4650
     },
-    "bridge_op_jz_5": {
+    "op_or": {
       "bank": 36,
-      "address": 165,
-      "physical": 4645
+      "address": 176,
+      "physical": 4656
     },
-    "vm_push": {
+    "resume_op_or_0": {
       "bank": 36,
-      "address": 171,
-      "physical": 4651
+      "address": 190,
+      "physical": 4670
     },
-    "io_vm_push_5": {
+    "resume_op_or_9": {
       "bank": 36,
-      "address": 188,
-      "physical": 4668
+      "address": 218,
+      "physical": 4698
     },
-    "io_vm_push_11": {
+    "op_drop": {
       "bank": 36,
-      "address": 205,
-      "physical": 4685
+      "address": 224,
+      "physical": 4704
     },
-    "vm_immediate": {
+    "resume_op_drop_0": {
       "bank": 36,
-      "address": 217,
-      "physical": 4697
+      "address": 238,
+      "physical": 4718
     },
-    "resume_vm_immediate_0": {
+    "sine_return": {
       "bank": 36,
-      "address": 231,
-      "physical": 4711
+      "address": 244,
+      "physical": 4724
     },
-    "resume_vm_immediate_2": {
+    "sine_done": {
       "bank": 36,
-      "address": 247,
-      "physical": 4727
+      "address": 250,
+      "physical": 4730
     },
-    "op_neg": {
+    "op_xor": {
       "bank": 37,
       "address": 128,
       "physical": 4736
     },
-    "resume_op_neg_0": {
+    "resume_op_xor_0": {
       "bank": 37,
       "address": 142,
       "physical": 4750
     },
-    "resume_op_neg_8": {
+    "resume_op_xor_9": {
       "bank": 37,
-      "address": 168,
-      "physical": 4776
+      "address": 170,
+      "physical": 4778
     },
-    "line_step_y": {
+    "op_dup": {
       "bank": 37,
-      "address": 174,
-      "physical": 4782
+      "address": 176,
+      "physical": 4784
     },
-    "bridge_line_step_y_8": {
+    "resume_op_dup_0": {
       "bank": 37,
-      "address": 196,
-      "physical": 4804
+      "address": 190,
+      "physical": 4798
     },
-    "line_done": {
+    "resume_op_dup_1": {
       "bank": 37,
-      "address": 214,
-      "physical": 4822
+      "address": 204,
+      "physical": 4812
     },
-    "op_store16": {
+    "resume_op_dup_2": {
       "bank": 37,
-      "address": 220,
-      "physical": 4828
+      "address": 218,
+      "physical": 4826
     },
-    "resume_op_store16_0": {
+    "main": {
       "bank": 37,
-      "address": 234,
-      "physical": 4842
+      "address": 224,
+      "physical": 4832
     },
-    "triangle_sign0": {
+    "op_div": {
+      "bank": 37,
+      "address": 247,
+      "physical": 4855
+    },
+    "op_blink": {
       "bank": 38,
       "address": 128,
       "physical": 4864
     },
-    "triangle_negative0": {
+    "resume_op_blink_0": {
       "bank": 38,
-      "address": 144,
-      "physical": 4880
+      "address": 142,
+      "physical": 4878
     },
-    "triangle_sign_record0": {
+    "io_op_blink_2": {
       "bank": 38,
-      "address": 148,
-      "physical": 4884
+      "address": 156,
+      "physical": 4892
     },
-    "bridge_triangle_sign0_17": {
+    "io_op_blink_4": {
       "bank": 38,
-      "address": 162,
-      "physical": 4898
+      "address": 170,
+      "physical": 4906
     },
-    "triangle_sign1": {
+    "op_jz": {
       "bank": 38,
-      "address": 164,
-      "physical": 4900
+      "address": 176,
+      "physical": 4912
     },
-    "triangle_negative1": {
+    "resume_op_jz_0": {
       "bank": 38,
-      "address": 180,
-      "physical": 4916
+      "address": 190,
+      "physical": 4926
     },
-    "triangle_sign_record1": {
+    "resume_op_jz_1": {
       "bank": 38,
-      "address": 184,
-      "physical": 4920
+      "address": 204,
+      "physical": 4940
     },
-    "bridge_triangle_sign1_17": {
+    "bridge_op_jz_5": {
       "bank": 38,
-      "address": 198,
-      "physical": 4934
+      "address": 217,
+      "physical": 4953
     },
-    "triangle_sign2": {
-      "bank": 38,
-      "address": 200,
-      "physical": 4936
-    },
-    "bridge_triangle_sign2_5": {
-      "bank": 38,
-      "address": 216,
-      "physical": 4952
-    },
-    "triangle_negative2": {
-      "bank": 38,
-      "address": 222,
-      "physical": 4958
-    },
-    "triangle_sign_record2": {
-      "bank": 38,
-      "address": 226,
-      "physical": 4962
-    },
-    "bridge_triangle_sign2_17": {
-      "bank": 38,
-      "address": 240,
-      "physical": 4976
-    },
-    "op_mod": {
-      "bank": 38,
-      "address": 246,
-      "physical": 4982
-    },
-    "op_const": {
+    "vm_push": {
       "bank": 39,
       "address": 128,
       "physical": 4992
     },
-    "resume_op_const_0": {
+    "io_vm_push_5": {
       "bank": 39,
-      "address": 142,
-      "physical": 5006
+      "address": 145,
+      "physical": 5009
     },
-    "resume_op_const_5": {
+    "io_vm_push_11": {
       "bank": 39,
-      "address": 164,
-      "physical": 5028
+      "address": 162,
+      "physical": 5026
     },
-    "project_roll": {
+    "op_neg": {
       "bank": 39,
-      "address": 170,
-      "physical": 5034
+      "address": 174,
+      "physical": 5038
     },
-    "resume_project_roll_6": {
+    "resume_op_neg_0": {
       "bank": 39,
-      "address": 196,
-      "physical": 5060
+      "address": 184,
+      "physical": 5048
     },
-    "vm_write": {
+    "resume_op_neg_8": {
       "bank": 39,
-      "address": 210,
-      "physical": 5074
+      "address": 206,
+      "physical": 5070
     },
-    "vm_write_low": {
+    "vm_pop": {
       "bank": 39,
-      "address": 222,
-      "physical": 5086
+      "address": 212,
+      "physical": 5076
     },
-    "vm_write_banked": {
+    "io_vm_pop_7": {
       "bank": 39,
-      "address": 230,
-      "physical": 5094
+      "address": 231,
+      "physical": 5095
     },
-    "vm_write_done": {
+    "io_vm_pop_13": {
       "bank": 39,
-      "address": 233,
-      "physical": 5097
+      "address": 248,
+      "physical": 5112
     },
-    "io_vm_write_19": {
-      "bank": 39,
-      "address": 243,
-      "physical": 5107
-    },
-    "triangle_inside_no": {
-      "bank": 39,
-      "address": 249,
-      "physical": 5113
-    },
-    "projection_division_loop": {
+    "line_step_y": {
       "bank": 40,
       "address": 128,
       "physical": 5120
     },
-    "projection_subtract": {
+    "bridge_line_step_y_8": {
       "bank": 40,
-      "address": 140,
-      "physical": 5132
+      "address": 150,
+      "physical": 5142
     },
-    "projection_division_round": {
+    "line_done": {
       "bank": 40,
-      "address": 161,
-      "physical": 5153
+      "address": 168,
+      "physical": 5160
     },
-    "projection_increment": {
+    "triangle_sign0": {
       "bank": 40,
-      "address": 178,
-      "physical": 5170
+      "address": 174,
+      "physical": 5166
     },
-    "projection_rounded": {
+    "triangle_negative0": {
       "bank": 40,
-      "address": 183,
-      "physical": 5175
+      "address": 190,
+      "physical": 5182
     },
-    "projection_positive": {
+    "triangle_sign_record0": {
       "bank": 40,
-      "address": 191,
-      "physical": 5183
+      "address": 194,
+      "physical": 5186
     },
-    "vm_fetch": {
+    "bridge_triangle_sign0_17": {
       "bank": 40,
-      "address": 200,
-      "physical": 5192
+      "address": 208,
+      "physical": 5200
     },
-    "io_vm_fetch_2": {
+    "triangle_sign1": {
       "bank": 40,
-      "address": 212,
-      "physical": 5204
+      "address": 210,
+      "physical": 5202
     },
-    "vm_fetch_done": {
+    "bridge_triangle_sign1_5": {
       "bank": 40,
-      "address": 230,
-      "physical": 5222
+      "address": 226,
+      "physical": 5218
     },
-    "vm_increment_address": {
+    "triangle_negative1": {
       "bank": 40,
-      "address": 238,
-      "physical": 5230
+      "address": 232,
+      "physical": 5224
     },
-    "vm_increment_done": {
+    "triangle_sign_record1": {
+      "bank": 40,
+      "address": 236,
+      "physical": 5228
+    },
+    "bridge_triangle_sign1_17": {
       "bank": 40,
       "address": 250,
       "physical": 5242
     },
-    "op_putc": {
+    "triangle_sign2": {
       "bank": 41,
       "address": 128,
       "physical": 5248
     },
-    "resume_op_putc_0": {
+    "bridge_triangle_sign2_5": {
       "bank": 41,
-      "address": 142,
-      "physical": 5262
+      "address": 144,
+      "physical": 5264
     },
-    "vm_read": {
+    "triangle_negative2": {
       "bank": 41,
-      "address": 164,
-      "physical": 5284
+      "address": 150,
+      "physical": 5270
     },
-    "vm_read_low": {
+    "triangle_sign_record2": {
+      "bank": 41,
+      "address": 154,
+      "physical": 5274
+    },
+    "bridge_triangle_sign2_17": {
+      "bank": 41,
+      "address": 168,
+      "physical": 5288
+    },
+    "project_roll": {
       "bank": 41,
       "address": 174,
       "physical": 5294
     },
-    "vm_read_banked": {
+    "resume_project_roll_6": {
       "bank": 41,
-      "address": 182,
-      "physical": 5302
+      "address": 200,
+      "physical": 5320
     },
-    "vm_read_done": {
+    "vm_write": {
       "bank": 41,
-      "address": 185,
-      "physical": 5305
+      "address": 214,
+      "physical": 5334
     },
-    "io_vm_read_17": {
+    "vm_write_low": {
       "bank": 41,
-      "address": 193,
-      "physical": 5313
+      "address": 226,
+      "physical": 5346
     },
-    "gfx_present": {
+    "vm_write_banked": {
       "bank": 41,
-      "address": 199,
-      "physical": 5319
+      "address": 234,
+      "physical": 5354
     },
-    "editor_present_loop": {
+    "vm_write_done": {
       "bank": 41,
-      "address": 207,
-      "physical": 5327
+      "address": 237,
+      "physical": 5357
     },
-    "triangle_init1": {
-      "bank": 41,
-      "address": 219,
-      "physical": 5339
-    },
-    "triangle_init2": {
-      "bank": 41,
-      "address": 233,
-      "physical": 5353
-    },
-    "op_div": {
+    "io_vm_write_19": {
       "bank": 41,
       "address": 247,
       "physical": 5367
     },
-    "triangle_area": {
+    "projection_division_loop": {
       "bank": 42,
       "address": 128,
       "physical": 5376
+    },
+    "projection_subtract": {
+      "bank": 42,
+      "address": 140,
+      "physical": 5388
+    },
+    "projection_division_round": {
+      "bank": 42,
+      "address": 161,
+      "physical": 5409
+    },
+    "projection_increment": {
+      "bank": 42,
+      "address": 178,
+      "physical": 5426
+    },
+    "projection_rounded": {
+      "bank": 42,
+      "address": 183,
+      "physical": 5431
+    },
+    "projection_positive": {
+      "bank": 42,
+      "address": 191,
+      "physical": 5439
+    },
+    "vm_fetch": {
+      "bank": 42,
+      "address": 200,
+      "physical": 5448
+    },
+    "io_vm_fetch_2": {
+      "bank": 42,
+      "address": 212,
+      "physical": 5460
+    },
+    "vm_fetch_done": {
+      "bank": 42,
+      "address": 230,
+      "physical": 5478
+    },
+    "vm_increment_address": {
+      "bank": 42,
+      "address": 238,
+      "physical": 5486
+    },
+    "vm_increment_done": {
+      "bank": 42,
+      "address": 250,
+      "physical": 5498
+    },
+    "vm_immediate": {
+      "bank": 43,
+      "address": 128,
+      "physical": 5504
+    },
+    "resume_vm_immediate_0": {
+      "bank": 43,
+      "address": 142,
+      "physical": 5518
+    },
+    "resume_vm_immediate_2": {
+      "bank": 43,
+      "address": 158,
+      "physical": 5534
+    },
+    "op_store16": {
+      "bank": 43,
+      "address": 166,
+      "physical": 5542
+    },
+    "resume_op_store16_0": {
+      "bank": 43,
+      "address": 180,
+      "physical": 5556
+    },
+    "op_putc": {
+      "bank": 43,
+      "address": 202,
+      "physical": 5578
+    },
+    "resume_op_putc_0": {
+      "bank": 43,
+      "address": 216,
+      "physical": 5592
+    },
+    "op_jmp": {
+      "bank": 43,
+      "address": 238,
+      "physical": 5614
+    },
+    "resume_op_jmp_0": {
+      "bank": 43,
+      "address": 248,
+      "physical": 5624
+    },
+    "vm_read": {
+      "bank": 44,
+      "address": 128,
+      "physical": 5632
+    },
+    "vm_read_low": {
+      "bank": 44,
+      "address": 138,
+      "physical": 5642
+    },
+    "vm_read_banked": {
+      "bank": 44,
+      "address": 146,
+      "physical": 5650
+    },
+    "vm_read_done": {
+      "bank": 44,
+      "address": 149,
+      "physical": 5653
+    },
+    "io_vm_read_17": {
+      "bank": 44,
+      "address": 157,
+      "physical": 5661
     }
   },
   "bytecode_labels": {
-    "absolute": 17283,
-    "branch_1": 17300,
-    "branch_2": 17303,
-    "clear_selection": 17308,
-    "branch_3": 17314,
-    "branch_4": 17348,
-    "limit": 17358,
-    "alive": 17375,
-    "branch_5": 17392,
-    "branch_6": 17392,
-    "branch_7": 17414,
-    "branch_8": 17414,
-    "branch_9": 17436,
-    "branch_10": 17436,
-    "selection_base": 17453,
-    "branch_11": 17469,
-    "branch_13": 17489,
-    "branch_14": 17496,
-    "branch_12": 17496,
-    "vertex_component": 17501,
-    "projected_component": 17526,
-    "center": 17551,
-    "branch_15": 17568,
-    "branch_16": 17568,
-    "branch_17": 17597,
-    "branch_18": 17597,
-    "branch_19": 17680,
-    "branch_20": 17680,
-    "branch_21": 17707,
-    "branch_22": 17769,
-    "nearest": 17781,
-    "branch_23": 17800,
-    "branch_27": 17925,
-    "branch_28": 17925,
-    "branch_25": 17928,
-    "branch_26": 17928,
-    "branch_24": 17941,
-    "navigate": 17949,
-    "branch_29": 17990,
-    "branch_30": 17990,
-    "branch_31": 18056,
-    "branch_35": 18163,
-    "branch_37": 18179,
-    "branch_39": 18196,
-    "branch_40": 18199,
-    "branch_38": 18199,
-    "branch_36": 18199,
-    "branch_43": 18222,
-    "branch_41": 18237,
-    "branch_42": 18246,
-    "branch_46": 18298,
-    "branch_47": 18298,
-    "branch_44": 18301,
-    "branch_45": 18301,
-    "branch_33": 18304,
-    "branch_34": 18304,
-    "branch_32": 18317,
-    "cycle": 18327,
-    "branch_48": 18345,
-    "branch_50": 18401,
-    "branch_51": 18401,
-    "branch_49": 18414,
-    "toggle": 18425,
-    "branch_52": 18442,
-    "branch_53": 18442,
-    "branch_56": 18517,
-    "branch_58": 18523,
-    "branch_62": 18554,
-    "branch_63": 18601,
-    "branch_60": 18618,
-    "branch_61": 18618,
-    "branch_59": 18631,
-    "branch_57": 18631,
-    "branch_54": 18634,
-    "branch_55": 18634,
-    "mark_vertices": 18638,
-    "branch_64": 18644,
-    "branch_65": 18678,
-    "branch_66": 18684,
-    "branch_70": 18734,
-    "branch_71": 18761,
-    "branch_73": 18818,
-    "branch_75": 18824,
-    "branch_76": 18884,
-    "branch_74": 18884,
-    "branch_72": 18884,
-    "branch_68": 18887,
-    "branch_69": 18887,
-    "branch_67": 18900,
-    "branch_77": 18912,
-    "branch_78": 18950,
-    "pivot": 18958,
-    "branch_81": 18998,
-    "branch_79": 19008,
-    "branch_80": 19008,
-    "branch_82": 19014,
-    "branch_84": 19104,
-    "branch_85": 19104,
-    "branch_83": 19117,
-    "integer": 19155,
-    "branch_86": 19179,
-    "branch_87": 19179,
-    "branch_88": 19191,
-    "branch_92": 19236,
-    "branch_90": 19256,
-    "branch_91": 19256,
-    "branch_89": 19279,
-    "fixed": 19283,
-    "branch_93": 19307,
-    "branch_94": 19307,
-    "branch_95": 19345,
-    "branch_96": 19390,
-    "terminal": 19394,
-    "branch_99": 19484,
-    "branch_100": 19516,
-    "branch_97": 19519,
-    "branch_101": 19538,
-    "branch_103": 19554,
-    "branch_104": 19557,
-    "branch_102": 19557,
-    "branch_105": 19587,
-    "branch_106": 19637,
-    "branch_107": 19666,
-    "branch_108": 19669,
-    "branch_98": 19672,
-    "error": 19676,
-    "branch_109": 19702,
-    "branch_111": 19718,
-    "branch_113": 19734,
-    "branch_115": 19750,
-    "branch_117": 19766,
-    "branch_118": 19769,
-    "branch_116": 19769,
-    "branch_114": 19769,
-    "branch_112": 19769,
-    "branch_110": 19769,
-    "branch_121": 19789,
-    "branch_122": 19821,
-    "branch_119": 19824,
-    "branch_120": 19824,
-    "draw_element": 19828,
-    "branch_123": 19875,
-    "branch_125": 19986,
-    "branch_127": 20278,
-    "branch_128": 20278,
-    "branch_126": 20278,
-    "branch_124": 20278,
-    "render": 20282,
-    "branch_129": 20288,
-    "branch_131": 20466,
-    "branch_132": 20466,
-    "branch_130": 20479,
-    "branch_133": 20486,
-    "branch_135": 20539,
-    "branch_136": 20539,
-    "branch_134": 20552,
-    "branch_137": 20569,
-    "branch_141": 20619,
-    "branch_139": 20641,
-    "branch_140": 20641,
-    "branch_138": 20654,
-    "branch_144": 20693,
-    "branch_142": 20715,
-    "branch_143": 20715,
-    "branch_145": 20721,
-    "branch_146": 20827,
-    "remember": 20832,
-    "fraction_q4": 20852,
-    "branch_147": 20864,
-    "branch_149": 20928,
-    "branch_150": 20928,
-    "branch_148": 20941,
-    "branch_151": 20969,
-    "branch_152": 20969,
-    "rotate_coordinate": 20977,
-    "parse": 21065,
-    "branch_153": 21082,
-    "branch_154": 21082,
-    "branch_157": 21123,
-    "branch_155": 21133,
-    "branch_156": 21133,
-    "branch_160": 21186,
-    "branch_161": 21206,
-    "branch_162": 21209,
-    "branch_158": 21225,
-    "branch_159": 21225,
-    "branch_163": 21237,
-    "branch_165": 21280,
-    "branch_168": 21346,
-    "branch_166": 21356,
-    "branch_167": 21356,
-    "branch_164": 21359,
-    "branch_169": 21373,
-    "branch_170": 21373,
-    "branch_173": 21424,
-    "branch_174": 21424,
-    "branch_175": 21434,
-    "branch_177": 21477,
-    "branch_178": 21497,
-    "branch_179": 21497,
-    "branch_176": 21553,
-    "branch_180": 21567,
-    "branch_181": 21567,
-    "branch_171": 21570,
-    "branch_172": 21570,
-    "branch_182": 21588,
-    "branch_183": 21588,
-    "branch_188": 21621,
-    "branch_186": 21631,
-    "branch_187": 21631,
-    "branch_189": 21658,
-    "branch_190": 21661,
-    "branch_191": 21682,
-    "branch_192": 21682,
-    "branch_184": 21685,
-    "branch_193": 21701,
-    "branch_194": 21704,
-    "branch_198": 21735,
-    "branch_197": 21735,
-    "branch_195": 21745,
-    "branch_196": 21745,
-    "branch_201": 21787,
-    "branch_202": 21790,
-    "branch_199": 21804,
-    "branch_200": 21804,
-    "branch_185": 21804,
-    "transform": 21822,
-    "branch_203": 21841,
-    "branch_204": 21841,
-    "branch_205": 21884,
-    "branch_206": 21884,
-    "branch_207": 21928,
-    "branch_213": 22036,
-    "branch_215": 22059,
-    "branch_216": 22069,
-    "branch_214": 22069,
-    "branch_211": 22072,
-    "branch_219": 22117,
-    "branch_221": 22152,
-    "branch_222": 22174,
-    "branch_220": 22174,
-    "branch_217": 22177,
-    "branch_223": 22279,
-    "branch_225": 22381,
-    "branch_226": 22470,
-    "branch_224": 22470,
-    "branch_218": 22470,
-    "branch_212": 22470,
-    "branch_229": 22521,
-    "branch_227": 22531,
-    "branch_228": 22531,
-    "branch_209": 22587,
-    "branch_210": 22587,
-    "branch_208": 22600,
-    "edge_index": 22622,
-    "branch_230": 22628,
-    "branch_237": 22708,
-    "branch_238": 22733,
-    "branch_236": 22733,
-    "branch_234": 22743,
-    "branch_235": 22743,
-    "branch_232": 22746,
-    "branch_233": 22746,
-    "branch_231": 22759,
-    "delete_selected": 22768,
-    "branch_239": 22782,
-    "branch_240": 22782,
-    "branch_241": 22840,
-    "branch_245": 22889,
-    "branch_247": 22905,
-    "branch_248": 22908,
-    "branch_246": 22908,
-    "branch_249": 22927,
-    "branch_250": 22930,
-    "branch_243": 22939,
-    "branch_244": 22939,
-    "branch_242": 22952,
-    "branch_251": 22958,
-    "branch_257": 23031,
-    "branch_255": 23048,
-    "branch_256": 23048,
-    "branch_253": 23051,
-    "branch_254": 23051,
-    "branch_252": 23064,
-    "branch_258": 23070,
-    "branch_260": 23107,
-    "branch_264": 23205,
-    "branch_262": 23226,
-    "branch_263": 23226,
-    "branch_261": 23239,
-    "branch_259": 23252,
-    "free_slot": 23284,
-    "branch_265": 23290,
-    "branch_267": 23309,
-    "branch_268": 23312,
-    "branch_269": 23342,
-    "branch_270": 23342,
-    "branch_266": 23355,
-    "new_vertex": 23364,
-    "branch_271": 23393,
-    "branch_272": 23393,
-    "branch_273": 23492,
-    "branch_274": 23492,
-    "create_connection": 23520,
-    "branch_277": 23554,
-    "branch_275": 23564,
-    "branch_276": 23564,
-    "branch_280": 23603,
-    "branch_281": 23603,
-    "branch_282": 23609,
-    "branch_286": 23656,
-    "branch_287": 23711,
-    "branch_288": 23728,
-    "branch_289": 23728,
-    "branch_284": 23731,
-    "branch_285": 23731,
-    "branch_283": 23744,
-    "branch_278": 23747,
-    "branch_290": 23783,
-    "branch_291": 23783,
-    "branch_279": 23783,
-    "branch_292": 23795,
-    "branch_294": 23814,
-    "branch_295": 23817,
-    "branch_296": 23886,
-    "branch_297": 23886,
-    "branch_293": 23899,
-    "branch_298": 23911,
-    "branch_300": 23942,
-    "branch_301": 23945,
-    "branch_299": 23962,
-    "branch_302": 23979,
-    "branch_303": 23979,
-    "branch_304": 23989,
-    "branch_306": 24008,
-    "branch_307": 24011,
-    "branch_310": 24159,
-    "branch_311": 24159,
-    "branch_308": 24162,
-    "branch_309": 24162,
-    "branch_305": 24175,
-    "branch_314": 24235,
-    "branch_315": 24235,
-    "branch_316": 24241,
-    "branch_317": 24292,
-    "branch_312": 24295,
-    "branch_313": 24295,
-    "main": 24303,
-    "branch_318": 24377,
-    "branch_322": 24428,
-    "branch_326": 24448,
-    "branch_327": 24476,
-    "branch_328": 24496,
-    "branch_324": 24499,
-    "branch_331": 24528,
-    "branch_332": 24528,
-    "branch_329": 24535,
-    "branch_336": 24634,
-    "branch_335": 24634,
-    "branch_337": 24675,
-    "branch_338": 24685,
-    "branch_333": 24688,
-    "branch_334": 24698,
-    "branch_330": 24698,
-    "branch_325": 24698,
-    "branch_323": 24698,
-    "branch_320": 24701,
-    "branch_341": 24728,
-    "branch_339": 24820,
-    "branch_344": 24841,
-    "branch_342": 24857,
-    "branch_345": 24874,
-    "branch_349": 24894,
-    "branch_347": 24904,
-    "branch_350": 24921,
-    "branch_354": 24954,
-    "branch_355": 24978,
-    "branch_356": 24984,
-    "branch_352": 24987,
-    "branch_357": 25004,
-    "branch_359": 25023,
-    "branch_361": 25042,
-    "branch_365": 25105,
-    "branch_366": 25105,
-    "branch_363": 25108,
-    "branch_369": 25128,
-    "branch_373": 25213,
-    "branch_374": 25213,
-    "branch_371": 25216,
-    "branch_372": 25216,
-    "branch_370": 25229,
-    "branch_367": 25232,
-    "branch_375": 25255,
-    "branch_379": 25275,
-    "branch_380": 25297,
-    "branch_381": 25300,
-    "branch_377": 25311,
-    "branch_384": 25331,
-    "branch_385": 25353,
-    "branch_386": 25356,
-    "branch_382": 25367,
-    "branch_389": 25387,
-    "branch_390": 25419,
-    "branch_391": 25419,
-    "branch_387": 25422,
-    "branch_394": 25461,
-    "branch_395": 25461,
-    "branch_392": 25464,
-    "branch_396": 25495,
-    "branch_397": 25495,
-    "branch_393": 25495,
-    "branch_388": 25495,
-    "branch_383": 25495,
-    "branch_378": 25495,
-    "branch_376": 25495,
-    "branch_368": 25495,
-    "branch_364": 25495,
-    "branch_362": 25495,
-    "branch_360": 25495,
-    "branch_358": 25495,
-    "branch_353": 25495,
-    "branch_351": 25495,
-    "branch_348": 25495,
-    "branch_346": 25495,
-    "branch_343": 25495,
-    "branch_340": 25495,
-    "branch_398": 25518,
-    "branch_399": 25522,
-    "branch_321": 25522,
-    "branch_319": 25525
+    "absolute": 17795,
+    "branch_1": 17812,
+    "branch_2": 17815,
+    "clear_selection": 17820,
+    "branch_3": 17826,
+    "branch_4": 17860,
+    "limit": 17870,
+    "alive": 17887,
+    "branch_5": 17904,
+    "branch_6": 17904,
+    "branch_7": 17926,
+    "branch_8": 17926,
+    "branch_9": 17948,
+    "branch_10": 17948,
+    "selection_base": 17965,
+    "branch_11": 17981,
+    "branch_13": 18001,
+    "branch_14": 18008,
+    "branch_12": 18008,
+    "vertex_component": 18013,
+    "projected_component": 18038,
+    "center": 18063,
+    "branch_15": 18080,
+    "branch_16": 18080,
+    "branch_17": 18109,
+    "branch_18": 18109,
+    "branch_19": 18192,
+    "branch_20": 18192,
+    "branch_21": 18219,
+    "branch_22": 18281,
+    "nearest": 18293,
+    "branch_23": 18312,
+    "branch_27": 18437,
+    "branch_28": 18437,
+    "branch_25": 18440,
+    "branch_26": 18440,
+    "branch_24": 18453,
+    "navigate": 18461,
+    "branch_29": 18502,
+    "branch_30": 18502,
+    "branch_31": 18568,
+    "branch_35": 18675,
+    "branch_37": 18691,
+    "branch_39": 18708,
+    "branch_40": 18711,
+    "branch_38": 18711,
+    "branch_36": 18711,
+    "branch_43": 18734,
+    "branch_41": 18749,
+    "branch_42": 18758,
+    "branch_46": 18810,
+    "branch_47": 18810,
+    "branch_44": 18813,
+    "branch_45": 18813,
+    "branch_33": 18816,
+    "branch_34": 18816,
+    "branch_32": 18829,
+    "cycle": 18839,
+    "branch_48": 18857,
+    "branch_50": 18913,
+    "branch_51": 18913,
+    "branch_49": 18926,
+    "toggle": 18937,
+    "branch_52": 18954,
+    "branch_53": 18954,
+    "branch_56": 19029,
+    "branch_58": 19035,
+    "branch_62": 19066,
+    "branch_63": 19113,
+    "branch_60": 19130,
+    "branch_61": 19130,
+    "branch_59": 19143,
+    "branch_57": 19143,
+    "branch_54": 19146,
+    "branch_55": 19146,
+    "mark_vertices": 19150,
+    "branch_64": 19156,
+    "branch_65": 19190,
+    "branch_66": 19196,
+    "branch_70": 19246,
+    "branch_71": 19273,
+    "branch_73": 19330,
+    "branch_75": 19336,
+    "branch_76": 19396,
+    "branch_74": 19396,
+    "branch_72": 19396,
+    "branch_68": 19399,
+    "branch_69": 19399,
+    "branch_67": 19412,
+    "branch_77": 19424,
+    "branch_78": 19462,
+    "pivot": 19470,
+    "branch_81": 19510,
+    "branch_79": 19520,
+    "branch_80": 19520,
+    "branch_82": 19526,
+    "branch_84": 19616,
+    "branch_85": 19616,
+    "branch_83": 19629,
+    "integer": 19667,
+    "branch_86": 19691,
+    "branch_87": 19691,
+    "branch_88": 19703,
+    "branch_92": 19748,
+    "branch_90": 19768,
+    "branch_91": 19768,
+    "branch_89": 19791,
+    "fixed": 19795,
+    "branch_93": 19819,
+    "branch_94": 19819,
+    "branch_95": 19857,
+    "branch_96": 19902,
+    "terminal": 19906,
+    "branch_99": 19996,
+    "branch_100": 20028,
+    "branch_97": 20031,
+    "branch_101": 20050,
+    "branch_103": 20066,
+    "branch_104": 20069,
+    "branch_102": 20069,
+    "branch_105": 20099,
+    "branch_106": 20149,
+    "branch_107": 20178,
+    "branch_108": 20181,
+    "branch_98": 20184,
+    "error": 20188,
+    "branch_109": 20214,
+    "branch_111": 20230,
+    "branch_113": 20246,
+    "branch_115": 20262,
+    "branch_117": 20278,
+    "branch_118": 20281,
+    "branch_116": 20281,
+    "branch_114": 20281,
+    "branch_112": 20281,
+    "branch_110": 20281,
+    "branch_121": 20301,
+    "branch_122": 20333,
+    "branch_119": 20336,
+    "branch_120": 20336,
+    "draw_element": 20340,
+    "branch_123": 20387,
+    "branch_125": 20498,
+    "branch_127": 20790,
+    "branch_128": 20790,
+    "branch_126": 20790,
+    "branch_124": 20790,
+    "render": 20794,
+    "branch_129": 20800,
+    "branch_131": 20978,
+    "branch_132": 20978,
+    "branch_130": 20991,
+    "branch_133": 20998,
+    "branch_135": 21051,
+    "branch_136": 21051,
+    "branch_134": 21064,
+    "branch_137": 21081,
+    "branch_141": 21131,
+    "branch_139": 21153,
+    "branch_140": 21153,
+    "branch_138": 21166,
+    "branch_144": 21205,
+    "branch_142": 21227,
+    "branch_143": 21227,
+    "branch_145": 21233,
+    "branch_146": 21383,
+    "branch_147": 21422,
+    "remember": 21427,
+    "fraction_q4": 21447,
+    "branch_148": 21459,
+    "branch_150": 21523,
+    "branch_151": 21523,
+    "branch_149": 21536,
+    "branch_152": 21564,
+    "branch_153": 21564,
+    "rotate_coordinate": 21572,
+    "parse": 21660,
+    "branch_154": 21677,
+    "branch_155": 21677,
+    "branch_158": 21718,
+    "branch_156": 21728,
+    "branch_157": 21728,
+    "branch_161": 21781,
+    "branch_162": 21801,
+    "branch_163": 21804,
+    "branch_159": 21820,
+    "branch_160": 21820,
+    "branch_164": 21832,
+    "branch_166": 21875,
+    "branch_169": 21941,
+    "branch_167": 21951,
+    "branch_168": 21951,
+    "branch_165": 21954,
+    "branch_170": 21968,
+    "branch_171": 21968,
+    "branch_174": 22019,
+    "branch_175": 22019,
+    "branch_176": 22029,
+    "branch_178": 22072,
+    "branch_179": 22092,
+    "branch_180": 22092,
+    "branch_177": 22148,
+    "branch_181": 22162,
+    "branch_182": 22162,
+    "branch_172": 22165,
+    "branch_173": 22165,
+    "branch_183": 22183,
+    "branch_184": 22183,
+    "branch_189": 22216,
+    "branch_187": 22226,
+    "branch_188": 22226,
+    "branch_190": 22253,
+    "branch_191": 22256,
+    "branch_192": 22277,
+    "branch_193": 22277,
+    "branch_185": 22280,
+    "branch_194": 22296,
+    "branch_195": 22299,
+    "branch_199": 22330,
+    "branch_198": 22330,
+    "branch_196": 22340,
+    "branch_197": 22340,
+    "branch_202": 22382,
+    "branch_203": 22385,
+    "branch_200": 22399,
+    "branch_201": 22399,
+    "branch_186": 22399,
+    "transform": 22417,
+    "branch_204": 22436,
+    "branch_205": 22436,
+    "branch_206": 22479,
+    "branch_207": 22479,
+    "branch_208": 22523,
+    "branch_214": 22631,
+    "branch_216": 22654,
+    "branch_217": 22664,
+    "branch_215": 22664,
+    "branch_212": 22667,
+    "branch_220": 22712,
+    "branch_222": 22747,
+    "branch_223": 22769,
+    "branch_221": 22769,
+    "branch_218": 22772,
+    "branch_224": 22874,
+    "branch_226": 22976,
+    "branch_227": 23065,
+    "branch_225": 23065,
+    "branch_219": 23065,
+    "branch_213": 23065,
+    "branch_230": 23116,
+    "branch_228": 23126,
+    "branch_229": 23126,
+    "branch_210": 23182,
+    "branch_211": 23182,
+    "branch_209": 23195,
+    "edge_index": 23217,
+    "branch_231": 23223,
+    "branch_238": 23303,
+    "branch_239": 23328,
+    "branch_237": 23328,
+    "branch_235": 23338,
+    "branch_236": 23338,
+    "branch_233": 23341,
+    "branch_234": 23341,
+    "branch_232": 23354,
+    "delete_selected": 23363,
+    "branch_240": 23377,
+    "branch_241": 23377,
+    "branch_242": 23435,
+    "branch_246": 23484,
+    "branch_248": 23500,
+    "branch_249": 23503,
+    "branch_247": 23503,
+    "branch_250": 23522,
+    "branch_251": 23525,
+    "branch_244": 23534,
+    "branch_245": 23534,
+    "branch_243": 23547,
+    "branch_252": 23553,
+    "branch_258": 23626,
+    "branch_256": 23643,
+    "branch_257": 23643,
+    "branch_254": 23646,
+    "branch_255": 23646,
+    "branch_253": 23659,
+    "branch_259": 23665,
+    "branch_261": 23702,
+    "branch_265": 23800,
+    "branch_263": 23821,
+    "branch_264": 23821,
+    "branch_262": 23834,
+    "branch_260": 23847,
+    "free_slot": 23879,
+    "branch_266": 23885,
+    "branch_268": 23904,
+    "branch_269": 23907,
+    "branch_270": 23937,
+    "branch_271": 23937,
+    "branch_267": 23950,
+    "new_vertex": 23959,
+    "branch_272": 23988,
+    "branch_273": 23988,
+    "branch_274": 24087,
+    "branch_275": 24087,
+    "create_connection": 24115,
+    "branch_278": 24149,
+    "branch_276": 24159,
+    "branch_277": 24159,
+    "branch_281": 24198,
+    "branch_282": 24198,
+    "branch_283": 24204,
+    "branch_287": 24251,
+    "branch_288": 24306,
+    "branch_289": 24323,
+    "branch_290": 24323,
+    "branch_285": 24326,
+    "branch_286": 24326,
+    "branch_284": 24339,
+    "branch_279": 24342,
+    "branch_291": 24378,
+    "branch_292": 24378,
+    "branch_280": 24378,
+    "branch_293": 24390,
+    "branch_295": 24409,
+    "branch_296": 24412,
+    "branch_297": 24481,
+    "branch_298": 24481,
+    "branch_294": 24494,
+    "branch_299": 24506,
+    "branch_301": 24537,
+    "branch_302": 24540,
+    "branch_300": 24557,
+    "branch_303": 24574,
+    "branch_304": 24574,
+    "branch_305": 24584,
+    "branch_307": 24603,
+    "branch_308": 24606,
+    "branch_311": 24754,
+    "branch_312": 24754,
+    "branch_309": 24757,
+    "branch_310": 24757,
+    "branch_306": 24770,
+    "branch_315": 24830,
+    "branch_316": 24830,
+    "branch_317": 24836,
+    "branch_318": 24887,
+    "branch_313": 24890,
+    "branch_314": 24890,
+    "main": 24898,
+    "branch_319": 24972,
+    "branch_323": 25023,
+    "branch_327": 25043,
+    "branch_328": 25071,
+    "branch_329": 25091,
+    "branch_325": 25094,
+    "branch_332": 25123,
+    "branch_333": 25123,
+    "branch_330": 25130,
+    "branch_337": 25229,
+    "branch_336": 25229,
+    "branch_338": 25270,
+    "branch_339": 25280,
+    "branch_334": 25283,
+    "branch_335": 25293,
+    "branch_331": 25293,
+    "branch_326": 25293,
+    "branch_324": 25293,
+    "branch_321": 25296,
+    "branch_342": 25323,
+    "branch_340": 25415,
+    "branch_345": 25436,
+    "branch_343": 25452,
+    "branch_346": 25469,
+    "branch_350": 25489,
+    "branch_348": 25499,
+    "branch_351": 25516,
+    "branch_355": 25549,
+    "branch_356": 25573,
+    "branch_357": 25579,
+    "branch_353": 25582,
+    "branch_358": 25599,
+    "branch_360": 25618,
+    "branch_362": 25637,
+    "branch_366": 25700,
+    "branch_367": 25700,
+    "branch_364": 25703,
+    "branch_370": 25723,
+    "branch_374": 25808,
+    "branch_375": 25808,
+    "branch_372": 25811,
+    "branch_373": 25811,
+    "branch_371": 25824,
+    "branch_368": 25827,
+    "branch_376": 25850,
+    "branch_380": 25870,
+    "branch_381": 25892,
+    "branch_382": 25895,
+    "branch_378": 25906,
+    "branch_385": 25926,
+    "branch_386": 25948,
+    "branch_387": 25951,
+    "branch_383": 25962,
+    "branch_390": 25982,
+    "branch_391": 26014,
+    "branch_392": 26014,
+    "branch_388": 26017,
+    "branch_395": 26056,
+    "branch_396": 26056,
+    "branch_393": 26059,
+    "branch_397": 26090,
+    "branch_398": 26090,
+    "branch_394": 26090,
+    "branch_389": 26090,
+    "branch_384": 26090,
+    "branch_379": 26090,
+    "branch_377": 26090,
+    "branch_369": 26090,
+    "branch_365": 26090,
+    "branch_363": 26090,
+    "branch_361": 26090,
+    "branch_359": 26090,
+    "branch_354": 26090,
+    "branch_352": 26090,
+    "branch_349": 26090,
+    "branch_347": 26090,
+    "branch_344": 26090,
+    "branch_341": 26090,
+    "branch_399": 26113,
+    "branch_400": 26117,
+    "branch_322": 26117,
+    "branch_320": 26120
   },
   "library_source_sha256": "c6110535e03d6e41eb02caade86fb346faabcf6c3a70415a0a559d4a475de3e7",
   "max_vertices": 32,
@@ -2582,5 +2666,6 @@
   "coordinate_fraction_bits": 4,
   "coordinate_limit": 11,
   "frame_buffer": 64,
-  "frame_buffer_bytes": 64
+  "frame_buffer_bytes": 64,
+  "blink_half_period_polls": 131072
 }

@@ -331,11 +331,16 @@ def render():
     while i < 32:
         current = peek8(64 + i)
         selected = peek8(SELECT_MASK + i)
-        base = peek8(BASE_MASK + i) & ~(selected | current)
+        original = peek8(BASE_MASK + i)
+        base = original & ~(selected | current)
+        poke8(STEADY_FRAME + i, original & ~selected)
+        poke8(STEADY_FRAME + 32 + i, original | selected)
         poke8(64 + i, base | current)
         poke8(96 + i, base | (selected & ~current))
         i += 1
+    copy(BLINK_FRAMES, 64, 64)
     present()
+    blink(cursor >= 0 and alive(mode, cursor))
 
 
 def remember():

@@ -26,7 +26,7 @@ def main():
     fonts = [Path('C:/Windows/Fonts/seguisym.ttf'), Path('/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf')]
     font_path = next(p for p in fonts if p.exists())
     font = ImageFont.truetype(str(font_path), 25)
-    frames, durations, events = [], [], []
+    frames, durations, events, blink_samples = [], [], [], []
 
     def capture(key=None, duration=180):
         # Every displayed pixel and character comes from the native emulator.
@@ -47,8 +47,23 @@ def main():
         frames.append(canvas)
         durations.append(duration)
 
-    capture(duration=1300)
-    for stage in SEQUENCE:
+    def idle_blink():
+        for _ in range(2):
+            native.advance_blink()
+            check.advance_blink()
+            assert native.blink_phase == check.blink_phase
+            assert native.snapshot() == check.snapshot()
+            assert native.displayed() == bytes(check.front), 'native idle blink pixels'
+            frame(check)
+            mode, cursor = check.variable('mode'), check.variable('cursor')
+            selected = check.ram[check.layout['constants']['SELECT'] + [0, 0, 32, 96][mode] + cursor]
+            blink_samples.append(dict(mode=mode, cursor=cursor, selected=bool(selected),
+                                      red_phase=bool(check.blink_phase), frame=len(frames)))
+            capture(duration=650)
+
+    capture(duration=650)
+    idle_blink()
+    for stage_index, stage in enumerate(SEQUENCE):
         for code in stage:
             native.press(code, testing=True)
             check.type([code])
@@ -61,7 +76,10 @@ def main():
             capture(code, 400)
             capture(duration=120)
             print(f'key {len(events)}: code {code}', flush=True)
-        durations[-1] += 500
+        if stage_index in (0, 8, 9, 12, 13):
+            idle_blink()
+        else:
+            durations[-1] += 500
     assert native.displayed() == bytes(64) and not check.vertices()
     assert native.variable('zoom') == 30
     assert not any(event['key'] == native.pygame.K_ESCAPE for event in native.native_events)
@@ -76,7 +94,10 @@ def main():
                         frames=gif.n_frames, duration_ms=sum(durations), native_keyboard_events=len(events),
                         escape_test_adapter='F2 -> 27; no native Escape KEYDOWN',
                         final_display_empty=True, zoom_maximum=3, canvas_size=[384, 558],
-                        geometry_and_pixels_match_independent_checks=True, keys=events)
+                        geometry_and_pixels_match_independent_checks=True,
+                        native_idle_blink_transitions=len(blink_samples),
+                        blinking_selection_states_in_all_modes=True,
+                        blink_samples=blink_samples, keys=events)
     (ROOT / 'preview.json').write_text(json.dumps(metadata, indent=2) + '\n', encoding='utf-8')
     print(json.dumps({k: metadata[k] for k in ['frames', 'duration_ms', 'native_keyboard_events']}), flush=True)
 

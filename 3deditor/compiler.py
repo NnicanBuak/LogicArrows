@@ -7,13 +7,13 @@ import ast
 OPS = {name: i + 1 for i, name in enumerate(
     'CONST GET SET LOAD8 LOADS LOAD16 STORE8 STORE16 ADD SUB MUL DIV MOD NEG '
     'AND OR XOR SHL SHR NOT EQ LT DROP DUP JMP JZ CALL RET KEY PUTC TEXT COPY '
-    'BEGIN PRESENT PIXEL LINE TRIANGLE PROJECT'.split())}
+    'BEGIN PRESENT PIXEL LINE TRIANGLE PROJECT BLINK'.split())}
 VOID = {'poke8', 'poke16', 'putc', 'text', 'copy', 'begin', 'present',
-        'pixel', 'line', 'triangle', 'project'}
+        'pixel', 'line', 'triangle', 'project', 'blink'}
 INTRINSICS = dict(peek8='LOAD8', peeks8='LOADS', peek16='LOAD16',
                   poke8='STORE8', poke16='STORE16', keycode='KEY', putc='PUTC',
                   copy='COPY', begin='BEGIN', present='PRESENT', pixel='PIXEL',
-                  line='LINE', triangle='TRIANGLE', project='PROJECT')
+                  line='LINE', triangle='TRIANGLE', project='PROJECT', blink='BLINK')
 
 
 class Compiler:

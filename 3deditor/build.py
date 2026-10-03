@@ -183,10 +183,14 @@ def build():
     reserve('UNDO', constants['MESH_BYTES'])
     reserve('BASE_MASK', 32)
     reserve('SELECT_MASK', 32)
+    reserve('BLINK_FRAMES', 128, align=True)
+    constants['STEADY_FRAME'] = constants['BLINK_FRAMES'] + 64
     reserve('INPUT', 16)
     reserve('SINE', 7200, b''.join((round(256 * math.sin(i * math.tau / 3600)) & 65535).to_bytes(2, 'little') for i in range(3600)))
     reserve('PROGRAM', 0, align=True)
     constants['PROJECT_RESULT'] = constants['CONTEXT'] + 4
+    constants['BLINK_PHASE'] = constants['CONTEXT'] + 8
+    constants['BLINK_ACTIVE'] = constants['CONTEXT'] + 9
     compiler = Compiler((ROOT / 'editor.py').read_text(encoding='utf-8'), constants,
                         constants['GLOBAL_WORDS'], constants['STRINGS'])
     program = compiler.compile(constants['PROGRAM'])
@@ -195,8 +199,9 @@ def build():
     data.extend(program)
     image_bytes = native_end + len(data)
     assert image_bytes <= 32768, (image_bytes, len(program), len(compiler.variables))
-    constants.update({k + '_BANK': constants[k] // 128 for k in ['DISPATCH', 'STACK', 'RETURN_STACK', 'CONTEXT', 'STATE', 'TRI_STATE', 'PROGRAM']})
+    constants.update({k + '_BANK': constants[k] // 128 for k in ['DISPATCH', 'STACK', 'RETURN_STACK', 'CONTEXT', 'STATE', 'TRI_STATE', 'BLINK_FRAMES', 'PROGRAM']})
     constants.update({f'CTX{i}': 128 + i for i in range(8)})
+    constants.update(CTX_BLINK_PHASE=136, CTX_BLINK_ACTIVE=137)
     constants.update(LUT_BASE=constants['STATE_BANK'], LUT_ADDR=151, CAMERA_DISTANCE=32,
                      STATE_TX=140, STATE_TY=141, STATE_TZ=142, STATE_PROJECTION=136,
                      TRI_STATE_END=140, VERTEX_BASE=1, APP_BANK=banks['main'])
@@ -277,7 +282,8 @@ def build():
                     common=fields, blocks=layout, bytecode_labels={n: constants['PROGRAM'] + a for n, a in compiler.labels.items()},
                     library_source_sha256=hashlib.sha256((REPO / 'graphics3d/src/engine.py').read_bytes()).hexdigest(),
                     max_vertices=32, max_edges=64, max_faces=32, coordinate_fraction_bits=4,
-                    coordinate_limit=11, frame_buffer=64, frame_buffer_bytes=64)
+                    coordinate_limit=11, frame_buffer=64, frame_buffer_bytes=64,
+                    blink_half_period_polls=131072)
     (ROOT / 'layout.json').write_text(json.dumps(metadata, indent=2) + '\n', encoding='utf-8')
     print(json.dumps({k: metadata[k] for k in ['image_bytes', 'bytecode_bytes', 'native_bytes']}))
     return metadata
