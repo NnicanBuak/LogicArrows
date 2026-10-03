@@ -221,7 +221,7 @@ $$
 
 В матричной записи тот же поворот выглядит так:
 
-$$
+```math
 \begin{pmatrix}X'\\Y'\\Z'\end{pmatrix}
 =
 \begin{pmatrix}
@@ -230,7 +230,7 @@ $$
 -\sin\theta&0&\cos\theta
 \end{pmatrix}
 \begin{pmatrix}X\\Y\\Z\end{pmatrix}.
-$$
+```
 
 Остальные повороты используют ту же операцию над парой координат:
 
@@ -337,7 +337,7 @@ $$
 Для одной фазы обозначим округлённое произведение на синус как
 
 $$
-P_a(m)=\operatorname{round}\left(m\sin\frac{2\pi a}{32}\right),\qquad m=0\ldots32.
+P_a(m)=\mathrm{round}\left(m\sin\frac{2\pi a}{32}\right),\qquad m=0\ldots32.
 $$
 
 В первой четверти коэффициент лежит между 0 и 1. При увеличении целой координаты на единицу округлённое произведение возрастает на **ноль или единицу**. Это приращение помещается в один бит:
@@ -1007,8 +1007,8 @@ cull_ready:
 `gfx_rotate_pair` использует отдельное округление каждого произведения:
 
 $$
-u'=\operatorname{round}(u\cos\theta)+\operatorname{round}(v\sin\theta),\qquad
-v'=\operatorname{round}(v\cos\theta)-\operatorname{round}(u\sin\theta).
+u'=\mathrm{round}(u\cos\theta)+\mathrm{round}(v\sin\theta),\qquad
+v'=\mathrm{round}(v\cos\theta)-\mathrm{round}(u\sin\theta).
 $$
 
 Целочисленное вращение обрабатывает координаты **−32…31**. Размер модели и масштаб выбираются так, чтобы преобразуемые координаты оставались в этом диапазоне. Готовые демонстрации полного API подготовлены с базовым радиусом 7 до округления и максимальным радиусом 14 при масштабе ×2.
