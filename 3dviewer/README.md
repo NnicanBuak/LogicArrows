@@ -2,8 +2,12 @@
 
 ## Запуск
 
-1. Скачай [эмулятор Computer v2](https://github.com/farmer2010/Chubrik-processor-emulator) и установи зависимости по его README.
-2. Открой в нём [3dviewer.asm](3dviewer.asm) и нажми **F1**.
+1. Установи зависимость [общего эмулятора](../emulator/README.md#запуск).
+2. Из корневой папки репозитория запусти:
+
+```sh
+python emulator/run.py 3dviewer/3dviewer.asm
+```
 
 Для [компьютера в LogicArrows](https://github.com/chubrik/LogicArrows/tree/main/computer-v2) используй [готовую дискету](3dviewer.diskette.txt). Программа занимает **978 из 1024 байт**.
 

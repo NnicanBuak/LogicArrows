@@ -10,6 +10,12 @@
 - [Computer v1 — первая версия компьютера](https://github.com/chubrik/LogicArrows/tree/main/computer-v1).
 - [Computer v2 — вторая версия компьютера](https://github.com/chubrik/LogicArrows/tree/main/computer-v2).
 
+## Эмулятор
+
+[**Общий эмулятор Computer v2**](emulator/README.md) — запуск ASM, дисплей 16×16, терминал и **32 КБ памяти**. Используется для всех программ **больше 1 КБ**.
+
+<img src="emulator/preview.png" alt="Общий эмулятор Computer v2: дисплей, терминал и управление программой" width="400">
+
 ## Программы
 
 | Программа | Краткое описание | Скриншот |
