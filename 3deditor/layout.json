@@ -1,0 +1,2590 @@
+{
+  "image_bytes": 25587,
+  "limit": 32768,
+  "bytecode_bytes": 8307,
+  "native_bytes": 5504,
+  "constants": {
+    "DISPATCH": 5504,
+    "STACK": 5632,
+    "RETURN_STACK": 5760,
+    "CONTEXT": 5888,
+    "STATE": 6016,
+    "TRI_STATE": 6144,
+    "GLOBAL_WORDS": 6272,
+    "STRINGS": 7296,
+    "COUNTS": 8320,
+    "VERTICES": 8323,
+    "VLIVE": 8515,
+    "EDGES": 8547,
+    "ELIVE": 8675,
+    "FACES": 8739,
+    "MESH": 8320,
+    "MESH_BYTES": 579,
+    "SELECT": 8899,
+    "ORDER": 9027,
+    "MARKS": 9059,
+    "POINTS": 9091,
+    "TRIAL": 9219,
+    "UNDO": 9411,
+    "BASE_MASK": 9990,
+    "SELECT_MASK": 10022,
+    "INPUT": 10054,
+    "SINE": 10070,
+    "PROGRAM": 17280,
+    "PROJECT_RESULT": 5892,
+    "DISPATCH_BANK": 43,
+    "STACK_BANK": 44,
+    "RETURN_STACK_BANK": 45,
+    "CONTEXT_BANK": 46,
+    "STATE_BANK": 47,
+    "TRI_STATE_BANK": 48,
+    "PROGRAM_BANK": 135,
+    "CTX0": 128,
+    "CTX1": 129,
+    "CTX2": 130,
+    "CTX3": 131,
+    "CTX4": 132,
+    "CTX5": 133,
+    "CTX6": 134,
+    "CTX7": 135,
+    "LUT_BASE": 47,
+    "LUT_ADDR": 151,
+    "CAMERA_DISTANCE": 32,
+    "STATE_TX": 140,
+    "STATE_TY": 141,
+    "STATE_TZ": 142,
+    "STATE_PROJECTION": 136,
+    "TRI_STATE_END": 140,
+    "VERTEX_BASE": 1,
+    "APP_BANK": 33,
+    "TRI_STATE0": 128,
+    "TRI_STATE1": 129,
+    "TRI_STATE2": 130,
+    "TRI_STATE3": 131,
+    "TRI_STATE4": 132,
+    "TRI_STATE5": 133,
+    "TRI_STATE6": 134,
+    "TRI_STATE7": 135,
+    "TRI_STATE8": 136,
+    "TRI_STATE9": 137,
+    "TRI_STATE10": 138,
+    "TRI_STATE11": 139
+  },
+  "variables": {
+    "absolute.v": 6272,
+    "clear_selection.i": 6274,
+    "order_count": 6276,
+    "limit.m": 6278,
+    "alive.i": 6280,
+    "alive.m": 6282,
+    "selection_base.m": 6284,
+    "vertex_component.i": 6286,
+    "vertex_component.a": 6288,
+    "projected_component.i": 6290,
+    "projected_component.a": 6292,
+    "center.i": 6294,
+    "center.m": 6296,
+    "center.a": 6298,
+    "center.v": 6300,
+    "center.w": 6302,
+    "center.n": 6304,
+    "center.k": 6306,
+    "center.total": 6308,
+    "nearest.i": 6310,
+    "nearest.best": 6312,
+    "nearest.score": 6314,
+    "nearest.m": 6316,
+    "nearest.x": 6318,
+    "nearest.y": 6320,
+    "nearest.d": 6322,
+    "cursor": 6324,
+    "mode": 6326,
+    "navigate.x": 6328,
+    "navigate.y": 6330,
+    "navigate.best": 6332,
+    "navigate.score": 6334,
+    "navigate.i": 6336,
+    "navigate.dx": 6338,
+    "navigate.dy": 6340,
+    "navigate.k": 6342,
+    "navigate.forward": 6344,
+    "navigate.sideways": 6346,
+    "navigate.d": 6348,
+    "cycle.n": 6350,
+    "cycle.i": 6352,
+    "cycle.candidate": 6354,
+    "toggle.address": 6356,
+    "toggle.selected": 6358,
+    "toggle.i": 6360,
+    "toggle.j": 6362,
+    "mark_vertices.i": 6364,
+    "mark_vertices.k": 6366,
+    "mark_vertices.total": 6368,
+    "pivot.n": 6370,
+    "px": 6372,
+    "py": 6374,
+    "pz": 6376,
+    "origin_pivot": 6378,
+    "pivot.i": 6380,
+    "integer.v": 6382,
+    "integer.d": 6384,
+    "integer.started": 6386,
+    "integer.digit": 6388,
+    "fixed.v": 6390,
+    "fixed.fraction": 6392,
+    "fixed.d": 6394,
+    "tool": 6396,
+    "terminal.i": 6398,
+    "input_length": 6400,
+    "terminal.n": 6402,
+    "error.code": 6404,
+    "last_error": 6406,
+    "error.i": 6408,
+    "draw_element.m": 6410,
+    "draw_element.i": 6412,
+    "draw_element.a": 6414,
+    "draw_element.b": 6416,
+    "draw_element.c": 6418,
+    "render.i": 6420,
+    "view_yaw": 6422,
+    "view_pitch": 6424,
+    "zoom": 6426,
+    "render.x": 6428,
+    "render.y": 6430,
+    "render.current": 6432,
+    "render.selected": 6434,
+    "render.base": 6436,
+    "undo_valid": 6438,
+    "fraction_q4.result": 6440,
+    "fraction_q4.i": 6442,
+    "fraction_q4.numerator": 6444,
+    "fraction_q4.denominator": 6446,
+    "rotate_coordinate.a": 6448,
+    "rotate_coordinate.c": 6450,
+    "rotate_coordinate.b": 6452,
+    "rotate_coordinate.d": 6454,
+    "rotate_coordinate.major": 6456,
+    "rotate_coordinate.minor": 6458,
+    "parse.a": 6460,
+    "axis": 6462,
+    "parse.p": 6464,
+    "parse.sign": 6466,
+    "parse.digits": 6468,
+    "parse.whole": 6470,
+    "parse.fraction": 6472,
+    "parse.denominator": 6474,
+    "parse.decimals": 6476,
+    "amount": 6478,
+    "parse.maximum": 6480,
+    "transform.problem": 6482,
+    "transform.angle": 6484,
+    "transform.sine": 6486,
+    "transform.cosine": 6488,
+    "transform.i": 6490,
+    "transform.x": 6492,
+    "transform.y": 6494,
+    "transform.z": 6496,
+    "transform.a": 6498,
+    "transform.b": 6500,
+    "edge_index.i": 6502,
+    "edge_index.v": 6504,
+    "edge_index.w": 6506,
+    "edge_index.a": 6508,
+    "edge_index.b": 6510,
+    "delete_selected.x": 6512,
+    "delete_selected.y": 6514,
+    "delete_selected.i": 6516,
+    "delete_selected.n": 6518,
+    "delete_selected.k": 6520,
+    "delete_selected.a": 6522,
+    "delete_selected.b": 6524,
+    "free_slot.i": 6526,
+    "free_slot.m": 6528,
+    "new_vertex.i": 6530,
+    "create_connection.slot": 6532,
+    "create_connection.i": 6534,
+    "create_connection.k": 6536,
+    "create_connection.matches": 6538,
+    "create_connection.needed": 6540,
+    "create_connection.a": 6542,
+    "create_connection.b": 6544,
+    "create_connection.available": 6546,
+    "create_connection.e": 6548,
+    "main.k": 6550,
+    "main.problem": 6552,
+    "main.x": 6554,
+    "main.y": 6556,
+    "main.i": 6558
+  },
+  "common": {
+    "ret0_bank": 25,
+    "ret0_addr": 26,
+    "ret1_bank": 27,
+    "ret1_addr": 28,
+    "ret2_bank": 29,
+    "ret2_addr": 30,
+    "ret3_bank": 31,
+    "ret3_addr": 32,
+    "io_ret_bank": 33,
+    "ptr_bank": 34,
+    "ptr_addr": 35,
+    "vertex_count": 36,
+    "edge_count": 37,
+    "yaw": 38,
+    "pitch": 39,
+    "roll": 40,
+    "out_bank": 41,
+    "out_addr": 42,
+    "wx": 43,
+    "wy": 44,
+    "wz": 45,
+    "ru": 46,
+    "rv": 47,
+    "angle": 48,
+    "t0": 49,
+    "t1": 50,
+    "x0": 51,
+    "y0": 52,
+    "x1": 53,
+    "y1": 54,
+    "dx": 55,
+    "dy": 56,
+    "sx": 57,
+    "sy": 58,
+    "err": 59,
+    "mask": 60,
+    "color": 61,
+    "signs": 60,
+    "mul_sign": 59,
+    "depth": 48,
+    "PC_BANK": 34,
+    "PC_ADDR": 35,
+    "SP": 36,
+    "RSP": 37,
+    "U0": 43,
+    "U1": 44,
+    "V0": 45,
+    "V1": 46,
+    "W0": 47,
+    "W1": 48,
+    "M0": 41,
+    "M1": 42,
+    "opcode": 38
+  },
+  "blocks": {
+    "vm_copy_loop": {
+      "bank": 1,
+      "address": 128,
+      "physical": 128
+    },
+    "bridge_vm_copy_loop_3": {
+      "bank": 1,
+      "address": 141,
+      "physical": 141
+    },
+    "resume_vm_copy_loop_8": {
+      "bank": 1,
+      "address": 163,
+      "physical": 163
+    },
+    "resume_vm_copy_loop_10": {
+      "bank": 1,
+      "address": 179,
+      "physical": 179
+    },
+    "resume_vm_copy_loop_20": {
+      "bank": 1,
+      "address": 211,
+      "physical": 211
+    },
+    "resume_vm_copy_loop_21": {
+      "bank": 1,
+      "address": 225,
+      "physical": 225
+    },
+    "vm_project_args": {
+      "bank": 2,
+      "address": 128,
+      "physical": 256
+    },
+    "resume_vm_project_args_8": {
+      "bank": 2,
+      "address": 157,
+      "physical": 285
+    },
+    "resume_vm_project_args_9": {
+      "bank": 2,
+      "address": 171,
+      "physical": 299
+    },
+    "io_vm_project_args_11": {
+      "bank": 2,
+      "address": 185,
+      "physical": 313
+    },
+    "io_vm_project_args_13": {
+      "bank": 2,
+      "address": 199,
+      "physical": 327
+    },
+    "io_vm_project_args_15": {
+      "bank": 2,
+      "address": 213,
+      "physical": 341
+    },
+    "io_vm_project_args_17": {
+      "bank": 2,
+      "address": 227,
+      "physical": 355
+    },
+    "resume_vm_project_args_18": {
+      "bank": 2,
+      "address": 241,
+      "physical": 369
+    },
+    "gfx_rotate_pair": {
+      "bank": 3,
+      "address": 128,
+      "physical": 384
+    },
+    "resume_gfx_rotate_pair_6": {
+      "bank": 3,
+      "address": 152,
+      "physical": 408
+    },
+    "resume_gfx_rotate_pair_10": {
+      "bank": 3,
+      "address": 172,
+      "physical": 428
+    },
+    "resume_gfx_rotate_pair_18": {
+      "bank": 3,
+      "address": 198,
+      "physical": 454
+    },
+    "resume_gfx_rotate_pair_22": {
+      "bank": 3,
+      "address": 218,
+      "physical": 474
+    },
+    "op_pixel": {
+      "bank": 4,
+      "address": 128,
+      "physical": 512
+    },
+    "resume_op_pixel_0": {
+      "bank": 4,
+      "address": 142,
+      "physical": 526
+    },
+    "resume_op_pixel_3": {
+      "bank": 4,
+      "address": 160,
+      "physical": 544
+    },
+    "resume_op_pixel_6": {
+      "bank": 4,
+      "address": 178,
+      "physical": 562
+    },
+    "resume_op_pixel_13": {
+      "bank": 4,
+      "address": 204,
+      "physical": 588
+    },
+    "resume_op_pixel_14": {
+      "bank": 4,
+      "address": 218,
+      "physical": 602
+    },
+    "resume_op_pixel_15": {
+      "bank": 4,
+      "address": 232,
+      "physical": 616
+    },
+    "gfx_begin": {
+      "bank": 4,
+      "address": 238,
+      "physical": 622
+    },
+    "editor_begin_loop": {
+      "bank": 4,
+      "address": 245,
+      "physical": 629
+    },
+    "triangle_determinant": {
+      "bank": 5,
+      "address": 128,
+      "physical": 640
+    },
+    "resume_triangle_determinant_14": {
+      "bank": 5,
+      "address": 164,
+      "physical": 676
+    },
+    "resume_triangle_determinant_32": {
+      "bank": 5,
+      "address": 205,
+      "physical": 717
+    },
+    "bridge_triangle_determinant_43": {
+      "bank": 5,
+      "address": 230,
+      "physical": 742
+    },
+    "op_get": {
+      "bank": 5,
+      "address": 236,
+      "physical": 748
+    },
+    "resume_op_get_0": {
+      "bank": 5,
+      "address": 250,
+      "physical": 762
+    },
+    "gfx_triangle": {
+      "bank": 6,
+      "address": 128,
+      "physical": 768
+    },
+    "resume_gfx_triangle_4": {
+      "bank": 6,
+      "address": 150,
+      "physical": 790
+    },
+    "bridge_gfx_triangle_8": {
+      "bank": 6,
+      "address": 163,
+      "physical": 803
+    },
+    "resume_gfx_triangle_12": {
+      "bank": 6,
+      "address": 182,
+      "physical": 822
+    },
+    "resume_gfx_triangle_13": {
+      "bank": 6,
+      "address": 196,
+      "physical": 836
+    },
+    "resume_gfx_triangle_14": {
+      "bank": 6,
+      "address": 210,
+      "physical": 850
+    },
+    "resume_gfx_triangle_15": {
+      "bank": 6,
+      "address": 224,
+      "physical": 864
+    },
+    "project_parallel": {
+      "bank": 6,
+      "address": 230,
+      "physical": 870
+    },
+    "gfx_pixel": {
+      "bank": 7,
+      "address": 128,
+      "physical": 896
+    },
+    "gfx_line_pixel": {
+      "bank": 7,
+      "address": 133,
+      "physical": 901
+    },
+    "pixel_prepare": {
+      "bank": 7,
+      "address": 137,
+      "physical": 905
+    },
+    "pixel_red_set": {
+      "bank": 7,
+      "address": 197,
+      "physical": 965
+    },
+    "pixel_red_write": {
+      "bank": 7,
+      "address": 198,
+      "physical": 966
+    },
+    "pixel_masks": {
+      "bank": 7,
+      "address": 210,
+      "physical": 978
+    },
+    "pixel_blue": {
+      "bank": 7,
+      "address": 218,
+      "physical": 986
+    },
+    "pixel_blue_set": {
+      "bank": 7,
+      "address": 243,
+      "physical": 1011
+    },
+    "pixel_blue_write": {
+      "bank": 7,
+      "address": 244,
+      "physical": 1012
+    },
+    "pixel_done": {
+      "bank": 7,
+      "address": 247,
+      "physical": 1015
+    },
+    "triangle_save": {
+      "bank": 8,
+      "address": 128,
+      "physical": 1024
+    },
+    "io_triangle_save_1": {
+      "bank": 8,
+      "address": 142,
+      "physical": 1038
+    },
+    "io_triangle_save_6": {
+      "bank": 8,
+      "address": 161,
+      "physical": 1057
+    },
+    "io_triangle_save_21": {
+      "bank": 8,
+      "address": 193,
+      "physical": 1089
+    },
+    "io_triangle_save_31": {
+      "bank": 8,
+      "address": 219,
+      "physical": 1115
+    },
+    "op_key": {
+      "bank": 8,
+      "address": 225,
+      "physical": 1121
+    },
+    "vm_key_wait": {
+      "bank": 8,
+      "address": 225,
+      "physical": 1121
+    },
+    "resume_op_key_7": {
+      "bank": 8,
+      "address": 249,
+      "physical": 1145
+    },
+    "op_triangle": {
+      "bank": 9,
+      "address": 128,
+      "physical": 1152
+    },
+    "resume_op_triangle_0": {
+      "bank": 9,
+      "address": 142,
+      "physical": 1166
+    },
+    "resume_op_triangle_3": {
+      "bank": 9,
+      "address": 160,
+      "physical": 1184
+    },
+    "resume_op_triangle_6": {
+      "bank": 9,
+      "address": 178,
+      "physical": 1202
+    },
+    "resume_op_triangle_9": {
+      "bank": 9,
+      "address": 196,
+      "physical": 1220
+    },
+    "resume_op_triangle_12": {
+      "bank": 9,
+      "address": 214,
+      "physical": 1238
+    },
+    "op_jmp": {
+      "bank": 9,
+      "address": 224,
+      "physical": 1248
+    },
+    "resume_op_jmp_0": {
+      "bank": 9,
+      "address": 238,
+      "physical": 1262
+    },
+    "op_project": {
+      "bank": 10,
+      "address": 128,
+      "physical": 1280
+    },
+    "resume_op_project_0": {
+      "bank": 10,
+      "address": 142,
+      "physical": 1294
+    },
+    "resume_op_project_3": {
+      "bank": 10,
+      "address": 160,
+      "physical": 1312
+    },
+    "resume_op_project_6": {
+      "bank": 10,
+      "address": 178,
+      "physical": 1330
+    },
+    "resume_op_project_9": {
+      "bank": 10,
+      "address": 196,
+      "physical": 1348
+    },
+    "resume_op_project_12": {
+      "bank": 10,
+      "address": 214,
+      "physical": 1366
+    },
+    "op_drop": {
+      "bank": 10,
+      "address": 224,
+      "physical": 1376
+    },
+    "resume_op_drop_0": {
+      "bank": 10,
+      "address": 238,
+      "physical": 1390
+    },
+    "sine_return": {
+      "bank": 10,
+      "address": 244,
+      "physical": 1396
+    },
+    "sine_done": {
+      "bank": 10,
+      "address": 250,
+      "physical": 1402
+    },
+    "op_mul": {
+      "bank": 11,
+      "address": 128,
+      "physical": 1408
+    },
+    "resume_op_mul_0": {
+      "bank": 11,
+      "address": 142,
+      "physical": 1422
+    },
+    "mul16_loop": {
+      "bank": 11,
+      "address": 151,
+      "physical": 1431
+    },
+    "mul16_skip": {
+      "bank": 11,
+      "address": 177,
+      "physical": 1457
+    },
+    "resume_op_mul_37": {
+      "bank": 11,
+      "address": 216,
+      "physical": 1496
+    },
+    "gfx_divide_projection": {
+      "bank": 11,
+      "address": 222,
+      "physical": 1502
+    },
+    "division_positive": {
+      "bank": 11,
+      "address": 234,
+      "physical": 1514
+    },
+    "triangle_row": {
+      "bank": 12,
+      "address": 128,
+      "physical": 1536
+    },
+    "triangle_rewind": {
+      "bank": 12,
+      "address": 160,
+      "physical": 1568
+    },
+    "resume_triangle_row_20": {
+      "bank": 12,
+      "address": 174,
+      "physical": 1582
+    },
+    "resume_triangle_row_34": {
+      "bank": 12,
+      "address": 210,
+      "physical": 1618
+    },
+    "triangle_done": {
+      "bank": 12,
+      "address": 216,
+      "physical": 1624
+    },
+    "op_set": {
+      "bank": 12,
+      "address": 222,
+      "physical": 1630
+    },
+    "resume_op_set_0": {
+      "bank": 12,
+      "address": 236,
+      "physical": 1644
+    },
+    "resume_op_set_1": {
+      "bank": 12,
+      "address": 250,
+      "physical": 1658
+    },
+    "project_translate": {
+      "bank": 13,
+      "address": 128,
+      "physical": 1664
+    },
+    "io_project_translate_0": {
+      "bank": 13,
+      "address": 140,
+      "physical": 1676
+    },
+    "io_project_translate_4": {
+      "bank": 13,
+      "address": 157,
+      "physical": 1693
+    },
+    "io_project_translate_8": {
+      "bank": 13,
+      "address": 174,
+      "physical": 1710
+    },
+    "bridge_project_translate_18": {
+      "bank": 13,
+      "address": 197,
+      "physical": 1733
+    },
+    "bridge_project_translate_21": {
+      "bank": 13,
+      "address": 208,
+      "physical": 1744
+    },
+    "vm_operands": {
+      "bank": 13,
+      "address": 214,
+      "physical": 1750
+    },
+    "resume_vm_operands_0": {
+      "bank": 13,
+      "address": 228,
+      "physical": 1764
+    },
+    "resume_vm_operands_5": {
+      "bank": 13,
+      "address": 250,
+      "physical": 1786
+    },
+    "vm_triangle_args": {
+      "bank": 14,
+      "address": 128,
+      "physical": 1792
+    },
+    "resume_vm_triangle_args_0": {
+      "bank": 14,
+      "address": 142,
+      "physical": 1806
+    },
+    "resume_vm_triangle_args_3": {
+      "bank": 14,
+      "address": 160,
+      "physical": 1824
+    },
+    "resume_vm_triangle_args_6": {
+      "bank": 14,
+      "address": 178,
+      "physical": 1842
+    },
+    "resume_vm_triangle_args_7": {
+      "bank": 14,
+      "address": 192,
+      "physical": 1856
+    },
+    "resume_vm_triangle_args_8": {
+      "bank": 14,
+      "address": 206,
+      "physical": 1870
+    },
+    "op_ret": {
+      "bank": 14,
+      "address": 212,
+      "physical": 1876
+    },
+    "io_op_ret_7": {
+      "bank": 14,
+      "address": 231,
+      "physical": 1895
+    },
+    "io_op_ret_13": {
+      "bank": 14,
+      "address": 248,
+      "physical": 1912
+    },
+    "native_continuation_1": {
+      "bank": 15,
+      "address": 128,
+      "physical": 1920
+    },
+    "resume_native_continuation_1_0": {
+      "bank": 15,
+      "address": 138,
+      "physical": 1930
+    },
+    "resume_native_continuation_1_3": {
+      "bank": 15,
+      "address": 152,
+      "physical": 1944
+    },
+    "resume_native_continuation_1_6": {
+      "bank": 15,
+      "address": 170,
+      "physical": 1962
+    },
+    "resume_native_continuation_1_7": {
+      "bank": 15,
+      "address": 184,
+      "physical": 1976
+    },
+    "resume_native_continuation_1_8": {
+      "bank": 15,
+      "address": 198,
+      "physical": 1990
+    },
+    "vm_pop": {
+      "bank": 15,
+      "address": 204,
+      "physical": 1996
+    },
+    "io_vm_pop_7": {
+      "bank": 15,
+      "address": 223,
+      "physical": 2015
+    },
+    "io_vm_pop_13": {
+      "bank": 15,
+      "address": 240,
+      "physical": 2032
+    },
+    "line_pixel": {
+      "bank": 16,
+      "address": 128,
+      "physical": 2048
+    },
+    "resume_line_pixel_4": {
+      "bank": 16,
+      "address": 150,
+      "physical": 2070
+    },
+    "bridge_line_pixel_8": {
+      "bank": 16,
+      "address": 163,
+      "physical": 2083
+    },
+    "bridge_line_pixel_11": {
+      "bank": 16,
+      "address": 174,
+      "physical": 2094
+    },
+    "op_store8": {
+      "bank": 16,
+      "address": 204,
+      "physical": 2124
+    },
+    "resume_op_store8_0": {
+      "bank": 16,
+      "address": 218,
+      "physical": 2138
+    },
+    "resume_op_store8_10": {
+      "bank": 16,
+      "address": 250,
+      "physical": 2170
+    },
+    "gfx_project_vertex": {
+      "bank": 17,
+      "address": 128,
+      "physical": 2176
+    },
+    "resume_gfx_project_vertex_6": {
+      "bank": 17,
+      "address": 154,
+      "physical": 2202
+    },
+    "resume_gfx_project_vertex_17": {
+      "bank": 17,
+      "address": 188,
+      "physical": 2236
+    },
+    "vm_division_done": {
+      "bank": 17,
+      "address": 202,
+      "physical": 2250
+    },
+    "div_quotient": {
+      "bank": 17,
+      "address": 219,
+      "physical": 2267
+    },
+    "div_sign": {
+      "bank": 17,
+      "address": 221,
+      "physical": 2269
+    },
+    "div_finish": {
+      "bank": 17,
+      "address": 236,
+      "physical": 2284
+    },
+    "resume_vm_division_done_22": {
+      "bank": 17,
+      "address": 250,
+      "physical": 2298
+    },
+    "op_lt": {
+      "bank": 18,
+      "address": 128,
+      "physical": 2304
+    },
+    "resume_op_lt_0": {
+      "bank": 18,
+      "address": 142,
+      "physical": 2318
+    },
+    "lt_opposite": {
+      "bank": 18,
+      "address": 165,
+      "physical": 2341
+    },
+    "lt_no": {
+      "bank": 18,
+      "address": 170,
+      "physical": 2346
+    },
+    "lt_yes": {
+      "bank": 18,
+      "address": 173,
+      "physical": 2349
+    },
+    "lt_done": {
+      "bank": 18,
+      "address": 175,
+      "physical": 2351
+    },
+    "resume_op_lt_27": {
+      "bank": 18,
+      "address": 194,
+      "physical": 2370
+    },
+    "vm_dispatch": {
+      "bank": 18,
+      "address": 196,
+      "physical": 2372
+    },
+    "resume_vm_dispatch_0": {
+      "bank": 18,
+      "address": 210,
+      "physical": 2386
+    },
+    "io_vm_dispatch_7": {
+      "bank": 18,
+      "address": 227,
+      "physical": 2403
+    },
+    "io_vm_dispatch_12": {
+      "bank": 18,
+      "address": 242,
+      "physical": 2418
+    },
+    "vm_divide": {
+      "bank": 19,
+      "address": 128,
+      "physical": 2432
+    },
+    "resume_vm_divide_0": {
+      "bank": 19,
+      "address": 142,
+      "physical": 2446
+    },
+    "div_u_positive": {
+      "bank": 19,
+      "address": 168,
+      "physical": 2472
+    },
+    "div_v_positive": {
+      "bank": 19,
+      "address": 185,
+      "physical": 2489
+    },
+    "op_shr": {
+      "bank": 19,
+      "address": 200,
+      "physical": 2504
+    },
+    "resume_op_shr_0": {
+      "bank": 19,
+      "address": 214,
+      "physical": 2518
+    },
+    "shr_loop": {
+      "bank": 19,
+      "address": 219,
+      "physical": 2523
+    },
+    "shr_done": {
+      "bank": 19,
+      "address": 236,
+      "physical": 2540
+    },
+    "resume_op_shr_16": {
+      "bank": 19,
+      "address": 250,
+      "physical": 2554
+    },
+    "op_copy": {
+      "bank": 20,
+      "address": 128,
+      "physical": 2560
+    },
+    "resume_op_copy_0": {
+      "bank": 20,
+      "address": 142,
+      "physical": 2574
+    },
+    "resume_op_copy_5": {
+      "bank": 20,
+      "address": 164,
+      "physical": 2596
+    },
+    "resume_op_copy_10": {
+      "bank": 20,
+      "address": 186,
+      "physical": 2618
+    },
+    "op_shl": {
+      "bank": 20,
+      "address": 200,
+      "physical": 2632
+    },
+    "resume_op_shl_0": {
+      "bank": 20,
+      "address": 214,
+      "physical": 2646
+    },
+    "shl_loop": {
+      "bank": 20,
+      "address": 219,
+      "physical": 2651
+    },
+    "shl_done": {
+      "bank": 20,
+      "address": 236,
+      "physical": 2668
+    },
+    "resume_op_shl_16": {
+      "bank": 20,
+      "address": 250,
+      "physical": 2682
+    },
+    "sine_mask": {
+      "bank": 21,
+      "address": 128,
+      "physical": 2688
+    },
+    "io_sine_mask_0": {
+      "bank": 21,
+      "address": 140,
+      "physical": 2700
+    },
+    "sine_bit": {
+      "bank": 21,
+      "address": 146,
+      "physical": 2706
+    },
+    "sine_bit_zero": {
+      "bank": 21,
+      "address": 158,
+      "physical": 2718
+    },
+    "sine_value": {
+      "bank": 21,
+      "address": 190,
+      "physical": 2750
+    },
+    "triangle_load0": {
+      "bank": 21,
+      "address": 198,
+      "physical": 2758
+    },
+    "triangle_load_loop": {
+      "bank": 21,
+      "address": 206,
+      "physical": 2766
+    },
+    "io_triangle_load0_5": {
+      "bank": 21,
+      "address": 218,
+      "physical": 2778
+    },
+    "triangle_registers": {
+      "bank": 21,
+      "address": 243,
+      "physical": 2803
+    },
+    "op_text": {
+      "bank": 22,
+      "address": 128,
+      "physical": 2816
+    },
+    "resume_op_text_0": {
+      "bank": 22,
+      "address": 142,
+      "physical": 2830
+    },
+    "text_loop": {
+      "bank": 22,
+      "address": 148,
+      "physical": 2836
+    },
+    "resume_op_text_5": {
+      "bank": 22,
+      "address": 162,
+      "physical": 2850
+    },
+    "resume_op_text_9": {
+      "bank": 22,
+      "address": 181,
+      "physical": 2869
+    },
+    "text_done": {
+      "bank": 22,
+      "address": 183,
+      "physical": 2871
+    },
+    "op_load8": {
+      "bank": 22,
+      "address": 195,
+      "physical": 2883
+    },
+    "resume_op_load8_0": {
+      "bank": 22,
+      "address": 209,
+      "physical": 2897
+    },
+    "resume_op_load8_5": {
+      "bank": 22,
+      "address": 231,
+      "physical": 2919
+    },
+    "resume_op_load8_9": {
+      "bank": 22,
+      "address": 250,
+      "physical": 2938
+    },
+    "vm_load_word": {
+      "bank": 23,
+      "address": 128,
+      "physical": 2944
+    },
+    "resume_vm_load_word_0": {
+      "bank": 23,
+      "address": 142,
+      "physical": 2958
+    },
+    "resume_vm_load_word_2": {
+      "bank": 23,
+      "address": 158,
+      "physical": 2974
+    },
+    "resume_vm_load_word_3": {
+      "bank": 23,
+      "address": 172,
+      "physical": 2988
+    },
+    "resume_vm_load_word_5": {
+      "bank": 23,
+      "address": 188,
+      "physical": 3004
+    },
+    "gfx_sine_product": {
+      "bank": 23,
+      "address": 194,
+      "physical": 3010
+    },
+    "sine_positive": {
+      "bank": 23,
+      "address": 209,
+      "physical": 3025
+    },
+    "sine_folded": {
+      "bank": 23,
+      "address": 227,
+      "physical": 3043
+    },
+    "bridge_gfx_sine_product_31": {
+      "bank": 23,
+      "address": 241,
+      "physical": 3057
+    },
+    "sine_zero": {
+      "bank": 23,
+      "address": 249,
+      "physical": 3065
+    },
+    "vm_division_loop": {
+      "bank": 24,
+      "address": 128,
+      "physical": 3072
+    },
+    "div_subtract": {
+      "bank": 24,
+      "address": 162,
+      "physical": 3106
+    },
+    "div_skip": {
+      "bank": 24,
+      "address": 181,
+      "physical": 3125
+    },
+    "vm_restore": {
+      "bank": 24,
+      "address": 194,
+      "physical": 3138
+    },
+    "io_vm_restore_0": {
+      "bank": 24,
+      "address": 206,
+      "physical": 3150
+    },
+    "io_vm_restore_2": {
+      "bank": 24,
+      "address": 220,
+      "physical": 3164
+    },
+    "io_vm_restore_4": {
+      "bank": 24,
+      "address": 234,
+      "physical": 3178
+    },
+    "io_vm_restore_6": {
+      "bank": 24,
+      "address": 248,
+      "physical": 3192
+    },
+    "gfx_mul16": {
+      "bank": 25,
+      "address": 128,
+      "physical": 3200
+    },
+    "mul_u_positive": {
+      "bank": 25,
+      "address": 141,
+      "physical": 3213
+    },
+    "mul_v_positive": {
+      "bank": 25,
+      "address": 147,
+      "physical": 3219
+    },
+    "mul_loop": {
+      "bank": 25,
+      "address": 153,
+      "physical": 3225
+    },
+    "mul_skip": {
+      "bank": 25,
+      "address": 166,
+      "physical": 3238
+    },
+    "mul_done": {
+      "bank": 25,
+      "address": 188,
+      "physical": 3260
+    },
+    "vm_save": {
+      "bank": 25,
+      "address": 194,
+      "physical": 3266
+    },
+    "io_vm_save_1": {
+      "bank": 25,
+      "address": 208,
+      "physical": 3280
+    },
+    "io_vm_save_3": {
+      "bank": 25,
+      "address": 222,
+      "physical": 3294
+    },
+    "io_vm_save_5": {
+      "bank": 25,
+      "address": 236,
+      "physical": 3308
+    },
+    "io_vm_save_7": {
+      "bank": 25,
+      "address": 250,
+      "physical": 3322
+    },
+    "op_loads": {
+      "bank": 26,
+      "address": 128,
+      "physical": 3328
+    },
+    "resume_op_loads_0": {
+      "bank": 26,
+      "address": 142,
+      "physical": 3342
+    },
+    "resume_op_loads_5": {
+      "bank": 26,
+      "address": 164,
+      "physical": 3364
+    },
+    "loads_positive": {
+      "bank": 26,
+      "address": 171,
+      "physical": 3371
+    },
+    "resume_op_loads_13": {
+      "bank": 26,
+      "address": 187,
+      "physical": 3387
+    },
+    "triangle_scan": {
+      "bank": 26,
+      "address": 193,
+      "physical": 3393
+    },
+    "triangle_pixel": {
+      "bank": 26,
+      "address": 193,
+      "physical": 3393
+    },
+    "resume_triangle_scan_1": {
+      "bank": 26,
+      "address": 207,
+      "physical": 3407
+    },
+    "resume_triangle_scan_4": {
+      "bank": 26,
+      "address": 224,
+      "physical": 3424
+    },
+    "triangle_advance": {
+      "bank": 26,
+      "address": 224,
+      "physical": 3424
+    },
+    "bridge_triangle_scan_11": {
+      "bank": 26,
+      "address": 240,
+      "physical": 3440
+    },
+    "resume_triangle_scan_12": {
+      "bank": 26,
+      "address": 254,
+      "physical": 3454
+    },
+    "gfx_line": {
+      "bank": 27,
+      "address": 128,
+      "physical": 3456
+    },
+    "full_x_positive": {
+      "bank": 27,
+      "address": 139,
+      "physical": 3467
+    },
+    "full_y_positive": {
+      "bank": 27,
+      "address": 154,
+      "physical": 3482
+    },
+    "line_x_major": {
+      "bank": 27,
+      "address": 172,
+      "physical": 3500
+    },
+    "line_major_ready": {
+      "bank": 27,
+      "address": 174,
+      "physical": 3502
+    },
+    "op_call": {
+      "bank": 27,
+      "address": 190,
+      "physical": 3518
+    },
+    "resume_op_call_0": {
+      "bank": 27,
+      "address": 204,
+      "physical": 3532
+    },
+    "io_op_call_6": {
+      "bank": 27,
+      "address": 221,
+      "physical": 3549
+    },
+    "io_op_call_12": {
+      "bank": 27,
+      "address": 238,
+      "physical": 3566
+    },
+    "op_line": {
+      "bank": 28,
+      "address": 128,
+      "physical": 3584
+    },
+    "resume_op_line_0": {
+      "bank": 28,
+      "address": 142,
+      "physical": 3598
+    },
+    "resume_op_line_3": {
+      "bank": 28,
+      "address": 160,
+      "physical": 3616
+    },
+    "resume_op_line_6": {
+      "bank": 28,
+      "address": 178,
+      "physical": 3634
+    },
+    "triangle_advance_x": {
+      "bank": 28,
+      "address": 188,
+      "physical": 3644
+    },
+    "advance_x_0": {
+      "bank": 28,
+      "address": 198,
+      "physical": 3654
+    },
+    "advance_x_1": {
+      "bank": 28,
+      "address": 216,
+      "physical": 3672
+    },
+    "advance_x_2": {
+      "bank": 28,
+      "address": 234,
+      "physical": 3690
+    },
+    "triangle_inside_yes": {
+      "bank": 28,
+      "address": 248,
+      "physical": 3704
+    },
+    "triangle_advance_y": {
+      "bank": 29,
+      "address": 128,
+      "physical": 3712
+    },
+    "advance_y_0": {
+      "bank": 29,
+      "address": 138,
+      "physical": 3722
+    },
+    "advance_y_1": {
+      "bank": 29,
+      "address": 156,
+      "physical": 3740
+    },
+    "advance_y_2": {
+      "bank": 29,
+      "address": 174,
+      "physical": 3758
+    },
+    "op_eq": {
+      "bank": 29,
+      "address": 188,
+      "physical": 3772
+    },
+    "resume_op_eq_0": {
+      "bank": 29,
+      "address": 202,
+      "physical": 3786
+    },
+    "eq_done": {
+      "bank": 29,
+      "address": 222,
+      "physical": 3806
+    },
+    "resume_op_eq_17": {
+      "bank": 29,
+      "address": 241,
+      "physical": 3825
+    },
+    "triangle_inside": {
+      "bank": 29,
+      "address": 247,
+      "physical": 3831
+    },
+    "project_choose": {
+      "bank": 30,
+      "address": 128,
+      "physical": 3840
+    },
+    "bridge_project_choose_5": {
+      "bank": 30,
+      "address": 144,
+      "physical": 3856
+    },
+    "bridge_project_choose_11": {
+      "bank": 30,
+      "address": 160,
+      "physical": 3872
+    },
+    "io_project_choose_12": {
+      "bank": 30,
+      "address": 172,
+      "physical": 3884
+    },
+    "bridge_project_choose_14": {
+      "bank": 30,
+      "address": 181,
+      "physical": 3893
+    },
+    "vm_store_word": {
+      "bank": 30,
+      "address": 187,
+      "physical": 3899
+    },
+    "resume_vm_store_word_1": {
+      "bank": 30,
+      "address": 203,
+      "physical": 3915
+    },
+    "resume_vm_store_word_2": {
+      "bank": 30,
+      "address": 217,
+      "physical": 3929
+    },
+    "resume_vm_store_word_4": {
+      "bank": 30,
+      "address": 233,
+      "physical": 3945
+    },
+    "triangle_init0": {
+      "bank": 30,
+      "address": 239,
+      "physical": 3951
+    },
+    "project_perspective": {
+      "bank": 31,
+      "address": 128,
+      "physical": 3968
+    },
+    "resume_project_perspective_2": {
+      "bank": 31,
+      "address": 146,
+      "physical": 3986
+    },
+    "resume_project_perspective_7": {
+      "bank": 31,
+      "address": 167,
+      "physical": 4007
+    },
+    "op_begin": {
+      "bank": 31,
+      "address": 179,
+      "physical": 4019
+    },
+    "resume_op_begin_0": {
+      "bank": 31,
+      "address": 193,
+      "physical": 4033
+    },
+    "resume_op_begin_1": {
+      "bank": 31,
+      "address": 207,
+      "physical": 4047
+    },
+    "resume_op_begin_2": {
+      "bank": 31,
+      "address": 221,
+      "physical": 4061
+    },
+    "vm_address": {
+      "bank": 31,
+      "address": 229,
+      "physical": 4069
+    },
+    "vm_address_low": {
+      "bank": 31,
+      "address": 239,
+      "physical": 4079
+    },
+    "vm_address_banked": {
+      "bank": 31,
+      "address": 247,
+      "physical": 4087
+    },
+    "vm_address_done": {
+      "bank": 31,
+      "address": 250,
+      "physical": 4090
+    },
+    "op_present": {
+      "bank": 32,
+      "address": 128,
+      "physical": 4096
+    },
+    "resume_op_present_0": {
+      "bank": 32,
+      "address": 142,
+      "physical": 4110
+    },
+    "resume_op_present_1": {
+      "bank": 32,
+      "address": 156,
+      "physical": 4124
+    },
+    "resume_op_present_2": {
+      "bank": 32,
+      "address": 170,
+      "physical": 4138
+    },
+    "op_not": {
+      "bank": 32,
+      "address": 178,
+      "physical": 4146
+    },
+    "resume_op_not_0": {
+      "bank": 32,
+      "address": 192,
+      "physical": 4160
+    },
+    "not_done": {
+      "bank": 32,
+      "address": 202,
+      "physical": 4170
+    },
+    "resume_op_not_11": {
+      "bank": 32,
+      "address": 221,
+      "physical": 4189
+    },
+    "op_load16": {
+      "bank": 32,
+      "address": 227,
+      "physical": 4195
+    },
+    "resume_op_load16_0": {
+      "bank": 32,
+      "address": 241,
+      "physical": 4209
+    },
+    "op_add": {
+      "bank": 33,
+      "address": 128,
+      "physical": 4224
+    },
+    "resume_op_add_0": {
+      "bank": 33,
+      "address": 142,
+      "physical": 4238
+    },
+    "resume_op_add_9": {
+      "bank": 33,
+      "address": 170,
+      "physical": 4266
+    },
+    "op_sub": {
+      "bank": 33,
+      "address": 176,
+      "physical": 4272
+    },
+    "resume_op_sub_0": {
+      "bank": 33,
+      "address": 190,
+      "physical": 4286
+    },
+    "resume_op_sub_9": {
+      "bank": 33,
+      "address": 218,
+      "physical": 4314
+    },
+    "main": {
+      "bank": 33,
+      "address": 224,
+      "physical": 4320
+    },
+    "project_invisible": {
+      "bank": 33,
+      "address": 247,
+      "physical": 4343
+    },
+    "op_and": {
+      "bank": 34,
+      "address": 128,
+      "physical": 4352
+    },
+    "resume_op_and_0": {
+      "bank": 34,
+      "address": 142,
+      "physical": 4366
+    },
+    "resume_op_and_9": {
+      "bank": 34,
+      "address": 170,
+      "physical": 4394
+    },
+    "op_or": {
+      "bank": 34,
+      "address": 176,
+      "physical": 4400
+    },
+    "resume_op_or_0": {
+      "bank": 34,
+      "address": 190,
+      "physical": 4414
+    },
+    "resume_op_or_9": {
+      "bank": 34,
+      "address": 218,
+      "physical": 4442
+    },
+    "sine_fetch": {
+      "bank": 34,
+      "address": 224,
+      "physical": 4448
+    },
+    "sine_address_ready": {
+      "bank": 34,
+      "address": 239,
+      "physical": 4463
+    },
+    "op_xor": {
+      "bank": 35,
+      "address": 128,
+      "physical": 4480
+    },
+    "resume_op_xor_0": {
+      "bank": 35,
+      "address": 142,
+      "physical": 4494
+    },
+    "resume_op_xor_9": {
+      "bank": 35,
+      "address": 170,
+      "physical": 4522
+    },
+    "op_dup": {
+      "bank": 35,
+      "address": 176,
+      "physical": 4528
+    },
+    "resume_op_dup_0": {
+      "bank": 35,
+      "address": 190,
+      "physical": 4542
+    },
+    "resume_op_dup_1": {
+      "bank": 35,
+      "address": 204,
+      "physical": 4556
+    },
+    "resume_op_dup_2": {
+      "bank": 35,
+      "address": 218,
+      "physical": 4570
+    },
+    "vm_jump": {
+      "bank": 35,
+      "address": 224,
+      "physical": 4576
+    },
+    "jump_low": {
+      "bank": 35,
+      "address": 239,
+      "physical": 4591
+    },
+    "op_jz": {
+      "bank": 36,
+      "address": 128,
+      "physical": 4608
+    },
+    "resume_op_jz_0": {
+      "bank": 36,
+      "address": 138,
+      "physical": 4618
+    },
+    "resume_op_jz_1": {
+      "bank": 36,
+      "address": 152,
+      "physical": 4632
+    },
+    "bridge_op_jz_5": {
+      "bank": 36,
+      "address": 165,
+      "physical": 4645
+    },
+    "vm_push": {
+      "bank": 36,
+      "address": 171,
+      "physical": 4651
+    },
+    "io_vm_push_5": {
+      "bank": 36,
+      "address": 188,
+      "physical": 4668
+    },
+    "io_vm_push_11": {
+      "bank": 36,
+      "address": 205,
+      "physical": 4685
+    },
+    "vm_immediate": {
+      "bank": 36,
+      "address": 217,
+      "physical": 4697
+    },
+    "resume_vm_immediate_0": {
+      "bank": 36,
+      "address": 231,
+      "physical": 4711
+    },
+    "resume_vm_immediate_2": {
+      "bank": 36,
+      "address": 247,
+      "physical": 4727
+    },
+    "op_neg": {
+      "bank": 37,
+      "address": 128,
+      "physical": 4736
+    },
+    "resume_op_neg_0": {
+      "bank": 37,
+      "address": 142,
+      "physical": 4750
+    },
+    "resume_op_neg_8": {
+      "bank": 37,
+      "address": 168,
+      "physical": 4776
+    },
+    "line_step_y": {
+      "bank": 37,
+      "address": 174,
+      "physical": 4782
+    },
+    "bridge_line_step_y_8": {
+      "bank": 37,
+      "address": 196,
+      "physical": 4804
+    },
+    "line_done": {
+      "bank": 37,
+      "address": 214,
+      "physical": 4822
+    },
+    "op_store16": {
+      "bank": 37,
+      "address": 220,
+      "physical": 4828
+    },
+    "resume_op_store16_0": {
+      "bank": 37,
+      "address": 234,
+      "physical": 4842
+    },
+    "triangle_sign0": {
+      "bank": 38,
+      "address": 128,
+      "physical": 4864
+    },
+    "triangle_negative0": {
+      "bank": 38,
+      "address": 144,
+      "physical": 4880
+    },
+    "triangle_sign_record0": {
+      "bank": 38,
+      "address": 148,
+      "physical": 4884
+    },
+    "bridge_triangle_sign0_17": {
+      "bank": 38,
+      "address": 162,
+      "physical": 4898
+    },
+    "triangle_sign1": {
+      "bank": 38,
+      "address": 164,
+      "physical": 4900
+    },
+    "triangle_negative1": {
+      "bank": 38,
+      "address": 180,
+      "physical": 4916
+    },
+    "triangle_sign_record1": {
+      "bank": 38,
+      "address": 184,
+      "physical": 4920
+    },
+    "bridge_triangle_sign1_17": {
+      "bank": 38,
+      "address": 198,
+      "physical": 4934
+    },
+    "triangle_sign2": {
+      "bank": 38,
+      "address": 200,
+      "physical": 4936
+    },
+    "bridge_triangle_sign2_5": {
+      "bank": 38,
+      "address": 216,
+      "physical": 4952
+    },
+    "triangle_negative2": {
+      "bank": 38,
+      "address": 222,
+      "physical": 4958
+    },
+    "triangle_sign_record2": {
+      "bank": 38,
+      "address": 226,
+      "physical": 4962
+    },
+    "bridge_triangle_sign2_17": {
+      "bank": 38,
+      "address": 240,
+      "physical": 4976
+    },
+    "op_mod": {
+      "bank": 38,
+      "address": 246,
+      "physical": 4982
+    },
+    "op_const": {
+      "bank": 39,
+      "address": 128,
+      "physical": 4992
+    },
+    "resume_op_const_0": {
+      "bank": 39,
+      "address": 142,
+      "physical": 5006
+    },
+    "resume_op_const_5": {
+      "bank": 39,
+      "address": 164,
+      "physical": 5028
+    },
+    "project_roll": {
+      "bank": 39,
+      "address": 170,
+      "physical": 5034
+    },
+    "resume_project_roll_6": {
+      "bank": 39,
+      "address": 196,
+      "physical": 5060
+    },
+    "vm_write": {
+      "bank": 39,
+      "address": 210,
+      "physical": 5074
+    },
+    "vm_write_low": {
+      "bank": 39,
+      "address": 222,
+      "physical": 5086
+    },
+    "vm_write_banked": {
+      "bank": 39,
+      "address": 230,
+      "physical": 5094
+    },
+    "vm_write_done": {
+      "bank": 39,
+      "address": 233,
+      "physical": 5097
+    },
+    "io_vm_write_19": {
+      "bank": 39,
+      "address": 243,
+      "physical": 5107
+    },
+    "triangle_inside_no": {
+      "bank": 39,
+      "address": 249,
+      "physical": 5113
+    },
+    "projection_division_loop": {
+      "bank": 40,
+      "address": 128,
+      "physical": 5120
+    },
+    "projection_subtract": {
+      "bank": 40,
+      "address": 140,
+      "physical": 5132
+    },
+    "projection_division_round": {
+      "bank": 40,
+      "address": 161,
+      "physical": 5153
+    },
+    "projection_increment": {
+      "bank": 40,
+      "address": 178,
+      "physical": 5170
+    },
+    "projection_rounded": {
+      "bank": 40,
+      "address": 183,
+      "physical": 5175
+    },
+    "projection_positive": {
+      "bank": 40,
+      "address": 191,
+      "physical": 5183
+    },
+    "vm_fetch": {
+      "bank": 40,
+      "address": 200,
+      "physical": 5192
+    },
+    "io_vm_fetch_2": {
+      "bank": 40,
+      "address": 212,
+      "physical": 5204
+    },
+    "vm_fetch_done": {
+      "bank": 40,
+      "address": 230,
+      "physical": 5222
+    },
+    "vm_increment_address": {
+      "bank": 40,
+      "address": 238,
+      "physical": 5230
+    },
+    "vm_increment_done": {
+      "bank": 40,
+      "address": 250,
+      "physical": 5242
+    },
+    "op_putc": {
+      "bank": 41,
+      "address": 128,
+      "physical": 5248
+    },
+    "resume_op_putc_0": {
+      "bank": 41,
+      "address": 142,
+      "physical": 5262
+    },
+    "vm_read": {
+      "bank": 41,
+      "address": 164,
+      "physical": 5284
+    },
+    "vm_read_low": {
+      "bank": 41,
+      "address": 174,
+      "physical": 5294
+    },
+    "vm_read_banked": {
+      "bank": 41,
+      "address": 182,
+      "physical": 5302
+    },
+    "vm_read_done": {
+      "bank": 41,
+      "address": 185,
+      "physical": 5305
+    },
+    "io_vm_read_17": {
+      "bank": 41,
+      "address": 193,
+      "physical": 5313
+    },
+    "gfx_present": {
+      "bank": 41,
+      "address": 199,
+      "physical": 5319
+    },
+    "editor_present_loop": {
+      "bank": 41,
+      "address": 207,
+      "physical": 5327
+    },
+    "triangle_init1": {
+      "bank": 41,
+      "address": 219,
+      "physical": 5339
+    },
+    "triangle_init2": {
+      "bank": 41,
+      "address": 233,
+      "physical": 5353
+    },
+    "op_div": {
+      "bank": 41,
+      "address": 247,
+      "physical": 5367
+    },
+    "triangle_area": {
+      "bank": 42,
+      "address": 128,
+      "physical": 5376
+    }
+  },
+  "bytecode_labels": {
+    "absolute": 17283,
+    "branch_1": 17300,
+    "branch_2": 17303,
+    "clear_selection": 17308,
+    "branch_3": 17314,
+    "branch_4": 17348,
+    "limit": 17358,
+    "alive": 17375,
+    "branch_5": 17392,
+    "branch_6": 17392,
+    "branch_7": 17414,
+    "branch_8": 17414,
+    "branch_9": 17436,
+    "branch_10": 17436,
+    "selection_base": 17453,
+    "branch_11": 17469,
+    "branch_13": 17489,
+    "branch_14": 17496,
+    "branch_12": 17496,
+    "vertex_component": 17501,
+    "projected_component": 17526,
+    "center": 17551,
+    "branch_15": 17568,
+    "branch_16": 17568,
+    "branch_17": 17597,
+    "branch_18": 17597,
+    "branch_19": 17680,
+    "branch_20": 17680,
+    "branch_21": 17707,
+    "branch_22": 17769,
+    "nearest": 17781,
+    "branch_23": 17800,
+    "branch_27": 17925,
+    "branch_28": 17925,
+    "branch_25": 17928,
+    "branch_26": 17928,
+    "branch_24": 17941,
+    "navigate": 17949,
+    "branch_29": 17990,
+    "branch_30": 17990,
+    "branch_31": 18056,
+    "branch_35": 18163,
+    "branch_37": 18179,
+    "branch_39": 18196,
+    "branch_40": 18199,
+    "branch_38": 18199,
+    "branch_36": 18199,
+    "branch_43": 18222,
+    "branch_41": 18237,
+    "branch_42": 18246,
+    "branch_46": 18298,
+    "branch_47": 18298,
+    "branch_44": 18301,
+    "branch_45": 18301,
+    "branch_33": 18304,
+    "branch_34": 18304,
+    "branch_32": 18317,
+    "cycle": 18327,
+    "branch_48": 18345,
+    "branch_50": 18401,
+    "branch_51": 18401,
+    "branch_49": 18414,
+    "toggle": 18425,
+    "branch_52": 18442,
+    "branch_53": 18442,
+    "branch_56": 18517,
+    "branch_58": 18523,
+    "branch_62": 18554,
+    "branch_63": 18601,
+    "branch_60": 18618,
+    "branch_61": 18618,
+    "branch_59": 18631,
+    "branch_57": 18631,
+    "branch_54": 18634,
+    "branch_55": 18634,
+    "mark_vertices": 18638,
+    "branch_64": 18644,
+    "branch_65": 18678,
+    "branch_66": 18684,
+    "branch_70": 18734,
+    "branch_71": 18761,
+    "branch_73": 18818,
+    "branch_75": 18824,
+    "branch_76": 18884,
+    "branch_74": 18884,
+    "branch_72": 18884,
+    "branch_68": 18887,
+    "branch_69": 18887,
+    "branch_67": 18900,
+    "branch_77": 18912,
+    "branch_78": 18950,
+    "pivot": 18958,
+    "branch_81": 18998,
+    "branch_79": 19008,
+    "branch_80": 19008,
+    "branch_82": 19014,
+    "branch_84": 19104,
+    "branch_85": 19104,
+    "branch_83": 19117,
+    "integer": 19155,
+    "branch_86": 19179,
+    "branch_87": 19179,
+    "branch_88": 19191,
+    "branch_92": 19236,
+    "branch_90": 19256,
+    "branch_91": 19256,
+    "branch_89": 19279,
+    "fixed": 19283,
+    "branch_93": 19307,
+    "branch_94": 19307,
+    "branch_95": 19345,
+    "branch_96": 19390,
+    "terminal": 19394,
+    "branch_99": 19484,
+    "branch_100": 19516,
+    "branch_97": 19519,
+    "branch_101": 19538,
+    "branch_103": 19554,
+    "branch_104": 19557,
+    "branch_102": 19557,
+    "branch_105": 19587,
+    "branch_106": 19637,
+    "branch_107": 19666,
+    "branch_108": 19669,
+    "branch_98": 19672,
+    "error": 19676,
+    "branch_109": 19702,
+    "branch_111": 19718,
+    "branch_113": 19734,
+    "branch_115": 19750,
+    "branch_117": 19766,
+    "branch_118": 19769,
+    "branch_116": 19769,
+    "branch_114": 19769,
+    "branch_112": 19769,
+    "branch_110": 19769,
+    "branch_121": 19789,
+    "branch_122": 19821,
+    "branch_119": 19824,
+    "branch_120": 19824,
+    "draw_element": 19828,
+    "branch_123": 19875,
+    "branch_125": 19986,
+    "branch_127": 20278,
+    "branch_128": 20278,
+    "branch_126": 20278,
+    "branch_124": 20278,
+    "render": 20282,
+    "branch_129": 20288,
+    "branch_131": 20466,
+    "branch_132": 20466,
+    "branch_130": 20479,
+    "branch_133": 20486,
+    "branch_135": 20532,
+    "branch_136": 20532,
+    "branch_134": 20545,
+    "branch_137": 20551,
+    "branch_139": 20597,
+    "branch_140": 20597,
+    "branch_138": 20610,
+    "branch_141": 20627,
+    "branch_145": 20677,
+    "branch_143": 20699,
+    "branch_144": 20699,
+    "branch_142": 20712,
+    "branch_148": 20751,
+    "branch_146": 20773,
+    "branch_147": 20773,
+    "branch_149": 20779,
+    "branch_150": 20885,
+    "remember": 20890,
+    "fraction_q4": 20910,
+    "branch_151": 20922,
+    "branch_153": 20986,
+    "branch_154": 20986,
+    "branch_152": 20999,
+    "branch_155": 21027,
+    "branch_156": 21027,
+    "rotate_coordinate": 21035,
+    "parse": 21123,
+    "branch_157": 21140,
+    "branch_158": 21140,
+    "branch_161": 21181,
+    "branch_159": 21191,
+    "branch_160": 21191,
+    "branch_164": 21244,
+    "branch_165": 21264,
+    "branch_166": 21267,
+    "branch_162": 21283,
+    "branch_163": 21283,
+    "branch_167": 21295,
+    "branch_169": 21338,
+    "branch_172": 21404,
+    "branch_170": 21414,
+    "branch_171": 21414,
+    "branch_168": 21417,
+    "branch_173": 21431,
+    "branch_174": 21431,
+    "branch_177": 21482,
+    "branch_178": 21482,
+    "branch_179": 21492,
+    "branch_181": 21535,
+    "branch_182": 21555,
+    "branch_183": 21555,
+    "branch_180": 21611,
+    "branch_184": 21625,
+    "branch_185": 21625,
+    "branch_175": 21628,
+    "branch_176": 21628,
+    "branch_186": 21646,
+    "branch_187": 21646,
+    "branch_192": 21679,
+    "branch_190": 21689,
+    "branch_191": 21689,
+    "branch_193": 21716,
+    "branch_194": 21719,
+    "branch_195": 21740,
+    "branch_196": 21740,
+    "branch_188": 21743,
+    "branch_197": 21759,
+    "branch_198": 21762,
+    "branch_202": 21793,
+    "branch_201": 21793,
+    "branch_199": 21803,
+    "branch_200": 21803,
+    "branch_205": 21845,
+    "branch_206": 21848,
+    "branch_203": 21862,
+    "branch_204": 21862,
+    "branch_189": 21862,
+    "transform": 21880,
+    "branch_207": 21899,
+    "branch_208": 21899,
+    "branch_209": 21942,
+    "branch_210": 21942,
+    "branch_211": 21986,
+    "branch_217": 22094,
+    "branch_219": 22117,
+    "branch_220": 22127,
+    "branch_218": 22127,
+    "branch_215": 22130,
+    "branch_223": 22175,
+    "branch_225": 22210,
+    "branch_226": 22232,
+    "branch_224": 22232,
+    "branch_221": 22235,
+    "branch_227": 22337,
+    "branch_229": 22439,
+    "branch_230": 22528,
+    "branch_228": 22528,
+    "branch_222": 22528,
+    "branch_216": 22528,
+    "branch_233": 22579,
+    "branch_231": 22589,
+    "branch_232": 22589,
+    "branch_213": 22645,
+    "branch_214": 22645,
+    "branch_212": 22658,
+    "edge_index": 22680,
+    "branch_234": 22686,
+    "branch_241": 22766,
+    "branch_242": 22791,
+    "branch_240": 22791,
+    "branch_238": 22801,
+    "branch_239": 22801,
+    "branch_236": 22804,
+    "branch_237": 22804,
+    "branch_235": 22817,
+    "delete_selected": 22826,
+    "branch_243": 22840,
+    "branch_244": 22840,
+    "branch_245": 22898,
+    "branch_249": 22947,
+    "branch_251": 22963,
+    "branch_252": 22966,
+    "branch_250": 22966,
+    "branch_253": 22985,
+    "branch_254": 22988,
+    "branch_247": 22997,
+    "branch_248": 22997,
+    "branch_246": 23010,
+    "branch_255": 23016,
+    "branch_261": 23089,
+    "branch_259": 23106,
+    "branch_260": 23106,
+    "branch_257": 23109,
+    "branch_258": 23109,
+    "branch_256": 23122,
+    "branch_262": 23128,
+    "branch_264": 23165,
+    "branch_268": 23263,
+    "branch_266": 23284,
+    "branch_267": 23284,
+    "branch_265": 23297,
+    "branch_263": 23310,
+    "free_slot": 23342,
+    "branch_269": 23348,
+    "branch_271": 23367,
+    "branch_272": 23370,
+    "branch_273": 23400,
+    "branch_274": 23400,
+    "branch_270": 23413,
+    "new_vertex": 23422,
+    "branch_275": 23451,
+    "branch_276": 23451,
+    "branch_277": 23550,
+    "branch_278": 23550,
+    "create_connection": 23578,
+    "branch_281": 23612,
+    "branch_279": 23622,
+    "branch_280": 23622,
+    "branch_284": 23661,
+    "branch_285": 23661,
+    "branch_286": 23667,
+    "branch_290": 23714,
+    "branch_291": 23769,
+    "branch_292": 23786,
+    "branch_293": 23786,
+    "branch_288": 23789,
+    "branch_289": 23789,
+    "branch_287": 23802,
+    "branch_282": 23805,
+    "branch_294": 23841,
+    "branch_295": 23841,
+    "branch_283": 23841,
+    "branch_296": 23853,
+    "branch_298": 23872,
+    "branch_299": 23875,
+    "branch_300": 23944,
+    "branch_301": 23944,
+    "branch_297": 23957,
+    "branch_302": 23969,
+    "branch_304": 24000,
+    "branch_305": 24003,
+    "branch_303": 24020,
+    "branch_306": 24037,
+    "branch_307": 24037,
+    "branch_308": 24047,
+    "branch_310": 24066,
+    "branch_311": 24069,
+    "branch_314": 24217,
+    "branch_315": 24217,
+    "branch_312": 24220,
+    "branch_313": 24220,
+    "branch_309": 24233,
+    "branch_318": 24293,
+    "branch_319": 24293,
+    "branch_320": 24299,
+    "branch_321": 24350,
+    "branch_316": 24353,
+    "branch_317": 24353,
+    "main": 24361,
+    "branch_322": 24435,
+    "branch_326": 24486,
+    "branch_330": 24506,
+    "branch_331": 24534,
+    "branch_332": 24554,
+    "branch_328": 24557,
+    "branch_335": 24586,
+    "branch_336": 24586,
+    "branch_333": 24593,
+    "branch_340": 24692,
+    "branch_339": 24692,
+    "branch_341": 24733,
+    "branch_342": 24743,
+    "branch_337": 24746,
+    "branch_338": 24756,
+    "branch_334": 24756,
+    "branch_329": 24756,
+    "branch_327": 24756,
+    "branch_324": 24759,
+    "branch_345": 24786,
+    "branch_343": 24878,
+    "branch_348": 24899,
+    "branch_346": 24915,
+    "branch_349": 24932,
+    "branch_353": 24952,
+    "branch_351": 24962,
+    "branch_354": 24979,
+    "branch_358": 25012,
+    "branch_359": 25036,
+    "branch_360": 25042,
+    "branch_356": 25045,
+    "branch_361": 25062,
+    "branch_363": 25081,
+    "branch_365": 25100,
+    "branch_369": 25163,
+    "branch_370": 25163,
+    "branch_367": 25166,
+    "branch_373": 25186,
+    "branch_377": 25271,
+    "branch_378": 25271,
+    "branch_375": 25274,
+    "branch_376": 25274,
+    "branch_374": 25287,
+    "branch_371": 25290,
+    "branch_379": 25313,
+    "branch_383": 25333,
+    "branch_384": 25355,
+    "branch_385": 25358,
+    "branch_381": 25369,
+    "branch_388": 25389,
+    "branch_389": 25411,
+    "branch_390": 25414,
+    "branch_386": 25425,
+    "branch_393": 25445,
+    "branch_394": 25477,
+    "branch_395": 25477,
+    "branch_391": 25480,
+    "branch_398": 25519,
+    "branch_399": 25519,
+    "branch_396": 25522,
+    "branch_400": 25553,
+    "branch_401": 25553,
+    "branch_397": 25553,
+    "branch_392": 25553,
+    "branch_387": 25553,
+    "branch_382": 25553,
+    "branch_380": 25553,
+    "branch_372": 25553,
+    "branch_368": 25553,
+    "branch_366": 25553,
+    "branch_364": 25553,
+    "branch_362": 25553,
+    "branch_357": 25553,
+    "branch_355": 25553,
+    "branch_352": 25553,
+    "branch_350": 25553,
+    "branch_347": 25553,
+    "branch_344": 25553,
+    "branch_402": 25576,
+    "branch_403": 25580,
+    "branch_325": 25580,
+    "branch_323": 25583
+  },
+  "library_source_sha256": "c6110535e03d6e41eb02caade86fb346faabcf6c3a70415a0a559d4a475de3e7",
+  "max_vertices": 32,
+  "max_edges": 64,
+  "max_faces": 32,
+  "coordinate_fraction_bits": 4,
+  "coordinate_limit": 11,
+  "frame_buffer": 64,
+  "frame_buffer_bytes": 64
+}

@@ -1,0 +1,14 @@
+{
+  "arithmetic_cases": 384,
+  "keyboard_events": 285,
+  "pixel_frames": 70,
+  "assertions": 2892,
+  "max_stack_bytes": 16,
+  "max_call_stack_bytes": 6,
+  "program_sha256": "089cc9d2c0e75bb602bd3f15b5f2879fe7b31550894d01c665a0aa8c5d8c77b1",
+  "bytes": 25587,
+  "limit": 32768,
+  "native_escape_keydown_tested": false,
+  "escape_test": "ISA code 27 only; native test adapter uses F2",
+  "result": "passed"
+}

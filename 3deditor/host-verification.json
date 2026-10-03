@@ -1,0 +1,10 @@
+{
+  "result": "passed",
+  "program_sha256": "089cc9d2c0e75bb602bd3f15b5f2879fe7b31550894d01c665a0aa8c5d8c77b1",
+  "x_axis_rotation": true,
+  "common_edge_vertices_once": true,
+  "common_face_vertices_once": true,
+  "invalid_json_atomic": true,
+  "launcher_f5_f6_roundtrip": true,
+  "native_escape_keydown_tested": false
+}
