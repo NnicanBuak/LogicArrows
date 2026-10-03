@@ -59,7 +59,7 @@ CONTEXT_BANK equ 48
 STATE_BANK equ 49
 TRI_STATE_BANK equ 50
 BLINK_FRAMES_BANK equ 81
-PROGRAM_BANK equ 139
+PROGRAM_BANK equ 141
 CTX0 equ 128
 CTX1 equ 129
 CTX2 equ 130
@@ -118,7 +118,7 @@ ld a, dx
 ld b, dy
 or a, b
 jnz bridge_vm_copy_loop_3
-ldi c, 20
+ldi c, 23
 ldi d, vm_dispatch
 jmp set_bank
 bridge_vm_copy_loop_3:
@@ -190,6 +190,77 @@ jmp set_bank
 
 ; Native bank 2
 ; 3DEditor native runtime
+op_pixel:
+ldi c, 2
+st c, ret2_bank
+ldi d, resume_op_pixel_0
+st d, ret2_addr
+ldi c, 39
+ldi d, vm_pop
+jmp set_bank
+resume_op_pixel_0:
+ld a, U0
+st a, color
+st a, color
+st a, color
+st a, color
+st a, color
+st a, color
+ldi c, 2
+st c, ret2_bank
+ldi d, resume_op_pixel_3
+st d, ret2_addr
+ldi c, 39
+ldi d, vm_pop
+jmp set_bank
+resume_op_pixel_3:
+ld a, U0
+st a, y0
+ldi c, 2
+st c, ret2_bank
+ldi d, resume_op_pixel_6
+st d, ret2_addr
+ldi c, 39
+ldi d, vm_pop
+jmp set_bank
+resume_op_pixel_6:
+ld a, U0
+st a, x0
+ld a, x0
+st a, wx
+ld a, y0
+st a, wy
+ldi c, 2
+st c, ret3_bank
+ldi d, resume_op_pixel_13
+st d, ret3_addr
+ldi c, 28
+ldi d, vm_save
+jmp set_bank
+resume_op_pixel_13:
+ldi c, 2
+st c, ret2_bank
+ldi d, resume_op_pixel_14
+st d, ret2_addr
+ldi c, 8
+ldi d, gfx_pixel
+jmp set_bank
+resume_op_pixel_14:
+ldi c, 2
+st c, ret3_bank
+ldi d, resume_op_pixel_15
+st d, ret3_addr
+ldi c, 27
+ldi d, vm_restore
+jmp set_bank
+resume_op_pixel_15:
+ldi c, 23
+ldi d, vm_dispatch
+jmp set_bank
+padding2 db 0,0,0,0,0,0,0,0
+
+; Native bank 3
+; 3DEditor native runtime
 vm_project_args:
 ld a, x0
 st a, wx
@@ -199,15 +270,15 @@ ld a, dx
 st a, wz
 clr a
 st a, roll
-ldi c, 2
+ldi c, 3
 st c, ret3_bank
 ldi d, resume_vm_project_args_8
 st d, ret3_addr
-ldi c, 27
+ldi c, 28
 ldi d, vm_save
 jmp set_bank
 resume_vm_project_args_8:
-ldi c, 2
+ldi c, 3
 st c, ret1_bank
 ldi d, resume_vm_project_args_9
 st d, ret1_addr
@@ -216,7 +287,7 @@ ldi d, gfx_project_vertex
 jmp set_bank
 resume_vm_project_args_9:
 ld a, wx
-ldi d, 2
+ldi d, 3
 st d, io_ret_bank
 ldi c, CONTEXT_BANK
 ldi b, CTX4
@@ -224,7 +295,7 @@ ldi d, io_vm_project_args_11
 jmp write_byte
 io_vm_project_args_11:
 ld a, wy
-ldi d, 2
+ldi d, 3
 st d, io_ret_bank
 ldi c, CONTEXT_BANK
 ldi b, CTX5
@@ -232,7 +303,7 @@ ldi d, io_vm_project_args_13
 jmp write_byte
 io_vm_project_args_13:
 ld a, wz
-ldi d, 2
+ldi d, 3
 st d, io_ret_bank
 ldi c, CONTEXT_BANK
 ldi b, CTX6
@@ -240,33 +311,33 @@ ldi d, io_vm_project_args_15
 jmp write_byte
 io_vm_project_args_15:
 ld a, depth
-ldi d, 2
+ldi d, 3
 st d, io_ret_bank
 ldi c, CONTEXT_BANK
 ldi b, CTX7
 ldi d, io_vm_project_args_17
 jmp write_byte
 io_vm_project_args_17:
-ldi c, 2
+ldi c, 3
 st c, ret3_bank
 ldi d, resume_vm_project_args_18
 st d, ret3_addr
-ldi c, 26
+ldi c, 27
 ldi d, vm_restore
 jmp set_bank
 resume_vm_project_args_18:
-ldi c, 20
+ldi c, 23
 ldi d, vm_dispatch
 jmp set_bank
-; 3DGraphics API: triangle_inside
-triangle_inside:
+; 3DGraphics API: project_invisible
+project_invisible:
 clr a
-st a, signs
-ldi c, 40
-ldi d, triangle_sign0
+st a, wz
+ld c, ret1_bank
+ld d, ret1_addr
 jmp set_bank
 
-; Native bank 3
+; Native bank 4
 ; 3DGraphics API: gfx_rotate_pair
 gfx_rotate_pair:
 ld a, ru
@@ -275,22 +346,22 @@ ldi c, 8
 add b, c
 ldi c, 31
 and b, c
-ldi c, 3
+ldi c, 4
 st c, ret3_bank
 ldi d, resume_gfx_rotate_pair_6
 st d, ret3_addr
-ldi c, 25
+ldi c, 26
 ldi d, gfx_sine_product
 jmp set_bank
 resume_gfx_rotate_pair_6:
 st a, t0
 ld a, rv
 ld b, angle
-ldi c, 3
+ldi c, 4
 st c, ret3_bank
 ldi d, resume_gfx_rotate_pair_10
 st d, ret3_addr
-ldi c, 25
+ldi c, 26
 ldi d, gfx_sine_product
 jmp set_bank
 resume_gfx_rotate_pair_10:
@@ -301,22 +372,22 @@ ldi c, 8
 add b, c
 ldi c, 31
 and b, c
-ldi c, 3
+ldi c, 4
 st c, ret3_bank
 ldi d, resume_gfx_rotate_pair_18
 st d, ret3_addr
-ldi c, 25
+ldi c, 26
 ldi d, gfx_sine_product
 jmp set_bank
 resume_gfx_rotate_pair_18:
 st a, rv
 ld a, ru
 ld b, angle
-ldi c, 3
+ldi c, 4
 st c, ret3_bank
 ldi d, resume_gfx_rotate_pair_22
 st d, ret3_addr
-ldi c, 25
+ldi c, 26
 ldi d, gfx_sine_product
 jmp set_bank
 resume_gfx_rotate_pair_22:
@@ -334,86 +405,14 @@ st a, ru
 ld c, ret2_bank
 ld d, ret2_addr
 jmp set_bank
-padding3 db 0,0,0,0,0,0,0,0,0,0,0,0
-
-; Native bank 4
-; 3DEditor native runtime
-op_pixel:
-ldi c, 4
-st c, ret2_bank
-ldi d, resume_op_pixel_0
-st d, ret2_addr
-ldi c, 39
-ldi d, vm_pop
-jmp set_bank
-resume_op_pixel_0:
-ld a, U0
-st a, color
-ldi c, 4
-st c, ret2_bank
-ldi d, resume_op_pixel_3
-st d, ret2_addr
-ldi c, 39
-ldi d, vm_pop
-jmp set_bank
-resume_op_pixel_3:
-ld a, U0
-st a, y0
-ldi c, 4
-st c, ret2_bank
-ldi d, resume_op_pixel_6
-st d, ret2_addr
-ldi c, 39
-ldi d, vm_pop
-jmp set_bank
-resume_op_pixel_6:
-ld a, U0
-st a, x0
-ld a, x0
-st a, wx
-ld a, y0
-st a, wy
-ldi c, 4
-st c, ret3_bank
-ldi d, resume_op_pixel_13
-st d, ret3_addr
-ldi c, 27
-ldi d, vm_save
-jmp set_bank
-resume_op_pixel_13:
-ldi c, 4
-st c, ret2_bank
-ldi d, resume_op_pixel_14
-st d, ret2_addr
-ldi c, 7
-ldi d, gfx_pixel
-jmp set_bank
-resume_op_pixel_14:
-ldi c, 4
-st c, ret3_bank
-ldi d, resume_op_pixel_15
-st d, ret3_addr
-ldi c, 26
-ldi d, vm_restore
-jmp set_bank
-resume_op_pixel_15:
-ldi c, 20
-ldi d, vm_dispatch
-jmp set_bank
-; 3DEditor native runtime
-gfx_begin:
+; 3DGraphics API: triangle_inside
+triangle_inside:
 clr a
-st a, 62
-ldi b, 64
-ldi c, 64
-editor_begin_loop:
-st a, b
-inc b
-dec c
-jnz editor_begin_loop
-ld c, ret0_bank
-ld d, ret0_addr
+st a, signs
+ldi c, 40
+ldi d, triangle_sign0
 jmp set_bank
+padding4 db 0,0,0
 
 ; Native bank 5
 ; 3DGraphics API: triangle_determinant
@@ -436,7 +435,7 @@ ldi c, 5
 st c, ret3_bank
 ldi d, resume_triangle_determinant_14
 st d, ret3_addr
-ldi c, 27
+ldi c, 28
 ldi d, gfx_mul16
 jmp set_bank
 resume_triangle_determinant_14:
@@ -461,7 +460,7 @@ ldi c, 5
 st c, ret3_bank
 ldi d, resume_triangle_determinant_32
 st d, ret3_addr
-ldi c, 27
+ldi c, 28
 ldi d, gfx_mul16
 jmp set_bank
 resume_triangle_determinant_32:
@@ -476,7 +475,7 @@ st a, sy
 ld a, out_addr
 test a
 jz bridge_triangle_determinant_43
-ldi c, 9
+ldi c, 10
 ldi d, triangle_save
 jmp set_bank
 bridge_triangle_determinant_43:
@@ -493,18 +492,94 @@ ldi c, 43
 ldi d, vm_immediate
 jmp set_bank
 resume_op_get_0:
-ldi c, 25
+ldi c, 26
 ldi d, vm_load_word
 jmp set_bank
 
 ; Native bank 6
+; 3DEditor native runtime
+op_triangle:
+ldi c, 6
+st c, ret2_bank
+ldi d, resume_op_triangle_0
+st d, ret2_addr
+ldi c, 39
+ldi d, vm_pop
+jmp set_bank
+resume_op_triangle_0:
+ld a, U0
+st a, color
+st a, color
+st a, color
+st a, color
+st a, color
+st a, color
+ldi c, 6
+st c, ret2_bank
+ldi d, resume_op_triangle_3
+st d, ret2_addr
+ldi c, 39
+ldi d, vm_pop
+jmp set_bank
+resume_op_triangle_3:
+ld a, U0
+st a, dy
+ldi c, 6
+st c, ret2_bank
+ldi d, resume_op_triangle_6
+st d, ret2_addr
+ldi c, 39
+ldi d, vm_pop
+jmp set_bank
+resume_op_triangle_6:
+ld a, U0
+st a, dx
+ldi c, 6
+st c, ret2_bank
+ldi d, resume_op_triangle_9
+st d, ret2_addr
+ldi c, 39
+ldi d, vm_pop
+jmp set_bank
+resume_op_triangle_9:
+ld a, U0
+st a, y1
+ldi c, 6
+st c, ret2_bank
+ldi d, resume_op_triangle_12
+st d, ret2_addr
+ldi c, 39
+ldi d, vm_pop
+jmp set_bank
+resume_op_triangle_12:
+ld a, U0
+st a, x1
+ldi c, 16
+ldi d, vm_triangle_args
+jmp set_bank
+; 3DEditor native runtime
+op_drop:
+ldi c, 6
+st c, ret2_bank
+ldi d, resume_op_drop_0
+st d, ret2_addr
+ldi c, 39
+ldi d, vm_pop
+jmp set_bank
+resume_op_drop_0:
+ldi c, 23
+ldi d, vm_dispatch
+jmp set_bank
+padding6 db 0,0
+
+; Native bank 7
 ; 3DGraphics API: gfx_triangle
 gfx_triangle:
 ld a, dx
 st a, wx
 ld a, dy
 st a, wy
-ldi c, 6
+ldi c, 7
 st c, ret2_bank
 ldi d, resume_gfx_triangle_4
 st d, ret2_addr
@@ -523,15 +598,15 @@ bridge_gfx_triangle_8:
 clr a
 st a, wx
 st a, wy
-ldi c, 6
+ldi c, 7
 st c, ret2_bank
 ldi d, resume_gfx_triangle_12
 st d, ret2_addr
-ldi c, 32
+ldi c, 35
 ldi d, triangle_init0
 jmp set_bank
 resume_gfx_triangle_12:
-ldi c, 6
+ldi c, 7
 st c, ret2_bank
 ldi d, resume_gfx_triangle_13
 st d, ret2_addr
@@ -539,7 +614,7 @@ ldi c, 12
 ldi d, triangle_init1
 jmp set_bank
 resume_gfx_triangle_13:
-ldi c, 6
+ldi c, 7
 st c, ret2_bank
 ldi d, resume_gfx_triangle_14
 st d, ret2_addr
@@ -547,15 +622,15 @@ ldi c, 12
 ldi d, triangle_init2
 jmp set_bank
 resume_gfx_triangle_14:
-ldi c, 6
+ldi c, 7
 st c, ret2_bank
 ldi d, resume_gfx_triangle_15
 st d, ret2_addr
-ldi c, 23
+ldi c, 24
 ldi d, triangle_load0
 jmp set_bank
 resume_gfx_triangle_15:
-ldi c, 28
+ldi c, 29
 ldi d, triangle_scan
 jmp set_bank
 ; 3DGraphics API: project_parallel
@@ -575,9 +650,9 @@ st a, wz
 ld c, ret1_bank
 ld d, ret1_addr
 jmp set_bank
-padding6 db 0
+padding7 db 0
 
-; Native bank 7
+; Native bank 8
 ; 3DGraphics API: gfx_pixel
 gfx_pixel:
 clr a
@@ -664,12 +739,12 @@ pixel_done:
 ld c, ret2_bank
 ld d, ret2_addr
 jmp set_bank
-padding7 db 0,0,0
+padding8 db 0,0,0
 
-; Native bank 8
+; Native bank 9
 ; 3DEditor native runtime
 op_key:
-ldi d, 8
+ldi d, 9
 st d, io_ret_bank
 ldi c, CONTEXT_BANK
 ldi b, CTX_BLINK_ACTIVE
@@ -703,11 +778,11 @@ st a, dy
 jnz vm_key_wait
 ldi a, 2
 st a, dy
-ldi c, 8
+ldi c, 9
 st c, ret1_bank
 ldi d, resume_op_key_28
 st d, ret1_addr
-ldi c, 10
+ldi c, 11
 ldi d, vm_blink
 jmp set_bank
 resume_op_key_28:
@@ -716,7 +791,7 @@ vm_key_ready:
 st a, U0
 clr a
 st a, U1
-ldi c, 8
+ldi c, 9
 st c, ret2_bank
 ldi d, resume_op_key_34
 st d, ret2_addr
@@ -724,7 +799,7 @@ ldi c, 39
 ldi d, vm_push
 jmp set_bank
 resume_op_key_34:
-ldi c, 20
+ldi c, 23
 ldi d, vm_dispatch
 jmp set_bank
 ; 3DEditor native runtime
@@ -743,16 +818,16 @@ ld a, M0
 ldi b, 128
 or a, b
 st a, PC_ADDR
-ldi c, 20
+ldi c, 23
 ldi d, vm_dispatch
 jmp set_bank
-padding8 db 0
+padding9 db 0
 
-; Native bank 9
+; Native bank 10
 ; 3DGraphics API: triangle_save
 triangle_save:
 ld a, sx
-ldi d, 9
+ldi d, 10
 st d, io_ret_bank
 ldi c, TRI_STATE_BANK
 ld b, out_addr
@@ -763,7 +838,7 @@ ld a, out_addr
 inc a
 st a, out_addr
 ld a, sy
-ldi d, 9
+ldi d, 10
 st d, io_ret_bank
 ldi c, TRI_STATE_BANK
 ld b, out_addr
@@ -784,7 +859,7 @@ ld b, mask
 inc b
 ld b, b
 sub a, b
-ldi d, 9
+ldi d, 10
 st d, io_ret_bank
 ldi c, TRI_STATE_BANK
 ld b, out_addr
@@ -800,7 +875,7 @@ ld a, b
 ld b, angle
 ld b, b
 sub a, b
-ldi d, 9
+ldi d, 10
 st d, io_ret_bank
 ldi c, TRI_STATE_BANK
 ld b, out_addr
@@ -828,15 +903,15 @@ st c, dx
 st b, dy
 clr a
 st a, x1
-ldi c, 23
+ldi c, 24
 ldi d, sine_mask
 jmp set_bank
-padding9 db 0,0,0
+padding10 db 0,0,0
 
-; Native bank 10
+; Native bank 11
 ; 3DEditor native runtime
 vm_blink:
-ldi d, 10
+ldi d, 11
 st d, io_ret_bank
 ldi c, CONTEXT_BANK
 ldi b, CTX_BLINK_PHASE
@@ -846,7 +921,7 @@ io_vm_blink_0:
 ldi b, 1
 xor a, b
 st a, sy
-ldi d, 10
+ldi d, 11
 st d, io_ret_bank
 ldi c, CONTEXT_BANK
 ldi b, CTX_BLINK_PHASE
@@ -868,7 +943,7 @@ st a, x1
 vm_blink_loop:
 ldi c, BLINK_FRAMES_BANK
 ld b, x0
-ldi d, 10
+ldi d, 11
 st d, io_ret_bank
 ldi d, io_vm_blink_20
 jmp read_byte
@@ -892,64 +967,6 @@ st a, x1
 jnz vm_blink_loop
 ld c, ret1_bank
 ld d, ret1_addr
-jmp set_bank
-padding10 db 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
-
-; Native bank 11
-; 3DEditor native runtime
-op_triangle:
-ldi c, 11
-st c, ret2_bank
-ldi d, resume_op_triangle_0
-st d, ret2_addr
-ldi c, 39
-ldi d, vm_pop
-jmp set_bank
-resume_op_triangle_0:
-ld a, U0
-st a, color
-ldi c, 11
-st c, ret2_bank
-ldi d, resume_op_triangle_3
-st d, ret2_addr
-ldi c, 39
-ldi d, vm_pop
-jmp set_bank
-resume_op_triangle_3:
-ld a, U0
-st a, dy
-ldi c, 11
-st c, ret2_bank
-ldi d, resume_op_triangle_6
-st d, ret2_addr
-ldi c, 39
-ldi d, vm_pop
-jmp set_bank
-resume_op_triangle_6:
-ld a, U0
-st a, dx
-ldi c, 11
-st c, ret2_bank
-ldi d, resume_op_triangle_9
-st d, ret2_addr
-ldi c, 39
-ldi d, vm_pop
-jmp set_bank
-resume_op_triangle_9:
-ld a, U0
-st a, y1
-ldi c, 11
-st c, ret2_bank
-ldi d, resume_op_triangle_12
-st d, ret2_addr
-ldi c, 39
-ldi d, vm_pop
-jmp set_bank
-resume_op_triangle_12:
-ld a, U0
-st a, x1
-ldi c, 16
-ldi d, vm_triangle_args
 jmp set_bank
 ; 3DGraphics API: triangle_area
 triangle_area:
@@ -1015,7 +1032,7 @@ jmp set_bank
 resume_op_project_12:
 ld a, U0
 st a, x0
-ldi c, 2
+ldi c, 3
 ldi d, vm_project_args
 jmp set_bank
 ; 3DGraphics API: triangle_init1
@@ -1093,7 +1110,7 @@ ldi c, 39
 ldi d, vm_push
 jmp set_bank
 resume_op_mul_37:
-ldi c, 20
+ldi c, 23
 ldi d, vm_dispatch
 jmp set_bank
 ; 3DGraphics API: gfx_divide_projection
@@ -1152,7 +1169,7 @@ ldi c, 14
 st c, ret2_bank
 ldi d, resume_triangle_row_20
 st d, ret2_addr
-ldi c, 30
+ldi c, 31
 ldi d, triangle_advance_x
 jmp set_bank
 resume_triangle_row_20:
@@ -1177,7 +1194,7 @@ ldi c, 31
 ldi d, triangle_advance_y
 jmp set_bank
 resume_triangle_row_34:
-ldi c, 28
+ldi c, 29
 ldi d, triangle_pixel
 jmp set_bank
 triangle_done:
@@ -1202,7 +1219,7 @@ ldi c, 39
 ldi d, vm_pop
 jmp set_bank
 resume_op_set_1:
-ldi c, 32
+ldi c, 20
 ldi d, vm_store_word
 jmp set_bank
 
@@ -1246,14 +1263,14 @@ st a, depth
 ldi b, 8
 sub a, b
 jnc bridge_project_translate_18
-ldi c, 31
+ldi c, 3
 ldi d, project_invisible
 jmp set_bank
 bridge_project_translate_18:
 ldi b, 56
 sub a, b
 jc bridge_project_translate_21
-ldi c, 31
+ldi c, 3
 ldi d, project_invisible
 jmp set_bank
 bridge_project_translate_21:
@@ -1313,7 +1330,7 @@ ldi c, 16
 st c, ret3_bank
 ldi d, resume_vm_triangle_args_6
 st d, ret3_addr
-ldi c, 27
+ldi c, 28
 ldi d, vm_save
 jmp set_bank
 resume_vm_triangle_args_6:
@@ -1321,7 +1338,7 @@ ldi c, 16
 st c, ret1_bank
 ldi d, resume_vm_triangle_args_7
 st d, ret1_addr
-ldi c, 6
+ldi c, 7
 ldi d, gfx_triangle
 jmp set_bank
 resume_vm_triangle_args_7:
@@ -1329,11 +1346,11 @@ ldi c, 16
 st c, ret3_bank
 ldi d, resume_vm_triangle_args_8
 st d, ret3_addr
-ldi c, 26
+ldi c, 27
 ldi d, vm_restore
 jmp set_bank
 resume_vm_triangle_args_8:
-ldi c, 20
+ldi c, 23
 ldi d, vm_dispatch
 jmp set_bank
 ; 3DEditor native runtime
@@ -1358,7 +1375,7 @@ ldi c, 39
 ldi d, vm_push
 jmp set_bank
 resume_op_const_5:
-ldi c, 20
+ldi c, 23
 ldi d, vm_dispatch
 jmp set_bank
 padding16 db 0,0
@@ -1390,7 +1407,7 @@ ldi c, 17
 st c, ret3_bank
 ldi d, resume_native_continuation_1_6
 st d, ret3_addr
-ldi c, 27
+ldi c, 28
 ldi d, vm_save
 jmp set_bank
 resume_native_continuation_1_6:
@@ -1398,7 +1415,7 @@ ldi c, 17
 st c, ret1_bank
 ldi d, resume_native_continuation_1_7
 st d, ret1_addr
-ldi c, 29
+ldi c, 30
 ldi d, gfx_line
 jmp set_bank
 resume_native_continuation_1_7:
@@ -1406,11 +1423,11 @@ ldi c, 17
 st c, ret3_bank
 ldi d, resume_native_continuation_1_8
 st d, ret3_addr
-ldi c, 26
+ldi c, 27
 ldi d, vm_restore
 jmp set_bank
 resume_native_continuation_1_8:
-ldi c, 20
+ldi c, 23
 ldi d, vm_dispatch
 jmp set_bank
 ; 3DEditor native runtime
@@ -1438,7 +1455,7 @@ ldi d, io_op_ret_13
 jmp read_byte
 io_op_ret_13:
 st a, PC_ADDR
-ldi c, 20
+ldi c, 23
 ldi d, vm_dispatch
 jmp set_bank
 
@@ -1453,7 +1470,7 @@ ldi c, 18
 st c, ret2_bank
 ldi d, resume_line_pixel_4
 st d, ret2_addr
-ldi c, 7
+ldi c, 8
 ldi d, gfx_line_pixel
 jmp set_bank
 resume_line_pixel_4:
@@ -1516,7 +1533,7 @@ ldi c, 41
 ldi d, vm_write
 jmp set_bank
 resume_op_store8_10:
-ldi c, 20
+ldi c, 23
 ldi d, vm_dispatch
 jmp set_bank
 
@@ -1533,7 +1550,7 @@ ldi c, 19
 st c, ret2_bank
 ldi d, resume_gfx_project_vertex_6
 st d, ret2_addr
-ldi c, 3
+ldi c, 4
 ldi d, gfx_rotate_pair
 jmp set_bank
 resume_gfx_project_vertex_6:
@@ -1551,7 +1568,7 @@ ldi c, 19
 st c, ret2_bank
 ldi d, resume_gfx_project_vertex_17
 st d, ret2_addr
-ldi c, 3
+ldi c, 4
 ldi d, gfx_rotate_pair
 jmp set_bank
 resume_gfx_project_vertex_17:
@@ -1594,7 +1611,7 @@ ldi c, 39
 ldi d, vm_push
 jmp set_bank
 resume_vm_division_done_22:
-ldi c, 20
+ldi c, 23
 ldi d, vm_dispatch
 jmp set_bank
 
@@ -1643,41 +1660,41 @@ ldi c, 39
 ldi d, vm_push
 jmp set_bank
 resume_op_lt_27:
-jmp vm_dispatch
+ldi c, 23
+ldi d, vm_dispatch
+jmp set_bank
 ; 3DEditor native runtime
-vm_dispatch:
+vm_store_word:
+ld a, U0
 ldi c, 20
 st c, ret3_bank
-ldi d, resume_vm_dispatch_0
+ldi d, resume_vm_store_word_1
+st d, ret3_addr
+ldi c, 41
+ldi d, vm_write
+jmp set_bank
+resume_vm_store_word_1:
+ldi c, 20
+st c, ret3_bank
+ldi d, resume_vm_store_word_2
 st d, ret3_addr
 ldi c, 42
-ldi d, vm_fetch
+ldi d, vm_increment_address
 jmp set_bank
-resume_vm_dispatch_0:
-dec a
-shl a
-ldi b, 128
-add b, a
-st b, opcode
-ldi c, DISPATCH_BANK
-ldi d, 20
-st d, io_ret_bank
-ldi d, io_vm_dispatch_7
-jmp read_byte
-io_vm_dispatch_7:
-st a, x0
-ld b, opcode
-inc b
-ldi c, DISPATCH_BANK
-ldi d, 20
-st d, io_ret_bank
-ldi d, io_vm_dispatch_12
-jmp read_byte
-io_vm_dispatch_12:
-mov d, a
-ld c, x0
+resume_vm_store_word_2:
+ld a, U1
+ldi c, 20
+st c, ret3_bank
+ldi d, resume_vm_store_word_4
+st d, ret3_addr
+ldi c, 41
+ldi d, vm_write
 jmp set_bank
-padding20 db 0,0,0,0,0,0,0,0,0
+resume_vm_store_word_4:
+ldi c, 23
+ldi d, vm_dispatch
+jmp set_bank
+padding20 db 0,0,0,0
 
 ; Native bank 21
 ; 3DEditor native runtime
@@ -1722,7 +1739,7 @@ st a, W0
 st a, W1
 ldi a, 16
 st a, roll
-ldi c, 26
+ldi c, 27
 ldi d, vm_division_loop
 jmp set_bank
 ; 3DEditor native runtime
@@ -1758,7 +1775,7 @@ ldi c, 39
 ldi d, vm_push
 jmp set_bank
 resume_op_shr_16:
-ldi c, 20
+ldi c, 23
 ldi d, vm_dispatch
 jmp set_bank
 
@@ -1837,14 +1854,90 @@ ldi c, 39
 ldi d, vm_push
 jmp set_bank
 resume_op_shl_16:
-ldi c, 20
+ldi c, 23
 ldi d, vm_dispatch
 jmp set_bank
 
 ; Native bank 23
+; 3DEditor native runtime
+op_line:
+ldi c, 23
+st c, ret2_bank
+ldi d, resume_op_line_0
+st d, ret2_addr
+ldi c, 39
+ldi d, vm_pop
+jmp set_bank
+resume_op_line_0:
+ld a, U0
+st a, color
+st a, color
+st a, color
+st a, color
+st a, color
+st a, color
+ldi c, 23
+st c, ret2_bank
+ldi d, resume_op_line_3
+st d, ret2_addr
+ldi c, 39
+ldi d, vm_pop
+jmp set_bank
+resume_op_line_3:
+ld a, U0
+st a, y1
+ldi c, 23
+st c, ret2_bank
+ldi d, resume_op_line_6
+st d, ret2_addr
+ldi c, 39
+ldi d, vm_pop
+jmp set_bank
+resume_op_line_6:
+ld a, U0
+st a, x1
+ldi c, 17
+ldi d, native_continuation_1
+jmp set_bank
+; 3DEditor native runtime
+vm_dispatch:
+ldi c, 23
+st c, ret3_bank
+ldi d, resume_vm_dispatch_0
+st d, ret3_addr
+ldi c, 42
+ldi d, vm_fetch
+jmp set_bank
+resume_vm_dispatch_0:
+dec a
+shl a
+ldi b, 128
+add b, a
+st b, opcode
+ldi c, DISPATCH_BANK
+ldi d, 23
+st d, io_ret_bank
+ldi d, io_vm_dispatch_7
+jmp read_byte
+io_vm_dispatch_7:
+st a, x0
+ld b, opcode
+inc b
+ldi c, DISPATCH_BANK
+ldi d, 23
+st d, io_ret_bank
+ldi d, io_vm_dispatch_12
+jmp read_byte
+io_vm_dispatch_12:
+mov d, a
+ld c, x0
+jmp set_bank
+padding23 db 0,0,0,0,0,0,0
+
+; Native bank 24
 ; 3DGraphics API: sine_mask
 sine_mask:
-ldi d, 23
+ldi d, 24
 st d, io_ret_bank
 ld c, dx
 ld b, dy
@@ -1893,7 +1986,7 @@ st a, ru
 ldi a, triangle_registers
 st a, rv
 triangle_load_loop:
-ldi d, 23
+ldi d, 24
 st d, io_ret_bank
 ldi c, TRI_STATE_BANK
 ld b, ru
@@ -1917,12 +2010,12 @@ ld d, ret2_addr
 jmp set_bank
 ; 3DGraphics API: triangle_registers
 triangle_registers db x0,y0,x1,y1,dx,dy,sx,sy,err,ret3_bank,ret3_addr,angle
-padding23 db 0
+padding24 db 0
 
-; Native bank 24
+; Native bank 25
 ; 3DEditor native runtime
 op_text:
-ldi c, 24
+ldi c, 25
 st c, ret1_bank
 ldi d, resume_op_text_0
 st d, ret1_addr
@@ -1934,7 +2027,7 @@ ldi a, 49
 st a, 62
 ld a, 62
 text_loop:
-ldi c, 24
+ldi c, 25
 st c, ret3_bank
 ldi d, resume_op_text_5
 st d, ret3_addr
@@ -1945,7 +2038,7 @@ resume_op_text_5:
 test a
 jz text_done
 st a, 60
-ldi c, 24
+ldi c, 25
 st c, ret3_bank
 ldi d, resume_op_text_9
 st d, ret3_addr
@@ -1958,12 +2051,12 @@ text_done:
 ldi a, 48
 st a, 62
 ld a, 62
-ldi c, 20
+ldi c, 23
 ldi d, vm_dispatch
 jmp set_bank
 ; 3DEditor native runtime
 op_load8:
-ldi c, 24
+ldi c, 25
 st c, ret2_bank
 ldi d, resume_op_load8_0
 st d, ret2_addr
@@ -1975,7 +2068,7 @@ ld a, U0
 st a, M0
 ld a, U1
 st a, M1
-ldi c, 24
+ldi c, 25
 st c, ret3_bank
 ldi d, resume_op_load8_5
 st d, ret3_addr
@@ -1986,7 +2079,7 @@ resume_op_load8_5:
 st a, U0
 clr b
 st b, U1
-ldi c, 24
+ldi c, 25
 st c, ret2_bank
 ldi d, resume_op_load8_9
 st d, ret2_addr
@@ -1994,14 +2087,14 @@ ldi c, 39
 ldi d, vm_push
 jmp set_bank
 resume_op_load8_9:
-ldi c, 20
+ldi c, 23
 ldi d, vm_dispatch
 jmp set_bank
 
-; Native bank 25
+; Native bank 26
 ; 3DEditor native runtime
 vm_load_word:
-ldi c, 25
+ldi c, 26
 st c, ret3_bank
 ldi d, resume_vm_load_word_0
 st d, ret3_addr
@@ -2010,7 +2103,7 @@ ldi d, vm_read
 jmp set_bank
 resume_vm_load_word_0:
 st a, U0
-ldi c, 25
+ldi c, 26
 st c, ret3_bank
 ldi d, resume_vm_load_word_2
 st d, ret3_addr
@@ -2018,7 +2111,7 @@ ldi c, 42
 ldi d, vm_increment_address
 jmp set_bank
 resume_vm_load_word_2:
-ldi c, 25
+ldi c, 26
 st c, ret3_bank
 ldi d, resume_vm_load_word_3
 st d, ret3_addr
@@ -2027,7 +2120,7 @@ ldi d, vm_read
 jmp set_bank
 resume_vm_load_word_3:
 st a, U1
-ldi c, 25
+ldi c, 26
 st c, ret2_bank
 ldi d, resume_vm_load_word_5
 st d, ret2_addr
@@ -2035,7 +2128,7 @@ ldi c, 39
 ldi d, vm_push
 jmp set_bank
 resume_vm_load_word_5:
-ldi c, 20
+ldi c, 23
 ldi d, vm_dispatch
 jmp set_bank
 ; 3DGraphics API: gfx_sine_product
@@ -2072,7 +2165,7 @@ jz sine_zero
 ldi c, 8
 xor c, a
 jz bridge_gfx_sine_product_31
-ldi c, 9
+ldi c, 10
 ldi d, sine_fetch
 jmp set_bank
 bridge_gfx_sine_product_31:
@@ -2086,7 +2179,7 @@ ld c, ret3_bank
 ld d, ret3_addr
 jmp set_bank
 
-; Native bank 26
+; Native bank 27
 ; 3DEditor native runtime
 vm_division_loop:
 ld a, U0
@@ -2131,7 +2224,7 @@ ldi d, vm_division_done
 jmp set_bank
 ; 3DEditor native runtime
 vm_restore:
-ldi d, 26
+ldi d, 27
 st d, io_ret_bank
 ldi c, CONTEXT_BANK
 ldi b, CTX0
@@ -2139,7 +2232,7 @@ ldi d, io_vm_restore_0
 jmp read_byte
 io_vm_restore_0:
 st a, PC_BANK
-ldi d, 26
+ldi d, 27
 st d, io_ret_bank
 ldi c, CONTEXT_BANK
 ldi b, CTX1
@@ -2147,7 +2240,7 @@ ldi d, io_vm_restore_2
 jmp read_byte
 io_vm_restore_2:
 st a, PC_ADDR
-ldi d, 26
+ldi d, 27
 st d, io_ret_bank
 ldi c, CONTEXT_BANK
 ldi b, CTX2
@@ -2155,7 +2248,7 @@ ldi d, io_vm_restore_4
 jmp read_byte
 io_vm_restore_4:
 st a, SP
-ldi d, 26
+ldi d, 27
 st d, io_ret_bank
 ldi c, CONTEXT_BANK
 ldi b, CTX3
@@ -2167,7 +2260,7 @@ ld c, ret3_bank
 ld d, ret3_addr
 jmp set_bank
 
-; Native bank 27
+; Native bank 28
 ; 3DGraphics API: gfx_mul16
 gfx_mul16:
 ld a, ru
@@ -2219,7 +2312,7 @@ jmp set_bank
 ; 3DEditor native runtime
 vm_save:
 ld a, PC_BANK
-ldi d, 27
+ldi d, 28
 st d, io_ret_bank
 ldi c, CONTEXT_BANK
 ldi b, CTX0
@@ -2227,7 +2320,7 @@ ldi d, io_vm_save_1
 jmp write_byte
 io_vm_save_1:
 ld a, PC_ADDR
-ldi d, 27
+ldi d, 28
 st d, io_ret_bank
 ldi c, CONTEXT_BANK
 ldi b, CTX1
@@ -2235,7 +2328,7 @@ ldi d, io_vm_save_3
 jmp write_byte
 io_vm_save_3:
 ld a, SP
-ldi d, 27
+ldi d, 28
 st d, io_ret_bank
 ldi c, CONTEXT_BANK
 ldi b, CTX2
@@ -2243,7 +2336,7 @@ ldi d, io_vm_save_5
 jmp write_byte
 io_vm_save_5:
 ld a, RSP
-ldi d, 27
+ldi d, 28
 st d, io_ret_bank
 ldi c, CONTEXT_BANK
 ldi b, CTX3
@@ -2254,10 +2347,10 @@ ld c, ret3_bank
 ld d, ret3_addr
 jmp set_bank
 
-; Native bank 28
+; Native bank 29
 ; 3DEditor native runtime
 op_loads:
-ldi c, 28
+ldi c, 29
 st c, ret2_bank
 ldi d, resume_op_loads_0
 st d, ret2_addr
@@ -2269,7 +2362,7 @@ ld a, U0
 st a, M0
 ld a, U1
 st a, M1
-ldi c, 28
+ldi c, 29
 st c, ret3_bank
 ldi d, resume_op_loads_5
 st d, ret3_addr
@@ -2284,7 +2377,7 @@ jns loads_positive
 dec b
 loads_positive:
 st b, U1
-ldi c, 28
+ldi c, 29
 st c, ret2_bank
 ldi d, resume_op_loads_13
 st d, ret2_addr
@@ -2292,27 +2385,27 @@ ldi c, 39
 ldi d, vm_push
 jmp set_bank
 resume_op_loads_13:
-ldi c, 20
+ldi c, 23
 ldi d, vm_dispatch
 jmp set_bank
 ; 3DGraphics API: triangle_scan
 triangle_scan:
 triangle_pixel:
-ldi c, 28
+ldi c, 29
 st c, ret2_bank
 ldi d, resume_triangle_scan_1
 st d, ret2_addr
-ldi c, 2
+ldi c, 4
 ldi d, triangle_inside
 jmp set_bank
 resume_triangle_scan_1:
 test a
 jz triangle_advance
-ldi c, 28
+ldi c, 29
 st c, ret2_bank
 ldi d, resume_triangle_scan_4
 st d, ret2_addr
-ldi c, 7
+ldi c, 8
 ldi d, gfx_pixel
 jmp set_bank
 resume_triangle_scan_4:
@@ -2327,17 +2420,17 @@ ldi c, 14
 ldi d, triangle_row
 jmp set_bank
 bridge_triangle_scan_11:
-ldi c, 28
+ldi c, 29
 st c, ret2_bank
 ldi d, resume_triangle_scan_12
 st d, ret2_addr
-ldi c, 30
+ldi c, 31
 ldi d, triangle_advance_x
 jmp set_bank
 resume_triangle_scan_12:
 jmp triangle_pixel
 
-; Native bank 29
+; Native bank 30
 ; 3DGraphics API: gfx_line
 gfx_line:
 ld a, x1
@@ -2383,7 +2476,7 @@ ldi d, line_pixel
 jmp set_bank
 ; 3DEditor native runtime
 op_call:
-ldi c, 29
+ldi c, 30
 st c, ret1_bank
 ldi d, resume_op_call_0
 st d, ret1_addr
@@ -2396,7 +2489,7 @@ ldi a, 128
 add b, a
 ldi c, RETURN_STACK_BANK
 ld a, PC_BANK
-ldi d, 29
+ldi d, 30
 st d, io_ret_bank
 ldi d, io_op_call_6
 jmp write_byte
@@ -2406,7 +2499,7 @@ ldi a, 129
 add b, a
 ldi c, RETURN_STACK_BANK
 ld a, PC_ADDR
-ldi d, 29
+ldi d, 30
 st d, io_ret_bank
 ldi d, io_op_call_12
 jmp write_byte
@@ -2415,47 +2508,12 @@ ld a, RSP
 inc a
 inc a
 st a, RSP
-ldi c, 8
+ldi c, 9
 ldi d, vm_jump
 jmp set_bank
-padding29 db 0,0,0,0,0,0
+padding30 db 0,0,0,0,0,0
 
-; Native bank 30
-; 3DEditor native runtime
-op_line:
-ldi c, 30
-st c, ret2_bank
-ldi d, resume_op_line_0
-st d, ret2_addr
-ldi c, 39
-ldi d, vm_pop
-jmp set_bank
-resume_op_line_0:
-ld a, U0
-st a, color
-ldi c, 30
-st c, ret2_bank
-ldi d, resume_op_line_3
-st d, ret2_addr
-ldi c, 39
-ldi d, vm_pop
-jmp set_bank
-resume_op_line_3:
-ld a, U0
-st a, y1
-ldi c, 30
-st c, ret2_bank
-ldi d, resume_op_line_6
-st d, ret2_addr
-ldi c, 39
-ldi d, vm_pop
-jmp set_bank
-resume_op_line_6:
-ld a, U0
-st a, x1
-ldi c, 17
-ldi d, native_continuation_1
-jmp set_bank
+; Native bank 31
 ; 3DGraphics API: triangle_advance_x
 triangle_advance_x:
 ld a, x0
@@ -2497,14 +2555,6 @@ st a, dy
 ld c, ret2_bank
 ld d, ret2_addr
 jmp set_bank
-; 3DGraphics API: triangle_inside_yes
-triangle_inside_yes:
-ldi a, 1
-ld c, ret2_bank
-ld d, ret2_addr
-jmp set_bank
-
-; Native bank 31
 ; 3DGraphics API: triangle_advance_y
 triangle_advance_y:
 ld a, x0
@@ -2546,9 +2596,17 @@ st a, dy
 ld c, ret2_bank
 ld d, ret2_addr
 jmp set_bank
+; 3DGraphics API: triangle_inside_yes
+triangle_inside_yes:
+ldi a, 1
+ld c, ret2_bank
+ld d, ret2_addr
+jmp set_bank
+
+; Native bank 32
 ; 3DEditor native runtime
 op_eq:
-ldi c, 31
+ldi c, 32
 st c, ret1_bank
 ldi d, resume_op_eq_0
 st d, ret1_addr
@@ -2572,7 +2630,7 @@ eq_done:
 st a, U0
 clr a
 st a, U1
-ldi c, 31
+ldi c, 32
 st c, ret2_bank
 ldi d, resume_op_eq_17
 st d, ret2_addr
@@ -2580,18 +2638,9 @@ ldi c, 39
 ldi d, vm_push
 jmp set_bank
 resume_op_eq_17:
-ldi c, 20
+ldi c, 23
 ldi d, vm_dispatch
 jmp set_bank
-; 3DGraphics API: project_invisible
-project_invisible:
-clr a
-st a, wz
-ld c, ret1_bank
-ld d, ret1_addr
-jmp set_bank
-
-; Native bank 32
 ; 3DGraphics API: project_choose
 project_choose:
 ld a, wx
@@ -2600,7 +2649,7 @@ add a, b
 ldi b, 64
 sub a, b
 jc bridge_project_choose_5
-ldi c, 31
+ldi c, 3
 ldi d, project_invisible
 jmp set_bank
 bridge_project_choose_5:
@@ -2610,7 +2659,7 @@ add a, b
 ldi b, 64
 sub a, b
 jc bridge_project_choose_11
-ldi c, 31
+ldi c, 3
 ldi d, project_invisible
 jmp set_bank
 bridge_project_choose_11:
@@ -2623,7 +2672,7 @@ jmp read_byte
 io_project_choose_12:
 test a
 jz bridge_project_choose_14
-ldi c, 6
+ldi c, 7
 ldi d, project_parallel
 jmp set_bank
 bridge_project_choose_14:
@@ -2631,46 +2680,12 @@ ldi c, 33
 ldi d, project_perspective
 jmp set_bank
 ; 3DEditor native runtime
-vm_store_word:
-ld a, U0
-ldi c, 32
-st c, ret3_bank
-ldi d, resume_vm_store_word_1
-st d, ret3_addr
-ldi c, 41
-ldi d, vm_write
+op_mod:
+ldi a, 1
+st a, opcode
+ldi c, 21
+ldi d, vm_divide
 jmp set_bank
-resume_vm_store_word_1:
-ldi c, 32
-st c, ret3_bank
-ldi d, resume_vm_store_word_2
-st d, ret3_addr
-ldi c, 42
-ldi d, vm_increment_address
-jmp set_bank
-resume_vm_store_word_2:
-ld a, U1
-ldi c, 32
-st c, ret3_bank
-ldi d, resume_vm_store_word_4
-st d, ret3_addr
-ldi c, 41
-ldi d, vm_write
-jmp set_bank
-resume_vm_store_word_4:
-ldi c, 20
-ldi d, vm_dispatch
-jmp set_bank
-; 3DGraphics API: triangle_init0
-triangle_init0:
-ldi a, TRI_STATE0
-st a, out_addr
-ldi a, x0
-ldi b, x1
-ldi c, 5
-ldi d, triangle_determinant
-jmp set_bank
-padding32 db 0,0,0
 
 ; Native bank 33
 ; 3DGraphics API: project_perspective
@@ -2709,7 +2724,7 @@ ldi c, 33
 st c, ret3_bank
 ldi d, resume_op_begin_0
 st d, ret3_addr
-ldi c, 27
+ldi c, 28
 ldi d, vm_save
 jmp set_bank
 resume_op_begin_0:
@@ -2717,7 +2732,7 @@ ldi c, 33
 st c, ret0_bank
 ldi d, resume_op_begin_1
 st d, ret0_addr
-ldi c, 4
+ldi c, 35
 ldi d, gfx_begin
 jmp set_bank
 resume_op_begin_1:
@@ -2725,12 +2740,12 @@ ldi c, 33
 st c, ret3_bank
 ldi d, resume_op_begin_2
 st d, ret3_addr
-ldi c, 26
+ldi c, 27
 ldi d, vm_restore
 jmp set_bank
 resume_op_begin_2:
 ld a, 62
-ldi c, 20
+ldi c, 23
 ldi d, vm_dispatch
 jmp set_bank
 ; 3DEditor native runtime
@@ -2763,7 +2778,7 @@ ldi c, 34
 st c, ret3_bank
 ldi d, resume_op_present_0
 st d, ret3_addr
-ldi c, 27
+ldi c, 28
 ldi d, vm_save
 jmp set_bank
 resume_op_present_0:
@@ -2771,7 +2786,7 @@ ldi c, 34
 st c, ret0_bank
 ldi d, resume_op_present_1
 st d, ret0_addr
-ldi c, 35
+ldi c, 36
 ldi d, gfx_present
 jmp set_bank
 resume_op_present_1:
@@ -2779,12 +2794,12 @@ ldi c, 34
 st c, ret3_bank
 ldi d, resume_op_present_2
 st d, ret3_addr
-ldi c, 26
+ldi c, 27
 ldi d, vm_restore
 jmp set_bank
 resume_op_present_2:
 ld a, 62
-ldi c, 20
+ldi c, 23
 ldi d, vm_dispatch
 jmp set_bank
 ; 3DEditor native runtime
@@ -2815,7 +2830,7 @@ ldi c, 39
 ldi d, vm_push
 jmp set_bank
 resume_op_not_11:
-ldi c, 20
+ldi c, 23
 ldi d, vm_dispatch
 jmp set_bank
 ; 3DEditor native runtime
@@ -2832,7 +2847,7 @@ ld a, U0
 st a, M0
 ld a, U1
 st a, M1
-ldi c, 25
+ldi c, 26
 ldi d, vm_load_word
 jmp set_bank
 padding34 db 0
@@ -2864,7 +2879,7 @@ ldi c, 39
 ldi d, vm_push
 jmp set_bank
 resume_op_add_9:
-ldi c, 20
+ldi c, 23
 ldi d, vm_dispatch
 jmp set_bank
 ; 3DEditor native runtime
@@ -2893,32 +2908,32 @@ ldi c, 39
 ldi d, vm_push
 jmp set_bank
 resume_op_sub_9:
-ldi c, 20
+ldi c, 23
 ldi d, vm_dispatch
 jmp set_bank
 ; 3DEditor native runtime
-gfx_present:
-ldi a, 48
+gfx_begin:
+clr a
 st a, 62
 ldi b, 64
-ldi d, 64
-editor_present_loop:
-ld a, b
+ldi c, 64
+editor_begin_loop:
 st a, b
 inc b
-dec d
-jnz editor_present_loop
+dec c
+jnz editor_begin_loop
 ld c, ret0_bank
 ld d, ret0_addr
 jmp set_bank
-; 3DEditor native runtime
-op_mod:
-ldi a, 1
-st a, opcode
-ldi c, 21
-ldi d, vm_divide
+; 3DGraphics API: triangle_init0
+triangle_init0:
+ldi a, TRI_STATE0
+st a, out_addr
+ldi a, x0
+ldi b, x1
+ldi c, 5
+ldi d, triangle_determinant
 jmp set_bank
-padding35 db 0,0
 
 ; Native bank 36
 ; 3DEditor native runtime
@@ -2947,7 +2962,7 @@ ldi c, 39
 ldi d, vm_push
 jmp set_bank
 resume_op_and_9:
-ldi c, 20
+ldi c, 23
 ldi d, vm_dispatch
 jmp set_bank
 ; 3DEditor native runtime
@@ -2976,21 +2991,23 @@ ldi c, 39
 ldi d, vm_push
 jmp set_bank
 resume_op_or_9:
-ldi c, 20
+ldi c, 23
 ldi d, vm_dispatch
 jmp set_bank
 ; 3DEditor native runtime
-op_drop:
-ldi c, 36
-st c, ret2_bank
-ldi d, resume_op_drop_0
-st d, ret2_addr
-ldi c, 39
-ldi d, vm_pop
-jmp set_bank
-resume_op_drop_0:
-ldi c, 20
-ldi d, vm_dispatch
+gfx_present:
+ldi a, 48
+st a, 62
+ldi b, 64
+ldi d, 64
+editor_present_loop:
+ld a, b
+st a, b
+inc b
+dec d
+jnz editor_present_loop
+ld c, ret0_bank
+ld d, ret0_addr
 jmp set_bank
 ; 3DGraphics API: sine_return
 sine_return:
@@ -3030,7 +3047,7 @@ ldi c, 39
 ldi d, vm_push
 jmp set_bank
 resume_op_xor_9:
-ldi c, 20
+ldi c, 23
 ldi d, vm_dispatch
 jmp set_bank
 ; 3DEditor native runtime
@@ -3059,7 +3076,7 @@ ldi c, 39
 ldi d, vm_push
 jmp set_bank
 resume_op_dup_2:
-ldi c, 20
+ldi c, 23
 ldi d, vm_dispatch
 jmp set_bank
 ; 3DEditor native runtime
@@ -3073,7 +3090,7 @@ st a, SP
 st a, RSP
 st a, 62
 ld a, 62
-ldi c, 20
+ldi c, 23
 ldi d, vm_dispatch
 jmp set_bank
 ; 3DEditor native runtime
@@ -3111,7 +3128,7 @@ ldi b, CTX_BLINK_PHASE
 ldi d, io_op_blink_4
 jmp write_byte
 io_op_blink_4:
-ldi c, 20
+ldi c, 23
 ldi d, vm_dispatch
 jmp set_bank
 ; 3DEditor native runtime
@@ -3136,11 +3153,11 @@ ld a, U0
 ld b, U1
 or a, b
 jnz bridge_op_jz_5
-ldi c, 8
+ldi c, 9
 ldi d, vm_jump
 jmp set_bank
 bridge_op_jz_5:
-ldi c, 20
+ldi c, 23
 ldi d, vm_dispatch
 jmp set_bank
 padding38 db 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
@@ -3196,7 +3213,7 @@ ldi d, resume_op_neg_8
 st d, ret2_addr
 jmp vm_push
 resume_op_neg_8:
-ldi c, 20
+ldi c, 23
 ldi d, vm_dispatch
 jmp set_bank
 ; 3DEditor native runtime
@@ -3324,7 +3341,7 @@ js triangle_negative2
 ld b, dx
 or a, b
 jnz bridge_triangle_sign2_5
-ldi c, 30
+ldi c, 31
 ldi d, triangle_inside_yes
 jmp set_bank
 bridge_triangle_sign2_5:
@@ -3344,7 +3361,7 @@ ldi c, 1
 ldi d, triangle_inside_no
 jmp set_bank
 bridge_triangle_sign2_17:
-ldi c, 30
+ldi c, 31
 ldi d, triangle_inside_yes
 jmp set_bank
 ; 3DGraphics API: project_roll
@@ -3359,7 +3376,7 @@ ldi c, 41
 st c, ret2_bank
 ldi d, resume_project_roll_6
 st d, ret2_addr
-ldi c, 3
+ldi c, 4
 ldi d, gfx_rotate_pair
 jmp set_bank
 resume_project_roll_6:
@@ -3532,7 +3549,7 @@ ld a, V0
 st a, U0
 ld a, V1
 st a, U1
-ldi c, 32
+ldi c, 20
 ldi d, vm_store_word
 jmp set_bank
 ; 3DEditor native runtime
@@ -3553,7 +3570,7 @@ st a, 60
 ldi a, 48
 st a, 62
 ld a, 62
-ldi c, 20
+ldi c, 23
 ldi d, vm_dispatch
 jmp set_bank
 ; 3DEditor native runtime
@@ -3564,7 +3581,7 @@ ldi d, resume_op_jmp_0
 st d, ret1_addr
 jmp vm_immediate
 resume_op_jmp_0:
-ldi c, 8
+ldi c, 9
 ldi d, vm_jump
 jmp set_bank
 padding43 db 0,0
@@ -3598,7 +3615,7 @@ ld c, ret3_bank
 ld d, ret3_addr
 jmp set_bank
 padding44 db 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
-data_5760 db 16,212,5,236,14,222,24,195,28,128,34,227,18,204,43,166,35,128,35,176,13,128,37,247,35,244,39,174,36,128,36,176,37,128,22,200,21,200,34,178,31,188,20,128,36,224,37,176,43,238,38,176,29,190,17,212,8,128,43,202,24,128,22,128,33,179,34,128,4,128,30,128,11,128,12,128,38,128,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+data_5760 db 16,212,5,236,14,222,25,195,29,128,34,227,18,204,43,166,35,128,35,176,13,128,37,247,32,246,39,174,36,128,36,176,37,128,22,200,21,200,34,178,32,128,20,128,6,234,37,176,43,238,38,176,30,190,17,212,9,128,43,202,25,128,22,128,33,179,34,128,2,128,23,128,6,128,12,128,38,128,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 data_5888 db 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 data_6016 db 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 data_6144 db 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
@@ -3612,8 +3629,8 @@ data_7040 db 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 data_7168 db 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 data_7296 db 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 data_7424 db 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
-data_7552 db 58,32,43,47,45,0,97,108,108,32,47,32,120,47,121,47,122,0,120,47,121,47,122,0,10,69,110,116,101,114,32,47,32,69,115,99,10,0,97,108,108,0,51,68,69,100,105,116,111,114,10,65,82,82,79,87,83,32,84,85,82,78,10,43,47,45,32,90,79,79,77,32,112,10,83,112,97,99,101,58,32,69,68,73,84,0,51,68,69,100,105,116,111,114,10,49,47,50,47,51,32,69,110,116,101,114,10,103,47,114,47,115,32,110,47,102,32,112,10,83,112,97,99,101,58,32,86,73
-data_7680 db 69,87,0,69,82,82,32,70,79,82,77,65,84,0,69,82,82,32,82,65,78,71,69,0,80,82,69,67,73,83,73,79,78,0,69,82,82,32,69,77,80,84,89,0,67,65,80,65,67,73,84,89,0,65,88,73,83,32,120,47,121,47,122,0,84,79,80,79,76,79,71,89,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+data_7552 db 58,32,43,47,45,0,97,108,108,32,47,32,120,47,121,47,122,0,120,47,121,47,122,0,10,69,110,116,101,114,32,47,32,69,115,99,10,0,97,108,108,0,65,82,82,79,87,83,32,84,85,82,78,10,43,47,45,32,90,79,79,77,10,83,112,97,99,101,58,32,69,68,73,84,0,91,49,93,47,50,47,51,32,69,110,116,10,0,49,47,91,50,93,47,51,32,69,110,116,10,0,49,47,50,47,91,51,93,32,69,110,116,10,0,103,47,114,47,115,32,110,47,102,10,83,112,97,99
+data_7680 db 101,58,32,86,73,69,87,0,79,82,84,72,79,32,112,32,104,10,0,80,69,82,83,80,32,112,32,104,10,0,69,82,82,32,70,79,82,77,65,84,0,69,82,82,32,82,65,78,71,69,0,80,82,69,67,73,83,73,79,78,0,69,82,82,32,69,77,80,84,89,0,67,65,80,65,67,73,84,89,0,65,88,73,83,32,120,47,121,47,122,0,84,79,80,79,76,79,71,89,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 data_7808 db 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 data_7936 db 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 data_8064 db 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
@@ -3635,137 +3652,156 @@ data_9984 db 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 data_10112 db 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 data_10240 db 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 data_10368 db 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
-data_10496 db 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,1,0,2,0,2,0,3,0,3,0,4,0,4,0,4,0,5,0,5,0,6,0,6,0,7,0,7,0,8,0,8,0,8,0,9,0,9,0,10,0,10,0,11,0,11,0,12,0,12,0,13,0,13,0,13,0,14,0,14,0,15,0,15,0,16,0,16,0,17,0,17,0,17,0,18,0,18,0,19,0,19,0,20,0,20,0,21,0,21,0,21,0,22,0,22,0,23,0,23,0,24,0,24,0,25,0
-data_10624 db 25,0,25,0,26,0,26,0,27,0,27,0,28,0,28,0,29,0,29,0,29,0,30,0,30,0,31,0,31,0,32,0,32,0,33,0,33,0,33,0,34,0,34,0,35,0,35,0,36,0,36,0,37,0,37,0,37,0,38,0,38,0,39,0,39,0,40,0,40,0,40,0,41,0,41,0,42,0,42,0,43,0,43,0,44,0,44,0,44,0,45,0,45,0,46,0,46,0,47,0,47,0,48,0,48,0,48,0,49,0,49,0,50,0,50,0,51,0,51,0,51,0,52,0,52,0,53,0
-data_10752 db 53,0,54,0,54,0,55,0,55,0,55,0,56,0,56,0,57,0,57,0,58,0,58,0,58,0,59,0,59,0,60,0,60,0,61,0,61,0,61,0,62,0,62,0,63,0,63,0,64,0,64,0,65,0,65,0,65,0,66,0,66,0,67,0,67,0,68,0,68,0,68,0,69,0,69,0,70,0,70,0,71,0,71,0,71,0,72,0,72,0,73,0,73,0,74,0,74,0,74,0,75,0,75,0,76,0,76,0,77,0,77,0,77,0,78,0,78,0,79,0,79,0,80,0,80,0,80,0
-data_10880 db 81,0,81,0,82,0,82,0,83,0,83,0,83,0,84,0,84,0,85,0,85,0,85,0,86,0,86,0,87,0,87,0,88,0,88,0,88,0,89,0,89,0,90,0,90,0,90,0,91,0,91,0,92,0,92,0,93,0,93,0,93,0,94,0,94,0,95,0,95,0,95,0,96,0,96,0,97,0,97,0,98,0,98,0,98,0,99,0,99,0,100,0,100,0,100,0,101,0,101,0,102,0,102,0,102,0,103,0,103,0,104,0,104,0,105,0,105,0,105,0,106,0,106,0,107,0,107,0
-data_11008 db 107,0,108,0,108,0,109,0,109,0,109,0,110,0,110,0,111,0,111,0,111,0,112,0,112,0,113,0,113,0,113,0,114,0,114,0,115,0,115,0,115,0,116,0,116,0,117,0,117,0,117,0,118,0,118,0,119,0,119,0,119,0,120,0,120,0,121,0,121,0,121,0,122,0,122,0,123,0,123,0,123,0,124,0,124,0,125,0,125,0,125,0,126,0,126,0,126,0,127,0,127,0,128,0,128,0,128,0,129,0,129,0,130,0,130,0,130,0,131,0,131,0,131,0,132,0,132,0
-data_11136 db 133,0,133,0,133,0,134,0,134,0,135,0,135,0,135,0,136,0,136,0,136,0,137,0,137,0,138,0,138,0,138,0,139,0,139,0,139,0,140,0,140,0,141,0,141,0,141,0,142,0,142,0,142,0,143,0,143,0,144,0,144,0,144,0,145,0,145,0,145,0,146,0,146,0,146,0,147,0,147,0,148,0,148,0,148,0,149,0,149,0,149,0,150,0,150,0,150,0,151,0,151,0,152,0,152,0,152,0,153,0,153,0,153,0,154,0,154,0,154,0,155,0,155,0,155,0,156,0
-data_11264 db 156,0,157,0,157,0,157,0,158,0,158,0,158,0,159,0,159,0,159,0,160,0,160,0,160,0,161,0,161,0,161,0,162,0,162,0,162,0,163,0,163,0,164,0,164,0,164,0,165,0,165,0,165,0,166,0,166,0,166,0,167,0,167,0,167,0,168,0,168,0,168,0,169,0,169,0,169,0,170,0,170,0,170,0,171,0,171,0,171,0,172,0,172,0,172,0,173,0,173,0,173,0,174,0,174,0,174,0,175,0,175,0,175,0,176,0,176,0,176,0,177,0,177,0,177,0,178,0
-data_11392 db 178,0,178,0,178,0,179,0,179,0,179,0,180,0,180,0,180,0,181,0,181,0,181,0,182,0,182,0,182,0,183,0,183,0,183,0,184,0,184,0,184,0,184,0,185,0,185,0,185,0,186,0,186,0,186,0,187,0,187,0,187,0,188,0,188,0,188,0,188,0,189,0,189,0,189,0,190,0,190,0,190,0,191,0,191,0,191,0,191,0,192,0,192,0,192,0,193,0,193,0,193,0,193,0,194,0,194,0,194,0,195,0,195,0,195,0,196,0,196,0,196,0,196,0,197,0,197,0
-data_11520 db 197,0,198,0,198,0,198,0,198,0,199,0,199,0,199,0,200,0,200,0,200,0,200,0,201,0,201,0,201,0,201,0,202,0,202,0,202,0,203,0,203,0,203,0,203,0,204,0,204,0,204,0,204,0,205,0,205,0,205,0,206,0,206,0,206,0,206,0,207,0,207,0,207,0,207,0,208,0,208,0,208,0,208,0,209,0,209,0,209,0,209,0,210,0,210,0,210,0,210,0,211,0,211,0,211,0,211,0,212,0,212,0,212,0,212,0,213,0,213,0,213,0,213,0,214,0,214,0
-data_11648 db 214,0,214,0,215,0,215,0,215,0,215,0,216,0,216,0,216,0,216,0,217,0,217,0,217,0,217,0,218,0,218,0,218,0,218,0,219,0,219,0,219,0,219,0,219,0,220,0,220,0,220,0,220,0,221,0,221,0,221,0,221,0,221,0,222,0,222,0,222,0,222,0,223,0,223,0,223,0,223,0,223,0,224,0,224,0,224,0,224,0,225,0,225,0,225,0,225,0,225,0,226,0,226,0,226,0,226,0,226,0,227,0,227,0,227,0,227,0,227,0,228,0,228,0,228,0,228,0
-data_11776 db 229,0,229,0,229,0,229,0,229,0,230,0,230,0,230,0,230,0,230,0,230,0,231,0,231,0,231,0,231,0,231,0,232,0,232,0,232,0,232,0,232,0,233,0,233,0,233,0,233,0,233,0,234,0,234,0,234,0,234,0,234,0,234,0,235,0,235,0,235,0,235,0,235,0,235,0,236,0,236,0,236,0,236,0,236,0,237,0,237,0,237,0,237,0,237,0,237,0,238,0,238,0,238,0,238,0,238,0,238,0,239,0,239,0,239,0,239,0,239,0,239,0,239,0,240,0,240,0
-data_11904 db 240,0,240,0,240,0,240,0,241,0,241,0,241,0,241,0,241,0,241,0,241,0,242,0,242,0,242,0,242,0,242,0,242,0,242,0,243,0,243,0,243,0,243,0,243,0,243,0,243,0,244,0,244,0,244,0,244,0,244,0,244,0,244,0,245,0,245,0,245,0,245,0,245,0,245,0,245,0,245,0,246,0,246,0,246,0,246,0,246,0,246,0,246,0,246,0,247,0,247,0,247,0,247,0,247,0,247,0,247,0,247,0,248,0,248,0,248,0,248,0,248,0,248,0,248,0,248,0
-data_12032 db 248,0,249,0,249,0,249,0,249,0,249,0,249,0,249,0,249,0,249,0,249,0,250,0,250,0,250,0,250,0,250,0,250,0,250,0,250,0,250,0,250,0,250,0,251,0,251,0,251,0,251,0,251,0,251,0,251,0,251,0,251,0,251,0,251,0,252,0,252,0,252,0,252,0,252,0,252,0,252,0,252,0,252,0,252,0,252,0,252,0,252,0,253,0,253,0,253,0,253,0,253,0,253,0,253,0,253,0,253,0,253,0,253,0,253,0,253,0,253,0,254,0,254,0,254,0,254,0
-data_12160 db 254,0,254,0,254,0,254,0,254,0,254,0,254,0,254,0,254,0,254,0,254,0,254,0,254,0,254,0,255,0,255,0,255,0,255,0,255,0,255,0,255,0,255,0,255,0,255,0,255,0,255,0,255,0,255,0,255,0,255,0,255,0,255,0,255,0,255,0,255,0,255,0,255,0,255,0,255,0,255,0,255,0,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1
-data_12288 db 0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,255,0,255,0,255,0,255,0,255,0,255,0,255,0,255,0,255,0,255,0,255,0,255,0,255,0,255,0,255,0,255,0
-data_12416 db 255,0,255,0,255,0,255,0,255,0,255,0,255,0,255,0,255,0,255,0,255,0,254,0,254,0,254,0,254,0,254,0,254,0,254,0,254,0,254,0,254,0,254,0,254,0,254,0,254,0,254,0,254,0,254,0,254,0,253,0,253,0,253,0,253,0,253,0,253,0,253,0,253,0,253,0,253,0,253,0,253,0,253,0,253,0,252,0,252,0,252,0,252,0,252,0,252,0,252,0,252,0,252,0,252,0,252,0,252,0,252,0,251,0,251,0,251,0,251,0,251,0,251,0,251,0,251,0
-data_12544 db 251,0,251,0,251,0,250,0,250,0,250,0,250,0,250,0,250,0,250,0,250,0,250,0,250,0,250,0,249,0,249,0,249,0,249,0,249,0,249,0,249,0,249,0,249,0,249,0,248,0,248,0,248,0,248,0,248,0,248,0,248,0,248,0,248,0,247,0,247,0,247,0,247,0,247,0,247,0,247,0,247,0,246,0,246,0,246,0,246,0,246,0,246,0,246,0,246,0,245,0,245,0,245,0,245,0,245,0,245,0,245,0,245,0,244,0,244,0,244,0,244,0,244,0,244,0,244,0
-data_12672 db 243,0,243,0,243,0,243,0,243,0,243,0,243,0,242,0,242,0,242,0,242,0,242,0,242,0,242,0,241,0,241,0,241,0,241,0,241,0,241,0,241,0,240,0,240,0,240,0,240,0,240,0,240,0,239,0,239,0,239,0,239,0,239,0,239,0,239,0,238,0,238,0,238,0,238,0,238,0,238,0,237,0,237,0,237,0,237,0,237,0,237,0,236,0,236,0,236,0,236,0,236,0,235,0,235,0,235,0,235,0,235,0,235,0,234,0,234,0,234,0,234,0,234,0,234,0,233,0
-data_12800 db 233,0,233,0,233,0,233,0,232,0,232,0,232,0,232,0,232,0,231,0,231,0,231,0,231,0,231,0,230,0,230,0,230,0,230,0,230,0,230,0,229,0,229,0,229,0,229,0,229,0,228,0,228,0,228,0,228,0,227,0,227,0,227,0,227,0,227,0,226,0,226,0,226,0,226,0,226,0,225,0,225,0,225,0,225,0,225,0,224,0,224,0,224,0,224,0,223,0,223,0,223,0,223,0,223,0,222,0,222,0,222,0,222,0,221,0,221,0,221,0,221,0,221,0,220,0,220,0
-data_12928 db 220,0,220,0,219,0,219,0,219,0,219,0,219,0,218,0,218,0,218,0,218,0,217,0,217,0,217,0,217,0,216,0,216,0,216,0,216,0,215,0,215,0,215,0,215,0,214,0,214,0,214,0,214,0,213,0,213,0,213,0,213,0,212,0,212,0,212,0,212,0,211,0,211,0,211,0,211,0,210,0,210,0,210,0,210,0,209,0,209,0,209,0,209,0,208,0,208,0,208,0,208,0,207,0,207,0,207,0,207,0,206,0,206,0,206,0,206,0,205,0,205,0,205,0,204,0,204,0
-data_13056 db 204,0,204,0,203,0,203,0,203,0,203,0,202,0,202,0,202,0,201,0,201,0,201,0,201,0,200,0,200,0,200,0,200,0,199,0,199,0,199,0,198,0,198,0,198,0,198,0,197,0,197,0,197,0,196,0,196,0,196,0,196,0,195,0,195,0,195,0,194,0,194,0,194,0,193,0,193,0,193,0,193,0,192,0,192,0,192,0,191,0,191,0,191,0,191,0,190,0,190,0,190,0,189,0,189,0,189,0,188,0,188,0,188,0,188,0,187,0,187,0,187,0,186,0,186,0,186,0
-data_13184 db 185,0,185,0,185,0,184,0,184,0,184,0,184,0,183,0,183,0,183,0,182,0,182,0,182,0,181,0,181,0,181,0,180,0,180,0,180,0,179,0,179,0,179,0,178,0,178,0,178,0,178,0,177,0,177,0,177,0,176,0,176,0,176,0,175,0,175,0,175,0,174,0,174,0,174,0,173,0,173,0,173,0,172,0,172,0,172,0,171,0,171,0,171,0,170,0,170,0,170,0,169,0,169,0,169,0,168,0,168,0,168,0,167,0,167,0,167,0,166,0,166,0,166,0,165,0,165,0
-data_13312 db 165,0,164,0,164,0,164,0,163,0,163,0,162,0,162,0,162,0,161,0,161,0,161,0,160,0,160,0,160,0,159,0,159,0,159,0,158,0,158,0,158,0,157,0,157,0,157,0,156,0,156,0,155,0,155,0,155,0,154,0,154,0,154,0,153,0,153,0,153,0,152,0,152,0,152,0,151,0,151,0,150,0,150,0,150,0,149,0,149,0,149,0,148,0,148,0,148,0,147,0,147,0,146,0,146,0,146,0,145,0,145,0,145,0,144,0,144,0,144,0,143,0,143,0,142,0,142,0
-data_13440 db 142,0,141,0,141,0,141,0,140,0,140,0,139,0,139,0,139,0,138,0,138,0,138,0,137,0,137,0,136,0,136,0,136,0,135,0,135,0,135,0,134,0,134,0,133,0,133,0,133,0,132,0,132,0,131,0,131,0,131,0,130,0,130,0,130,0,129,0,129,0,128,0,128,0,128,0,127,0,127,0,126,0,126,0,126,0,125,0,125,0,125,0,124,0,124,0,123,0,123,0,123,0,122,0,122,0,121,0,121,0,121,0,120,0,120,0,119,0,119,0,119,0,118,0,118,0,117,0
-data_13568 db 117,0,117,0,116,0,116,0,115,0,115,0,115,0,114,0,114,0,113,0,113,0,113,0,112,0,112,0,111,0,111,0,111,0,110,0,110,0,109,0,109,0,109,0,108,0,108,0,107,0,107,0,107,0,106,0,106,0,105,0,105,0,105,0,104,0,104,0,103,0,103,0,102,0,102,0,102,0,101,0,101,0,100,0,100,0,100,0,99,0,99,0,98,0,98,0,98,0,97,0,97,0,96,0,96,0,95,0,95,0,95,0,94,0,94,0,93,0,93,0,93,0,92,0,92,0,91,0
-data_13696 db 91,0,90,0,90,0,90,0,89,0,89,0,88,0,88,0,88,0,87,0,87,0,86,0,86,0,85,0,85,0,85,0,84,0,84,0,83,0,83,0,83,0,82,0,82,0,81,0,81,0,80,0,80,0,80,0,79,0,79,0,78,0,78,0,77,0,77,0,77,0,76,0,76,0,75,0,75,0,74,0,74,0,74,0,73,0,73,0,72,0,72,0,71,0,71,0,71,0,70,0,70,0,69,0,69,0,68,0,68,0,68,0,67,0,67,0,66,0,66,0,65,0,65,0,65,0,64,0
-data_13824 db 64,0,63,0,63,0,62,0,62,0,61,0,61,0,61,0,60,0,60,0,59,0,59,0,58,0,58,0,58,0,57,0,57,0,56,0,56,0,55,0,55,0,55,0,54,0,54,0,53,0,53,0,52,0,52,0,51,0,51,0,51,0,50,0,50,0,49,0,49,0,48,0,48,0,48,0,47,0,47,0,46,0,46,0,45,0,45,0,44,0,44,0,44,0,43,0,43,0,42,0,42,0,41,0,41,0,40,0,40,0,40,0,39,0,39,0,38,0,38,0,37,0,37,0,37,0,36,0
-data_13952 db 36,0,35,0,35,0,34,0,34,0,33,0,33,0,33,0,32,0,32,0,31,0,31,0,30,0,30,0,29,0,29,0,29,0,28,0,28,0,27,0,27,0,26,0,26,0,25,0,25,0,25,0,24,0,24,0,23,0,23,0,22,0,22,0,21,0,21,0,21,0,20,0,20,0,19,0,19,0,18,0,18,0,17,0,17,0,17,0,16,0,16,0,15,0,15,0,14,0,14,0,13,0,13,0,13,0,12,0,12,0,11,0,11,0,10,0,10,0,9,0,9,0,8,0,8,0,8,0
-data_14080 db 7,0,7,0,6,0,6,0,5,0,5,0,4,0,4,0,4,0,3,0,3,0,2,0,2,0,1,0,1,0,0,0,0,0,0,0,255,255,255,255,254,255,254,255,253,255,253,255,252,255,252,255,252,255,251,255,251,255,250,255,250,255,249,255,249,255,248,255,248,255,248,255,247,255,247,255,246,255,246,255,245,255,245,255,244,255,244,255,243,255,243,255,243,255,242,255,242,255,241,255,241,255,240,255,240,255,239,255,239,255,239,255,238,255,238,255,237,255,237,255,236,255,236,255,235,255,235,255
-data_14208 db 235,255,234,255,234,255,233,255,233,255,232,255,232,255,231,255,231,255,231,255,230,255,230,255,229,255,229,255,228,255,228,255,227,255,227,255,227,255,226,255,226,255,225,255,225,255,224,255,224,255,223,255,223,255,223,255,222,255,222,255,221,255,221,255,220,255,220,255,219,255,219,255,219,255,218,255,218,255,217,255,217,255,216,255,216,255,216,255,215,255,215,255,214,255,214,255,213,255,213,255,212,255,212,255,212,255,211,255,211,255,210,255,210,255,209,255,209,255,208,255,208,255,208,255,207,255,207,255
-data_14336 db 206,255,206,255,205,255,205,255,205,255,204,255,204,255,203,255,203,255,202,255,202,255,201,255,201,255,201,255,200,255,200,255,199,255,199,255,198,255,198,255,198,255,197,255,197,255,196,255,196,255,195,255,195,255,195,255,194,255,194,255,193,255,193,255,192,255,192,255,191,255,191,255,191,255,190,255,190,255,189,255,189,255,188,255,188,255,188,255,187,255,187,255,186,255,186,255,185,255,185,255,185,255,184,255,184,255,183,255,183,255,182,255,182,255,182,255,181,255,181,255,180,255,180,255,179,255,179,255
-data_14464 db 179,255,178,255,178,255,177,255,177,255,176,255,176,255,176,255,175,255,175,255,174,255,174,255,173,255,173,255,173,255,172,255,172,255,171,255,171,255,171,255,170,255,170,255,169,255,169,255,168,255,168,255,168,255,167,255,167,255,166,255,166,255,166,255,165,255,165,255,164,255,164,255,163,255,163,255,163,255,162,255,162,255,161,255,161,255,161,255,160,255,160,255,159,255,159,255,158,255,158,255,158,255,157,255,157,255,156,255,156,255,156,255,155,255,155,255,154,255,154,255,154,255,153,255,153,255,152,255
-data_14592 db 152,255,151,255,151,255,151,255,150,255,150,255,149,255,149,255,149,255,148,255,148,255,147,255,147,255,147,255,146,255,146,255,145,255,145,255,145,255,144,255,144,255,143,255,143,255,143,255,142,255,142,255,141,255,141,255,141,255,140,255,140,255,139,255,139,255,139,255,138,255,138,255,137,255,137,255,137,255,136,255,136,255,135,255,135,255,135,255,134,255,134,255,133,255,133,255,133,255,132,255,132,255,131,255,131,255,131,255,130,255,130,255,130,255,129,255,129,255,128,255,128,255,128,255,127,255,127,255
-data_14720 db 126,255,126,255,126,255,125,255,125,255,125,255,124,255,124,255,123,255,123,255,123,255,122,255,122,255,121,255,121,255,121,255,120,255,120,255,120,255,119,255,119,255,118,255,118,255,118,255,117,255,117,255,117,255,116,255,116,255,115,255,115,255,115,255,114,255,114,255,114,255,113,255,113,255,112,255,112,255,112,255,111,255,111,255,111,255,110,255,110,255,110,255,109,255,109,255,108,255,108,255,108,255,107,255,107,255,107,255,106,255,106,255,106,255,105,255,105,255,104,255,104,255,104,255,103,255,103,255
-data_14848 db 103,255,102,255,102,255,102,255,101,255,101,255,101,255,100,255,100,255,99,255,99,255,99,255,98,255,98,255,98,255,97,255,97,255,97,255,96,255,96,255,96,255,95,255,95,255,95,255,94,255,94,255,94,255,93,255,93,255,92,255,92,255,92,255,91,255,91,255,91,255,90,255,90,255,90,255,89,255,89,255,89,255,88,255,88,255,88,255,87,255,87,255,87,255,86,255,86,255,86,255,85,255,85,255,85,255,84,255,84,255,84,255,83,255,83,255,83,255,82,255,82,255,82,255,81,255,81,255
-data_14976 db 81,255,80,255,80,255,80,255,79,255,79,255,79,255,78,255,78,255,78,255,78,255,77,255,77,255,77,255,76,255,76,255,76,255,75,255,75,255,75,255,74,255,74,255,74,255,73,255,73,255,73,255,72,255,72,255,72,255,72,255,71,255,71,255,71,255,70,255,70,255,70,255,69,255,69,255,69,255,68,255,68,255,68,255,68,255,67,255,67,255,67,255,66,255,66,255,66,255,65,255,65,255,65,255,65,255,64,255,64,255,64,255,63,255,63,255,63,255,63,255,62,255,62,255,62,255,61,255
-data_15104 db 61,255,61,255,60,255,60,255,60,255,60,255,59,255,59,255,59,255,58,255,58,255,58,255,58,255,57,255,57,255,57,255,56,255,56,255,56,255,56,255,55,255,55,255,55,255,55,255,54,255,54,255,54,255,53,255,53,255,53,255,53,255,52,255,52,255,52,255,52,255,51,255,51,255,51,255,50,255,50,255,50,255,50,255,49,255,49,255,49,255,49,255,48,255,48,255,48,255,48,255,47,255,47,255,47,255,47,255,46,255,46,255,46,255,46,255,45,255,45,255,45,255,45,255,44,255,44,255
-data_15232 db 44,255,44,255,43,255,43,255,43,255,43,255,42,255,42,255,42,255,42,255,41,255,41,255,41,255,41,255,40,255,40,255,40,255,40,255,39,255,39,255,39,255,39,255,38,255,38,255,38,255,38,255,37,255,37,255,37,255,37,255,37,255,36,255,36,255,36,255,36,255,35,255,35,255,35,255,35,255,35,255,34,255,34,255,34,255,34,255,33,255,33,255,33,255,33,255,33,255,32,255,32,255,32,255,32,255,31,255,31,255,31,255,31,255,31,255,30,255,30,255,30,255,30,255,30,255,29,255
-data_15360 db 29,255,29,255,29,255,29,255,28,255,28,255,28,255,28,255,27,255,27,255,27,255,27,255,27,255,26,255,26,255,26,255,26,255,26,255,26,255,25,255,25,255,25,255,25,255,25,255,24,255,24,255,24,255,24,255,24,255,23,255,23,255,23,255,23,255,23,255,22,255,22,255,22,255,22,255,22,255,22,255,21,255,21,255,21,255,21,255,21,255,21,255,20,255,20,255,20,255,20,255,20,255,19,255,19,255,19,255,19,255,19,255,19,255,18,255,18,255,18,255,18,255,18,255,18,255,17,255
-data_15488 db 17,255,17,255,17,255,17,255,17,255,17,255,16,255,16,255,16,255,16,255,16,255,16,255,15,255,15,255,15,255,15,255,15,255,15,255,15,255,14,255,14,255,14,255,14,255,14,255,14,255,14,255,13,255,13,255,13,255,13,255,13,255,13,255,13,255,12,255,12,255,12,255,12,255,12,255,12,255,12,255,11,255,11,255,11,255,11,255,11,255,11,255,11,255,11,255,10,255,10,255,10,255,10,255,10,255,10,255,10,255,10,255,9,255,9,255,9,255,9,255,9,255,9,255,9,255,9,255
-data_15616 db 8,255,8,255,8,255,8,255,8,255,8,255,8,255,8,255,8,255,7,255,7,255,7,255,7,255,7,255,7,255,7,255,7,255,7,255,7,255,6,255,6,255,6,255,6,255,6,255,6,255,6,255,6,255,6,255,6,255,6,255,5,255,5,255,5,255,5,255,5,255,5,255,5,255,5,255,5,255,5,255,5,255,4,255,4,255,4,255,4,255,4,255,4,255,4,255,4,255,4,255,4,255,4,255,4,255,4,255,3,255,3,255,3,255,3,255,3,255,3,255,3,255,3,255,3,255,3,255
-data_15744 db 3,255,3,255,3,255,3,255,2,255,2,255,2,255,2,255,2,255,2,255,2,255,2,255,2,255,2,255,2,255,2,255,2,255,2,255,2,255,2,255,2,255,2,255,1,255,1,255,1,255,1,255,1,255,1,255,1,255,1,255,1,255,1,255,1,255,1,255,1,255,1,255,1,255,1,255,1,255,1,255,1,255,1,255,1,255,1,255,1,255,1,255,1,255,1,255,1,255,0,255,0,255,0,255,0,255,0,255,0,255,0,255,0,255,0,255,0,255,0,255,0,255,0,255,0,255,0,255
-data_15872 db 0,255,0,255,0,255,0,255,0,255,0,255,0,255,0,255,0,255,0,255,0,255,0,255,0,255,0,255,0,255,0,255,0,255,0,255,0,255,0,255,0,255,0,255,0,255,0,255,0,255,0,255,0,255,0,255,0,255,0,255,0,255,0,255,0,255,0,255,0,255,0,255,0,255,0,255,0,255,0,255,0,255,0,255,0,255,0,255,0,255,0,255,0,255,0,255,0,255,0,255,0,255,0,255,0,255,0,255,0,255,0,255,1,255,1,255,1,255,1,255,1,255,1,255,1,255,1,255
-data_16000 db 1,255,1,255,1,255,1,255,1,255,1,255,1,255,1,255,1,255,1,255,1,255,1,255,1,255,1,255,1,255,1,255,1,255,1,255,1,255,2,255,2,255,2,255,2,255,2,255,2,255,2,255,2,255,2,255,2,255,2,255,2,255,2,255,2,255,2,255,2,255,2,255,2,255,3,255,3,255,3,255,3,255,3,255,3,255,3,255,3,255,3,255,3,255,3,255,3,255,3,255,3,255,4,255,4,255,4,255,4,255,4,255,4,255,4,255,4,255,4,255,4,255,4,255,4,255,4,255
-data_16128 db 5,255,5,255,5,255,5,255,5,255,5,255,5,255,5,255,5,255,5,255,5,255,6,255,6,255,6,255,6,255,6,255,6,255,6,255,6,255,6,255,6,255,6,255,7,255,7,255,7,255,7,255,7,255,7,255,7,255,7,255,7,255,7,255,8,255,8,255,8,255,8,255,8,255,8,255,8,255,8,255,8,255,9,255,9,255,9,255,9,255,9,255,9,255,9,255,9,255,10,255,10,255,10,255,10,255,10,255,10,255,10,255,10,255,11,255,11,255,11,255,11,255,11,255,11,255,11,255
-data_16256 db 11,255,12,255,12,255,12,255,12,255,12,255,12,255,12,255,13,255,13,255,13,255,13,255,13,255,13,255,13,255,14,255,14,255,14,255,14,255,14,255,14,255,14,255,15,255,15,255,15,255,15,255,15,255,15,255,15,255,16,255,16,255,16,255,16,255,16,255,16,255,17,255,17,255,17,255,17,255,17,255,17,255,17,255,18,255,18,255,18,255,18,255,18,255,18,255,19,255,19,255,19,255,19,255,19,255,19,255,20,255,20,255,20,255,20,255,20,255,21,255,21,255,21,255,21,255,21,255
-data_16384 db 21,255,22,255,22,255,22,255,22,255,22,255,22,255,23,255,23,255,23,255,23,255,23,255,24,255,24,255,24,255,24,255,24,255,25,255,25,255,25,255,25,255,25,255,26,255,26,255,26,255,26,255,26,255,26,255,27,255,27,255,27,255,27,255,27,255,28,255,28,255,28,255,28,255,29,255,29,255,29,255,29,255,29,255,30,255,30,255,30,255,30,255,30,255,31,255,31,255,31,255,31,255,31,255,32,255,32,255,32,255,32,255,33,255,33,255,33,255,33,255,33,255,34,255,34,255,34,255
-data_16512 db 34,255,35,255,35,255,35,255,35,255,35,255,36,255,36,255,36,255,36,255,37,255,37,255,37,255,37,255,37,255,38,255,38,255,38,255,38,255,39,255,39,255,39,255,39,255,40,255,40,255,40,255,40,255,41,255,41,255,41,255,41,255,42,255,42,255,42,255,42,255,43,255,43,255,43,255,43,255,44,255,44,255,44,255,44,255,45,255,45,255,45,255,45,255,46,255,46,255,46,255,46,255,47,255,47,255,47,255,47,255,48,255,48,255,48,255,48,255,49,255,49,255,49,255,49,255,50,255
-data_16640 db 50,255,50,255,50,255,51,255,51,255,51,255,52,255,52,255,52,255,52,255,53,255,53,255,53,255,53,255,54,255,54,255,54,255,55,255,55,255,55,255,55,255,56,255,56,255,56,255,56,255,57,255,57,255,57,255,58,255,58,255,58,255,58,255,59,255,59,255,59,255,60,255,60,255,60,255,60,255,61,255,61,255,61,255,62,255,62,255,62,255,63,255,63,255,63,255,63,255,64,255,64,255,64,255,65,255,65,255,65,255,65,255,66,255,66,255,66,255,67,255,67,255,67,255,68,255,68,255
-data_16768 db 68,255,68,255,69,255,69,255,69,255,70,255,70,255,70,255,71,255,71,255,71,255,72,255,72,255,72,255,72,255,73,255,73,255,73,255,74,255,74,255,74,255,75,255,75,255,75,255,76,255,76,255,76,255,77,255,77,255,77,255,78,255,78,255,78,255,78,255,79,255,79,255,79,255,80,255,80,255,80,255,81,255,81,255,81,255,82,255,82,255,82,255,83,255,83,255,83,255,84,255,84,255,84,255,85,255,85,255,85,255,86,255,86,255,86,255,87,255,87,255,87,255,88,255,88,255,88,255
-data_16896 db 89,255,89,255,89,255,90,255,90,255,90,255,91,255,91,255,91,255,92,255,92,255,92,255,93,255,93,255,94,255,94,255,94,255,95,255,95,255,95,255,96,255,96,255,96,255,97,255,97,255,97,255,98,255,98,255,98,255,99,255,99,255,99,255,100,255,100,255,101,255,101,255,101,255,102,255,102,255,102,255,103,255,103,255,103,255,104,255,104,255,104,255,105,255,105,255,106,255,106,255,106,255,107,255,107,255,107,255,108,255,108,255,108,255,109,255,109,255,110,255,110,255,110,255,111,255,111,255
-data_17024 db 111,255,112,255,112,255,112,255,113,255,113,255,114,255,114,255,114,255,115,255,115,255,115,255,116,255,116,255,117,255,117,255,117,255,118,255,118,255,118,255,119,255,119,255,120,255,120,255,120,255,121,255,121,255,121,255,122,255,122,255,123,255,123,255,123,255,124,255,124,255,125,255,125,255,125,255,126,255,126,255,126,255,127,255,127,255,128,255,128,255,128,255,129,255,129,255,130,255,130,255,130,255,131,255,131,255,131,255,132,255,132,255,133,255,133,255,133,255,134,255,134,255,135,255,135,255,135,255
-data_17152 db 136,255,136,255,137,255,137,255,137,255,138,255,138,255,139,255,139,255,139,255,140,255,140,255,141,255,141,255,141,255,142,255,142,255,143,255,143,255,143,255,144,255,144,255,145,255,145,255,145,255,146,255,146,255,147,255,147,255,147,255,148,255,148,255,149,255,149,255,149,255,150,255,150,255,151,255,151,255,151,255,152,255,152,255,153,255,153,255,154,255,154,255,154,255,155,255,155,255,156,255,156,255,156,255,157,255,157,255,158,255,158,255,158,255,159,255,159,255,160,255,160,255,161,255,161,255,161,255
-data_17280 db 162,255,162,255,163,255,163,255,163,255,164,255,164,255,165,255,165,255,166,255,166,255,166,255,167,255,167,255,168,255,168,255,168,255,169,255,169,255,170,255,170,255,171,255,171,255,171,255,172,255,172,255,173,255,173,255,173,255,174,255,174,255,175,255,175,255,176,255,176,255,176,255,177,255,177,255,178,255,178,255,179,255,179,255,179,255,180,255,180,255,181,255,181,255,182,255,182,255,182,255,183,255,183,255,184,255,184,255,185,255,185,255,185,255,186,255,186,255,187,255,187,255,188,255,188,255,188,255
-data_17408 db 189,255,189,255,190,255,190,255,191,255,191,255,191,255,192,255,192,255,193,255,193,255,194,255,194,255,195,255,195,255,195,255,196,255,196,255,197,255,197,255,198,255,198,255,198,255,199,255,199,255,200,255,200,255,201,255,201,255,201,255,202,255,202,255,203,255,203,255,204,255,204,255,205,255,205,255,205,255,206,255,206,255,207,255,207,255,208,255,208,255,208,255,209,255,209,255,210,255,210,255,211,255,211,255,212,255,212,255,212,255,213,255,213,255,214,255,214,255,215,255,215,255,216,255,216,255,216,255
-data_17536 db 217,255,217,255,218,255,218,255,219,255,219,255,219,255,220,255,220,255,221,255,221,255,222,255,222,255,223,255,223,255,223,255,224,255,224,255,225,255,225,255,226,255,226,255,227,255,227,255,227,255,228,255,228,255,229,255,229,255,230,255,230,255,231,255,231,255,231,255,232,255,232,255,233,255,233,255,234,255,234,255,235,255,235,255,235,255,236,255,236,255,237,255,237,255,238,255,238,255,239,255,239,255,239,255,240,255,240,255,241,255,241,255,242,255,242,255,243,255,243,255,243,255,244,255,244,255,245,255
-data_17664 db 245,255,246,255,246,255,247,255,247,255,248,255,248,255,248,255,249,255,249,255,250,255,250,255,251,255,251,255,252,255,252,255,252,255,253,255,253,255,254,255,254,255,255,255,255,255,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
-data_17792 db 25,204,101,2,128,25,1,0,0,22,26,148,69,2,128,25,14,25,151,69,2,128,25,28,1,0,0,28,1,0,0,3,130,25,2,130,25,1,128,0,22,26,196,69,1,195,35,2,130,25,9,1,0,0,7,2,130,25,1,1,0,9,3,130,25,25,162,69,1,0,0,3,132,25,1,0,0,28,1,128,33,2,134,25,9,1,1,0,10,4,28,1,0,0,28,2,136,25,1,0,0,22,26,240,69,1,0,0,28,25,240,69,2,138,25,1,1,0,21,26,6,70,1,67,34,2,136,25
-data_17920 db 9,4,28,25,6,70,2,138,25,1,2,0,21,26,28,70,1,227,34,2,136,25,9,4,28,25,28,70,1,35,35,2,136,25,1,5,0,11,9,4,28,1,0,0,28,2,140,25,1,1,0,21,26,61,70,1,195,35,25,88,70,2,140,25,1,2,0,21,26,81,70,1,195,35,1,32,0,9,25,88,70,1,195,35,1,96,0,9,28,1,0,0,28,1,131,33,2,142,25,1,6,0,11,9,2,144,25,1,2,0,11,9,6,28,1,0,0,28,1,131,36,2,146,25,1,4,0,11
-data_18048 db 9,2,148,25,1,2,0,11,9,6,28,1,0,0,28,2,150,25,1,0,0,22,26,160,70,1,8,0,28,25,160,70,2,152,25,1,1,0,21,26,189,70,2,150,25,2,154,25,3,148,25,3,146,25,27,118,70,28,25,189,70,2,152,25,1,2,0,21,26,16,71,1,99,34,2,150,25,1,2,0,11,9,4,3,156,25,1,99,34,2,150,25,1,2,0,11,9,1,1,0,9,4,3,158,25,2,156,25,2,154,25,3,148,25,3,146,25,27,118,70,2,158,25,2,154,25,3,148
-data_18176 db 25,3,146,25,27,118,70,9,1,2,0,12,28,25,16,71,1,35,35,2,150,25,1,5,0,11,9,4,3,160,25,1,0,0,3,162,25,1,0,0,3,164,25,2,162,25,2,160,25,22,26,105,71,2,164,25,1,35,35,2,150,25,1,5,0,11,9,2,162,25,9,1,1,0,9,4,2,154,25,3,148,25,3,146,25,27,118,70,9,3,164,25,2,162,25,1,1,0,9,3,162,25,25,43,71,2,164,25,2,160,25,12,28,1,0,0,28,1,0,0,3,166,25,1,1,0,14,3
-data_18304 db 168,25,1,255,127,3,170,25,2,166,25,2,172,25,3,134,25,27,206,69,22,26,21,72,2,172,25,2,166,25,3,136,25,3,138,25,27,223,69,26,8,72,2,172,25,2,166,25,1,0,0,3,154,25,3,150,25,3,152,25,27,143,70,2,174,25,10,3,128,25,27,131,69,2,172,25,2,166,25,1,1,0,3,154,25,3,150,25,3,152,25,27,143,70,2,176,25,10,3,128,25,27,131,69,9,3,178,25,2,178,25,2,170,25,22,26,5,72,2,166,25,3,168,25,2,178,25,3
-data_18432 db 170,25,25,5,72,25,8,72,2,166,25,1,1,0,9,3,166,25,25,136,71,2,168,25,28,1,0,0,28,2,180,25,1,0,0,22,26,70,72,2,182,25,1,8,0,1,8,0,3,176,25,3,174,25,3,172,25,27,117,71,3,180,25,1,0,0,28,25,70,72,2,182,25,2,180,25,1,0,0,3,154,25,3,150,25,3,152,25,27,143,70,3,184,25,2,182,25,2,180,25,1,1,0,3,154,25,3,150,25,3,152,25,27,143,70,3,186,25,2,180,25,3,188,25,1,255,127,3
-data_18560 db 190,25,1,0,0,3,192,25,2,192,25,2,182,25,3,134,25,27,206,69,22,26,141,73,2,182,25,2,192,25,3,136,25,3,138,25,27,223,69,26,128,73,2,182,25,2,192,25,1,0,0,3,154,25,3,150,25,3,152,25,27,143,70,2,184,25,10,3,194,25,2,182,25,2,192,25,1,1,0,3,154,25,3,150,25,3,152,25,27,143,70,2,186,25,10,3,196,25,2,198,25,1,17,0,21,26,243,72,2,194,25,14,25,23,73,2,198,25,1,19,0,21,26,3,73,2,194,25
-data_18688 db 25,23,73,2,198,25,1,18,0,21,26,20,73,2,196,25,14,25,23,73,2,196,25,3,200,25,2,198,25,1,17,0,21,24,20,26,46,73,23,2,198,25,1,19,0,21,26,61,73,2,196,25,3,128,25,27,131,69,25,70,73,2,194,25,3,128,25,27,131,69,3,202,25,1,0,0,2,200,25,22,26,125,73,2,200,25,2,202,25,1,3,0,11,9,3,204,25,2,204,25,2,190,25,22,26,122,73,2,192,25,3,188,25,2,204,25,3,190,25,25,122,73,25,125,73,25,128,73
-data_18816 db 2,192,25,1,1,0,9,3,192,25,25,136,72,2,188,25,3,180,25,1,0,0,28,2,182,25,3,134,25,27,206,69,3,206,25,1,1,0,3,208,25,2,206,25,2,208,25,22,20,26,238,73,2,180,25,2,208,25,9,2,206,25,13,3,210,25,2,182,25,2,210,25,3,136,25,3,138,25,27,223,69,26,225,73,2,210,25,3,180,25,1,0,0,28,25,225,73,2,208,25,1,1,0,9,3,208,25,25,169,73,1,1,0,14,3,180,25,1,0,0,28,2,180,25,1,0,0,22
-data_18944 db 26,10,74,1,0,0,28,25,10,74,2,182,25,3,140,25,27,45,70,2,180,25,9,3,212,25,2,212,25,4,3,214,25,2,212,25,1,1,0,2,214,25,10,7,2,182,25,1,1,0,21,26,202,74,2,214,25,20,26,85,74,1,67,36,2,132,25,9,2,180,25,7,2,132,25,1,1,0,9,3,132,25,25,199,74,1,0,0,3,216,25,2,216,25,2,132,25,22,26,199,74,1,67,36,2,216,25,9,4,2,180,25,21,26,186,74,2,216,25,3,218,25,2,218,25,1,1,0
-data_19072 db 9,2,132,25,22,26,169,74,1,67,36,2,218,25,9,1,67,36,2,218,25,9,1,1,0,9,4,7,2,218,25,1,1,0,9,3,218,25,25,122,74,2,132,25,1,1,0,10,3,132,25,1,0,0,28,25,186,74,2,216,25,1,1,0,9,3,216,25,25,91,74,25,202,74,1,0,0,28,1,0,0,3,220,25,2,220,25,1,32,0,22,26,246,74,1,99,36,2,220,25,9,1,0,0,7,2,220,25,1,1,0,9,3,220,25,25,212,74,1,0,0,3,220,25,2,220,25,2
-data_19200 db 182,25,3,134,25,27,206,69,22,26,212,75,2,182,25,2,220,25,3,136,25,3,138,25,27,223,69,24,26,46,75,23,2,182,25,3,140,25,27,45,70,2,220,25,9,4,26,199,75,2,182,25,1,1,0,21,26,73,75,1,99,36,2,220,25,9,1,1,0,7,25,196,75,2,182,25,1,2,0,21,26,130,75,1,99,36,1,99,34,2,220,25,1,2,0,11,9,4,9,1,1,0,7,1,99,36,1,99,34,2,220,25,1,2,0,11,9,1,1,0,9,4,9,1,1,0,7,25
-data_19328 db 196,75,1,0,0,3,222,25,2,222,25,1,35,35,2,220,25,1,5,0,11,9,4,22,26,196,75,1,99,36,1,35,35,2,220,25,1,5,0,11,9,2,222,25,9,1,1,0,9,4,9,1,1,0,7,2,222,25,1,1,0,9,3,222,25,25,136,75,25,199,75,2,220,25,1,1,0,9,3,220,25,25,252,74,1,0,0,3,224,25,1,0,0,3,220,25,2,220,25,1,32,0,22,26,6,76,2,224,25,1,99,36,2,220,25,9,4,9,3,224,25,2,220,25,1,1,0,9
-data_19456 db 3,220,25,25,224,75,2,224,25,28,1,0,0,28,27,206,74,3,226,25,1,0,0,3,228,25,1,0,0,3,230,25,1,0,0,3,232,25,2,226,25,1,0,0,21,24,20,26,54,76,23,2,234,25,26,64,76,2,226,25,28,25,64,76,1,0,0,3,236,25,2,236,25,1,32,0,22,26,173,76,1,99,36,2,236,25,9,4,26,160,76,2,228,25,2,236,25,1,0,0,3,144,25,3,142,25,27,93,70,9,3,228,25,2,230,25,2,236,25,1,1,0,3,144,25,3,142,25
-data_19584 db 27,93,70,9,3,230,25,2,232,25,2,236,25,1,2,0,3,144,25,3,142,25,27,93,70,9,3,232,25,25,160,76,2,236,25,1,1,0,9,3,236,25,25,70,76,2,228,25,2,226,25,12,3,228,25,2,230,25,2,226,25,12,3,230,25,2,232,25,2,226,25,12,3,232,25,2,226,25,28,1,0,0,28,2,238,25,1,0,0,22,26,235,76,1,45,0,30,2,238,25,14,3,238,25,25,235,76,1,16,39,3,240,25,1,0,0,3,242,25,1,0,0,2,240,25,22,26,79
-data_19712 db 77,2,238,25,2,240,25,12,3,244,25,2,244,25,24,20,26,36,77,23,2,242,25,24,20,26,36,77,23,2,240,25,1,1,0,21,26,56,77,1,48,0,2,244,25,9,30,1,1,0,3,242,25,25,56,77,2,238,25,2,240,25,13,3,238,25,2,240,25,1,10,0,12,3,240,25,25,247,76,1,0,0,28,2,246,25,1,110,0,21,26,99,77,1,11,0,25,134,77,2,246,25,1,103,0,21,26,115,77,1,22,0,25,134,77,2,246,25,1,114,0,21,26,131,77,1,104,1
-data_19840 db 25,134,77,1,4,0,28,1,0,0,28,27,83,77,3,248,25,2,250,25,1,0,0,22,26,161,77,1,1,0,25,164,77,1,0,0,3,252,25,2,252,25,26,183,77,2,250,25,14,3,250,25,25,183,77,2,250,25,1,16,0,12,3,254,25,2,250,25,1,16,0,13,1,113,2,11,3,0,26,1,8,0,2,252,25,9,2,254,25,1,10,0,22,20,26,231,77,1,2,0,25,234,77,1,1,0,9,2,248,25,1,100,0,22,20,26,252,77,1,3,0,25,16,78,2,248,25,1
-data_19968 db 10,0,22,20,26,13,78,1,2,0,25,16,78,1,1,0,9,3,2,26,1,1,0,3,4,26,1,12,0,2,2,26,22,26,59,78,2,4,26,1,10,0,11,3,4,26,2,2,26,1,1,0,10,3,2,26,25,26,78,2,6,26,30,2,0,26,2,4,26,13,26,79,78,1,126,0,25,82,78,1,61,0,30,2,252,25,26,96,78,1,45,0,30,25,96,78,2,254,25,3,238,25,27,211,76,23,1,46,0,30,2,0,26,2,4,26,1,2,0,12,9,2,4,26,12,3,0,26
-data_20096 db 1,232,3,2,4,26,12,3,8,26,1,0,0,2,8,26,22,26,183,78,1,48,0,2,0,26,2,8,26,12,9,30,2,0,26,2,8,26,13,3,0,26,2,8,26,1,10,0,12,3,8,26,25,138,78,1,47,0,30,2,248,25,3,238,25,27,211,76,23,2,2,26,1,12,0,22,26,214,78,1,10,0,30,25,214,78,1,0,0,28,2,246,25,1,103,0,21,24,20,26,238,78,23,2,246,25,1,110,0,21,26,36,79,1,88,0,2,228,25,3,250,25,3,6,26,27,139,77
-data_20224 db 23,1,89,0,2,230,25,3,250,25,3,6,26,27,139,77,23,1,90,0,2,232,25,3,250,25,3,6,26,27,139,77,23,25,79,79,2,246,25,30,31,128,29,27,83,77,3,238,25,27,211,76,23,1,10,0,30,2,246,25,1,115,0,21,26,73,79,31,134,29,25,76,79,31,146,29,31,152,29,1,0,0,28,2,246,25,30,2,10,26,1,1,0,21,26,138,79,1,58,0,30,2,246,25,1,115,0,21,24,26,121,79,23,1,0,41,4,1,63,0,21,26,130,79,31,166,29,25
-data_20352 db 135,79,1,0,41,4,30,25,14,80,2,10,26,2,12,26,9,1,10,0,22,24,20,26,175,79,23,2,246,25,1,115,0,21,24,26,175,79,23,1,0,41,4,1,63,0,21,26,185,79,1,62,0,30,25,185,79,2,246,25,1,115,0,21,20,24,20,26,208,79,23,1,0,41,4,1,63,0,21,20,26,219,79,1,0,41,4,30,25,219,79,2,12,26,26,232,79,1,45,0,30,25,232,79,1,1,0,3,14,26,2,14,26,2,10,26,22,26,14,80,1,0,41,2,14,26,9,4
-data_20480 db 30,2,14,26,1,1,0,9,3,14,26,25,238,79,1,0,0,28,1,12,0,30,2,16,26,20,26,35,80,31,170,29,25,55,80,2,246,25,26,52,80,27,218,78,23,27,83,79,23,25,55,80,31,214,29,1,0,0,28,2,18,26,3,20,26,1,12,0,30,2,246,25,26,82,80,27,218,78,23,25,82,80,2,18,26,1,1,0,21,26,98,80,31,3,30,25,181,80,2,18,26,1,2,0,21,26,114,80,31,14,30,25,181,80,2,18,26,1,3,0,21,26,130,80,31,24,30,25
-data_20608 db 181,80,2,18,26,1,4,0,21,26,146,80,31,34,30,25,181,80,2,18,26,1,5,0,21,26,162,80,31,44,30,25,181,80,2,18,26,1,7,0,21,26,178,80,31,53,30,25,181,80,31,64,30,1,0,0,28,2,22,26,1,1,0,21,26,232,80,2,24,26,1,0,0,3,148,25,3,146,25,27,118,70,2,24,26,1,1,0,3,148,25,3,146,25,27,118,70,1,3,0,35,25,123,82,2,22,26,1,2,0,21,26,87,81,1,99,34,2,24,26,1,2,0,11,9,4,3,26
-data_20736 db 26,1,99,34,2,24,26,1,2,0,11,9,1,1,0,9,4,3,28,26,2,26,26,1,0,0,3,148,25,3,146,25,27,118,70,2,26,26,1,1,0,3,148,25,3,146,25,27,118,70,2,28,26,1,0,0,3,148,25,3,146,25,27,118,70,2,28,26,1,1,0,3,148,25,3,146,25,27,118,70,1,3,0,36,25,123,82,1,35,35,2,24,26,1,5,0,11,9,1,1,0,9,4,3,26,26,1,35,35,2,24,26,1,5,0,11,9,1,2,0,9,4,3,28,26,1,35,35
-data_20864 db 2,24,26,1,5,0,11,9,1,3,0,9,4,3,30,26,2,26,26,1,0,0,3,148,25,3,146,25,27,118,70,2,26,26,1,1,0,3,148,25,3,146,25,27,118,70,2,28,26,1,0,0,3,148,25,3,146,25,27,118,70,2,28,26,1,1,0,3,148,25,3,146,25,27,118,70,2,30,26,1,0,0,3,148,25,3,146,25,27,118,70,2,30,26,1,1,0,3,148,25,3,146,25,27,118,70,1,3,0,37,1,35,35,2,24,26,1,5,0,11,9,4,1,4,0,21,26,123
-data_20992 db 82,2,30,26,3,28,26,1,35,35,2,24,26,1,5,0,11,9,1,4,0,9,4,3,30,26,2,26,26,1,0,0,3,148,25,3,146,25,27,118,70,2,26,26,1,1,0,3,148,25,3,146,25,27,118,70,2,28,26,1,0,0,3,148,25,3,146,25,27,118,70,2,28,26,1,1,0,3,148,25,3,146,25,27,118,70,2,30,26,1,0,0,3,148,25,3,146,25,27,118,70,2,30,26,1,1,0,3,148,25,3,146,25,27,118,70,1,3,0,37,25,123,82,1,0,0,28,1
-data_21120 db 128,24,1,8,0,9,2,32,26,7,1,0,0,3,34,26,2,34,26,1,1,0,3,134,25,27,206,69,22,26,79,83,1,67,34,2,34,26,9,4,26,66,83,2,34,26,1,0,0,3,144,25,3,142,25,27,93,70,1,16,0,12,2,34,26,1,1,0,3,144,25,3,142,25,27,93,70,1,16,0,12,2,34,26,1,2,0,3,144,25,3,142,25,27,93,70,1,16,0,12,2,36,26,2,38,26,38,1,8,0,1,4,24,5,1,8,0,10,2,40,26,11,1,10,0,12,9,3
-data_21248 db 42,26,1,8,0,1,4,24,1,1,0,9,5,1,8,0,10,2,40,26,11,1,10,0,12,9,3,44,26,1,131,36,2,34,26,1,4,0,11,9,2,42,26,8,1,131,36,2,34,26,1,4,0,11,9,1,2,0,9,2,44,26,8,25,66,83,2,34,26,1,1,0,9,3,34,26,25,144,82,33,2,16,26,20,26,17,84,1,0,0,3,34,26,2,34,26,1,2,0,3,134,25,27,206,69,22,26,5,84,1,2,0,2,34,26,3,136,25,3,138,25,27,223,69,26,248,83,1
-data_21376 db 99,34,2,34,26,1,2,0,11,9,4,3,46,26,1,99,34,2,34,26,1,2,0,11,9,1,1,0,9,4,3,48,26,2,46,26,1,0,0,3,148,25,3,146,25,27,118,70,2,46,26,1,1,0,3,148,25,3,146,25,27,118,70,2,48,26,1,0,0,3,148,25,3,146,25,27,118,70,2,48,26,1,1,0,3,148,25,3,146,25,27,118,70,2,34,26,1,2,0,13,1,0,0,21,26,241,83,1,2,0,25,244,83,1,1,0,36,25,248,83,2,34,26,1,1,0,9,3
-data_21504 db 34,26,25,93,83,34,1,0,0,39,1,0,0,28,25,17,84,1,0,0,3,34,26,2,34,26,2,182,25,3,134,25,27,206,69,22,26,89,84,2,182,25,2,34,26,3,136,25,3,138,25,27,223,69,26,76,84,2,182,25,2,34,26,3,24,26,3,22,26,27,185,80,23,25,76,84,2,34,26,1,1,0,9,3,34,26,25,23,84,1,6,40,1,64,0,1,32,0,32,33,1,0,0,3,34,26,2,34,26,2,182,25,3,134,25,27,206,69,22,26,191,84,2,182,25,2,34,26
-data_21632 db 3,136,25,3,138,25,27,223,69,24,26,156,84,23,2,182,25,3,140,25,27,45,70,2,34,26,9,4,26,178,84,2,182,25,2,34,26,3,24,26,3,22,26,27,185,80,23,25,178,84,2,34,26,1,1,0,9,3,34,26,25,106,84,1,38,40,1,64,0,1,32,0,32,33,2,180,25,1,0,0,22,20,24,26,230,84,23,2,182,25,2,180,25,3,136,25,3,138,25,27,223,69,26,252,84,2,182,25,2,180,25,3,24,26,3,22,26,27,185,80,23,25,252,84,1,0,0,3
-data_21760 db 34,26,2,34,26,1,32,0,22,26,152,85,1,64,0,2,34,26,9,4,3,50,26,1,38,40,2,34,26,9,4,3,52,26,1,6,40,2,34,26,9,4,3,54,26,2,54,26,2,52,26,2,50,26,16,1,255,255,17,15,3,56,26,1,192,40,2,34,26,9,2,54,26,2,52,26,1,255,255,17,15,7,1,192,40,1,32,0,9,2,34,26,9,2,54,26,2,52,26,16,7,1,64,0,2,34,26,9,2,56,26,2,50,26,16,7,1,96,0,2,34,26,9,2,56,26,2,52
-data_21888 db 26,2,50,26,1,255,255,17,15,16,7,2,34,26,1,1,0,9,3,34,26,25,2,85,1,128,40,1,64,0,1,64,0,32,34,2,180,25,1,0,0,22,20,24,26,191,85,23,2,182,25,2,180,25,3,136,25,3,138,25,27,223,69,39,1,0,0,28,1,195,37,1,128,33,1,67,2,32,1,1,0,3,58,26,1,0,0,28,1,0,0,3,60,26,1,0,0,3,62,26,2,62,26,1,4,0,22,26,49,86,2,64,26,1,2,0,11,3,64,26,2,60,26,1,2,0,11,3
-data_22016 db 60,26,2,64,26,2,66,26,22,20,26,36,86,2,64,26,2,66,26,10,3,64,26,2,60,26,1,1,0,9,3,60,26,25,36,86,2,62,26,1,1,0,9,3,62,26,25,228,85,2,64,26,1,0,0,21,3,68,26,2,64,26,1,2,0,11,2,66,26,22,20,26,87,86,2,60,26,1,1,0,9,3,60,26,25,87,86,2,60,26,28,1,0,0,28,2,70,26,1,4,0,19,2,72,26,11,2,74,26,1,4,0,19,2,76,26,11,9,3,78,26,2,78,26,1,15,0,15
-data_22144 db 1,16,0,11,2,70,26,1,15,0,15,2,72,26,11,9,2,74,26,1,15,0,15,2,76,26,11,9,3,80,26,2,78,26,1,4,0,19,2,80,26,1,128,0,9,1,8,0,19,9,28,1,0,0,28,2,10,26,20,26,197,86,1,7,0,28,25,197,86,1,0,41,4,3,82,26,2,82,26,1,120,0,21,20,24,26,238,86,23,2,82,26,1,121,0,21,20,24,26,238,86,23,2,82,26,1,122,0,21,20,26,20,87,2,246,25,1,115,0,21,20,24,20,26,7,87,23,2
-data_22272 db 82,26,1,63,0,21,20,26,17,87,1,7,0,28,25,17,87,25,20,87,2,10,26,1,2,0,22,26,70,87,2,246,25,1,110,0,21,26,63,87,2,82,26,1,120,0,10,3,84,26,1,0,0,3,86,26,1,0,0,28,25,63,87,1,1,0,28,25,70,87,2,82,26,1,63,0,21,26,86,87,1,3,0,25,93,87,2,82,26,1,120,0,10,3,84,26,1,1,0,3,88,26,2,12,26,26,115,87,1,1,0,14,25,118,87,1,1,0,3,90,26,1,0,0,3,92,26,1
-data_22400 db 0,0,3,94,26,2,88,26,2,10,26,22,24,26,176,87,23,1,0,41,2,88,26,9,4,1,48,0,22,20,24,26,176,87,23,1,57,0,1,0,41,2,88,26,9,4,22,20,26,255,87,2,94,26,1,10,0,11,1,0,41,2,88,26,9,4,9,1,48,0,10,3,94,26,2,92,26,1,1,0,9,3,92,26,2,88,26,1,1,0,9,3,88,26,1,104,1,2,94,26,22,24,20,26,242,87,23,1,3,0,2,92,26,22,26,252,87,1,2,0,28,25,252,87,25,133,87,2
-data_22528 db 92,26,20,26,13,88,1,1,0,28,25,13,88,1,0,0,3,96,26,1,1,0,3,98,26,1,0,0,3,100,26,2,88,26,2,10,26,22,26,210,88,1,0,41,2,88,26,9,4,1,46,0,21,20,26,64,88,1,1,0,28,25,64,88,2,88,26,1,1,0,9,3,88,26,2,88,26,2,10,26,22,24,26,117,88,23,1,0,41,2,88,26,9,4,1,48,0,22,20,24,26,117,88,23,1,57,0,1,0,41,2,88,26,9,4,22,20,26,193,88,2,100,26,1,4,0,21,26
-data_22656 db 137,88,1,3,0,28,25,137,88,2,96,26,1,10,0,11,1,0,41,2,88,26,9,4,9,1,48,0,10,3,96,26,2,98,26,1,10,0,11,3,98,26,2,100,26,1,1,0,9,3,100,26,2,88,26,1,1,0,9,3,88,26,25,74,88,2,100,26,20,26,207,88,1,1,0,28,25,207,88,25,210,88,2,88,26,2,10,26,21,20,26,228,88,1,1,0,28,25,228,88,2,246,25,1,114,0,21,26,69,89,1,1,0,2,100,26,22,24,26,5,89,23,2,96,26,2,98,26
-data_22784 db 1,10,0,12,13,26,15,89,1,3,0,28,25,15,89,2,94,26,1,10,0,11,2,100,26,26,42,89,2,96,26,2,98,26,1,10,0,12,12,25,45,89,1,0,0,9,3,86,26,1,16,14,2,86,26,22,26,66,89,1,2,0,28,25,66,89,25,218,89,2,246,25,1,110,0,21,26,85,89,1,11,0,25,104,89,2,246,25,1,103,0,21,26,101,89,1,22,0,25,104,89,1,4,0,3,102,26,2,102,26,2,94,26,22,24,20,26,135,89,23,2,94,26,2,102,26,21,24
-data_22912 db 26,135,89,23,2,96,26,26,145,89,1,2,0,28,25,145,89,2,94,26,1,16,0,11,2,96,26,2,98,26,3,66,26,3,64,26,27,216,85,9,3,86,26,2,246,25,1,110,0,21,24,26,187,89,23,2,68,26,20,26,197,89,1,3,0,28,25,197,89,2,102,26,1,16,0,11,2,86,26,22,26,218,89,1,2,0,28,25,218,89,2,86,26,2,90,26,11,3,86,26,1,0,0,28,1,0,0,28,27,183,86,3,104,26,2,104,26,26,255,89,2,104,26,28,25,255,89,1
-data_23040 db 3,37,1,131,33,1,192,0,32,2,86,26,1,16,14,13,3,106,26,2,106,26,1,0,0,22,26,42,90,2,106,26,1,16,14,9,3,106,26,25,42,90,1,16,41,2,106,26,1,2,0,11,9,6,3,108,26,1,16,41,2,106,26,1,132,3,9,1,16,14,13,1,2,0,11,9,6,3,110,26,1,0,0,3,112,26,2,112,26,1,32,0,22,26,42,93,1,99,36,2,112,26,9,4,26,29,93,2,112,26,1,0,0,3,144,25,3,142,25,27,93,70,3,114,26,2,112,26
-data_23168 db 1,1,0,3,144,25,3,142,25,27,93,70,3,116,26,2,112,26,1,2,0,3,144,25,3,142,25,27,93,70,3,118,26,2,246,25,1,103,0,21,26,230,90,2,84,26,1,0,0,21,26,194,90,2,114,26,2,86,26,9,3,114,26,25,227,90,2,84,26,1,1,0,21,26,217,90,2,116,26,2,86,26,9,3,116,26,25,227,90,2,118,26,2,86,26,9,3,118,26,25,168,92,2,246,25,1,115,0,21,26,131,91,2,84,26,1,0,0,21,24,20,26,4,91,23,2,84,26
-data_23296 db 1,3,0,21,26,32,91,2,228,25,2,114,26,2,228,25,10,2,86,26,11,1,16,0,12,9,3,114,26,25,32,91,2,84,26,1,1,0,21,24,20,26,52,91,23,2,84,26,1,3,0,21,26,80,91,2,230,25,2,116,26,2,230,25,10,2,86,26,11,1,16,0,12,9,3,116,26,25,80,91,2,84,26,1,2,0,21,24,20,26,100,91,23,2,84,26,1,3,0,21,26,128,91,2,232,25,2,118,26,2,232,25,10,2,86,26,11,1,16,0,12,9,3,118,26,25,128,91
-data_23424 db 25,168,92,2,84,26,1,0,0,21,26,233,91,2,116,26,2,230,25,10,3,120,26,2,118,26,2,232,25,10,3,122,26,2,230,25,2,120,26,2,122,26,2,110,26,2,108,26,14,3,76,26,3,72,26,3,74,26,3,70,26,27,95,86,9,3,116,26,2,232,25,2,120,26,2,122,26,2,108,26,2,110,26,3,76,26,3,72,26,3,74,26,3,70,26,27,95,86,9,3,118,26,25,168,92,2,84,26,1,1,0,21,26,79,92,2,118,26,2,232,25,10,3,120,26,2,114,26
-data_23552 db 2,228,25,10,3,122,26,2,232,25,2,120,26,2,122,26,2,110,26,2,108,26,14,3,76,26,3,72,26,3,74,26,3,70,26,27,95,86,9,3,118,26,2,228,25,2,120,26,2,122,26,2,108,26,2,110,26,3,76,26,3,72,26,3,74,26,3,70,26,27,95,86,9,3,114,26,25,168,92,2,114,26,2,228,25,10,3,120,26,2,116,26,2,230,25,10,3,122,26,2,228,25,2,120,26,2,122,26,2,110,26,2,108,26,14,3,76,26,3,72,26,3,74,26,3,70,26,27
-data_23680 db 95,86,9,3,114,26,2,230,25,2,120,26,2,122,26,2,108,26,2,110,26,3,76,26,3,72,26,3,74,26,3,70,26,27,95,86,9,3,116,26,1,176,0,2,114,26,3,128,25,27,131,69,22,24,20,26,219,92,23,1,176,0,2,116,26,3,128,25,27,131,69,22,24,20,26,219,92,23,1,176,0,2,118,26,3,128,25,27,131,69,22,26,229,92,1,2,0,28,25,229,92,1,3,37,2,112,26,1,6,0,11,9,2,114,26,8,1,3,37,2,112,26,1,6,0,11,9,1
-data_23808 db 2,0,9,2,116,26,8,1,3,37,2,112,26,1,6,0,11,9,1,4,0,9,2,118,26,8,25,29,93,2,112,26,1,1,0,9,3,112,26,25,86,90,27,196,85,23,1,131,33,1,3,37,1,192,0,32,1,0,0,28,1,0,0,28,1,0,0,3,124,26,2,124,26,1,2,0,3,134,25,27,206,69,22,26,201,93,1,227,34,2,124,26,9,4,26,188,93,1,99,34,2,124,26,1,2,0,11,9,4,3,126,26,1,99,34,2,124,26,1,2,0,11,9,1,1,0,9,4
-data_23936 db 3,128,26,2,126,26,2,130,26,21,24,26,150,93,23,2,128,26,2,132,26,21,24,20,26,175,93,23,2,126,26,2,132,26,21,24,26,175,93,23,2,128,26,2,130,26,21,26,185,93,2,124,26,28,25,185,93,25,188,93,2,124,26,1,1,0,9,3,124,26,25,70,93,1,1,0,14,28,1,0,0,28,27,206,74,20,26,224,93,1,0,0,28,25,224,93,2,182,25,2,180,25,1,0,0,3,154,25,3,150,25,3,152,25,27,143,70,3,134,26,2,182,25,2,180,25,1,1
-data_24064 db 0,3,154,25,3,150,25,3,152,25,27,143,70,3,136,26,27,196,85,23,1,0,0,3,138,26,2,138,26,2,182,25,3,134,25,27,206,69,22,26,138,94,2,182,25,3,140,25,27,45,70,2,138,26,9,4,26,125,94,2,182,25,1,1,0,21,26,75,94,1,67,34,25,94,94,2,182,25,1,2,0,21,26,91,94,1,227,34,25,94,94,1,35,35,2,138,26,2,182,25,1,3,0,21,26,113,94,1,5,0,25,116,94,1,1,0,11,9,1,0,0,7,25,125,94,2,138,26
-data_24192 db 1,1,0,9,3,138,26,25,26,94,1,0,0,3,138,26,2,138,26,1,2,0,3,134,25,27,206,69,22,26,250,94,1,227,34,2,138,26,9,4,26,237,94,1,67,34,1,99,34,2,138,26,1,2,0,11,9,4,9,4,20,24,20,26,217,94,23,1,67,34,1,99,34,2,138,26,1,2,0,11,9,1,1,0,9,4,9,4,20,26,234,94,1,227,34,2,138,26,9,1,0,0,7,25,234,94,25,237,94,2,138,26,1,1,0,9,3,138,26,25,144,94,1,0,0,3,138,26
-data_24320 db 2,138,26,1,3,0,3,134,25,27,206,69,22,26,182,95,1,35,35,2,138,26,1,5,0,11,9,4,3,140,26,1,0,0,3,142,26,2,142,26,2,140,26,22,26,169,95,1,35,35,2,138,26,1,5,0,11,9,2,142,26,9,1,1,0,9,4,3,144,26,1,35,35,2,138,26,1,5,0,11,9,2,142,26,1,1,0,9,2,140,26,13,9,1,1,0,9,4,3,146,26,1,67,34,2,144,26,9,4,20,24,20,26,135,95,23,2,144,26,2,146,26,3,132,26,3,130,26
-data_24448 db 27,64,93,1,0,0,22,26,156,95,1,35,35,2,138,26,1,5,0,11,9,1,0,0,7,25,156,95,2,142,26,1,1,0,9,3,142,26,25,37,95,2,138,26,1,1,0,9,3,138,26,25,0,95,27,156,69,23,2,182,25,2,134,26,2,136,26,3,176,25,3,174,25,3,172,25,27,117,71,3,180,25,1,0,0,28,1,0,0,3,148,26,2,148,26,2,150,26,1,2,0,21,26,239,95,1,64,0,25,242,95,1,32,0,22,26,29,96,2,150,26,2,148,26,3,136,25,3
-data_24576 db 138,25,27,223,69,20,26,16,96,2,148,26,28,25,16,96,2,148,26,1,1,0,9,3,148,26,25,220,95,1,1,0,14,28,1,0,0,28,1,1,0,3,150,26,27,214,95,3,152,26,2,152,26,1,0,0,22,26,67,96,1,5,0,28,25,67,96,27,196,85,23,1,131,33,2,152,26,1,6,0,11,9,2,228,25,8,1,131,33,2,152,26,1,6,0,11,9,1,2,0,9,2,230,25,8,1,131,33,2,152,26,1,6,0,11,9,1,4,0,9,2,232,25,8,1,67,34,2
-data_24704 db 152,26,9,1,1,0,7,2,152,26,1,1,0,3,134,25,27,206,69,22,20,26,166,96,1,128,33,2,152,26,1,1,0,9,7,25,166,96,27,156,69,23,1,1,0,3,182,25,2,152,26,3,180,25,27,249,73,23,1,0,0,28,1,0,0,28,2,182,25,1,2,0,21,26,211,96,27,156,97,28,25,211,96,2,182,25,1,1,0,21,20,24,20,26,233,96,23,2,132,25,1,2,0,21,20,26,243,96,1,6,0,28,25,243,96,1,67,36,4,3,154,26,1,67,36,1,1,0
-data_24832 db 9,4,3,156,26,2,154,26,2,156,26,3,132,26,3,130,26,27,64,93,1,0,0,22,20,26,35,97,1,6,0,28,25,35,97,1,2,0,3,150,26,27,214,95,3,158,26,2,158,26,1,0,0,22,26,64,97,1,5,0,28,25,64,97,27,196,85,23,1,99,34,2,158,26,1,2,0,11,9,2,154,26,7,1,99,34,2,158,26,1,2,0,11,9,1,1,0,9,2,156,26,7,1,227,34,2,158,26,9,1,1,0,7,2,158,26,1,2,0,3,134,25,27,206,69,22,20,26
-data_24960 db 148,97,1,128,33,1,1,0,9,2,158,26,1,1,0,9,7,25,148,97,1,0,0,28,1,0,0,28,1,0,0,3,160,26,1,0,0,3,162,26,2,162,26,1,32,0,22,26,202,97,1,99,36,2,162,26,9,1,0,0,7,2,162,26,1,1,0,9,3,162,26,25,168,97,1,0,0,3,162,26,2,162,26,1,2,0,3,134,25,27,206,69,22,26,103,98,1,2,0,2,162,26,3,136,25,3,138,25,27,223,69,24,26,0,98,23,1,195,35,1,32,0,9,2,162,26,9,4
-data_25088 db 26,90,98,2,160,26,1,1,0,9,3,160,26,1,99,34,2,162,26,1,2,0,11,9,4,3,164,26,1,99,34,2,162,26,1,2,0,11,9,1,1,0,9,4,3,166,26,1,99,36,2,164,26,9,1,99,36,2,164,26,9,4,1,1,0,9,7,1,99,36,2,166,26,9,1,99,36,2,166,26,9,4,1,1,0,9,7,25,90,98,2,162,26,1,1,0,9,3,162,26,25,208,97,2,160,26,1,3,0,21,20,24,26,124,98,23,2,160,26,1,4,0,21,20,26,134,98,1
-data_25216 db 6,0,28,25,134,98,1,0,0,3,168,26,1,1,0,14,3,170,26,1,0,0,3,162,26,2,162,26,1,32,0,22,26,230,98,1,99,36,2,162,26,9,4,3,172,26,2,172,26,26,217,98,2,172,26,1,2,0,21,20,26,198,98,1,6,0,28,25,198,98,2,168,26,1,1,0,9,3,168,26,2,162,26,3,170,26,25,217,98,2,162,26,1,1,0,9,3,162,26,25,153,98,2,168,26,2,160,26,21,20,26,248,98,1,6,0,28,25,248,98,2,170,26,3,174,26,1,1
-data_25344 db 0,14,3,176,26,1,0,0,3,178,26,2,178,26,2,160,26,22,26,20,100,1,67,36,2,178,26,9,2,174,26,7,1,1,0,14,3,180,26,1,0,0,3,162,26,2,162,26,1,2,0,3,134,25,27,206,69,22,26,234,99,1,2,0,2,162,26,3,136,25,3,138,25,27,223,69,24,26,93,99,23,1,195,35,1,32,0,9,2,162,26,9,4,26,221,99,1,99,34,2,162,26,1,2,0,11,9,4,3,164,26,1,99,34,2,162,26,1,2,0,11,9,1,1,0,9,4,3
-data_25472 db 166,26,2,164,26,2,174,26,21,24,26,162,99,23,2,166,26,2,176,26,21,20,24,26,162,99,23,2,180,26,1,0,0,22,26,174,99,2,166,26,3,180,26,25,218,99,2,166,26,2,174,26,21,24,26,206,99,23,2,164,26,2,176,26,21,20,24,26,206,99,23,2,180,26,1,0,0,22,26,218,99,2,164,26,3,180,26,25,218,99,25,221,99,2,162,26,1,1,0,9,3,162,26,25,45,99,2,180,26,1,0,0,22,26,251,99,1,6,0,28,25,251,99,2,174,26,3,176
-data_25600 db 26,2,180,26,3,174,26,2,178,26,1,1,0,9,3,178,26,25,11,99,2,174,26,2,170,26,21,20,26,38,100,1,6,0,28,25,38,100,1,0,0,3,162,26,2,162,26,1,3,0,3,134,25,27,206,69,22,26,191,100,1,35,35,2,162,26,1,5,0,11,9,4,2,160,26,21,26,178,100,1,0,0,3,182,26,1,0,0,3,178,26,2,178,26,2,160,26,22,26,158,100,2,182,26,1,99,36,1,35,35,2,162,26,1,5,0,11,9,2,178,26,9,1,1,0,9,4,9
-data_25728 db 4,26,138,100,1,1,0,25,141,100,1,0,0,9,3,182,26,2,178,26,1,1,0,9,3,178,26,25,91,100,2,182,26,2,160,26,21,26,175,100,1,6,0,28,25,175,100,25,178,100,2,162,26,1,1,0,9,3,162,26,25,44,100,1,3,0,3,150,26,27,214,95,3,184,26,2,184,26,1,0,0,22,26,220,100,1,5,0,28,25,220,100,27,196,85,23,1,35,35,2,184,26,1,5,0,11,9,2,160,26,7,2,184,26,1,3,0,3,134,25,27,206,69,22,20,26,18,101
-data_25856 db 1,128,33,1,2,0,9,2,184,26,1,1,0,9,7,25,18,101,1,0,0,3,178,26,2,178,26,2,160,26,22,26,75,101,1,35,35,2,184,26,1,5,0,11,9,2,178,26,9,1,1,0,9,1,67,36,2,178,26,9,4,7,2,178,26,1,1,0,9,3,178,26,25,24,101,1,0,0,28,1,0,0,28,27,183,86,3,186,26,2,186,26,26,102,101,2,186,26,28,25,102,101,2,188,26,1,0,0,21,26,121,101,2,86,26,3,228,25,25,146,101,2,188,26,1,1,0,21
-data_25984 db 26,140,101,2,86,26,3,230,25,25,146,101,2,86,26,3,232,25,2,188,26,1,1,0,9,3,188,26,2,188,26,1,3,0,22,26,196,101,1,0,41,1,120,0,2,188,26,9,7,1,1,0,3,10,26,1,0,0,3,12,26,1,0,0,28,25,196,101,27,38,96,28,1,0,0,28,1,0,0,3,16,26,1,1,0,3,32,26,1,1,0,3,182,25,1,0,0,3,180,25,1,0,0,3,246,25,1,0,0,3,10,26,1,0,0,3,12,26,1,0,0,3,132,25,1,0,0,3
-data_26112 db 58,26,1,0,0,3,234,25,1,4,0,3,36,26,1,3,0,3,38,26,1,10,0,3,40,26,1,0,0,3,20,26,27,127,82,23,27,18,80,23,1,1,0,26,239,107,29,3,190,26,1,0,0,3,20,26,2,246,25,26,234,103,2,190,26,1,27,0,21,26,91,102,1,0,0,3,246,25,1,0,0,3,10,26,27,18,80,23,25,231,103,2,190,26,1,10,0,21,24,20,26,111,102,23,2,190,26,1,13,0,21,26,207,102,2,246,25,1,110,0,21,26,130,102,27,83,101,25
-data_26240 db 133,102,27,236,89,3,192,26,2,192,26,26,155,102,2,192,26,3,18,26,27,59,80,23,25,204,102,2,246,25,1,110,0,21,24,26,174,102,23,2,188,26,1,3,0,22,26,184,102,27,18,80,23,25,204,102,1,0,0,3,246,25,1,0,0,3,10,26,27,127,82,23,27,18,80,23,25,231,103,2,190,26,1,8,0,21,26,18,103,1,1,0,2,10,26,22,26,240,102,2,10,26,1,1,0,10,3,10,26,25,11,103,1,0,0,3,12,26,2,246,25,1,110,0,21,20,26,11
-data_26368 db 103,1,0,41,1,63,0,7,25,11,103,27,18,80,23,25,231,103,2,246,25,1,110,0,21,20,24,26,64,103,23,2,190,26,1,120,0,21,24,20,26,64,103,23,2,190,26,1,121,0,21,24,20,26,64,103,23,2,190,26,1,122,0,21,26,81,103,1,0,41,2,190,26,7,27,18,80,23,25,231,103,2,190,26,1,43,0,21,24,20,26,101,103,23,2,190,26,1,45,0,21,26,133,103,2,190,26,1,45,0,21,26,120,103,1,1,0,25,123,103,1,0,0,3,12,26,27,18
-data_26496 db 80,23,25,231,103,2,190,26,1,46,0,21,24,20,26,167,103,23,2,190,26,1,48,0,22,20,24,26,167,103,23,1,57,0,2,190,26,22,20,26,221,103,2,10,26,1,9,0,22,26,208,103,1,0,41,2,10,26,9,2,190,26,7,2,10,26,1,1,0,9,3,10,26,27,18,80,23,25,218,103,1,1,0,3,18,26,27,59,80,23,25,231,103,1,1,0,3,18,26,27,59,80,23,25,236,107,1,0,0,3,192,26,2,190,26,1,32,0,21,26,7,104,1,1,0,2,16,26
-data_26624 db 10,3,16,26,25,209,107,2,190,26,1,112,0,21,26,30,104,1,1,0,2,32,26,10,3,32,26,25,209,107,2,16,26,20,26,251,104,2,190,26,1,17,0,21,24,20,26,57,104,23,2,190,26,1,19,0,21,26,93,104,2,36,26,2,190,26,1,17,0,21,26,79,104,1,31,0,25,82,104,1,1,0,9,1,32,0,13,3,36,26,25,248,104,2,190,26,1,18,0,21,24,20,26,113,104,23,2,190,26,1,20,0,21,26,149,104,2,38,26,2,190,26,1,18,0,21,26,135
-data_26752 db 104,1,31,0,25,138,104,1,1,0,9,1,32,0,13,3,38,26,25,248,104,2,190,26,1,43,0,21,24,20,26,169,104,23,2,190,26,1,61,0,21,26,205,104,1,30,0,2,40,26,1,2,0,9,22,26,192,104,1,30,0,25,199,104,2,40,26,1,2,0,9,3,40,26,25,248,104,2,190,26,1,45,0,21,26,248,104,2,40,26,1,2,0,10,1,5,0,22,26,235,104,1,5,0,25,242,104,2,40,26,1,2,0,10,3,40,26,25,248,104,25,209,107,2,190,26,1,49
-data_26880 db 0,22,20,24,26,16,105,23,1,51,0,2,190,26,22,20,26,108,105,2,182,25,2,180,25,1,0,0,3,154,25,3,150,25,3,152,25,27,143,70,3,194,26,2,182,25,2,180,25,1,1,0,3,154,25,3,150,25,3,152,25,27,143,70,3,196,26,27,156,69,23,2,190,26,1,48,0,10,3,182,25,2,182,25,2,194,26,2,196,26,3,176,25,3,174,25,3,172,25,27,117,71,3,180,25,25,209,107,2,190,26,1,17,0,22,20,24,26,129,105,23,1,20,0,2,190,26,22
-data_27008 db 20,26,145,105,2,190,26,3,198,25,27,29,72,23,25,209,107,2,190,26,1,9,0,21,26,162,105,27,151,73,23,25,209,107,2,190,26,1,10,0,21,24,20,26,182,105,23,2,190,26,1,13,0,21,26,192,105,27,249,73,23,25,209,107,2,190,26,1,27,0,21,26,209,105,27,156,69,23,25,209,107,2,190,26,1,103,0,21,24,20,26,242,105,23,2,190,26,1,114,0,21,24,20,26,242,105,23,2,190,26,1,115,0,21,26,32,106,27,14,76,26,23,106,2,190,26,3,246
-data_27136 db 25,1,0,41,1,63,0,7,1,1,0,3,10,26,1,0,0,3,12,26,25,29,106,1,4,0,3,192,26,25,209,107,2,190,26,1,127,0,21,26,49,106,27,210,93,23,25,209,107,2,190,26,1,110,0,21,26,136,106,1,1,0,3,150,26,27,214,95,1,0,0,22,26,84,106,1,5,0,3,192,26,25,133,106,1,110,0,3,246,25,1,0,0,3,188,26,1,0,0,3,228,25,1,0,0,3,230,25,1,0,0,3,232,25,1,0,41,1,120,0,7,1,1,0,3,10,26,1
-data_27264 db 0,0,3,12,26,25,209,107,2,190,26,1,102,0,21,26,155,106,27,194,96,3,192,26,25,209,107,2,190,26,1,117,0,21,26,221,106,2,58,26,26,218,106,1,128,33,1,195,37,1,67,2,32,1,0,0,3,58,26,27,156,69,23,2,182,25,1,8,0,1,8,0,3,176,25,3,174,25,3,172,25,27,117,71,3,180,25,25,218,106,25,209,107,2,190,26,1,97,0,21,26,89,107,27,156,69,23,1,0,0,3,198,26,2,198,26,2,182,25,3,134,25,27,206,69,22,26,86
-data_27392 db 107,2,182,25,2,198,26,3,136,25,3,138,25,27,223,69,26,73,107,2,182,25,3,140,25,27,45,70,2,198,26,9,1,1,0,7,2,182,25,1,1,0,21,26,70,107,1,67,36,2,132,25,9,2,198,26,7,2,132,25,1,1,0,9,3,132,25,25,70,107,25,73,107,2,198,26,1,1,0,9,3,198,26,25,241,106,25,209,107,2,190,26,1,111,0,21,26,112,107,1,1,0,2,234,25,10,3,234,25,25,209,107,2,190,26,1,43,0,21,24,20,26,132,107,23,2,190,26
-data_27520 db 1,61,0,21,26,167,107,2,40,26,1,2,0,9,3,40,26,1,30,0,2,40,26,22,26,164,107,1,30,0,3,40,26,25,164,107,25,209,107,2,190,26,1,45,0,21,26,209,107,2,40,26,1,2,0,10,3,40,26,2,40,26,1,5,0,22,26,206,107,1,5,0,3,40,26,25,206,107,25,209,107,27,127,82,23,2,192,26,26,232,107,2,192,26,3,18,26,27,59,80,23,25,236,107,27,18,80,23,25,40,102,1,0,0,28
+data_10496 db 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+data_10624 db 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+data_10752 db 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,99,20,8,20,99,3,4,120,4,3,97,81,73,69,67,0,0,0,0,1,0,1,0,2,0,2,0,3,0,3,0,4,0,4,0,4,0,5,0,5,0,6,0,6,0,7,0,7,0,8,0,8,0,8,0,9,0,9,0,10,0,10,0,11,0,11,0,12,0,12,0,13,0,13,0,13,0,14,0,14,0,15,0,15,0,16,0,16,0,17,0,17
+data_10880 db 0,17,0,18,0,18,0,19,0,19,0,20,0,20,0,21,0,21,0,21,0,22,0,22,0,23,0,23,0,24,0,24,0,25,0,25,0,25,0,26,0,26,0,27,0,27,0,28,0,28,0,29,0,29,0,29,0,30,0,30,0,31,0,31,0,32,0,32,0,33,0,33,0,33,0,34,0,34,0,35,0,35,0,36,0,36,0,37,0,37,0,37,0,38,0,38,0,39,0,39,0,40,0,40,0,40,0,41,0,41,0,42,0,42,0,43,0,43,0,44,0,44,0,44,0,45,0,45
+data_11008 db 0,46,0,46,0,47,0,47,0,48,0,48,0,48,0,49,0,49,0,50,0,50,0,51,0,51,0,51,0,52,0,52,0,53,0,53,0,54,0,54,0,55,0,55,0,55,0,56,0,56,0,57,0,57,0,58,0,58,0,58,0,59,0,59,0,60,0,60,0,61,0,61,0,61,0,62,0,62,0,63,0,63,0,64,0,64,0,65,0,65,0,65,0,66,0,66,0,67,0,67,0,68,0,68,0,68,0,69,0,69,0,70,0,70,0,71,0,71,0,71,0,72,0,72,0,73,0,73
+data_11136 db 0,74,0,74,0,74,0,75,0,75,0,76,0,76,0,77,0,77,0,77,0,78,0,78,0,79,0,79,0,80,0,80,0,80,0,81,0,81,0,82,0,82,0,83,0,83,0,83,0,84,0,84,0,85,0,85,0,85,0,86,0,86,0,87,0,87,0,88,0,88,0,88,0,89,0,89,0,90,0,90,0,90,0,91,0,91,0,92,0,92,0,93,0,93,0,93,0,94,0,94,0,95,0,95,0,95,0,96,0,96,0,97,0,97,0,98,0,98,0,98,0,99,0,99,0,100,0,100
+data_11264 db 0,100,0,101,0,101,0,102,0,102,0,102,0,103,0,103,0,104,0,104,0,105,0,105,0,105,0,106,0,106,0,107,0,107,0,107,0,108,0,108,0,109,0,109,0,109,0,110,0,110,0,111,0,111,0,111,0,112,0,112,0,113,0,113,0,113,0,114,0,114,0,115,0,115,0,115,0,116,0,116,0,117,0,117,0,117,0,118,0,118,0,119,0,119,0,119,0,120,0,120,0,121,0,121,0,121,0,122,0,122,0,123,0,123,0,123,0,124,0,124,0,125,0,125,0,125,0,126
+data_11392 db 0,126,0,126,0,127,0,127,0,128,0,128,0,128,0,129,0,129,0,130,0,130,0,130,0,131,0,131,0,131,0,132,0,132,0,133,0,133,0,133,0,134,0,134,0,135,0,135,0,135,0,136,0,136,0,136,0,137,0,137,0,138,0,138,0,138,0,139,0,139,0,139,0,140,0,140,0,141,0,141,0,141,0,142,0,142,0,142,0,143,0,143,0,144,0,144,0,144,0,145,0,145,0,145,0,146,0,146,0,146,0,147,0,147,0,148,0,148,0,148,0,149,0,149,0,149,0,150
+data_11520 db 0,150,0,150,0,151,0,151,0,152,0,152,0,152,0,153,0,153,0,153,0,154,0,154,0,154,0,155,0,155,0,155,0,156,0,156,0,157,0,157,0,157,0,158,0,158,0,158,0,159,0,159,0,159,0,160,0,160,0,160,0,161,0,161,0,161,0,162,0,162,0,162,0,163,0,163,0,164,0,164,0,164,0,165,0,165,0,165,0,166,0,166,0,166,0,167,0,167,0,167,0,168,0,168,0,168,0,169,0,169,0,169,0,170,0,170,0,170,0,171,0,171,0,171,0,172,0,172
+data_11648 db 0,172,0,173,0,173,0,173,0,174,0,174,0,174,0,175,0,175,0,175,0,176,0,176,0,176,0,177,0,177,0,177,0,178,0,178,0,178,0,178,0,179,0,179,0,179,0,180,0,180,0,180,0,181,0,181,0,181,0,182,0,182,0,182,0,183,0,183,0,183,0,184,0,184,0,184,0,184,0,185,0,185,0,185,0,186,0,186,0,186,0,187,0,187,0,187,0,188,0,188,0,188,0,188,0,189,0,189,0,189,0,190,0,190,0,190,0,191,0,191,0,191,0,191,0,192,0,192
+data_11776 db 0,192,0,193,0,193,0,193,0,193,0,194,0,194,0,194,0,195,0,195,0,195,0,196,0,196,0,196,0,196,0,197,0,197,0,197,0,198,0,198,0,198,0,198,0,199,0,199,0,199,0,200,0,200,0,200,0,200,0,201,0,201,0,201,0,201,0,202,0,202,0,202,0,203,0,203,0,203,0,203,0,204,0,204,0,204,0,204,0,205,0,205,0,205,0,206,0,206,0,206,0,206,0,207,0,207,0,207,0,207,0,208,0,208,0,208,0,208,0,209,0,209,0,209,0,209,0,210
+data_11904 db 0,210,0,210,0,210,0,211,0,211,0,211,0,211,0,212,0,212,0,212,0,212,0,213,0,213,0,213,0,213,0,214,0,214,0,214,0,214,0,215,0,215,0,215,0,215,0,216,0,216,0,216,0,216,0,217,0,217,0,217,0,217,0,218,0,218,0,218,0,218,0,219,0,219,0,219,0,219,0,219,0,220,0,220,0,220,0,220,0,221,0,221,0,221,0,221,0,221,0,222,0,222,0,222,0,222,0,223,0,223,0,223,0,223,0,223,0,224,0,224,0,224,0,224,0,225,0,225
+data_12032 db 0,225,0,225,0,225,0,226,0,226,0,226,0,226,0,226,0,227,0,227,0,227,0,227,0,227,0,228,0,228,0,228,0,228,0,229,0,229,0,229,0,229,0,229,0,230,0,230,0,230,0,230,0,230,0,230,0,231,0,231,0,231,0,231,0,231,0,232,0,232,0,232,0,232,0,232,0,233,0,233,0,233,0,233,0,233,0,234,0,234,0,234,0,234,0,234,0,234,0,235,0,235,0,235,0,235,0,235,0,235,0,236,0,236,0,236,0,236,0,236,0,237,0,237,0,237,0,237
+data_12160 db 0,237,0,237,0,238,0,238,0,238,0,238,0,238,0,238,0,239,0,239,0,239,0,239,0,239,0,239,0,239,0,240,0,240,0,240,0,240,0,240,0,240,0,241,0,241,0,241,0,241,0,241,0,241,0,241,0,242,0,242,0,242,0,242,0,242,0,242,0,242,0,243,0,243,0,243,0,243,0,243,0,243,0,243,0,244,0,244,0,244,0,244,0,244,0,244,0,244,0,245,0,245,0,245,0,245,0,245,0,245,0,245,0,245,0,246,0,246,0,246,0,246,0,246,0,246,0,246
+data_12288 db 0,246,0,247,0,247,0,247,0,247,0,247,0,247,0,247,0,247,0,248,0,248,0,248,0,248,0,248,0,248,0,248,0,248,0,248,0,249,0,249,0,249,0,249,0,249,0,249,0,249,0,249,0,249,0,249,0,250,0,250,0,250,0,250,0,250,0,250,0,250,0,250,0,250,0,250,0,250,0,251,0,251,0,251,0,251,0,251,0,251,0,251,0,251,0,251,0,251,0,251,0,252,0,252,0,252,0,252,0,252,0,252,0,252,0,252,0,252,0,252,0,252,0,252,0,252,0,253
+data_12416 db 0,253,0,253,0,253,0,253,0,253,0,253,0,253,0,253,0,253,0,253,0,253,0,253,0,253,0,254,0,254,0,254,0,254,0,254,0,254,0,254,0,254,0,254,0,254,0,254,0,254,0,254,0,254,0,254,0,254,0,254,0,254,0,255,0,255,0,255,0,255,0,255,0,255,0,255,0,255,0,255,0,255,0,255,0,255,0,255,0,255,0,255,0,255,0,255,0,255,0,255,0,255,0,255,0,255,0,255,0,255,0,255,0,255,0,255,0,0,1,0,1,0,1,0,1,0,1,0
+data_12544 db 1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0
+data_12672 db 1,0,1,255,0,255,0,255,0,255,0,255,0,255,0,255,0,255,0,255,0,255,0,255,0,255,0,255,0,255,0,255,0,255,0,255,0,255,0,255,0,255,0,255,0,255,0,255,0,255,0,255,0,255,0,255,0,254,0,254,0,254,0,254,0,254,0,254,0,254,0,254,0,254,0,254,0,254,0,254,0,254,0,254,0,254,0,254,0,254,0,254,0,253,0,253,0,253,0,253,0,253,0,253,0,253,0,253,0,253,0,253,0,253,0,253,0,253,0,253,0,252,0,252,0,252,0,252
+data_12800 db 0,252,0,252,0,252,0,252,0,252,0,252,0,252,0,252,0,252,0,251,0,251,0,251,0,251,0,251,0,251,0,251,0,251,0,251,0,251,0,251,0,250,0,250,0,250,0,250,0,250,0,250,0,250,0,250,0,250,0,250,0,250,0,249,0,249,0,249,0,249,0,249,0,249,0,249,0,249,0,249,0,249,0,248,0,248,0,248,0,248,0,248,0,248,0,248,0,248,0,248,0,247,0,247,0,247,0,247,0,247,0,247,0,247,0,247,0,246,0,246,0,246,0,246,0,246,0,246
+data_12928 db 0,246,0,246,0,245,0,245,0,245,0,245,0,245,0,245,0,245,0,245,0,244,0,244,0,244,0,244,0,244,0,244,0,244,0,243,0,243,0,243,0,243,0,243,0,243,0,243,0,242,0,242,0,242,0,242,0,242,0,242,0,242,0,241,0,241,0,241,0,241,0,241,0,241,0,241,0,240,0,240,0,240,0,240,0,240,0,240,0,239,0,239,0,239,0,239,0,239,0,239,0,239,0,238,0,238,0,238,0,238,0,238,0,238,0,237,0,237,0,237,0,237,0,237,0,237,0,236
+data_13056 db 0,236,0,236,0,236,0,236,0,235,0,235,0,235,0,235,0,235,0,235,0,234,0,234,0,234,0,234,0,234,0,234,0,233,0,233,0,233,0,233,0,233,0,232,0,232,0,232,0,232,0,232,0,231,0,231,0,231,0,231,0,231,0,230,0,230,0,230,0,230,0,230,0,230,0,229,0,229,0,229,0,229,0,229,0,228,0,228,0,228,0,228,0,227,0,227,0,227,0,227,0,227,0,226,0,226,0,226,0,226,0,226,0,225,0,225,0,225,0,225,0,225,0,224,0,224,0,224
+data_13184 db 0,224,0,223,0,223,0,223,0,223,0,223,0,222,0,222,0,222,0,222,0,221,0,221,0,221,0,221,0,221,0,220,0,220,0,220,0,220,0,219,0,219,0,219,0,219,0,219,0,218,0,218,0,218,0,218,0,217,0,217,0,217,0,217,0,216,0,216,0,216,0,216,0,215,0,215,0,215,0,215,0,214,0,214,0,214,0,214,0,213,0,213,0,213,0,213,0,212,0,212,0,212,0,212,0,211,0,211,0,211,0,211,0,210,0,210,0,210,0,210,0,209,0,209,0,209,0,209
+data_13312 db 0,208,0,208,0,208,0,208,0,207,0,207,0,207,0,207,0,206,0,206,0,206,0,206,0,205,0,205,0,205,0,204,0,204,0,204,0,204,0,203,0,203,0,203,0,203,0,202,0,202,0,202,0,201,0,201,0,201,0,201,0,200,0,200,0,200,0,200,0,199,0,199,0,199,0,198,0,198,0,198,0,198,0,197,0,197,0,197,0,196,0,196,0,196,0,196,0,195,0,195,0,195,0,194,0,194,0,194,0,193,0,193,0,193,0,193,0,192,0,192,0,192,0,191,0,191,0,191
+data_13440 db 0,191,0,190,0,190,0,190,0,189,0,189,0,189,0,188,0,188,0,188,0,188,0,187,0,187,0,187,0,186,0,186,0,186,0,185,0,185,0,185,0,184,0,184,0,184,0,184,0,183,0,183,0,183,0,182,0,182,0,182,0,181,0,181,0,181,0,180,0,180,0,180,0,179,0,179,0,179,0,178,0,178,0,178,0,178,0,177,0,177,0,177,0,176,0,176,0,176,0,175,0,175,0,175,0,174,0,174,0,174,0,173,0,173,0,173,0,172,0,172,0,172,0,171,0,171,0,171
+data_13568 db 0,170,0,170,0,170,0,169,0,169,0,169,0,168,0,168,0,168,0,167,0,167,0,167,0,166,0,166,0,166,0,165,0,165,0,165,0,164,0,164,0,164,0,163,0,163,0,162,0,162,0,162,0,161,0,161,0,161,0,160,0,160,0,160,0,159,0,159,0,159,0,158,0,158,0,158,0,157,0,157,0,157,0,156,0,156,0,155,0,155,0,155,0,154,0,154,0,154,0,153,0,153,0,153,0,152,0,152,0,152,0,151,0,151,0,150,0,150,0,150,0,149,0,149,0,149,0,148
+data_13696 db 0,148,0,148,0,147,0,147,0,146,0,146,0,146,0,145,0,145,0,145,0,144,0,144,0,144,0,143,0,143,0,142,0,142,0,142,0,141,0,141,0,141,0,140,0,140,0,139,0,139,0,139,0,138,0,138,0,138,0,137,0,137,0,136,0,136,0,136,0,135,0,135,0,135,0,134,0,134,0,133,0,133,0,133,0,132,0,132,0,131,0,131,0,131,0,130,0,130,0,130,0,129,0,129,0,128,0,128,0,128,0,127,0,127,0,126,0,126,0,126,0,125,0,125,0,125,0,124
+data_13824 db 0,124,0,123,0,123,0,123,0,122,0,122,0,121,0,121,0,121,0,120,0,120,0,119,0,119,0,119,0,118,0,118,0,117,0,117,0,117,0,116,0,116,0,115,0,115,0,115,0,114,0,114,0,113,0,113,0,113,0,112,0,112,0,111,0,111,0,111,0,110,0,110,0,109,0,109,0,109,0,108,0,108,0,107,0,107,0,107,0,106,0,106,0,105,0,105,0,105,0,104,0,104,0,103,0,103,0,102,0,102,0,102,0,101,0,101,0,100,0,100,0,100,0,99,0,99,0,98
+data_13952 db 0,98,0,98,0,97,0,97,0,96,0,96,0,95,0,95,0,95,0,94,0,94,0,93,0,93,0,93,0,92,0,92,0,91,0,91,0,90,0,90,0,90,0,89,0,89,0,88,0,88,0,88,0,87,0,87,0,86,0,86,0,85,0,85,0,85,0,84,0,84,0,83,0,83,0,83,0,82,0,82,0,81,0,81,0,80,0,80,0,80,0,79,0,79,0,78,0,78,0,77,0,77,0,77,0,76,0,76,0,75,0,75,0,74,0,74,0,74,0,73,0,73,0,72,0,72,0,71
+data_14080 db 0,71,0,71,0,70,0,70,0,69,0,69,0,68,0,68,0,68,0,67,0,67,0,66,0,66,0,65,0,65,0,65,0,64,0,64,0,63,0,63,0,62,0,62,0,61,0,61,0,61,0,60,0,60,0,59,0,59,0,58,0,58,0,58,0,57,0,57,0,56,0,56,0,55,0,55,0,55,0,54,0,54,0,53,0,53,0,52,0,52,0,51,0,51,0,51,0,50,0,50,0,49,0,49,0,48,0,48,0,48,0,47,0,47,0,46,0,46,0,45,0,45,0,44,0,44,0,44
+data_14208 db 0,43,0,43,0,42,0,42,0,41,0,41,0,40,0,40,0,40,0,39,0,39,0,38,0,38,0,37,0,37,0,37,0,36,0,36,0,35,0,35,0,34,0,34,0,33,0,33,0,33,0,32,0,32,0,31,0,31,0,30,0,30,0,29,0,29,0,29,0,28,0,28,0,27,0,27,0,26,0,26,0,25,0,25,0,25,0,24,0,24,0,23,0,23,0,22,0,22,0,21,0,21,0,21,0,20,0,20,0,19,0,19,0,18,0,18,0,17,0,17,0,17,0,16,0,16,0,15
+data_14336 db 0,15,0,14,0,14,0,13,0,13,0,13,0,12,0,12,0,11,0,11,0,10,0,10,0,9,0,9,0,8,0,8,0,8,0,7,0,7,0,6,0,6,0,5,0,5,0,4,0,4,0,4,0,3,0,3,0,2,0,2,0,1,0,1,0,0,0,0,0,0,0,255,255,255,255,254,255,254,255,253,255,253,255,252,255,252,255,252,255,251,255,251,255,250,255,250,255,249,255,249,255,248,255,248,255,248,255,247,255,247,255,246,255,246,255,245,255,245,255,244,255,244,255,243,255,243,255,243
+data_14464 db 255,242,255,242,255,241,255,241,255,240,255,240,255,239,255,239,255,239,255,238,255,238,255,237,255,237,255,236,255,236,255,235,255,235,255,235,255,234,255,234,255,233,255,233,255,232,255,232,255,231,255,231,255,231,255,230,255,230,255,229,255,229,255,228,255,228,255,227,255,227,255,227,255,226,255,226,255,225,255,225,255,224,255,224,255,223,255,223,255,223,255,222,255,222,255,221,255,221,255,220,255,220,255,219,255,219,255,219,255,218,255,218,255,217,255,217,255,216,255,216,255,216,255,215,255,215,255,214
+data_14592 db 255,214,255,213,255,213,255,212,255,212,255,212,255,211,255,211,255,210,255,210,255,209,255,209,255,208,255,208,255,208,255,207,255,207,255,206,255,206,255,205,255,205,255,205,255,204,255,204,255,203,255,203,255,202,255,202,255,201,255,201,255,201,255,200,255,200,255,199,255,199,255,198,255,198,255,198,255,197,255,197,255,196,255,196,255,195,255,195,255,195,255,194,255,194,255,193,255,193,255,192,255,192,255,191,255,191,255,191,255,190,255,190,255,189,255,189,255,188,255,188,255,188,255,187,255,187,255,186
+data_14720 db 255,186,255,185,255,185,255,185,255,184,255,184,255,183,255,183,255,182,255,182,255,182,255,181,255,181,255,180,255,180,255,179,255,179,255,179,255,178,255,178,255,177,255,177,255,176,255,176,255,176,255,175,255,175,255,174,255,174,255,173,255,173,255,173,255,172,255,172,255,171,255,171,255,171,255,170,255,170,255,169,255,169,255,168,255,168,255,168,255,167,255,167,255,166,255,166,255,166,255,165,255,165,255,164,255,164,255,163,255,163,255,163,255,162,255,162,255,161,255,161,255,161,255,160,255,160,255,159
+data_14848 db 255,159,255,158,255,158,255,158,255,157,255,157,255,156,255,156,255,156,255,155,255,155,255,154,255,154,255,154,255,153,255,153,255,152,255,152,255,151,255,151,255,151,255,150,255,150,255,149,255,149,255,149,255,148,255,148,255,147,255,147,255,147,255,146,255,146,255,145,255,145,255,145,255,144,255,144,255,143,255,143,255,143,255,142,255,142,255,141,255,141,255,141,255,140,255,140,255,139,255,139,255,139,255,138,255,138,255,137,255,137,255,137,255,136,255,136,255,135,255,135,255,135,255,134,255,134,255,133
+data_14976 db 255,133,255,133,255,132,255,132,255,131,255,131,255,131,255,130,255,130,255,130,255,129,255,129,255,128,255,128,255,128,255,127,255,127,255,126,255,126,255,126,255,125,255,125,255,125,255,124,255,124,255,123,255,123,255,123,255,122,255,122,255,121,255,121,255,121,255,120,255,120,255,120,255,119,255,119,255,118,255,118,255,118,255,117,255,117,255,117,255,116,255,116,255,115,255,115,255,115,255,114,255,114,255,114,255,113,255,113,255,112,255,112,255,112,255,111,255,111,255,111,255,110,255,110,255,110,255,109
+data_15104 db 255,109,255,108,255,108,255,108,255,107,255,107,255,107,255,106,255,106,255,106,255,105,255,105,255,104,255,104,255,104,255,103,255,103,255,103,255,102,255,102,255,102,255,101,255,101,255,101,255,100,255,100,255,99,255,99,255,99,255,98,255,98,255,98,255,97,255,97,255,97,255,96,255,96,255,96,255,95,255,95,255,95,255,94,255,94,255,94,255,93,255,93,255,92,255,92,255,92,255,91,255,91,255,91,255,90,255,90,255,90,255,89,255,89,255,89,255,88,255,88,255,88,255,87,255,87,255,87
+data_15232 db 255,86,255,86,255,86,255,85,255,85,255,85,255,84,255,84,255,84,255,83,255,83,255,83,255,82,255,82,255,82,255,81,255,81,255,81,255,80,255,80,255,80,255,79,255,79,255,79,255,78,255,78,255,78,255,78,255,77,255,77,255,77,255,76,255,76,255,76,255,75,255,75,255,75,255,74,255,74,255,74,255,73,255,73,255,73,255,72,255,72,255,72,255,72,255,71,255,71,255,71,255,70,255,70,255,70,255,69,255,69,255,69,255,68,255,68,255,68,255,68,255,67,255,67,255,67,255,66
+data_15360 db 255,66,255,66,255,65,255,65,255,65,255,65,255,64,255,64,255,64,255,63,255,63,255,63,255,63,255,62,255,62,255,62,255,61,255,61,255,61,255,60,255,60,255,60,255,60,255,59,255,59,255,59,255,58,255,58,255,58,255,58,255,57,255,57,255,57,255,56,255,56,255,56,255,56,255,55,255,55,255,55,255,55,255,54,255,54,255,54,255,53,255,53,255,53,255,53,255,52,255,52,255,52,255,52,255,51,255,51,255,51,255,50,255,50,255,50,255,50,255,49,255,49,255,49,255,49,255,48
+data_15488 db 255,48,255,48,255,48,255,47,255,47,255,47,255,47,255,46,255,46,255,46,255,46,255,45,255,45,255,45,255,45,255,44,255,44,255,44,255,44,255,43,255,43,255,43,255,43,255,42,255,42,255,42,255,42,255,41,255,41,255,41,255,41,255,40,255,40,255,40,255,40,255,39,255,39,255,39,255,39,255,38,255,38,255,38,255,38,255,37,255,37,255,37,255,37,255,37,255,36,255,36,255,36,255,36,255,35,255,35,255,35,255,35,255,35,255,34,255,34,255,34,255,34,255,33,255,33,255,33
+data_15616 db 255,33,255,33,255,32,255,32,255,32,255,32,255,31,255,31,255,31,255,31,255,31,255,30,255,30,255,30,255,30,255,30,255,29,255,29,255,29,255,29,255,29,255,28,255,28,255,28,255,28,255,27,255,27,255,27,255,27,255,27,255,26,255,26,255,26,255,26,255,26,255,26,255,25,255,25,255,25,255,25,255,25,255,24,255,24,255,24,255,24,255,24,255,23,255,23,255,23,255,23,255,23,255,22,255,22,255,22,255,22,255,22,255,22,255,21,255,21,255,21,255,21,255,21,255,21,255,20
+data_15744 db 255,20,255,20,255,20,255,20,255,19,255,19,255,19,255,19,255,19,255,19,255,18,255,18,255,18,255,18,255,18,255,18,255,17,255,17,255,17,255,17,255,17,255,17,255,17,255,16,255,16,255,16,255,16,255,16,255,16,255,15,255,15,255,15,255,15,255,15,255,15,255,15,255,14,255,14,255,14,255,14,255,14,255,14,255,14,255,13,255,13,255,13,255,13,255,13,255,13,255,13,255,12,255,12,255,12,255,12,255,12,255,12,255,12,255,11,255,11,255,11,255,11,255,11,255,11,255,11
+data_15872 db 255,11,255,10,255,10,255,10,255,10,255,10,255,10,255,10,255,10,255,9,255,9,255,9,255,9,255,9,255,9,255,9,255,9,255,8,255,8,255,8,255,8,255,8,255,8,255,8,255,8,255,8,255,7,255,7,255,7,255,7,255,7,255,7,255,7,255,7,255,7,255,7,255,6,255,6,255,6,255,6,255,6,255,6,255,6,255,6,255,6,255,6,255,6,255,5,255,5,255,5,255,5,255,5,255,5,255,5,255,5,255,5,255,5,255,5,255,4,255,4,255,4,255,4,255,4,255,4
+data_16000 db 255,4,255,4,255,4,255,4,255,4,255,4,255,4,255,3,255,3,255,3,255,3,255,3,255,3,255,3,255,3,255,3,255,3,255,3,255,3,255,3,255,3,255,2,255,2,255,2,255,2,255,2,255,2,255,2,255,2,255,2,255,2,255,2,255,2,255,2,255,2,255,2,255,2,255,2,255,2,255,1,255,1,255,1,255,1,255,1,255,1,255,1,255,1,255,1,255,1,255,1,255,1,255,1,255,1,255,1,255,1,255,1,255,1,255,1,255,1,255,1,255,1,255,1,255,1,255,1
+data_16128 db 255,1,255,1,255,0,255,0,255,0,255,0,255,0,255,0,255,0,255,0,255,0,255,0,255,0,255,0,255,0,255,0,255,0,255,0,255,0,255,0,255,0,255,0,255,0,255,0,255,0,255,0,255,0,255,0,255,0,255,0,255,0,255,0,255,0,255,0,255,0,255,0,255,0,255,0,255,0,255,0,255,0,255,0,255,0,255,0,255,0,255,0,255,0,255,0,255,0,255,0,255,0,255,0,255,0,255,0,255,0,255,0,255,0,255,0,255,0,255,0,255,0,255,0,255,0,255,0
+data_16256 db 255,0,255,0,255,0,255,0,255,0,255,0,255,0,255,0,255,0,255,1,255,1,255,1,255,1,255,1,255,1,255,1,255,1,255,1,255,1,255,1,255,1,255,1,255,1,255,1,255,1,255,1,255,1,255,1,255,1,255,1,255,1,255,1,255,1,255,1,255,1,255,1,255,2,255,2,255,2,255,2,255,2,255,2,255,2,255,2,255,2,255,2,255,2,255,2,255,2,255,2,255,2,255,2,255,2,255,2,255,3,255,3,255,3,255,3,255,3,255,3,255,3,255,3,255,3,255,3
+data_16384 db 255,3,255,3,255,3,255,3,255,4,255,4,255,4,255,4,255,4,255,4,255,4,255,4,255,4,255,4,255,4,255,4,255,4,255,5,255,5,255,5,255,5,255,5,255,5,255,5,255,5,255,5,255,5,255,5,255,6,255,6,255,6,255,6,255,6,255,6,255,6,255,6,255,6,255,6,255,6,255,7,255,7,255,7,255,7,255,7,255,7,255,7,255,7,255,7,255,7,255,8,255,8,255,8,255,8,255,8,255,8,255,8,255,8,255,8,255,9,255,9,255,9,255,9,255,9,255,9
+data_16512 db 255,9,255,9,255,10,255,10,255,10,255,10,255,10,255,10,255,10,255,10,255,11,255,11,255,11,255,11,255,11,255,11,255,11,255,11,255,12,255,12,255,12,255,12,255,12,255,12,255,12,255,13,255,13,255,13,255,13,255,13,255,13,255,13,255,14,255,14,255,14,255,14,255,14,255,14,255,14,255,15,255,15,255,15,255,15,255,15,255,15,255,15,255,16,255,16,255,16,255,16,255,16,255,16,255,17,255,17,255,17,255,17,255,17,255,17,255,17,255,18,255,18,255,18,255,18,255,18
+data_16640 db 255,18,255,19,255,19,255,19,255,19,255,19,255,19,255,20,255,20,255,20,255,20,255,20,255,21,255,21,255,21,255,21,255,21,255,21,255,22,255,22,255,22,255,22,255,22,255,22,255,23,255,23,255,23,255,23,255,23,255,24,255,24,255,24,255,24,255,24,255,25,255,25,255,25,255,25,255,25,255,26,255,26,255,26,255,26,255,26,255,26,255,27,255,27,255,27,255,27,255,27,255,28,255,28,255,28,255,28,255,29,255,29,255,29,255,29,255,29,255,30,255,30,255,30,255,30,255,30
+data_16768 db 255,31,255,31,255,31,255,31,255,31,255,32,255,32,255,32,255,32,255,33,255,33,255,33,255,33,255,33,255,34,255,34,255,34,255,34,255,35,255,35,255,35,255,35,255,35,255,36,255,36,255,36,255,36,255,37,255,37,255,37,255,37,255,37,255,38,255,38,255,38,255,38,255,39,255,39,255,39,255,39,255,40,255,40,255,40,255,40,255,41,255,41,255,41,255,41,255,42,255,42,255,42,255,42,255,43,255,43,255,43,255,43,255,44,255,44,255,44,255,44,255,45,255,45,255,45,255,45
+data_16896 db 255,46,255,46,255,46,255,46,255,47,255,47,255,47,255,47,255,48,255,48,255,48,255,48,255,49,255,49,255,49,255,49,255,50,255,50,255,50,255,50,255,51,255,51,255,51,255,52,255,52,255,52,255,52,255,53,255,53,255,53,255,53,255,54,255,54,255,54,255,55,255,55,255,55,255,55,255,56,255,56,255,56,255,56,255,57,255,57,255,57,255,58,255,58,255,58,255,58,255,59,255,59,255,59,255,60,255,60,255,60,255,60,255,61,255,61,255,61,255,62,255,62,255,62,255,63,255,63
+data_17024 db 255,63,255,63,255,64,255,64,255,64,255,65,255,65,255,65,255,65,255,66,255,66,255,66,255,67,255,67,255,67,255,68,255,68,255,68,255,68,255,69,255,69,255,69,255,70,255,70,255,70,255,71,255,71,255,71,255,72,255,72,255,72,255,72,255,73,255,73,255,73,255,74,255,74,255,74,255,75,255,75,255,75,255,76,255,76,255,76,255,77,255,77,255,77,255,78,255,78,255,78,255,78,255,79,255,79,255,79,255,80,255,80,255,80,255,81,255,81,255,81,255,82,255,82,255,82,255,83
+data_17152 db 255,83,255,83,255,84,255,84,255,84,255,85,255,85,255,85,255,86,255,86,255,86,255,87,255,87,255,87,255,88,255,88,255,88,255,89,255,89,255,89,255,90,255,90,255,90,255,91,255,91,255,91,255,92,255,92,255,92,255,93,255,93,255,94,255,94,255,94,255,95,255,95,255,95,255,96,255,96,255,96,255,97,255,97,255,97,255,98,255,98,255,98,255,99,255,99,255,99,255,100,255,100,255,101,255,101,255,101,255,102,255,102,255,102,255,103,255,103,255,103,255,104,255,104,255,104,255,105
+data_17280 db 255,105,255,106,255,106,255,106,255,107,255,107,255,107,255,108,255,108,255,108,255,109,255,109,255,110,255,110,255,110,255,111,255,111,255,111,255,112,255,112,255,112,255,113,255,113,255,114,255,114,255,114,255,115,255,115,255,115,255,116,255,116,255,117,255,117,255,117,255,118,255,118,255,118,255,119,255,119,255,120,255,120,255,120,255,121,255,121,255,121,255,122,255,122,255,123,255,123,255,123,255,124,255,124,255,125,255,125,255,125,255,126,255,126,255,126,255,127,255,127,255,128,255,128,255,128,255,129
+data_17408 db 255,129,255,130,255,130,255,130,255,131,255,131,255,131,255,132,255,132,255,133,255,133,255,133,255,134,255,134,255,135,255,135,255,135,255,136,255,136,255,137,255,137,255,137,255,138,255,138,255,139,255,139,255,139,255,140,255,140,255,141,255,141,255,141,255,142,255,142,255,143,255,143,255,143,255,144,255,144,255,145,255,145,255,145,255,146,255,146,255,147,255,147,255,147,255,148,255,148,255,149,255,149,255,149,255,150,255,150,255,151,255,151,255,151,255,152,255,152,255,153,255,153,255,154,255,154,255,154
+data_17536 db 255,155,255,155,255,156,255,156,255,156,255,157,255,157,255,158,255,158,255,158,255,159,255,159,255,160,255,160,255,161,255,161,255,161,255,162,255,162,255,163,255,163,255,163,255,164,255,164,255,165,255,165,255,166,255,166,255,166,255,167,255,167,255,168,255,168,255,168,255,169,255,169,255,170,255,170,255,171,255,171,255,171,255,172,255,172,255,173,255,173,255,173,255,174,255,174,255,175,255,175,255,176,255,176,255,176,255,177,255,177,255,178,255,178,255,179,255,179,255,179,255,180,255,180,255,181,255,181
+data_17664 db 255,182,255,182,255,182,255,183,255,183,255,184,255,184,255,185,255,185,255,185,255,186,255,186,255,187,255,187,255,188,255,188,255,188,255,189,255,189,255,190,255,190,255,191,255,191,255,191,255,192,255,192,255,193,255,193,255,194,255,194,255,195,255,195,255,195,255,196,255,196,255,197,255,197,255,198,255,198,255,198,255,199,255,199,255,200,255,200,255,201,255,201,255,201,255,202,255,202,255,203,255,203,255,204,255,204,255,205,255,205,255,205,255,206,255,206,255,207,255,207,255,208,255,208,255,208,255,209
+data_17792 db 255,209,255,210,255,210,255,211,255,211,255,212,255,212,255,212,255,213,255,213,255,214,255,214,255,215,255,215,255,216,255,216,255,216,255,217,255,217,255,218,255,218,255,219,255,219,255,219,255,220,255,220,255,221,255,221,255,222,255,222,255,223,255,223,255,223,255,224,255,224,255,225,255,225,255,226,255,226,255,227,255,227,255,227,255,228,255,228,255,229,255,229,255,230,255,230,255,231,255,231,255,231,255,232,255,232,255,233,255,233,255,234,255,234,255,235,255,235,255,235,255,236,255,236,255,237,255,237
+data_17920 db 255,238,255,238,255,239,255,239,255,239,255,240,255,240,255,241,255,241,255,242,255,242,255,243,255,243,255,243,255,244,255,244,255,245,255,245,255,246,255,246,255,247,255,247,255,248,255,248,255,248,255,249,255,249,255,250,255,250,255,251,255,251,255,252,255,252,255,252,255,253,255,253,255,254,255,254,255,255,255,255,255,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+data_18048 db 25,238,110,2,128,25,1,0,0,22,26,148,70,2,128,25,14,25,151,70,2,128,25,28,1,0,0,28,1,0,0,3,130,25,2,130,25,1,128,0,22,26,196,70,1,195,35,2,130,25,9,1,0,0,7,2,130,25,1,1,0,9,3,130,25,25,162,70,1,0,0,3,132,25,1,0,0,28,1,128,33,2,134,25,9,1,1,0,10,4,28,1,0,0,28,2,136,25,1,0,0,22,26,240,70,1,0,0,28,25,240,70,2,138,25,1,1,0,21,26,6,71,1,67,34,2,136,25
+data_18176 db 9,4,28,25,6,71,2,138,25,1,2,0,21,26,28,71,1,227,34,2,136,25,9,4,28,25,28,71,1,35,35,2,136,25,1,5,0,11,9,4,28,1,0,0,28,2,140,25,1,1,0,21,26,61,71,1,195,35,25,88,71,2,140,25,1,2,0,21,26,81,71,1,195,35,1,32,0,9,25,88,71,1,195,35,1,96,0,9,28,1,0,0,28,1,131,33,2,142,25,1,6,0,11,9,2,144,25,1,2,0,11,9,6,28,1,0,0,28,1,131,36,2,146,25,1,4,0,11
+data_18304 db 9,2,148,25,1,2,0,11,9,6,28,1,0,0,28,2,150,25,1,0,0,22,26,160,71,1,8,0,28,25,160,71,2,152,25,1,1,0,21,26,189,71,2,150,25,2,154,25,3,148,25,3,146,25,27,118,71,28,25,189,71,2,152,25,1,2,0,21,26,16,72,1,99,34,2,150,25,1,2,0,11,9,4,3,156,25,1,99,34,2,150,25,1,2,0,11,9,1,1,0,9,4,3,158,25,2,156,25,2,154,25,3,148,25,3,146,25,27,118,71,2,158,25,2,154,25,3,148
+data_18432 db 25,3,146,25,27,118,71,9,1,2,0,12,28,25,16,72,1,35,35,2,150,25,1,5,0,11,9,4,3,160,25,1,0,0,3,162,25,1,0,0,3,164,25,2,162,25,2,160,25,22,26,105,72,2,164,25,1,35,35,2,150,25,1,5,0,11,9,2,162,25,9,1,1,0,9,4,2,154,25,3,148,25,3,146,25,27,118,71,9,3,164,25,2,162,25,1,1,0,9,3,162,25,25,43,72,2,164,25,2,160,25,12,28,1,0,0,28,1,0,0,3,166,25,1,1,0,14,3
+data_18560 db 168,25,1,255,127,3,170,25,2,166,25,2,172,25,3,134,25,27,206,70,22,26,21,73,2,172,25,2,166,25,3,136,25,3,138,25,27,223,70,26,8,73,2,172,25,2,166,25,1,0,0,3,154,25,3,150,25,3,152,25,27,143,71,2,174,25,10,3,128,25,27,131,70,2,172,25,2,166,25,1,1,0,3,154,25,3,150,25,3,152,25,27,143,71,2,176,25,10,3,128,25,27,131,70,9,3,178,25,2,178,25,2,170,25,22,26,5,73,2,166,25,3,168,25,2,178,25,3
+data_18688 db 170,25,25,5,73,25,8,73,2,166,25,1,1,0,9,3,166,25,25,136,72,2,168,25,28,1,0,0,28,2,180,25,1,0,0,22,26,70,73,2,182,25,1,8,0,1,8,0,3,176,25,3,174,25,3,172,25,27,117,72,3,180,25,1,0,0,28,25,70,73,2,182,25,2,180,25,1,0,0,3,154,25,3,150,25,3,152,25,27,143,71,3,184,25,2,182,25,2,180,25,1,1,0,3,154,25,3,150,25,3,152,25,27,143,71,3,186,25,2,180,25,3,188,25,1,255,127,3
+data_18816 db 190,25,1,0,0,3,192,25,2,192,25,2,182,25,3,134,25,27,206,70,22,26,141,74,2,182,25,2,192,25,3,136,25,3,138,25,27,223,70,26,128,74,2,182,25,2,192,25,1,0,0,3,154,25,3,150,25,3,152,25,27,143,71,2,184,25,10,3,194,25,2,182,25,2,192,25,1,1,0,3,154,25,3,150,25,3,152,25,27,143,71,2,186,25,10,3,196,25,2,198,25,1,17,0,21,26,243,73,2,194,25,14,25,23,74,2,198,25,1,19,0,21,26,3,74,2,194,25
+data_18944 db 25,23,74,2,198,25,1,18,0,21,26,20,74,2,196,25,14,25,23,74,2,196,25,3,200,25,2,198,25,1,17,0,21,24,20,26,46,74,23,2,198,25,1,19,0,21,26,61,74,2,196,25,3,128,25,27,131,70,25,70,74,2,194,25,3,128,25,27,131,70,3,202,25,1,0,0,2,200,25,22,26,125,74,2,200,25,2,202,25,1,3,0,11,9,3,204,25,2,204,25,2,190,25,22,26,122,74,2,192,25,3,188,25,2,204,25,3,190,25,25,122,74,25,125,74,25,128,74
+data_19072 db 2,192,25,1,1,0,9,3,192,25,25,136,73,2,188,25,3,180,25,1,0,0,28,2,182,25,3,134,25,27,206,70,3,206,25,1,1,0,3,208,25,2,206,25,2,208,25,22,20,26,238,74,2,180,25,2,208,25,9,2,206,25,13,3,210,25,2,182,25,2,210,25,3,136,25,3,138,25,27,223,70,26,225,74,2,210,25,3,180,25,1,0,0,28,25,225,74,2,208,25,1,1,0,9,3,208,25,25,169,74,1,1,0,14,3,180,25,1,0,0,28,2,180,25,1,0,0,22
+data_19200 db 26,10,75,1,0,0,28,25,10,75,2,182,25,3,140,25,27,45,71,2,180,25,9,3,212,25,2,212,25,4,3,214,25,2,212,25,1,1,0,2,214,25,10,7,2,182,25,1,1,0,21,26,202,75,2,214,25,20,26,85,75,1,67,36,2,132,25,9,2,180,25,7,2,132,25,1,1,0,9,3,132,25,25,199,75,1,0,0,3,216,25,2,216,25,2,132,25,22,26,199,75,1,67,36,2,216,25,9,4,2,180,25,21,26,186,75,2,216,25,3,218,25,2,218,25,1,1,0
+data_19328 db 9,2,132,25,22,26,169,75,1,67,36,2,218,25,9,1,67,36,2,218,25,9,1,1,0,9,4,7,2,218,25,1,1,0,9,3,218,25,25,122,75,2,132,25,1,1,0,10,3,132,25,1,0,0,28,25,186,75,2,216,25,1,1,0,9,3,216,25,25,91,75,25,202,75,1,0,0,28,1,0,0,3,220,25,2,220,25,1,32,0,22,26,246,75,1,99,36,2,220,25,9,1,0,0,7,2,220,25,1,1,0,9,3,220,25,25,212,75,1,0,0,3,220,25,2,220,25,2
+data_19456 db 182,25,3,134,25,27,206,70,22,26,212,76,2,182,25,2,220,25,3,136,25,3,138,25,27,223,70,24,26,46,76,23,2,182,25,3,140,25,27,45,71,2,220,25,9,4,26,199,76,2,182,25,1,1,0,21,26,73,76,1,99,36,2,220,25,9,1,1,0,7,25,196,76,2,182,25,1,2,0,21,26,130,76,1,99,36,1,99,34,2,220,25,1,2,0,11,9,4,9,1,1,0,7,1,99,36,1,99,34,2,220,25,1,2,0,11,9,1,1,0,9,4,9,1,1,0,7,25
+data_19584 db 196,76,1,0,0,3,222,25,2,222,25,1,35,35,2,220,25,1,5,0,11,9,4,22,26,196,76,1,99,36,1,35,35,2,220,25,1,5,0,11,9,2,222,25,9,1,1,0,9,4,9,1,1,0,7,2,222,25,1,1,0,9,3,222,25,25,136,76,25,199,76,2,220,25,1,1,0,9,3,220,25,25,252,75,1,0,0,3,224,25,1,0,0,3,220,25,2,220,25,1,32,0,22,26,6,77,2,224,25,1,99,36,2,220,25,9,4,9,3,224,25,2,220,25,1,1,0,9
+data_19712 db 3,220,25,25,224,76,2,224,25,28,1,0,0,28,27,206,75,3,226,25,1,0,0,3,228,25,1,0,0,3,230,25,1,0,0,3,232,25,2,226,25,1,0,0,21,24,20,26,54,77,23,2,234,25,26,64,77,2,226,25,28,25,64,77,1,0,0,3,236,25,2,236,25,1,32,0,22,26,173,77,1,99,36,2,236,25,9,4,26,160,77,2,228,25,2,236,25,1,0,0,3,144,25,3,142,25,27,93,71,9,3,228,25,2,230,25,2,236,25,1,1,0,3,144,25,3,142,25
+data_19840 db 27,93,71,9,3,230,25,2,232,25,2,236,25,1,2,0,3,144,25,3,142,25,27,93,71,9,3,232,25,25,160,77,2,236,25,1,1,0,9,3,236,25,25,70,77,2,228,25,2,226,25,12,3,228,25,2,230,25,2,226,25,12,3,230,25,2,232,25,2,226,25,12,3,232,25,2,226,25,28,1,0,0,28,2,238,25,1,0,0,22,26,235,77,1,45,0,30,2,238,25,14,3,238,25,25,235,77,1,16,39,3,240,25,1,0,0,3,242,25,1,0,0,2,240,25,22,26,79
+data_19968 db 78,2,238,25,2,240,25,12,3,244,25,2,244,25,24,20,26,36,78,23,2,242,25,24,20,26,36,78,23,2,240,25,1,1,0,21,26,56,78,1,48,0,2,244,25,9,30,1,1,0,3,242,25,25,56,78,2,238,25,2,240,25,13,3,238,25,2,240,25,1,10,0,12,3,240,25,25,247,77,1,0,0,28,2,246,25,1,110,0,21,26,99,78,1,11,0,25,134,78,2,246,25,1,103,0,21,26,115,78,1,22,0,25,134,78,2,246,25,1,114,0,21,26,131,78,1,104,1
+data_20096 db 25,134,78,1,4,0,28,1,0,0,28,27,83,78,3,248,25,2,250,25,1,0,0,22,26,161,78,1,1,0,25,164,78,1,0,0,3,252,25,2,252,25,26,183,78,2,250,25,14,3,250,25,25,183,78,2,250,25,1,16,0,12,3,254,25,2,250,25,1,16,0,13,1,113,2,11,3,0,26,1,8,0,2,252,25,9,2,254,25,1,10,0,22,20,26,231,78,1,2,0,25,234,78,1,1,0,9,2,248,25,1,100,0,22,20,26,252,78,1,3,0,25,16,79,2,248,25,1
+data_20224 db 10,0,22,20,26,13,79,1,2,0,25,16,79,1,1,0,9,3,2,26,1,1,0,3,4,26,1,12,0,2,2,26,22,26,59,79,2,4,26,1,10,0,11,3,4,26,2,2,26,1,1,0,10,3,2,26,25,26,79,2,6,26,30,2,0,26,2,4,26,13,26,79,79,1,126,0,25,82,79,1,61,0,30,2,252,25,26,96,79,1,45,0,30,25,96,79,2,254,25,3,238,25,27,211,77,23,1,46,0,30,2,0,26,2,4,26,1,2,0,12,9,2,4,26,12,3,0,26
+data_20352 db 1,232,3,2,4,26,12,3,8,26,1,0,0,2,8,26,22,26,183,79,1,48,0,2,0,26,2,8,26,12,9,30,2,0,26,2,8,26,13,3,0,26,2,8,26,1,10,0,12,3,8,26,25,138,79,1,47,0,30,2,248,25,3,238,25,27,211,77,23,2,2,26,1,12,0,22,26,214,79,1,10,0,30,25,214,79,1,0,0,28,2,246,25,1,103,0,21,24,20,26,238,79,23,2,246,25,1,110,0,21,26,36,80,1,88,0,2,228,25,3,250,25,3,6,26,27,139,78
+data_20480 db 23,1,89,0,2,230,25,3,250,25,3,6,26,27,139,78,23,1,90,0,2,232,25,3,250,25,3,6,26,27,139,78,23,25,79,80,2,246,25,30,31,128,29,27,83,78,3,238,25,27,211,77,23,1,10,0,30,2,246,25,1,115,0,21,26,73,80,31,134,29,25,76,80,31,146,29,31,152,29,1,0,0,28,2,246,25,30,2,10,26,1,1,0,21,26,138,80,1,58,0,30,2,246,25,1,115,0,21,24,26,121,80,23,1,0,41,4,1,63,0,21,26,130,80,31,166,29,25
+data_20608 db 135,80,1,0,41,4,30,25,14,81,2,10,26,2,12,26,9,1,10,0,22,24,20,26,175,80,23,2,246,25,1,115,0,21,24,26,175,80,23,1,0,41,4,1,63,0,21,26,185,80,1,62,0,30,25,185,80,2,246,25,1,115,0,21,20,24,20,26,208,80,23,1,0,41,4,1,63,0,21,20,26,219,80,1,0,41,4,30,25,219,80,2,12,26,26,232,80,1,45,0,30,25,232,80,1,1,0,3,14,26,2,14,26,2,10,26,22,26,14,81,1,0,41,2,14,26,9,4
+data_20736 db 30,2,14,26,1,1,0,9,3,14,26,25,238,80,1,0,0,28,2,16,26,1,0,0,22,20,24,26,63,81,23,2,16,26,1,66,0,22,24,26,63,81,23,2,18,26,1,0,0,22,20,24,26,63,81,23,2,18,26,1,32,0,22,26,142,81,1,16,41,2,18,26,1,8,0,12,1,66,0,11,9,2,16,26,9,3,20,26,1,1,0,2,18,26,1,8,0,13,18,3,22,26,2,24,26,26,123,81,2,20,26,2,20,26,4,2,22,26,16,7,25,139,81,2,20,26,2,20
+data_20864 db 26,4,1,255,0,2,22,26,10,15,7,25,142,81,1,0,0,28,2,26,26,2,28,26,10,3,128,25,27,131,70,3,30,26,2,32,26,2,34,26,10,3,128,25,27,131,70,14,3,36,26,2,28,26,2,26,26,22,26,195,81,1,1,0,25,199,81,1,1,0,14,3,38,26,2,34,26,2,32,26,22,26,218,81,1,1,0,25,222,81,1,1,0,14,3,40,26,2,30,26,2,36,26,9,3,42,26,1,1,0,26,117,82,2,28,26,2,34,26,1,1,0,3,24,26,3,18,26
+data_20992 db 3,16,26,27,18,81,23,2,28,26,2,26,26,21,24,26,26,82,23,2,34,26,2,32,26,21,26,36,82,1,0,0,28,25,36,82,2,42,26,1,2,0,11,3,44,26,2,44,26,2,36,26,22,20,26,80,82,2,42,26,2,36,26,9,3,42,26,2,28,26,2,38,26,9,3,28,26,25,80,82,2,30,26,2,44,26,22,20,26,114,82,2,42,26,2,30,26,9,3,42,26,2,34,26,2,40,26,9,3,34,26,25,114,82,25,235,81,1,0,0,28,1,24,42,2,46,26,1
+data_21120 db 2,0,11,9,4,3,48,26,1,24,42,2,46,26,1,2,0,11,9,1,1,0,9,4,3,50,26,2,48,26,1,32,0,10,2,48,26,1,32,0,10,11,2,50,26,1,15,0,10,2,50,26,1,15,0,10,11,9,1,25,0,22,26,234,82,1,30,42,2,46,26,1,2,0,11,9,1,255,0,7,1,30,42,2,46,26,1,2,0,11,9,1,1,0,9,1,255,0,7,1,0,0,28,25,234,82,1,0,0,3,52,26,1,0,0,3,54,26,2,52,26,1,6,0,22,24,26,6
+data_21248 db 83,23,2,54,26,20,26,5,85,2,48,26,1,32,0,22,20,2,52,26,1,2,0,13,1,1,0,21,21,20,3,56,26,2,48,26,2,56,26,26,48,83,1,4,0,25,52,83,1,9,0,14,9,3,58,26,2,50,26,1,3,0,10,2,52,26,1,2,0,12,1,1,0,21,26,83,83,1,8,0,25,107,83,2,52,26,1,2,0,12,1,2,0,21,26,104,83,1,8,0,14,25,107,83,1,0,0,9,3,60,26,2,58,26,1,0,0,22,26,127,83,1,0,0,25,146,83,1
+data_21376 db 61,0,2,58,26,22,26,143,83,1,61,0,25,146,83,2,58,26,3,58,26,2,60,26,1,0,0,22,26,165,83,1,0,0,25,184,83,1,25,0,2,60,26,22,26,181,83,1,25,0,25,184,83,2,60,26,3,60,26,1,0,0,3,62,26,1,0,0,3,64,26,1,1,0,14,3,66,26,2,66,26,1,6,0,22,24,26,222,83,23,2,64,26,20,26,136,84,1,1,0,14,3,68,26,2,68,26,1,8,0,22,24,26,248,83,23,2,64,26,20,26,123,84,2,58,26,2,66
+data_21504 db 26,9,3,70,26,2,60,26,2,68,26,9,3,72,26,2,70,26,1,0,0,22,20,24,26,60,84,23,2,70,26,1,66,0,22,24,26,60,84,23,2,72,26,1,0,0,22,20,24,26,60,84,23,2,72,26,1,32,0,22,26,110,84,1,16,41,2,72,26,1,8,0,12,1,66,0,11,9,2,70,26,9,4,1,1,0,2,72,26,1,8,0,13,18,15,26,107,84,1,1,0,3,64,26,25,107,84,25,110,84,2,68,26,1,1,0,9,3,68,26,25,232,83,2,66,26,1,1
+data_21632 db 0,9,3,66,26,25,206,83,2,62,26,2,46,26,22,26,232,84,2,58,26,1,30,42,2,62,26,1,2,0,11,9,4,10,3,128,25,27,131,70,1,7,0,22,24,26,207,84,23,2,60,26,1,30,42,2,62,26,1,2,0,11,9,1,1,0,9,4,10,3,128,25,27,131,70,1,9,0,22,26,219,84,1,1,0,3,64,26,25,219,84,2,62,26,1,1,0,9,3,62,26,25,136,84,2,64,26,20,26,248,84,1,1,0,3,54,26,25,248,84,2,52,26,1,1,0,9,3
+data_21760 db 52,26,25,246,82,2,54,26,20,26,35,85,1,58,0,3,58,26,1,2,0,2,46,26,1,9,0,11,9,3,60,26,25,35,85,1,30,42,2,46,26,1,2,0,11,9,2,58,26,7,1,30,42,2,46,26,1,2,0,11,9,1,1,0,9,2,60,26,7,1,0,0,3,66,26,2,66,26,1,5,0,22,26,184,85,1,36,42,2,46,26,1,5,0,11,9,2,66,26,9,4,3,74,26,1,0,0,3,62,26,2,62,26,1,7,0,22,26,171,85,2,58,26,2,66,26,9,2
+data_21888 db 60,26,2,62,26,9,2,74,26,2,62,26,19,1,1,0,15,3,24,26,3,18,26,3,16,26,27,18,81,23,2,62,26,1,1,0,9,3,62,26,25,110,85,2,66,26,1,1,0,9,3,66,26,25,75,85,1,0,0,28,2,76,26,3,128,25,27,131,70,2,78,26,1,2,0,12,9,2,78,26,12,3,80,26,2,76,26,1,0,0,22,26,229,85,2,80,26,14,25,232,85,2,80,26,28,1,0,0,28,1,0,0,3,82,26,2,82,26,1,8,1,22,26,21,86,1,16,41
+data_22016 db 2,82,26,9,1,0,0,7,2,82,26,1,1,0,9,3,82,26,25,243,85,1,128,24,1,8,0,9,4,3,84,26,1,4,24,4,3,86,26,1,4,24,1,1,0,9,4,3,88,26,1,128,24,1,8,0,9,1,1,0,7,1,0,0,3,90,26,2,90,26,1,3,0,22,26,217,87,2,90,26,1,0,0,21,26,93,86,1,24,0,25,96,86,1,0,0,2,90,26,1,1,0,21,26,112,86,1,24,0,25,115,86,1,0,0,2,90,26,1,2,0,21,26,131,86,1,24,0
+data_22144 db 25,134,86,1,0,0,2,92,26,2,94,26,38,1,4,24,5,1,8,0,10,3,96,26,1,4,24,1,1,0,9,5,1,8,0,10,3,98,26,1,32,0,2,96,26,9,3,100,26,1,15,0,2,98,26,9,3,102,26,1,24,42,2,90,26,1,2,0,11,9,2,100,26,7,1,24,42,2,90,26,1,2,0,11,9,1,1,0,9,2,102,26,7,1,32,0,1,15,0,2,100,26,2,102,26,3,32,26,3,26,26,3,34,26,3,28,26,27,146,81,23,2,98,26,3,128,25,27
+data_22272 db 131,70,2,96,26,3,128,25,27,131,70,22,26,27,87,2,96,26,3,128,25,27,131,70,25,36,87,2,98,26,3,128,25,27,131,70,3,104,26,2,104,26,1,5,0,22,20,26,204,87,2,100,26,2,96,26,1,4,0,11,2,104,26,3,78,26,3,76,26,27,188,85,10,3,106,26,2,102,26,2,98,26,1,4,0,11,2,104,26,3,78,26,3,76,26,27,188,85,10,3,108,26,1,2,0,14,3,82,26,1,2,0,2,82,26,22,20,26,201,87,2,100,26,2,102,26,2,106
+data_22400 db 26,2,98,26,2,82,26,11,2,104,26,3,78,26,3,76,26,27,188,85,9,2,108,26,2,96,26,2,82,26,11,2,104,26,3,78,26,3,76,26,27,188,85,10,3,32,26,3,26,26,3,34,26,3,28,26,27,146,81,23,2,82,26,1,1,0,9,3,82,26,25,109,87,25,204,87,2,90,26,1,1,0,9,3,90,26,25,67,86,1,128,24,1,8,0,9,2,84,26,7,1,4,24,2,86,26,7,1,4,24,1,1,0,9,2,88,26,7,1,0,0,3,90,26,2,90,26,1
+data_22528 db 3,0,22,26,29,88,2,90,26,3,46,26,27,121,82,23,2,90,26,1,1,0,9,3,90,26,25,252,87,1,12,0,30,1,0,0,3,110,26,2,110,26,1,4,0,22,26,152,88,1,62,0,1,49,0,7,1,62,0,4,23,1,0,0,3,82,26,2,82,26,1,66,0,22,26,110,88,1,61,0,1,16,41,2,110,26,1,66,0,11,9,2,82,26,9,4,7,2,82,26,1,1,0,9,3,82,26,25,67,88,1,62,0,1,48,0,7,1,62,0,4,23,2,110,26,1,3,0
+data_22656 db 22,26,139,88,1,10,0,30,25,139,88,2,110,26,1,1,0,9,3,110,26,25,39,88,1,0,0,28,2,112,26,1,17,0,21,24,20,26,176,88,23,2,112,26,1,19,0,21,26,212,88,2,92,26,2,112,26,1,17,0,21,26,198,88,1,31,0,25,201,88,1,1,0,9,1,32,0,13,3,92,26,25,242,88,2,94,26,2,112,26,1,18,0,21,26,231,88,1,31,0,25,234,88,1,1,0,9,1,32,0,13,3,94,26,1,0,0,28,1,12,0,30,2,114,26,20,26,11
+data_22784 db 89,27,74,89,23,31,170,29,25,70,89,2,246,25,26,28,89,27,218,79,23,27,83,80,23,25,70,89,27,74,89,23,2,182,25,1,1,0,21,26,48,89,31,203,29,25,67,89,2,182,25,1,2,0,21,26,64,89,31,216,29,25,67,89,31,229,29,31,242,29,1,0,0,28,2,116,26,26,86,89,31,8,30,25,89,89,31,19,30,1,0,0,28,2,118,26,3,120,26,1,12,0,30,2,246,25,26,116,89,27,218,79,23,25,116,89,2,118,26,1,1,0,21,26,132,89,31,30
+data_22912 db 30,25,215,89,2,118,26,1,2,0,21,26,148,89,31,41,30,25,215,89,2,118,26,1,3,0,21,26,164,89,31,51,30,25,215,89,2,118,26,1,4,0,21,26,180,89,31,61,30,25,215,89,2,118,26,1,5,0,21,26,196,89,31,71,30,25,215,89,2,118,26,1,7,0,21,26,212,89,31,80,30,25,215,89,31,91,30,1,0,0,28,2,122,26,1,1,0,21,26,10,90,2,124,26,1,0,0,3,148,25,3,146,25,27,118,71,2,124,26,1,1,0,3,148,25,3,146,25
+data_23040 db 27,118,71,1,3,0,35,25,157,91,2,122,26,1,2,0,21,26,121,90,1,99,34,2,124,26,1,2,0,11,9,4,3,126,26,1,99,34,2,124,26,1,2,0,11,9,1,1,0,9,4,3,128,26,2,126,26,1,0,0,3,148,25,3,146,25,27,118,71,2,126,26,1,1,0,3,148,25,3,146,25,27,118,71,2,128,26,1,0,0,3,148,25,3,146,25,27,118,71,2,128,26,1,1,0,3,148,25,3,146,25,27,118,71,1,3,0,36,25,157,91,1,35,35,2,124,26,1
+data_23168 db 5,0,11,9,1,1,0,9,4,3,126,26,1,35,35,2,124,26,1,5,0,11,9,1,2,0,9,4,3,128,26,1,35,35,2,124,26,1,5,0,11,9,1,3,0,9,4,3,130,26,2,126,26,1,0,0,3,148,25,3,146,25,27,118,71,2,126,26,1,1,0,3,148,25,3,146,25,27,118,71,2,128,26,1,0,0,3,148,25,3,146,25,27,118,71,2,128,26,1,1,0,3,148,25,3,146,25,27,118,71,2,130,26,1,0,0,3,148,25,3,146,25,27,118,71,2,130,26
+data_23296 db 1,1,0,3,148,25,3,146,25,27,118,71,1,3,0,37,1,35,35,2,124,26,1,5,0,11,9,4,1,4,0,21,26,157,91,2,130,26,3,128,26,1,35,35,2,124,26,1,5,0,11,9,1,4,0,9,4,3,130,26,2,126,26,1,0,0,3,148,25,3,146,25,27,118,71,2,126,26,1,1,0,3,148,25,3,146,25,27,118,71,2,128,26,1,0,0,3,148,25,3,146,25,27,118,71,2,128,26,1,1,0,3,148,25,3,146,25,27,118,71,2,130,26,1,0,0,3,148
+data_23424 db 25,3,146,25,27,118,71,2,130,26,1,1,0,3,148,25,3,146,25,27,118,71,1,3,0,37,25,157,91,1,0,0,28,1,128,24,1,8,0,9,2,116,26,7,1,0,0,3,132,26,2,132,26,1,1,0,3,134,25,27,206,70,22,26,113,92,1,67,34,2,132,26,9,4,26,100,92,2,132,26,1,0,0,3,144,25,3,142,25,27,93,71,1,16,0,12,2,132,26,1,1,0,3,144,25,3,142,25,27,93,71,1,16,0,12,2,132,26,1,2,0,3,144,25,3,142,25,27
+data_23552 db 93,71,1,16,0,12,2,92,26,2,94,26,38,1,8,0,1,4,24,5,1,8,0,10,2,134,26,11,1,10,0,12,9,3,136,26,1,8,0,1,4,24,1,1,0,9,5,1,8,0,10,2,134,26,11,1,10,0,12,9,3,138,26,1,131,36,2,132,26,1,4,0,11,9,2,136,26,8,1,131,36,2,132,26,1,4,0,11,9,1,2,0,9,2,138,26,8,25,100,92,2,132,26,1,1,0,9,3,132,26,25,178,91,33,2,114,26,20,26,51,93,1,0,0,3,132,26,2
+data_23680 db 132,26,1,2,0,3,134,25,27,206,70,22,26,39,93,1,2,0,2,132,26,3,136,25,3,138,25,27,223,70,26,26,93,1,99,34,2,132,26,1,2,0,11,9,4,3,140,26,1,99,34,2,132,26,1,2,0,11,9,1,1,0,9,4,3,142,26,2,140,26,1,0,0,3,148,25,3,146,25,27,118,71,2,140,26,1,1,0,3,148,25,3,146,25,27,118,71,2,142,26,1,0,0,3,148,25,3,146,25,27,118,71,2,142,26,1,1,0,3,148,25,3,146,25,27,118,71,2
+data_23808 db 132,26,1,2,0,13,1,0,0,21,26,19,93,1,2,0,25,22,93,1,1,0,36,25,26,93,2,132,26,1,1,0,9,3,132,26,25,127,92,34,1,0,0,39,1,0,0,28,25,51,93,1,0,0,3,132,26,2,132,26,2,182,25,3,134,25,27,206,70,22,26,123,93,2,182,25,2,132,26,3,136,25,3,138,25,27,223,70,26,110,93,2,182,25,2,132,26,3,124,26,3,122,26,27,219,89,23,25,110,93,2,132,26,1,1,0,9,3,132,26,25,57,93,1,6,40,1,64
+data_23936 db 0,1,32,0,32,33,1,0,0,3,132,26,2,132,26,2,182,25,3,134,25,27,206,70,22,26,225,93,2,182,25,2,132,26,3,136,25,3,138,25,27,223,70,24,26,190,93,23,2,182,25,3,140,25,27,45,71,2,132,26,9,4,26,212,93,2,182,25,2,132,26,3,124,26,3,122,26,27,219,89,23,25,212,93,2,132,26,1,1,0,9,3,132,26,25,140,93,1,38,40,1,64,0,1,32,0,32,33,2,180,25,1,0,0,22,20,24,26,8,94,23,2,182,25,2,180,25,3
+data_24064 db 136,25,3,138,25,27,223,70,26,30,94,2,182,25,2,180,25,3,124,26,3,122,26,27,219,89,23,25,30,94,1,0,0,3,132,26,2,132,26,1,32,0,22,26,186,94,1,64,0,2,132,26,9,4,3,144,26,1,38,40,2,132,26,9,4,3,146,26,1,6,40,2,132,26,9,4,3,148,26,2,148,26,2,146,26,2,144,26,16,1,255,255,17,15,3,150,26,1,192,40,2,132,26,9,2,148,26,2,146,26,1,255,255,17,15,7,1,192,40,1,32,0,9,2,132,26,9,2
+data_24192 db 148,26,2,146,26,16,7,1,64,0,2,132,26,9,2,150,26,2,144,26,16,7,1,96,0,2,132,26,9,2,150,26,2,146,26,2,144,26,1,255,255,17,15,16,7,2,132,26,1,1,0,9,3,132,26,25,36,94,1,128,40,1,64,0,1,64,0,32,34,2,180,25,1,0,0,22,20,24,26,225,94,23,2,182,25,2,180,25,3,136,25,3,138,25,27,223,70,39,1,0,0,28,1,195,37,1,128,33,1,67,2,32,1,1,0,3,152,26,1,0,0,28,1,0,0,3,154,26
+data_24320 db 1,0,0,3,156,26,2,156,26,1,4,0,22,26,83,95,2,158,26,1,2,0,11,3,158,26,2,154,26,1,2,0,11,3,154,26,2,158,26,2,160,26,22,20,26,70,95,2,158,26,2,160,26,10,3,158,26,2,154,26,1,1,0,9,3,154,26,25,70,95,2,156,26,1,1,0,9,3,156,26,25,6,95,2,158,26,1,0,0,21,3,162,26,2,158,26,1,2,0,11,2,160,26,22,20,26,121,95,2,154,26,1,1,0,9,3,154,26,25,121,95,2,154,26,28,1,0,0
+data_24448 db 28,2,164,26,1,4,0,19,2,166,26,11,2,168,26,1,4,0,19,2,170,26,11,9,3,172,26,2,172,26,1,15,0,15,1,16,0,11,2,164,26,1,15,0,15,2,166,26,11,9,2,168,26,1,15,0,15,2,170,26,11,9,3,174,26,2,172,26,1,4,0,19,2,174,26,1,128,0,9,1,8,0,19,9,28,1,0,0,28,2,10,26,20,26,231,95,1,7,0,28,25,231,95,1,0,41,4,3,176,26,2,176,26,1,120,0,21,20,24,26,16,96,23,2,176,26,1,121
+data_24576 db 0,21,20,24,26,16,96,23,2,176,26,1,122,0,21,20,26,54,96,2,246,25,1,115,0,21,20,24,20,26,41,96,23,2,176,26,1,63,0,21,20,26,51,96,1,7,0,28,25,51,96,25,54,96,2,10,26,1,2,0,22,26,104,96,2,246,25,1,110,0,21,26,97,96,2,176,26,1,120,0,10,3,178,26,1,0,0,3,180,26,1,0,0,28,25,97,96,1,1,0,28,25,104,96,2,176,26,1,63,0,21,26,120,96,1,3,0,25,127,96,2,176,26,1,120,0,10,3
+data_24704 db 178,26,1,1,0,3,182,26,2,12,26,26,149,96,1,1,0,14,25,152,96,1,1,0,3,184,26,1,0,0,3,186,26,1,0,0,3,188,26,2,182,26,2,10,26,22,24,26,210,96,23,1,0,41,2,182,26,9,4,1,48,0,22,20,24,26,210,96,23,1,57,0,1,0,41,2,182,26,9,4,22,20,26,33,97,2,188,26,1,10,0,11,1,0,41,2,182,26,9,4,9,1,48,0,10,3,188,26,2,186,26,1,1,0,9,3,186,26,2,182,26,1,1,0,9,3,182,26
+data_24832 db 1,104,1,2,188,26,22,24,20,26,20,97,23,1,3,0,2,186,26,22,26,30,97,1,2,0,28,25,30,97,25,167,96,2,186,26,20,26,47,97,1,1,0,28,25,47,97,1,0,0,3,190,26,1,1,0,3,192,26,1,0,0,3,194,26,2,182,26,2,10,26,22,26,244,97,1,0,41,2,182,26,9,4,1,46,0,21,20,26,98,97,1,1,0,28,25,98,97,2,182,26,1,1,0,9,3,182,26,2,182,26,2,10,26,22,24,26,151,97,23,1,0,41,2,182,26,9,4
+data_24960 db 1,48,0,22,20,24,26,151,97,23,1,57,0,1,0,41,2,182,26,9,4,22,20,26,227,97,2,194,26,1,4,0,21,26,171,97,1,3,0,28,25,171,97,2,190,26,1,10,0,11,1,0,41,2,182,26,9,4,9,1,48,0,10,3,190,26,2,192,26,1,10,0,11,3,192,26,2,194,26,1,1,0,9,3,194,26,2,182,26,1,1,0,9,3,182,26,25,108,97,2,194,26,20,26,241,97,1,1,0,28,25,241,97,25,244,97,2,182,26,2,10,26,21,20,26,6,98,1
+data_25088 db 1,0,28,25,6,98,2,246,25,1,114,0,21,26,103,98,1,1,0,2,194,26,22,24,26,39,98,23,2,190,26,2,192,26,1,10,0,12,13,26,49,98,1,3,0,28,25,49,98,2,188,26,1,10,0,11,2,194,26,26,76,98,2,190,26,2,192,26,1,10,0,12,12,25,79,98,1,0,0,9,3,180,26,1,16,14,2,180,26,22,26,100,98,1,2,0,28,25,100,98,25,252,98,2,246,25,1,110,0,21,26,119,98,1,11,0,25,138,98,2,246,25,1,103,0,21,26,135
+data_25216 db 98,1,22,0,25,138,98,1,4,0,3,196,26,2,196,26,2,188,26,22,24,20,26,169,98,23,2,188,26,2,196,26,21,24,26,169,98,23,2,190,26,26,179,98,1,2,0,28,25,179,98,2,188,26,1,16,0,11,2,190,26,2,192,26,3,160,26,3,158,26,27,250,94,9,3,180,26,2,246,25,1,110,0,21,24,26,221,98,23,2,162,26,20,26,231,98,1,3,0,28,25,231,98,2,196,26,1,16,0,11,2,180,26,22,26,252,98,1,2,0,28,25,252,98,2,180,26,2
+data_25344 db 184,26,11,3,180,26,1,0,0,28,1,0,0,28,27,217,95,3,198,26,2,198,26,26,33,99,2,198,26,28,25,33,99,1,3,37,1,131,33,1,192,0,32,2,180,26,1,16,14,13,3,200,26,2,200,26,1,0,0,22,26,76,99,2,200,26,1,16,14,9,3,200,26,25,76,99,1,51,42,2,200,26,1,2,0,11,9,6,3,202,26,1,51,42,2,200,26,1,132,3,9,1,16,14,13,1,2,0,11,9,6,3,204,26,1,0,0,3,206,26,2,206,26,1,32,0,22,26
+data_25472 db 76,102,1,99,36,2,206,26,9,4,26,63,102,2,206,26,1,0,0,3,144,25,3,142,25,27,93,71,3,208,26,2,206,26,1,1,0,3,144,25,3,142,25,27,93,71,3,210,26,2,206,26,1,2,0,3,144,25,3,142,25,27,93,71,3,212,26,2,246,25,1,103,0,21,26,8,100,2,178,26,1,0,0,21,26,228,99,2,208,26,2,180,26,9,3,208,26,25,5,100,2,178,26,1,1,0,21,26,251,99,2,210,26,2,180,26,9,3,210,26,25,5,100,2,212,26,2,180
+data_25600 db 26,9,3,212,26,25,202,101,2,246,25,1,115,0,21,26,165,100,2,178,26,1,0,0,21,24,20,26,38,100,23,2,178,26,1,3,0,21,26,66,100,2,228,25,2,208,26,2,228,25,10,2,180,26,11,1,16,0,12,9,3,208,26,25,66,100,2,178,26,1,1,0,21,24,20,26,86,100,23,2,178,26,1,3,0,21,26,114,100,2,230,25,2,210,26,2,230,25,10,2,180,26,11,1,16,0,12,9,3,210,26,25,114,100,2,178,26,1,2,0,21,24,20,26,134,100,23,2
+data_25728 db 178,26,1,3,0,21,26,162,100,2,232,25,2,212,26,2,232,25,10,2,180,26,11,1,16,0,12,9,3,212,26,25,162,100,25,202,101,2,178,26,1,0,0,21,26,11,101,2,210,26,2,230,25,10,3,214,26,2,212,26,2,232,25,10,3,216,26,2,230,25,2,214,26,2,216,26,2,204,26,2,202,26,14,3,170,26,3,166,26,3,168,26,3,164,26,27,129,95,9,3,210,26,2,232,25,2,214,26,2,216,26,2,202,26,2,204,26,3,170,26,3,166,26,3,168,26,3,164
+data_25856 db 26,27,129,95,9,3,212,26,25,202,101,2,178,26,1,1,0,21,26,113,101,2,212,26,2,232,25,10,3,214,26,2,208,26,2,228,25,10,3,216,26,2,232,25,2,214,26,2,216,26,2,204,26,2,202,26,14,3,170,26,3,166,26,3,168,26,3,164,26,27,129,95,9,3,212,26,2,228,25,2,214,26,2,216,26,2,202,26,2,204,26,3,170,26,3,166,26,3,168,26,3,164,26,27,129,95,9,3,208,26,25,202,101,2,208,26,2,228,25,10,3,214,26,2,210,26,2,230
+data_25984 db 25,10,3,216,26,2,228,25,2,214,26,2,216,26,2,204,26,2,202,26,14,3,170,26,3,166,26,3,168,26,3,164,26,27,129,95,9,3,208,26,2,230,25,2,214,26,2,216,26,2,202,26,2,204,26,3,170,26,3,166,26,3,168,26,3,164,26,27,129,95,9,3,210,26,1,176,0,2,208,26,3,128,25,27,131,70,22,24,20,26,253,101,23,1,176,0,2,210,26,3,128,25,27,131,70,22,24,20,26,253,101,23,1,176,0,2,212,26,3,128,25,27,131,70,22,26,7,102
+data_26112 db 1,2,0,28,25,7,102,1,3,37,2,206,26,1,6,0,11,9,2,208,26,8,1,3,37,2,206,26,1,6,0,11,9,1,2,0,9,2,210,26,8,1,3,37,2,206,26,1,6,0,11,9,1,4,0,9,2,212,26,8,25,63,102,2,206,26,1,1,0,9,3,206,26,25,120,99,27,230,94,23,1,131,33,1,3,37,1,192,0,32,1,0,0,28,1,0,0,28,1,0,0,3,218,26,2,218,26,1,2,0,3,134,25,27,206,70,22,26,235,102,1,227,34,2,218,26,9,4
+data_26240 db 26,222,102,1,99,34,2,218,26,1,2,0,11,9,4,3,220,26,1,99,34,2,218,26,1,2,0,11,9,1,1,0,9,4,3,222,26,2,220,26,2,224,26,21,24,26,184,102,23,2,222,26,2,226,26,21,24,20,26,209,102,23,2,220,26,2,226,26,21,24,26,209,102,23,2,222,26,2,224,26,21,26,219,102,2,218,26,28,25,219,102,25,222,102,2,218,26,1,1,0,9,3,218,26,25,104,102,1,1,0,14,28,1,0,0,28,27,206,75,20,26,2,103,1,0,0,28,25
+data_26368 db 2,103,2,182,25,2,180,25,1,0,0,3,154,25,3,150,25,3,152,25,27,143,71,3,228,26,2,182,25,2,180,25,1,1,0,3,154,25,3,150,25,3,152,25,27,143,71,3,230,26,27,230,94,23,1,0,0,3,232,26,2,232,26,2,182,25,3,134,25,27,206,70,22,26,172,103,2,182,25,3,140,25,27,45,71,2,232,26,9,4,26,159,103,2,182,25,1,1,0,21,26,109,103,1,67,34,25,128,103,2,182,25,1,2,0,21,26,125,103,1,227,34,25,128,103,1,35,35
+data_26496 db 2,232,26,2,182,25,1,3,0,21,26,147,103,1,5,0,25,150,103,1,1,0,11,9,1,0,0,7,25,159,103,2,232,26,1,1,0,9,3,232,26,25,60,103,1,0,0,3,232,26,2,232,26,1,2,0,3,134,25,27,206,70,22,26,28,104,1,227,34,2,232,26,9,4,26,15,104,1,67,34,1,99,34,2,232,26,1,2,0,11,9,4,9,4,20,24,20,26,251,103,23,1,67,34,1,99,34,2,232,26,1,2,0,11,9,1,1,0,9,4,9,4,20,26,12,104,1,227
+data_26624 db 34,2,232,26,9,1,0,0,7,25,12,104,25,15,104,2,232,26,1,1,0,9,3,232,26,25,178,103,1,0,0,3,232,26,2,232,26,1,3,0,3,134,25,27,206,70,22,26,216,104,1,35,35,2,232,26,1,5,0,11,9,4,3,234,26,1,0,0,3,236,26,2,236,26,2,234,26,22,26,203,104,1,35,35,2,232,26,1,5,0,11,9,2,236,26,9,1,1,0,9,4,3,238,26,1,35,35,2,232,26,1,5,0,11,9,2,236,26,1,1,0,9,2,234,26,13,9,1
+data_26752 db 1,0,9,4,3,240,26,1,67,34,2,238,26,9,4,20,24,20,26,169,104,23,2,238,26,2,240,26,3,226,26,3,224,26,27,98,102,1,0,0,22,26,190,104,1,35,35,2,232,26,1,5,0,11,9,1,0,0,7,25,190,104,2,236,26,1,1,0,9,3,236,26,25,71,104,2,232,26,1,1,0,9,3,232,26,25,34,104,27,156,70,23,2,182,25,2,228,26,2,230,26,3,176,25,3,174,25,3,172,25,27,117,72,3,180,25,1,0,0,28,1,0,0,3,242,26,2,242
+data_26880 db 26,2,244,26,1,2,0,21,26,17,105,1,64,0,25,20,105,1,32,0,22,26,63,105,2,244,26,2,242,26,3,136,25,3,138,25,27,223,70,20,26,50,105,2,242,26,28,25,50,105,2,242,26,1,1,0,9,3,242,26,25,254,104,1,1,0,14,28,1,0,0,28,1,1,0,3,244,26,27,248,104,3,246,26,2,246,26,1,0,0,22,26,101,105,1,5,0,28,25,101,105,27,230,94,23,1,131,33,2,246,26,1,6,0,11,9,2,228,25,8,1,131,33,2,246,26,1,6
+data_27008 db 0,11,9,1,2,0,9,2,230,25,8,1,131,33,2,246,26,1,6,0,11,9,1,4,0,9,2,232,25,8,1,67,34,2,246,26,9,1,1,0,7,2,246,26,1,1,0,3,134,25,27,206,70,22,20,26,200,105,1,128,33,2,246,26,1,1,0,9,7,25,200,105,27,156,70,23,1,1,0,3,182,25,2,246,26,3,180,25,27,249,74,23,1,0,0,28,1,0,0,28,2,182,25,1,2,0,21,26,245,105,27,190,106,28,25,245,105,2,182,25,1,1,0,21,20,24,20,26
+data_27136 db 11,106,23,2,132,25,1,2,0,21,20,26,21,106,1,6,0,28,25,21,106,1,67,36,4,3,248,26,1,67,36,1,1,0,9,4,3,250,26,2,248,26,2,250,26,3,226,26,3,224,26,27,98,102,1,0,0,22,20,26,69,106,1,6,0,28,25,69,106,1,2,0,3,244,26,27,248,104,3,252,26,2,252,26,1,0,0,22,26,98,106,1,5,0,28,25,98,106,27,230,94,23,1,99,34,2,252,26,1,2,0,11,9,2,248,26,7,1,99,34,2,252,26,1,2,0,11,9
+data_27264 db 1,1,0,9,2,250,26,7,1,227,34,2,252,26,9,1,1,0,7,2,252,26,1,2,0,3,134,25,27,206,70,22,20,26,182,106,1,128,33,1,1,0,9,2,252,26,1,1,0,9,7,25,182,106,1,0,0,28,1,0,0,28,1,0,0,3,254,26,1,0,0,3,0,27,2,0,27,1,32,0,22,26,236,106,1,99,36,2,0,27,9,1,0,0,7,2,0,27,1,1,0,9,3,0,27,25,202,106,1,0,0,3,0,27,2,0,27,1,2,0,3,134,25,27,206,70,22,26
+data_27392 db 137,107,1,2,0,2,0,27,3,136,25,3,138,25,27,223,70,24,26,34,107,23,1,195,35,1,32,0,9,2,0,27,9,4,26,124,107,2,254,26,1,1,0,9,3,254,26,1,99,34,2,0,27,1,2,0,11,9,4,3,2,27,1,99,34,2,0,27,1,2,0,11,9,1,1,0,9,4,3,4,27,1,99,36,2,2,27,9,1,99,36,2,2,27,9,4,1,1,0,9,7,1,99,36,2,4,27,9,1,99,36,2,4,27,9,4,1,1,0,9,7,25,124,107,2,0,27,1
+data_27520 db 1,0,9,3,0,27,25,242,106,2,254,26,1,3,0,21,20,24,26,158,107,23,2,254,26,1,4,0,21,20,26,168,107,1,6,0,28,25,168,107,1,0,0,3,6,27,1,1,0,14,3,8,27,1,0,0,3,0,27,2,0,27,1,32,0,22,26,8,108,1,99,36,2,0,27,9,4,3,10,27,2,10,27,26,251,107,2,10,27,1,2,0,21,20,26,232,107,1,6,0,28,25,232,107,2,6,27,1,1,0,9,3,6,27,2,0,27,3,8,27,25,251,107,2,0,27,1,1
+data_27648 db 0,9,3,0,27,25,187,107,2,6,27,2,254,26,21,20,26,26,108,1,6,0,28,25,26,108,2,8,27,3,12,27,1,1,0,14,3,14,27,1,0,0,3,16,27,2,16,27,2,254,26,22,26,54,109,1,67,36,2,16,27,9,2,12,27,7,1,1,0,14,3,18,27,1,0,0,3,0,27,2,0,27,1,2,0,3,134,25,27,206,70,22,26,12,109,1,2,0,2,0,27,3,136,25,3,138,25,27,223,70,24,26,127,108,23,1,195,35,1,32,0,9,2,0,27,9,4,26
+data_27776 db 255,108,1,99,34,2,0,27,1,2,0,11,9,4,3,2,27,1,99,34,2,0,27,1,2,0,11,9,1,1,0,9,4,3,4,27,2,2,27,2,12,27,21,24,26,196,108,23,2,4,27,2,14,27,21,20,24,26,196,108,23,2,18,27,1,0,0,22,26,208,108,2,4,27,3,18,27,25,252,108,2,4,27,2,12,27,21,24,26,240,108,23,2,2,27,2,14,27,21,20,24,26,240,108,23,2,18,27,1,0,0,22,26,252,108,2,2,27,3,18,27,25,252,108,25,255,108,2
+data_27904 db 0,27,1,1,0,9,3,0,27,25,79,108,2,18,27,1,0,0,22,26,29,109,1,6,0,28,25,29,109,2,12,27,3,14,27,2,18,27,3,12,27,2,16,27,1,1,0,9,3,16,27,25,45,108,2,12,27,2,8,27,21,20,26,72,109,1,6,0,28,25,72,109,1,0,0,3,0,27,2,0,27,1,3,0,3,134,25,27,206,70,22,26,225,109,1,35,35,2,0,27,1,5,0,11,9,4,2,254,26,21,26,212,109,1,0,0,3,20,27,1,0,0,3,16,27,2,16,27
+data_28032 db 2,254,26,22,26,192,109,2,20,27,1,99,36,1,35,35,2,0,27,1,5,0,11,9,2,16,27,9,1,1,0,9,4,9,4,26,172,109,1,1,0,25,175,109,1,0,0,9,3,20,27,2,16,27,1,1,0,9,3,16,27,25,125,109,2,20,27,2,254,26,21,26,209,109,1,6,0,28,25,209,109,25,212,109,2,0,27,1,1,0,9,3,0,27,25,78,109,1,3,0,3,244,26,27,248,104,3,22,27,2,22,27,1,0,0,22,26,254,109,1,5,0,28,25,254,109,27,230
+data_28160 db 94,23,1,35,35,2,22,27,1,5,0,11,9,2,254,26,7,2,22,27,1,3,0,3,134,25,27,206,70,22,20,26,52,110,1,128,33,1,2,0,9,2,22,27,1,1,0,9,7,25,52,110,1,0,0,3,16,27,2,16,27,2,254,26,22,26,109,110,1,35,35,2,22,27,1,5,0,11,9,2,16,27,9,1,1,0,9,1,67,36,2,16,27,9,4,7,2,16,27,1,1,0,9,3,16,27,25,58,110,1,0,0,28,1,0,0,28,27,217,95,3,24,27,2,24,27,26,136
+data_28288 db 110,2,24,27,28,25,136,110,2,26,27,1,0,0,21,26,155,110,2,180,26,3,228,25,25,180,110,2,26,27,1,1,0,21,26,174,110,2,180,26,3,230,25,25,180,110,2,180,26,3,232,25,2,26,27,1,1,0,9,3,26,27,2,26,27,1,3,0,22,26,230,110,1,0,41,1,120,0,2,26,27,9,7,1,1,0,3,10,26,1,0,0,3,12,26,1,0,0,28,25,230,110,27,72,105,28,1,0,0,28,1,0,0,3,28,27,1,0,0,3,30,27,1,0,0,3,114,26
+data_28416 db 1,1,0,3,116,26,1,1,0,3,182,25,1,0,0,3,180,25,1,0,0,3,246,25,1,0,0,3,10,26,1,0,0,3,12,26,1,0,0,3,132,25,1,0,0,3,152,26,1,0,0,3,234,25,1,4,0,3,92,26,1,3,0,3,94,26,1,10,0,3,134,26,1,0,0,3,120,26,27,161,91,23,27,246,88,23,1,1,0,26,88,117,29,3,32,27,2,28,27,26,201,111,2,32,27,1,27,0,21,26,144,111,1,0,0,3,28,27,2,30,27,26,137,111,2,30,27,3
+data_28544 db 118,26,27,93,89,23,25,141,111,27,246,88,23,25,198,111,2,114,26,20,24,26,174,111,23,2,32,27,1,17,0,22,20,24,26,174,111,23,1,20,0,2,32,27,22,20,26,198,111,2,32,27,3,112,26,27,156,88,23,27,161,91,23,27,237,85,23,25,198,111,25,85,117,2,32,27,1,104,0,21,26,230,111,2,120,26,3,30,27,1,1,0,3,28,27,27,237,85,23,25,85,117,1,0,0,3,120,26,2,246,25,26,158,113,2,32,27,1,27,0,21,26,15,112,1,0,0,3
+data_28672 db 246,25,1,0,0,3,10,26,27,246,88,23,25,155,113,2,32,27,1,10,0,21,24,20,26,35,112,23,2,32,27,1,13,0,21,26,131,112,2,246,25,1,110,0,21,26,54,112,27,117,110,25,57,112,27,14,99,3,34,27,2,34,27,26,79,112,2,34,27,3,118,26,27,93,89,23,25,128,112,2,246,25,1,110,0,21,24,26,98,112,23,2,26,27,1,3,0,22,26,108,112,27,246,88,23,25,128,112,1,0,0,3,246,25,1,0,0,3,10,26,27,161,91,23,27,246,88,23
+data_28800 db 25,155,113,2,32,27,1,8,0,21,26,198,112,1,1,0,2,10,26,22,26,164,112,2,10,26,1,1,0,10,3,10,26,25,191,112,1,0,0,3,12,26,2,246,25,1,110,0,21,20,26,191,112,1,0,41,1,63,0,7,25,191,112,27,246,88,23,25,155,113,2,246,25,1,110,0,21,20,24,26,244,112,23,2,32,27,1,120,0,21,24,20,26,244,112,23,2,32,27,1,121,0,21,24,20,26,244,112,23,2,32,27,1,122,0,21,26,5,113,1,0,41,2,32,27,7,27,246
+data_28928 db 88,23,25,155,113,2,32,27,1,43,0,21,24,20,26,25,113,23,2,32,27,1,45,0,21,26,57,113,2,32,27,1,45,0,21,26,44,113,1,1,0,25,47,113,1,0,0,3,12,26,27,246,88,23,25,155,113,2,32,27,1,46,0,21,24,20,26,91,113,23,2,32,27,1,48,0,22,20,24,26,91,113,23,1,57,0,2,32,27,22,20,26,145,113,2,10,26,1,9,0,22,26,132,113,1,0,41,2,10,26,9,2,32,27,7,2,10,26,1,1,0,9,3,10,26,27,246,88
+data_29056 db 23,25,142,113,1,1,0,3,118,26,27,93,89,23,25,155,113,1,1,0,3,118,26,27,93,89,23,25,85,117,1,0,0,3,34,27,2,32,27,1,32,0,21,26,187,113,1,1,0,2,114,26,10,3,114,26,25,58,117,2,32,27,1,112,0,21,26,210,113,1,1,0,2,116,26,10,3,116,26,25,58,117,2,114,26,20,26,100,114,2,32,27,1,17,0,22,20,24,26,238,113,23,1,20,0,2,32,27,22,20,26,254,113,2,32,27,3,112,26,27,156,88,23,25,97,114,2,32
+data_29184 db 27,1,43,0,21,24,20,26,18,114,23,2,32,27,1,61,0,21,26,54,114,1,30,0,2,134,26,1,2,0,9,22,26,41,114,1,30,0,25,48,114,2,134,26,1,2,0,9,3,134,26,25,97,114,2,32,27,1,45,0,21,26,97,114,2,134,26,1,2,0,10,1,5,0,22,26,84,114,1,5,0,25,91,114,2,134,26,1,2,0,10,3,134,26,25,97,114,25,58,117,2,32,27,1,49,0,22,20,24,26,121,114,23,1,51,0,2,32,27,22,20,26,213,114,2,182,25,2
+data_29312 db 180,25,1,0,0,3,154,25,3,150,25,3,152,25,27,143,71,3,36,27,2,182,25,2,180,25,1,1,0,3,154,25,3,150,25,3,152,25,27,143,71,3,38,27,27,156,70,23,2,32,27,1,48,0,10,3,182,25,2,182,25,2,36,27,2,38,27,3,176,25,3,174,25,3,172,25,27,117,72,3,180,25,25,58,117,2,32,27,1,17,0,22,20,24,26,234,114,23,1,20,0,2,32,27,22,20,26,250,114,2,32,27,3,198,25,27,29,73,23,25,58,117,2,32,27,1,9,0
+data_29440 db 21,26,11,115,27,151,74,23,25,58,117,2,32,27,1,10,0,21,24,20,26,31,115,23,2,32,27,1,13,0,21,26,41,115,27,249,74,23,25,58,117,2,32,27,1,27,0,21,26,58,115,27,156,70,23,25,58,117,2,32,27,1,103,0,21,24,20,26,91,115,23,2,32,27,1,114,0,21,24,20,26,91,115,23,2,32,27,1,115,0,21,26,137,115,27,14,77,26,128,115,2,32,27,3,246,25,1,0,41,1,63,0,7,1,1,0,3,10,26,1,0,0,3,12,26,25,134,115
+data_29568 db 1,4,0,3,34,27,25,58,117,2,32,27,1,127,0,21,26,154,115,27,244,102,23,25,58,117,2,32,27,1,110,0,21,26,241,115,1,1,0,3,244,26,27,248,104,1,0,0,22,26,189,115,1,5,0,3,34,27,25,238,115,1,110,0,3,246,25,1,0,0,3,26,27,1,0,0,3,228,25,1,0,0,3,230,25,1,0,0,3,232,25,1,0,41,1,120,0,7,1,1,0,3,10,26,1,0,0,3,12,26,25,58,117,2,32,27,1,102,0,21,26,4,116,27,228,105,3,34
+data_29696 db 27,25,58,117,2,32,27,1,117,0,21,26,70,116,2,152,26,26,67,116,1,128,33,1,195,37,1,67,2,32,1,0,0,3,152,26,27,156,70,23,2,182,25,1,8,0,1,8,0,3,176,25,3,174,25,3,172,25,27,117,72,3,180,25,25,67,116,25,58,117,2,32,27,1,97,0,21,26,194,116,27,156,70,23,1,0,0,3,40,27,2,40,27,2,182,25,3,134,25,27,206,70,22,26,191,116,2,182,25,2,40,27,3,136,25,3,138,25,27,223,70,26,178,116,2,182,25,3
+data_29824 db 140,25,27,45,71,2,40,27,9,1,1,0,7,2,182,25,1,1,0,21,26,175,116,1,67,36,2,132,25,9,2,40,27,7,2,132,25,1,1,0,9,3,132,25,25,175,116,25,178,116,2,40,27,1,1,0,9,3,40,27,25,90,116,25,58,117,2,32,27,1,111,0,21,26,217,116,1,1,0,2,234,25,10,3,234,25,25,58,117,2,32,27,1,43,0,21,24,20,26,237,116,23,2,32,27,1,61,0,21,26,16,117,2,134,26,1,2,0,9,3,134,26,1,30,0,2,134,26
+data_29952 db 22,26,13,117,1,30,0,3,134,26,25,13,117,25,58,117,2,32,27,1,45,0,21,26,58,117,2,134,26,1,2,0,10,3,134,26,2,134,26,1,5,0,22,26,55,117,1,5,0,3,134,26,25,55,117,25,58,117,27,161,91,23,2,34,27,26,81,117,2,34,27,3,118,26,27,93,89,23,25,85,117,27,246,88,23,25,86,111,1,0,0,28
