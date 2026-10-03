@@ -19,7 +19,7 @@ image = (ROOT / "3dviewer.bin").read_bytes()
 assert len(image) == layout["image_bytes"] == compiled["bytes"] <= 1024
 assert not compiled["errors"] and compiled["limit"] == 1024
 V = layout["variables"]
-STATE_NAMES = ("yaw", "pitch", "scale", "model_deleted")
+STATE_NAMES = ("yaw", "pitch", "scale")
 SINE = [round(8 * math.sin(i * math.tau / 32)) for i in range(32)]
 assert layout["sine"] == SINE
 
@@ -40,9 +40,7 @@ def vertices(yaw, pitch, scale):
 
 
 def reference(state):
-    if len(state) == 4 and state[3]:
-        return bytes(64)
-    points = vertices(*state[:3])
+    points = vertices(*state)
     frame = bytearray(64)
     edges = [(i, i ^ bit) for bit in (1, 2, 4) for i in range(8) if not i & bit]
     assert edges == [tuple(e) for e in layout["edges"]]
@@ -73,14 +71,10 @@ def reference(state):
 
 
 def transition(state, key):
-    yaw, pitch, scale, deleted = state
+    yaw, pitch, scale = state
     if key == ord(" "):
-        return 4, 3, 10, 0
-    if deleted:
-        return state
-    if key == 0x7F:
-        deleted = 1
-    elif key == 0x11:
+        return 4, 3, 10
+    if key == 0x11:
         yaw = (yaw - 1) % 32
     elif key == 0x13:
         yaw = (yaw + 1) % 32
@@ -92,7 +86,7 @@ def transition(state, key):
         scale = min(30, scale + 2)
     elif key == ord("-"):
         scale = max(5, scale - 2)
-    return yaw, pitch, scale, deleted
+    return yaw, pitch, scale
 
 
 # Geometry may extend past the viewport; all arithmetic must still fit a byte.
@@ -146,8 +140,7 @@ def at(machine, name):
 def assert_frame(machine, state):
     expected = reference(state)
     assert bytes(machine.ram[64:128]) == expected, ("CPU pixels", state)
-    if len(state) < 4 or not state[3]:
-        assert bytes(machine.ram[layout["points"]:layout["points"] + 16]) == bytes(v & 255 for p in vertices(*state[:3]) for v in p), ("CPU vertices", state)
+    assert bytes(machine.ram[layout["points"]:layout["points"] + 16]) == bytes(v & 255 for p in vertices(*state) for v in p), ("CPU vertices", state)
     assert machine.devices == 48
     return expected
 
@@ -177,19 +170,24 @@ for state in states:
 keys = [0x11] * 32 + [0x13] * 32 + [0x12] * 32 + [0x14] * 32
 keys += [ord("+")] * 40 + [ord("-")] * 40 + [ord("=")] * 40 + [ord(" ")]
 keys += list(range(256))
-deletion_keys = []
+delete_noop_keys = []
 for resize, count in ((ord("-"), 25), (ord("+"), 25), (0x13, 7)):
-    deletion_keys += [ord(" ")] + [resize] * count + [0x7F]
-    deletion_keys += [0x11, 0x12, 0x13, 0x14, ord("+"), ord("="), ord("-"), 0x7F, ord("a"), ord(" ")]
-keys += deletion_keys
+    delete_noop_keys += [ord(" ")] + [resize] * count + [0x7F]
+    delete_noop_keys += [0x11, 0x12, 0x13, 0x14, ord("+"), ord("="), ord("-"), 0x7F, ord("a"), ord(" ")]
+keys += delete_noop_keys
 state = tuple(cpu.ram[V[name]] for name in STATE_NAMES)
+cpu_delete_events = 0
 for key in keys:
+    before_state, before_frame = state, bytes(cpu.ram[64:128])
     state = transition(state, key)
     cpu.keys = [key]
     cpu.step()
     cpu.until(lambda m: at(m, "key_loop") and not m.keys)
     assert tuple(cpu.ram[V[name]] for name in STATE_NAMES) == state, ("CPU key", key)
     assert_frame(cpu, state)
+    if key == 0x7F:
+        assert state == before_state and bytes(cpu.ram[64:128]) == before_frame, "Del must leave the viewer unchanged"
+        cpu_delete_events += 1
 snapshot = bytes(cpu.ram)
 for _ in range(3000):
     cpu.step()
@@ -301,13 +299,18 @@ def native_press(code):
 state = tuple(native.memory[V[n]] for n in STATE_NAMES)
 native_keys = [0x11] * 32 + [0x13] * 32 + [0x12] * 32 + [0x14] * 32
 native_keys += [ord("+")] * 40 + [ord("-")] * 40 + [ord("=")] * 40 + [ord(" "), ord("a"), ord("Я")]
-native_keys += deletion_keys
+native_keys += delete_noop_keys
+native_delete_events = 0
 for key in native_keys:
+    before_state, before_frame = state, native.displayed()
     state = transition(state, key)
     native_press(key)
     assert tuple(native.memory[V[n]] for n in STATE_NAMES) == state, ("Native key", key)
     assert native.displayed() == reference(state)
     assert native.memory[62] == 0, "Input loop did not settle"
+    if key == 0x7F:
+        assert state == before_state and native.displayed() == before_frame, "Native Del must leave the viewer unchanged"
+        native_delete_events += 1
 
 # Shift and Ctrl by themselves are ignored by the unmodified emulator.
 for key in (pygame.K_LSHIFT, pygame.K_RSHIFT, pygame.K_LCTRL, pygame.K_RCTRL):
@@ -334,8 +337,9 @@ report = dict(
     initial_view_zoom_bounds=zoom_bounds, pixel_writes_inside_lcd=True,
     scale_limits=[0.5, 3], initial_scale=1, scale_step=0.2,
     scale_boundary_clamping=True, scale_levels=26, rotation_steps=32,
-    delete_key_code=127, deletion_clears_both_planes=True, deletion_scenarios=3,
-    controls_ignored_while_deleted=True, space_restores_model=True,
+    ignored_delete_key_code=127, delete_key_ignored=True, delete_noop_scenarios=3,
+    cpu_delete_key_events=cpu_delete_events, native_delete_key_events=native_delete_events,
+    controls_work_after_delete_key=True, space_resets_view=True,
     cpu_max_address=cpu.max_address, native_max_address=native.max_address,
     instructions_per_frame_min=min(frame_counts), instructions_per_frame_max=max(frame_counts),
     preview_source=preview["source"], preview_frames=preview["source_frames"],

@@ -1,5 +1,5 @@
 {
-  "program_sha256": "fe71b782ed95ab50446bce1033bcc08aa448809c06637c748e6f0d4004940525",
+  "program_sha256": "29afdc793c9a34e42e653d88d90a0638e4d9c7796e0aeea0181f869ad0121fec",
   "source": "unmodified native emulator after KEYDOWN events",
   "display_resolution": [
     16,
@@ -11,7 +11,7 @@
   ],
   "source_frames": 140,
   "encoded_frames": 140,
-  "duration_ms": 37600,
+  "duration_ms": 37700,
   "loop": 0,
   "keyboard_events": 69,
   "timing_multiplier": 2,
@@ -144,12 +144,15 @@
       "count": 8
     },
     {
-      "key": "Del",
-      "code": 127,
+      "key": "Space",
+      "code": 32,
       "count": 1
     }
   ],
   "key_overlay_only": true,
   "overlay_covers_display": false,
-  "final_display_empty": true
+  "final_display_empty": false,
+  "final_view_reset": true,
+  "cube_visible_in_all_frames": true,
+  "delete_key_shown": false
 }

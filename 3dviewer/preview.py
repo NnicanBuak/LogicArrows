@@ -11,7 +11,7 @@ DISPLAY_SIZE = 384
 CANVAS_SIZE = (DISPLAY_SIZE, DISPLAY_SIZE + 48)
 COLORS = [(255, 255, 255), (255, 0, 0), (76, 128, 255), (165, 64, 128)]
 KEY_LABELS = {0x11: "←", 0x12: "↑", 0x13: "→", 0x14: "↓",
-              ord("+"): "+", ord("-"): "−", 0x7F: "Del"}
+              ord("+"): "+", ord("-"): "−", ord(" "): "Space"}
 TIMING_MULTIPLIER = 2
 SEQUENCE = [(ord("+"), 10), (0x13, 8), (ord("-"), 5),
             (0x12, 8), (ord("+"), 5), (0x11, 8),
@@ -19,18 +19,18 @@ SEQUENCE = [(ord("+"), 10), (0x13, 8), (ord("-"), 5),
 
 
 def render_preview(displayed, press, read_state, output=ROOT):
-    """Only the 16×16 display and a pulsing keycap; deletion ends the loop."""
+    """Only the 16×16 display and a pulsing keycap; reset closes the loop."""
     fonts = [Path("C:/Windows/Fonts/seguisym.ttf"),
              Path("/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf"),
              Path("C:/Windows/Fonts/arial.ttf")]
     font_path = next((path for path in fonts if path.exists()), None)
     key_font = ImageFont.truetype(str(font_path), 30) if font_path else ImageFont.load_default(size=30)
-    del_font = ImageFont.truetype(str(font_path), 24) if font_path else ImageFont.load_default(size=24)
     frames, durations, events, stages = [], [], [], []
 
     def capture(key=None, duration=70):
         pixels = displayed()
         assert len(pixels) == 64
+        assert any(pixels), "The cube must remain visible throughout the demo"
         screen = Image.new("RGB", (16, 16), "white")
         for y in range(16):
             for x in range(16):
@@ -42,20 +42,20 @@ def render_preview(displayed, press, read_state, output=ROOT):
         if key is not None:
             # The keycap sits below the raster, leaving every LCD pixel visible.
             draw = ImageDraw.Draw(frame)
-            width = 66 if key == 0x7F else 48
+            width = max(48, int(draw.textlength(KEY_LABELS[key], font=key_font)) + 22)
             left = (DISPLAY_SIZE - width) // 2
             top = DISPLAY_SIZE + 6
             draw.rounded_rectangle((left, top, left + width, top + 35), radius=7,
                                    fill="#24262b", outline="#454850", width=1)
             draw.text((DISPLAY_SIZE // 2, top + 16), KEY_LABELS[key],
-                      fill="white", font=del_font if key == 0x7F else key_font, anchor="mm")
+                      fill="white", font=key_font, anchor="mm")
         frames.append(frame)
         durations.append(duration)
 
     # A new loop starts at the same state as launching the program.
     press(ord(" "))
     assert any(displayed())
-    assert read_state() == dict(yaw=4, pitch=3, scale=10, model_deleted=0)
+    assert read_state() == dict(yaw=4, pitch=3, scale=10)
     capture(duration=650)
     for key, count in SEQUENCE:
         for _ in range(count):
@@ -72,14 +72,15 @@ def render_preview(displayed, press, read_state, output=ROOT):
     assert stages[0]["scale"] == 3 and stages[-1]["scale"] == 3
     assert {stage["code"] for stage in stages if 17 <= stage["code"] <= 20} == {17, 18, 19, 20}
 
-    # Show the Delete press before and after the model disappears.
-    capture(0x7F, 180)
-    press(0x7F)
-    events.append(0x7F)
-    assert displayed() == bytes(64), "Demo must finish with an empty display"
-    assert read_state()["model_deleted"] == 1
-    capture(0x7F, 420)
-    capture(duration=1250)
+    # Hold maximum zoom, then reset the view for a seamless loop.
+    durations[-1] += 650
+    capture(ord(" "), 180)
+    press(ord(" "))
+    events.append(ord(" "))
+    assert read_state() == dict(yaw=4, pitch=3, scale=10)
+    capture(ord(" "), 420)
+    capture(duration=650)
+    assert frames[-1].tobytes() == frames[0].tobytes(), "The loop must end at its initial view"
     durations = [duration * TIMING_MULTIPLIER for duration in durations]
 
     output.mkdir(parents=True, exist_ok=True)
@@ -93,7 +94,7 @@ def render_preview(displayed, press, read_state, output=ROOT):
             gif.seek(index)
             encoded_duration += gif.info["duration"]
         assert encoded_duration == sum(durations)
-        assert gif.convert("RGB").getextrema() == ((255, 255),) * 3
+        assert gif.convert("RGB").tobytes() == frames[0].tobytes()
         encoded_frames = gif.n_frames
     metadata = dict(
         program_sha256=hashlib.sha256((output / "3dviewer.bin").read_bytes()).hexdigest(),
@@ -107,8 +108,9 @@ def render_preview(displayed, press, read_state, output=ROOT):
         zoom_step=0.2,
         all_arrow_directions=True, rotation_alternates_with_zoom=True, stages=stages,
         sequence=[dict(key=KEY_LABELS[key], code=key, count=count) for key, count in SEQUENCE]
-                 + [dict(key="Del", code=127, count=1)],
-        key_overlay_only=True, overlay_covers_display=False, final_display_empty=True,
+                 + [dict(key="Space", code=32, count=1)],
+        key_overlay_only=True, overlay_covers_display=False, final_display_empty=False,
+        final_view_reset=True, cube_visible_in_all_frames=True, delete_key_shown=False,
     )
     (output / "preview.json").write_text(json.dumps(metadata, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     return metadata
@@ -142,7 +144,7 @@ def main():
         0x11: (pygame.K_LEFT, ""), 0x12: (pygame.K_UP, ""),
         0x13: (pygame.K_RIGHT, ""), 0x14: (pygame.K_DOWN, ""),
         ord("+"): (pygame.K_EQUALS, "+"), ord("-"): (pygame.K_MINUS, "-"),
-        ord(" "): (pygame.K_SPACE, " "), 0x7F: (pygame.K_DELETE, chr(127)),
+        ord(" "): (pygame.K_SPACE, " "),
     }
 
     def press(code):
@@ -164,7 +166,7 @@ def main():
 
     def read_state():
         return {name: machine.memory[layout["variables"][name]]
-                for name in ("yaw", "pitch", "scale", "model_deleted")}
+                for name in ("yaw", "pitch", "scale")}
 
     until_input()
     metadata = render_preview(displayed, press, read_state)
@@ -176,7 +178,7 @@ def main():
         report_path.write_text(json.dumps(report, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     pygame.quit()
     print(json.dumps(dict(frames=metadata["source_frames"],
-                          duration_ms=metadata["duration_ms"], loop=0, final_display_empty=True)))
+                          duration_ms=metadata["duration_ms"], loop=0, final_view_reset=True)))
 
 
 if __name__ == "__main__":

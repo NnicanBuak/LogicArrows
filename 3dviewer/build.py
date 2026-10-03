@@ -338,9 +338,6 @@ ld a, 62
 test a
 IF z key_loop
 mov d, a
-ld b, model_deleted
-test b
-IF nz no_model
 ldi b, 17
 sub a, b
 IF c other_keys
@@ -368,10 +365,6 @@ GO frame_start
 """, "0x11/12/13/14: чётный индекс — yaw, нечётный — pitch; один шаг равен 11,25°.")
 block(5, "other_keys", """
 mov a, d
-ldi b, 127
-xor a, b
-IF z delete_model
-mov a, d
 ldi b, 43
 xor a, b
 IF z scale_up
@@ -387,9 +380,7 @@ mov a, d
 ldi b, 32
 xor a, b
 IF nz key_loop
-reset_model:
-clr a
-st a, model_deleted
+reset_view:
 ldi a, 4
 st a, yaw
 ldi a, 3
@@ -397,7 +388,7 @@ st a, pitch
 ldi a, 10
 st a, scale
 GO frame_start
-""", "Del удаляет модель; плюс/равно и минус меняют масштаб; пробел возвращает куб.")
+""", "Плюс/равно и минус меняют масштаб; пробел сбрасывает ракурс и масштаб. Остальные коды игнорировать.")
 block(2, "scale_up", """
 ld a, scale
 ldi b, 30
@@ -428,27 +419,6 @@ scale_down_store:
 st a, scale
 GO frame_start
 """, "Уменьшать на ×0,2; последний шаг доводит до ×0,5, дальнейший минус игнорируется.")
-
-block(1, "no_model", """
-ldi b, 32
-xor a, b
-IF z reset_model
-GO key_loop
-""", "После удаления игнорировать управление; пробел восстанавливает исходный куб.")
-block(3, "delete_model", """
-ldi a, 1
-st a, model_deleted
-clr a
-st a, 62
-ldi b, 64
-ldi c, 64
-delete_clear_loop:
-st a, b
-inc b
-dec c
-IF nz delete_clear_loop
-GO frame_ready
-""", "Del (0x7F): убрать модель из сцены и опубликовать пустой цветной кадр.")
 
 
 def size(line):
@@ -499,13 +469,12 @@ def build():
     masks = 7 + len(VARIABLES)
     points = masks + 8
     assert points + 16 < 62
-    addresses["model_deleted"] = points + 16
     source = ["; 3DViewer — клавиатурный куб для Computer v2, не более 1024 байт.",
-              "; Стрелки: yaw/pitch; + или =: больше; -: меньше; Del: удалить; пробел: вернуть куб.", ""]
+              "; Стрелки: yaw/pitch; + или =: больше; -: меньше; пробел: исходный ракурс и масштаб.", ""]
     source += [f"{name} equ {address}" for name, address in addresses.items()]
     source += [f"masks equ {masks}", f"points equ {points}", "",
                "start: ldi c, 1", "ldi d, frame_start", "set_bank: st c, 63", "jmp d"]
-    initial = {"yaw": 4, "pitch": 3, "scale": 10, "model_deleted": 0}
+    initial = {"yaw": 4, "pitch": 3, "scale": 10}
     source += ["globals db " + ",".join(str(initial.get(name, 0)) for name in VARIABLES),
                "pixel_masks db 128,64,32,16,8,4,2,1",
                "vertex_cache db " + ",".join(["0"] * 16)]
@@ -540,8 +509,7 @@ def build():
                              projection_divisor=256, fit_to_screen=False,
                              clamp_last_step_at_boundary=True),
                   viewport=dict(width=16, height=16, clipping="per raster pixel"),
-                  model_lifecycle=dict(delete_key=127, restore_key=32,
-                                       controls_ignored_while_deleted=True))
+                  view_reset_key=32, delete_key_ignored=True)
     (ROOT / "layout.json").write_text(json.dumps(layout, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     print(json.dumps(dict(bytes=image_bytes, banks=usage)))
 
