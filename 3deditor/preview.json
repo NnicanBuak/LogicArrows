@@ -1,5 +1,5 @@
 {
-  "program_sha256": "089cc9d2c0e75bb602bd3f15b5f2879fe7b31550894d01c665a0aa8c5d8c77b1",
+  "program_sha256": "86b9ba4e282a4ca7b901ba5650e73d2c901b255efc27a73ee2dfe84344feac64",
   "source": "unmodified Computer v2 emulator executing ASM; LCD and terminal captured directly",
   "frames": 115,
   "duration_ms": 41940,

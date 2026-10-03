@@ -1,6 +1,6 @@
 {
   "result": "passed",
-  "bytes": 25587,
-  "padded_bytes": 25592,
-  "program_sha256": "089cc9d2c0e75bb602bd3f15b5f2879fe7b31550894d01c665a0aa8c5d8c77b1"
+  "bytes": 25529,
+  "padded_bytes": 25536,
+  "program_sha256": "86b9ba4e282a4ca7b901ba5650e73d2c901b255efc27a73ee2dfe84344feac64"
 }

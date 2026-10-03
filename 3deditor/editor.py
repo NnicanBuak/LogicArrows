@@ -312,14 +312,9 @@ def render():
         i += 1
     begin()
     i = 0
-    while i < limit(2):
-        if peek8(ELIVE + i):
-            draw_element(2, i)
-        i += 1
-    i = 0
-    while i < limit(1):
-        if peek8(VLIVE + i):
-            draw_element(1, i)
+    while i < limit(mode):
+        if alive(mode, i):
+            draw_element(mode, i)
         i += 1
     copy(BASE_MASK, 64, 32)
     begin()

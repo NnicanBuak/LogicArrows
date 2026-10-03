@@ -137,15 +137,14 @@ def reference(m):
             pixels |= triangle_pixels(*[points[face[v]] for v in [0, 2, 3]])
         return pixels
 
-    base = set()
-    for i in edges:
-        base |= primitive(2, i)
-    for i in points:
-        base |= primitive(1, i)
     mode = m.variable('mode')
+    elements = points if mode == 1 else (edges if mode == 2 else faces)
+    base = set()
+    for i in elements:
+        base |= primitive(mode, i)
     selected = set()
     offset = [0, 0, 32, 96][mode]
-    for i in (points if mode == 1 else (edges if mode == 2 else faces)):
+    for i in elements:
         if m.ram[c['SELECT'] + offset + i]:
             selected |= primitive(mode, i)
     current = primitive(mode, m.variable('cursor'))
@@ -353,6 +352,45 @@ def views():
     checks['max_call_stack_bytes'] = m.max_rsp
 
 
+def mode_rendering():
+    # An isolated vertex distinguishes edge/face modes from a mixed renderer.
+    # A triangle interior distinguishes filled faces from a wireframe.
+    from model_io import encode_model
+    m = Machine()
+    c = m.layout['constants']
+    model = dict(vertices=[[-4, -4, 0], [4, -4, 0], [0, 4, 0], [10, 10, 0]],
+                 edges=[[0, 1], [1, 2], [2, 0]], faces=[[0, 1, 2]])
+    encoded = encode_model(model, c)
+    m.ram[c['MESH']:c['MESH'] + c['MESH_BYTES']] = encoded
+    m.idle()
+    points = projected(m)
+    orphan = tuple(points[3])
+    vertex_pixels = set(map(tuple, points.values()))
+    edge_pixels = set().union(*(line_pixels(points[a], points[b]) for a, b in model['edges']))
+    face_pixels = triangle_pixels(*[points[v] for v in model['faces'][0]])
+    expect(orphan not in edge_pixels and orphan not in face_pixels, 'fixture has an isolated projected vertex')
+    expect(bool(face_pixels - edge_pixels - vertex_pixels), 'fixture has a face interior')
+
+    def painted():
+        return {(x, y) for y in range(16) for x in range(16)
+                if (m.front[2 * y + x // 8] | m.front[32 + 2 * y + x // 8]) & (128 >> (x % 8))}
+
+    for mode, expected in [('1', vertex_pixels), ('2', edge_pixels), ('3', face_pixels)]:
+        type_keys(m, mode)
+        expect(painted() == expected, ('only mode primitives', mode))
+        type_keys(m, [10, 9])
+        expect(painted() == expected, ('highlight keeps mode primitives', mode))
+    type_keys(m, '2a')
+    type_keys(m, [127])
+    expect(bytes(m.front) == bytes(64), 'edge mode hides remaining orphan vertices')
+    type_keys(m, '3')
+    expect(bytes(m.front) == bytes(64), 'face mode hides remaining orphan vertices')
+    type_keys(m, '1')
+    expect(painted() == vertex_pixels, 'vertex mode still shows remaining vertices')
+    checks['mode_primitives_only'] = True
+    print('mode-only rendering passed', flush=True)
+
+
 def main():
     compiled = json.loads((ROOT / '3deditor.compile.json').read_text())
     image = (ROOT / '3deditor.bin').read_bytes()
@@ -361,6 +399,7 @@ def main():
     print('arithmetic passed', flush=True)
     geometry()
     topology()
+    mode_rendering()
     views()
     checks.update(program_sha256=hashlib.sha256(image).hexdigest(), bytes=len(image), limit=32768,
                   native_escape_keydown_tested=False, escape_test='ISA code 27 only; native test adapter uses F2',
