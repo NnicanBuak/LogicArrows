@@ -94,6 +94,8 @@ class Emulator():
         self.font = [get_symbol(i, scale=self.console_scale) for i in range(256)]#шрифт для консоли
         self.console = [[self.font[0] for x in range(console_w)]for y in range(console_h)]#консоль
         self.console_index = 0#положение курсора консоли
+        self.console_row = 0
+        self.terminal_frame_mode = False
         self.console_buffer = []#когда тут накопятся 6 байт, в консоль выведется графический символ
         self.bell = 0#состояние звонка
         self.stop = 0#была ли программа остановлена
@@ -180,12 +182,18 @@ class Emulator():
                     self.update_ports(i, code[i])
 
     def change_console_scale(self, w, h):
+        if type(w) is not int or type(h) is not int or w < 1 or h < 1:
+            raise ValueError("Console width and height must be positive integers")
         self.console_w = w
         self.console_h = h
+        self.console_index = 0
+        self.console_row = 0
+        self.console_buffer = []
         dw = W * 0.75 - 256 + 150 - 300 - 100
         dh = H - 30 - 100
         self.console_scale = max(int(min(dw / (self.console_w * 6), dh / (self.console_h * 8))), 1)
         self.font = [get_symbol(i, scale=self.console_scale) for i in range(256)]  # шрифт для консоли
+        self.console = [[self.font[0] for _ in range(w)] for _ in range(h)]
 
     #
     #ВВОД/ВЫВОД
@@ -234,6 +242,13 @@ class Emulator():
                 self.enable_indicator = 0
             #
             self.enable_console = value % 2#подключение консоли
+        elif ind == 0x3C and self.enable_console and self.terminal_frame_mode:
+            if value == 0x0C:
+                self.console_index = 0
+                self.console_row = 0
+                self.console_buffer = []
+                self.console = [[self.font[0] for _ in range(self.console_w)]
+                                for _ in range(self.console_h)]
         elif ind == 0x3C and self.enable_console:
             self.bell = not self.bell
             if value >= 32 and value != 0x98:
@@ -272,13 +287,22 @@ class Emulator():
             self.console_buffer.append(value)
             if len(self.console_buffer) == 6:
                 if self.enable_console:
-                    self.console[-1][self.console_index] = generate_symbol(self.console_buffer, scale=self.console_scale)
-                    self.console_index += 1
-                    #
-                    if self.console_index == self.console_w:
-                        self.console_index = 0
-                        self.console = self.console[1:]
-                        self.console.append([self.font[0] for i in range(self.console_w)])
+                    if self.terminal_frame_mode:
+                        if self.console_row < self.console_h:
+                            self.console[self.console_row][self.console_index] = generate_symbol(
+                                self.console_buffer, scale=self.console_scale)
+                            self.console_index += 1
+                            if self.console_index == self.console_w:
+                                self.console_index = 0
+                                self.console_row += 1
+                    else:
+                        self.console[-1][self.console_index] = generate_symbol(self.console_buffer, scale=self.console_scale)
+                        self.console_index += 1
+                        #
+                        if self.console_index == self.console_w:
+                            self.console_index = 0
+                            self.console = self.console[1:]
+                            self.console.append([self.font[0] for i in range(self.console_w)])
                 #
                 self.console_buffer = []
         elif 0x40 <= ind <= 0x7F:

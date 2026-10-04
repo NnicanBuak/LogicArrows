@@ -66,7 +66,7 @@ def profile(source):
 
 
 class Program:
-    def __init__(self, filename):
+    def __init__(self, filename, terminal_size=None):
         self.path = Path(filename).resolve()
         source = self.path.read_text(encoding='utf-8-sig')
         self.profile = profile(source)
@@ -79,6 +79,8 @@ class Program:
             raise ValueError('Program must contain 1..32768 bytes')
         self.image = bytes(image)
         self.machine = self.core.Emulator()
+        if terminal_size:
+            self.machine.change_console_scale(*terminal_size)
         self.machine.filename = str(self.path)
         self.machine.compilation_console = diagnostics
         for address, value in enumerate(image):
@@ -153,4 +155,19 @@ class Program:
             for x in range(m.console_w):
                 surface.blit(p.transform.scale(m.console[y][x], (6 * scale, 8 * scale)),
                              (x * 6 * scale, y * 8 * scale))
+        return surface
+
+    def terminal_line_surface(self, text, scale=4):
+        """Render one status/input row with the Computer v2 6x8 pixel font."""
+        p = self.pygame
+        m = self.machine
+        surface = p.Surface((m.console_w * 6 * scale, 8 * scale))
+        surface.fill('white')
+        for x, char in enumerate(text[:m.console_w]):
+            try:
+                code = char.encode('cp1251')[0]
+            except (UnicodeEncodeError, IndexError):
+                code = ord('?')
+            glyph = p.transform.scale(m.font[code], (6 * scale, 8 * scale))
+            surface.blit(glyph, (x * 6 * scale, 0))
         return surface
