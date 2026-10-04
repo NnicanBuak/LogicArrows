@@ -1,0 +1,20 @@
+[
+  {
+    "version": 1,
+    "correction": "L",
+    "matrix_matches": true,
+    "raster_matches": true,
+    "cycle_restarted": true,
+    "graphics_bytes": 120,
+    "seconds": 6.25
+  },
+  {
+    "version": 10,
+    "correction": "H",
+    "matrix_matches": true,
+    "raster_matches": true,
+    "cycle_restarted": true,
+    "graphics_bytes": 594,
+    "seconds": 11.38
+  }
+]

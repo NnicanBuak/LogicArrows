@@ -1,0 +1,13 @@
+__pycache__/
+*.model.json
+
+# Local generators, launcher and validation helpers
+/*.py
+/*.mjs
+/requirements.txt
+
+# Intermediate machine images, layouts and reports
+/*.bin
+/*.hex
+/*.json
+/*.log

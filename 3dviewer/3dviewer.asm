@@ -1,5 +1,5 @@
 ; 3DViewer — клавиатурный куб для Computer v2, не более 1024 байт.
-; Стрелки: yaw/pitch; + или =: больше; -: меньше; Del: удалить; пробел: вернуть куб.
+; Стрелки: yaw/pitch; + или =: больше; -: меньше; пробел: исходный ракурс и масштаб.
 
 yaw equ 7
 pitch equ 8
@@ -30,7 +30,6 @@ e2 equ 32
 ret_bank equ 33
 ret_addr equ 34
 scale_sign equ 35
-model_deleted equ 60
 masks equ 36
 points equ 44
 
@@ -91,19 +90,7 @@ ldi d, basis_y
 jmp set_bank
 ; 32 коэффициента Q3 и 8 повторов для cos без дополнительного обёртывания.
 sine db 0,2,3,4,6,7,7,8,8,8,7,7,6,4,3,2,0,254,253,252,250,249,249,248,248,248,249,249,250,252,253,254,0,2,3,4,6,7,7,8
-; После удаления игнорировать управление; пробел восстанавливает исходный куб.
-no_model:
-ldi b, 32
-xor a, b
-jnz resume_no_model_2
-ldi c, 5
-ldi d, reset_model
-jmp set_bank
-resume_no_model_2:
-ldi c, 5
-ldi d, key_loop
-jmp set_bank
-padding1 db 0,0,0,0,0,0,0,0,0,0,0,0
+padding1 db 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 
 ; Банк #2
 ; Три бита номера вершины выбирают знаки X/Y/Z; каждую вершину вычислить один раз.
@@ -244,23 +231,7 @@ st a, err
 ldi c, 4
 ldi d, line_loop
 jmp set_bank
-; Del (0x7F): убрать модель из сцены и опубликовать пустой цветной кадр.
-delete_model:
-ldi a, 1
-st a, model_deleted
-clr a
-st a, 62
-ldi b, 64
-ldi c, 64
-delete_clear_loop:
-st a, b
-inc b
-dec c
-jnz delete_clear_loop
-ldi c, 4
-ldi d, frame_ready
-jmp set_bank
-padding3 db 0,0,0,0,0,0,0,0,0,0,0
+padding3 db 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 
 ; Банк #4
 ; Рисовать только пиксели 0…15 по обеим осям; идти по всему ребру без подгонки масштаба.
@@ -360,13 +331,6 @@ ld a, 62
 test a
 jz key_loop
 mov d, a
-ld b, model_deleted
-test b
-jz resume_key_loop_6
-ldi c, 1
-ldi d, no_model
-jmp set_bank
-resume_key_loop_6:
 ldi b, 17
 sub a, b
 jc other_keys
@@ -393,18 +357,18 @@ st c, b
 ldi c, 1
 ldi d, frame_start
 jmp set_bank
-; Del удаляет модель; плюс/равно и минус меняют масштаб; пробел возвращает куб.
+; Плюс/равно и минус меняют масштаб; пробел сбрасывает ракурс и масштаб. Остальные коды игнорировать.
 other_keys:
 mov a, d
-ldi b, 127
+ldi b, 43
 xor a, b
 jnz resume_other_keys_3
-ldi c, 3
-ldi d, delete_model
+ldi c, 2
+ldi d, scale_up
 jmp set_bank
 resume_other_keys_3:
 mov a, d
-ldi b, 43
+ldi b, 61
 xor a, b
 jnz resume_other_keys_7
 ldi c, 2
@@ -412,28 +376,18 @@ ldi d, scale_up
 jmp set_bank
 resume_other_keys_7:
 mov a, d
-ldi b, 61
-xor a, b
-jnz resume_other_keys_11
-ldi c, 2
-ldi d, scale_up
-jmp set_bank
-resume_other_keys_11:
-mov a, d
 ldi b, 45
 xor a, b
-jnz resume_other_keys_15
+jnz resume_other_keys_11
 ldi c, 6
 ldi d, scale_down
 jmp set_bank
-resume_other_keys_15:
+resume_other_keys_11:
 mov a, d
 ldi b, 32
 xor a, b
 jnz key_loop
-reset_model:
-clr a
-st a, model_deleted
+reset_view:
 ldi a, 4
 st a, yaw
 ldi a, 3
@@ -443,7 +397,7 @@ st a, scale
 ldi c, 1
 ldi d, frame_start
 jmp set_bank
-padding5 db 0
+padding5 db 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 
 ; Банк #6
 ; Проекция базиса куба: Y = -sin(yaw)*sin(pitch)*X + cos(pitch)*Y + cos(yaw)*sin(pitch)*Z.
