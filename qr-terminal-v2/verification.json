@@ -1,0 +1,732 @@
+{
+  "cases": 120,
+  "all_qr_matrices_match": true,
+  "all_terminal_rasters_match": true,
+  "limit": 32768,
+  "image_bytes": 18485,
+  "max_stack_bytes": 14,
+  "max_return_stack_bytes": 8,
+  "steps": 1577287367,
+  "results": [
+    {
+      "name": "v1-L-mode1",
+      "capacity": 41,
+      "steps": 7365465,
+      "graphics_bytes": 120
+    },
+    {
+      "name": "v1-L-mode2",
+      "capacity": 25,
+      "steps": 6834302,
+      "graphics_bytes": 120
+    },
+    {
+      "name": "v1-L-mode3",
+      "capacity": 16,
+      "steps": 6691019,
+      "graphics_bytes": 120
+    },
+    {
+      "name": "v1-M-mode1",
+      "capacity": 34,
+      "steps": 7180061,
+      "graphics_bytes": 120
+    },
+    {
+      "name": "v1-M-mode2",
+      "capacity": 20,
+      "steps": 6727268,
+      "graphics_bytes": 120
+    },
+    {
+      "name": "v1-M-mode3",
+      "capacity": 13,
+      "steps": 6614786,
+      "graphics_bytes": 120
+    },
+    {
+      "name": "v1-Q-mode1",
+      "capacity": 27,
+      "steps": 6985279,
+      "graphics_bytes": 120
+    },
+    {
+      "name": "v1-Q-mode2",
+      "capacity": 16,
+      "steps": 6629664,
+      "graphics_bytes": 120
+    },
+    {
+      "name": "v1-Q-mode3",
+      "capacity": 10,
+      "steps": 6535989,
+      "graphics_bytes": 120
+    },
+    {
+      "name": "v1-H-mode1",
+      "capacity": 17,
+      "steps": 6722856,
+      "graphics_bytes": 120
+    },
+    {
+      "name": "v1-H-mode2",
+      "capacity": 10,
+      "steps": 6489166,
+      "graphics_bytes": 120
+    },
+    {
+      "name": "v1-H-mode3",
+      "capacity": 6,
+      "steps": 6425424,
+      "graphics_bytes": 120
+    },
+    {
+      "name": "v2-L-mode1",
+      "capacity": 77,
+      "steps": 9095960,
+      "graphics_bytes": 180
+    },
+    {
+      "name": "v2-L-mode2",
+      "capacity": 47,
+      "steps": 8101103,
+      "graphics_bytes": 180
+    },
+    {
+      "name": "v2-L-mode3",
+      "capacity": 31,
+      "steps": 7854761,
+      "graphics_bytes": 180
+    },
+    {
+      "name": "v2-M-mode1",
+      "capacity": 63,
+      "steps": 8725389,
+      "graphics_bytes": 180
+    },
+    {
+      "name": "v2-M-mode2",
+      "capacity": 38,
+      "steps": 7910434,
+      "graphics_bytes": 180
+    },
+    {
+      "name": "v2-M-mode3",
+      "capacity": 25,
+      "steps": 7708929,
+      "graphics_bytes": 180
+    },
+    {
+      "name": "v2-Q-mode1",
+      "capacity": 48,
+      "steps": 8332726,
+      "graphics_bytes": 180
+    },
+    {
+      "name": "v2-Q-mode2",
+      "capacity": 29,
+      "steps": 7711095,
+      "graphics_bytes": 180
+    },
+    {
+      "name": "v2-Q-mode3",
+      "capacity": 19,
+      "steps": 7554524,
+      "graphics_bytes": 180
+    },
+    {
+      "name": "v2-H-mode1",
+      "capacity": 34,
+      "steps": 7954684,
+      "graphics_bytes": 180
+    },
+    {
+      "name": "v2-H-mode2",
+      "capacity": 20,
+      "steps": 7501872,
+      "graphics_bytes": 180
+    },
+    {
+      "name": "v2-H-mode3",
+      "capacity": 13,
+      "steps": 7389481,
+      "graphics_bytes": 180
+    },
+    {
+      "name": "v3-L-mode1",
+      "capacity": 127,
+      "steps": 10889037,
+      "graphics_bytes": 210
+    },
+    {
+      "name": "v3-L-mode2",
+      "capacity": 77,
+      "steps": 9242204,
+      "graphics_bytes": 210
+    },
+    {
+      "name": "v3-L-mode3",
+      "capacity": 52,
+      "steps": 8855815,
+      "graphics_bytes": 210
+    },
+    {
+      "name": "v3-M-mode1",
+      "capacity": 101,
+      "steps": 10231202,
+      "graphics_bytes": 210
+    },
+    {
+      "name": "v3-M-mode2",
+      "capacity": 61,
+      "steps": 8917045,
+      "graphics_bytes": 210
+    },
+    {
+      "name": "v3-M-mode3",
+      "capacity": 41,
+      "steps": 8607956,
+      "graphics_bytes": 210
+    },
+    {
+      "name": "v3-Q-mode1",
+      "capacity": 77,
+      "steps": 9393984,
+      "graphics_bytes": 210
+    },
+    {
+      "name": "v3-Q-mode2",
+      "capacity": 47,
+      "steps": 8399859,
+      "graphics_bytes": 210
+    },
+    {
+      "name": "v3-Q-mode3",
+      "capacity": 31,
+      "steps": 8152633,
+      "graphics_bytes": 210
+    },
+    {
+      "name": "v3-H-mode1",
+      "capacity": 58,
+      "steps": 8877066,
+      "graphics_bytes": 210
+    },
+    {
+      "name": "v3-H-mode2",
+      "capacity": 35,
+      "steps": 8122820,
+      "graphics_bytes": 210
+    },
+    {
+      "name": "v3-H-mode3",
+      "capacity": 23,
+      "steps": 7934836,
+      "graphics_bytes": 210
+    },
+    {
+      "name": "v4-L-mode1",
+      "capacity": 187,
+      "steps": 13036454,
+      "graphics_bytes": 252
+    },
+    {
+      "name": "v4-L-mode2",
+      "capacity": 114,
+      "steps": 10628235,
+      "graphics_bytes": 252
+    },
+    {
+      "name": "v4-L-mode3",
+      "capacity": 77,
+      "steps": 10059092,
+      "graphics_bytes": 252
+    },
+    {
+      "name": "v4-M-mode1",
+      "capacity": 149,
+      "steps": 11777395,
+      "graphics_bytes": 252
+    },
+    {
+      "name": "v4-M-mode2",
+      "capacity": 90,
+      "steps": 9842176,
+      "graphics_bytes": 252
+    },
+    {
+      "name": "v4-M-mode3",
+      "capacity": 61,
+      "steps": 9397421,
+      "graphics_bytes": 252
+    },
+    {
+      "name": "v4-Q-mode1",
+      "capacity": 111,
+      "steps": 10762879,
+      "graphics_bytes": 252
+    },
+    {
+      "name": "v4-Q-mode2",
+      "capacity": 67,
+      "steps": 9326886,
+      "graphics_bytes": 252
+    },
+    {
+      "name": "v4-Q-mode3",
+      "capacity": 45,
+      "steps": 8986644,
+      "graphics_bytes": 252
+    },
+    {
+      "name": "v4-H-mode1",
+      "capacity": 82,
+      "steps": 9836322,
+      "graphics_bytes": 252
+    },
+    {
+      "name": "v4-H-mode2",
+      "capacity": 50,
+      "steps": 8775032,
+      "graphics_bytes": 252
+    },
+    {
+      "name": "v4-H-mode3",
+      "capacity": 33,
+      "steps": 8514884,
+      "graphics_bytes": 252
+    },
+    {
+      "name": "v5-L-mode1",
+      "capacity": 255,
+      "steps": 15494348,
+      "graphics_bytes": 288
+    },
+    {
+      "name": "v5-L-mode2",
+      "capacity": 154,
+      "steps": 12201370,
+      "graphics_bytes": 288
+    },
+    {
+      "name": "v5-L-mode3",
+      "capacity": 105,
+      "steps": 11452882,
+      "graphics_bytes": 288
+    },
+    {
+      "name": "v5-M-mode1",
+      "capacity": 202,
+      "steps": 13738767,
+      "graphics_bytes": 288
+    },
+    {
+      "name": "v5-M-mode2",
+      "capacity": 122,
+      "steps": 11123730,
+      "graphics_bytes": 288
+    },
+    {
+      "name": "v5-M-mode3",
+      "capacity": 83,
+      "steps": 10523471,
+      "graphics_bytes": 288
+    },
+    {
+      "name": "v5-Q-mode1",
+      "capacity": 144,
+      "steps": 11945796,
+      "graphics_bytes": 288
+    },
+    {
+      "name": "v5-Q-mode2",
+      "capacity": 87,
+      "steps": 10082564,
+      "graphics_bytes": 288
+    },
+    {
+      "name": "v5-Q-mode3",
+      "capacity": 59,
+      "steps": 9652118,
+      "graphics_bytes": 288
+    },
+    {
+      "name": "v5-H-mode1",
+      "capacity": 106,
+      "steps": 10917685,
+      "graphics_bytes": 288
+    },
+    {
+      "name": "v5-H-mode2",
+      "capacity": 64,
+      "steps": 9536931,
+      "graphics_bytes": 288
+    },
+    {
+      "name": "v5-H-mode3",
+      "capacity": 43,
+      "steps": 9213866,
+      "graphics_bytes": 288
+    },
+    {
+      "name": "v6-L-mode1",
+      "capacity": 322,
+      "steps": 17472048,
+      "graphics_bytes": 378
+    },
+    {
+      "name": "v6-L-mode2",
+      "capacity": 195,
+      "steps": 13325181,
+      "graphics_bytes": 378
+    },
+    {
+      "name": "v6-L-mode3",
+      "capacity": 133,
+      "steps": 12373511,
+      "graphics_bytes": 378
+    },
+    {
+      "name": "v6-M-mode1",
+      "capacity": 255,
+      "steps": 15441392,
+      "graphics_bytes": 378
+    },
+    {
+      "name": "v6-M-mode2",
+      "capacity": 154,
+      "steps": 12149970,
+      "graphics_bytes": 378
+    },
+    {
+      "name": "v6-M-mode3",
+      "capacity": 105,
+      "steps": 11401095,
+      "graphics_bytes": 378
+    },
+    {
+      "name": "v6-Q-mode1",
+      "capacity": 178,
+      "steps": 13400113,
+      "graphics_bytes": 378
+    },
+    {
+      "name": "v6-Q-mode2",
+      "capacity": 108,
+      "steps": 11103437,
+      "graphics_bytes": 378
+    },
+    {
+      "name": "v6-Q-mode3",
+      "capacity": 73,
+      "steps": 10562949,
+      "graphics_bytes": 378
+    },
+    {
+      "name": "v6-H-mode1",
+      "capacity": 139,
+      "steps": 12338365,
+      "graphics_bytes": 378
+    },
+    {
+      "name": "v6-H-mode2",
+      "capacity": 84,
+      "steps": 10536071,
+      "graphics_bytes": 378
+    },
+    {
+      "name": "v6-H-mode3",
+      "capacity": 57,
+      "steps": 10118520,
+      "graphics_bytes": 378
+    },
+    {
+      "name": "v7-L-mode1",
+      "capacity": 370,
+      "steps": 21571062,
+      "graphics_bytes": 378
+    },
+    {
+      "name": "v7-L-mode2",
+      "capacity": 224,
+      "steps": 16801706,
+      "graphics_bytes": 378
+    },
+    {
+      "name": "v7-L-mode3",
+      "capacity": 153,
+      "steps": 15714724,
+      "graphics_bytes": 378
+    },
+    {
+      "name": "v7-M-mode1",
+      "capacity": 293,
+      "steps": 19231572,
+      "graphics_bytes": 378
+    },
+    {
+      "name": "v7-M-mode2",
+      "capacity": 178,
+      "steps": 15461746,
+      "graphics_bytes": 378
+    },
+    {
+      "name": "v7-M-mode3",
+      "capacity": 121,
+      "steps": 14591531,
+      "graphics_bytes": 378
+    },
+    {
+      "name": "v7-Q-mode1",
+      "capacity": 207,
+      "steps": 16787358,
+      "graphics_bytes": 378
+    },
+    {
+      "name": "v7-Q-mode2",
+      "capacity": 125,
+      "steps": 14116496,
+      "graphics_bytes": 378
+    },
+    {
+      "name": "v7-Q-mode3",
+      "capacity": 85,
+      "steps": 13498817,
+      "graphics_bytes": 378
+    },
+    {
+      "name": "v7-H-mode1",
+      "capacity": 154,
+      "steps": 15412125,
+      "graphics_bytes": 378
+    },
+    {
+      "name": "v7-H-mode2",
+      "capacity": 93,
+      "steps": 13415932,
+      "graphics_bytes": 378
+    },
+    {
+      "name": "v7-H-mode3",
+      "capacity": 63,
+      "steps": 12954187,
+      "graphics_bytes": 378
+    },
+    {
+      "name": "v8-L-mode1",
+      "capacity": 461,
+      "steps": 24781667,
+      "graphics_bytes": 480
+    },
+    {
+      "name": "v8-L-mode2",
+      "capacity": 279,
+      "steps": 18837261,
+      "graphics_bytes": 480
+    },
+    {
+      "name": "v8-L-mode3",
+      "capacity": 191,
+      "steps": 17492306,
+      "graphics_bytes": 480
+    },
+    {
+      "name": "v8-M-mode1",
+      "capacity": 365,
+      "steps": 21825701,
+      "graphics_bytes": 480
+    },
+    {
+      "name": "v8-M-mode2",
+      "capacity": 221,
+      "steps": 17122795,
+      "graphics_bytes": 480
+    },
+    {
+      "name": "v8-M-mode3",
+      "capacity": 151,
+      "steps": 16049518,
+      "graphics_bytes": 480
+    },
+    {
+      "name": "v8-Q-mode1",
+      "capacity": 259,
+      "steps": 18813190,
+      "graphics_bytes": 480
+    },
+    {
+      "name": "v8-Q-mode2",
+      "capacity": 157,
+      "steps": 15475486,
+      "graphics_bytes": 480
+    },
+    {
+      "name": "v8-Q-mode3",
+      "capacity": 107,
+      "steps": 14708544,
+      "graphics_bytes": 480
+    },
+    {
+      "name": "v8-H-mode1",
+      "capacity": 202,
+      "steps": 17257792,
+      "graphics_bytes": 480
+    },
+    {
+      "name": "v8-H-mode2",
+      "capacity": 122,
+      "steps": 14641174,
+      "graphics_bytes": 480
+    },
+    {
+      "name": "v8-H-mode3",
+      "capacity": 83,
+      "steps": 14041921,
+      "graphics_bytes": 480
+    },
+    {
+      "name": "v9-L-mode1",
+      "capacity": 552,
+      "steps": 28120429,
+      "graphics_bytes": 528
+    },
+    {
+      "name": "v9-L-mode2",
+      "capacity": 335,
+      "steps": 21025667,
+      "graphics_bytes": 528
+    },
+    {
+      "name": "v9-L-mode3",
+      "capacity": 229,
+      "steps": 19403348,
+      "graphics_bytes": 528
+    },
+    {
+      "name": "v9-M-mode1",
+      "capacity": 432,
+      "steps": 24203843,
+      "graphics_bytes": 528
+    },
+    {
+      "name": "v9-M-mode2",
+      "capacity": 262,
+      "steps": 18646887,
+      "graphics_bytes": 528
+    },
+    {
+      "name": "v9-M-mode3",
+      "capacity": 179,
+      "steps": 17378545,
+      "graphics_bytes": 528
+    },
+    {
+      "name": "v9-Q-mode1",
+      "capacity": 312,
+      "steps": 20756451,
+      "graphics_bytes": 528
+    },
+    {
+      "name": "v9-Q-mode2",
+      "capacity": 189,
+      "steps": 16743137,
+      "graphics_bytes": 528
+    },
+    {
+      "name": "v9-Q-mode3",
+      "capacity": 129,
+      "steps": 15820441,
+      "graphics_bytes": 528
+    },
+    {
+      "name": "v9-H-mode1",
+      "capacity": 235,
+      "steps": 18673015,
+      "graphics_bytes": 528
+    },
+    {
+      "name": "v9-H-mode2",
+      "capacity": 143,
+      "steps": 15647818,
+      "graphics_bytes": 528
+    },
+    {
+      "name": "v9-H-mode3",
+      "capacity": 97,
+      "steps": 14938622,
+      "graphics_bytes": 528
+    },
+    {
+      "name": "v10-L-mode1",
+      "capacity": 652,
+      "steps": 30866177,
+      "graphics_bytes": 594
+    },
+    {
+      "name": "v10-L-mode2",
+      "capacity": 395,
+      "steps": 22470705,
+      "graphics_bytes": 594
+    },
+    {
+      "name": "v10-L-mode3",
+      "capacity": 270,
+      "steps": 20556155,
+      "graphics_bytes": 594
+    },
+    {
+      "name": "v10-M-mode1",
+      "capacity": 513,
+      "steps": 27185305,
+      "graphics_bytes": 594
+    },
+    {
+      "name": "v10-M-mode2",
+      "capacity": 311,
+      "steps": 20591183,
+      "graphics_bytes": 594
+    },
+    {
+      "name": "v10-M-mode3",
+      "capacity": 212,
+      "steps": 19071427,
+      "graphics_bytes": 594
+    },
+    {
+      "name": "v10-Q-mode1",
+      "capacity": 364,
+      "steps": 22888202,
+      "graphics_bytes": 594
+    },
+    {
+      "name": "v10-Q-mode2",
+      "capacity": 221,
+      "steps": 18207172,
+      "graphics_bytes": 594
+    },
+    {
+      "name": "v10-Q-mode3",
+      "capacity": 150,
+      "steps": 17111352,
+      "graphics_bytes": 594
+    },
+    {
+      "name": "v10-H-mode1",
+      "capacity": 288,
+      "steps": 20799763,
+      "graphics_bytes": 594
+    },
+    {
+      "name": "v10-H-mode2",
+      "capacity": 174,
+      "steps": 17085588,
+      "graphics_bytes": 594
+    },
+    {
+      "name": "v10-H-mode3",
+      "capacity": 118,
+      "steps": 16226038,
+      "graphics_bytes": 594
+    }
+  ]
+}
