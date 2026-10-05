@@ -40,13 +40,7 @@ python emulator/run.py 3deditor/3deditor.asm --terminal-size 24x9
 python emulator/run.py 3deditor/3deditor.asm --terminal-size 24x9 --hide-display
 ```
 
-Для проекта, который формирует графические символы терминала из полноразмерного кадра, можно подключить рендерер:
-
-```sh
-python emulator/run.py 3deditor/3deditor.asm --terminal-size 24x9 --hide-display --terminal-renderer 3deditor-terminal/renderer.py
-```
-
-Символы эмулятора — **6×8 пикселей**; окно показывает их в масштабе 4×, то есть по **24×32 пикселя** на символ. Размер окна подстраивается под выбранные размеры терминала.
+Символы графического терминала Computer v2 — **6×8 пикселей**. Программа на ASM может отправлять по шесть байт на символ через порт `0x3D`; размер окна подстраивается под заданные размеры терминала.
 
 ## Управление
 

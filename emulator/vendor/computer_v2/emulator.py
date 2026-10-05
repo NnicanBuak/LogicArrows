@@ -252,15 +252,13 @@ class Emulator():
         elif ind == 0x3C and self.enable_console:
             self.bell = not self.bell
             if value >= 32 and value != 0x98:
+                if self.console_index >= self.console_w:
+                    self.console_index = 0
+                    self.console = self.console[1:]
+                    self.console.append([self.font[0] for i in range(self.console_w)])
                 self.console[-1][self.console_index] = self.font[value]
-                #
                 if value != 127:
                     self.console_index += 1
-                    #
-                    if self.console_index == self.console_w:
-                        self.console_index = 0
-                        self.console = self.console[1:]
-                        self.console.append([self.font[0] for i in range(self.console_w)])
             elif value == 0x07:
                 if self.bell == 1:
                     sound.play()
@@ -296,13 +294,12 @@ class Emulator():
                                 self.console_index = 0
                                 self.console_row += 1
                     else:
-                        self.console[-1][self.console_index] = generate_symbol(self.console_buffer, scale=self.console_scale)
-                        self.console_index += 1
-                        #
-                        if self.console_index == self.console_w:
+                        if self.console_index >= self.console_w:
                             self.console_index = 0
                             self.console = self.console[1:]
                             self.console.append([self.font[0] for i in range(self.console_w)])
+                        self.console[-1][self.console_index] = generate_symbol(self.console_buffer, scale=self.console_scale)
+                        self.console_index += 1
                 #
                 self.console_buffer = []
         elif 0x40 <= ind <= 0x7F:
