@@ -231,8 +231,7 @@ def coordinate_prompt(c, v):
         d = d // 10
     putc(47)
     integer(maximum)
-    if length < 12:
-        putc(10)
+    putc(10)
 
 
 def tool_values():
@@ -358,10 +357,49 @@ def gizmo_fraction(value, length):
 
 
 def draw_gizmo():
-    line(5, 66, 27, 66, 3)
-    line(5, 66, 5, 49, 3)
-    line(5, 66, 18, 53, 3)
-    present()
+    i = 0
+    while i < 264:
+        poke8(GIZMO_BITMAP + i, 0)
+        i += 1
+    previous_projection = peek8(STATE + 8)
+    previous_x = peek8(PROJECT_RESULT)
+    previous_y = peek8(PROJECT_RESULT + 1)
+    poke8(STATE + 8, 1)
+    a = 0
+    while a < 3:
+        project(24 if a == 0 else 0, 24 if a == 1 else 0, 24 if a == 2 else 0, view_yaw, view_pitch)
+        dx = peeks8(PROJECT_RESULT) - 8
+        dy = peeks8(PROJECT_RESULT + 1) - 8
+        tx = 32 + dx
+        ty = 15 + dy
+        poke8(GIZMO_POINTS + a * 2, tx)
+        poke8(GIZMO_POINTS + a * 2 + 1, ty)
+        gizmo_line(32, 15, tx, ty)
+        length = absolute(dx) if absolute(dx) > absolute(dy) else absolute(dy)
+        if length >= 5:
+            bx = tx - gizmo_fraction(dx * 4, length)
+            by = ty - gizmo_fraction(dy * 4, length)
+            i = -2
+            while i <= 2:
+                gizmo_line(tx, ty, bx + gizmo_fraction(dy * i, length), by - gizmo_fraction(dx * i, length))
+                i += 1
+        a += 1
+    poke8(STATE + 8, previous_projection)
+    poke8(PROJECT_RESULT, previous_x)
+    poke8(PROJECT_RESULT + 1, previous_y)
+    a = 0
+    while a < 3:
+        gizmo_label(a)
+        a += 1
+    # Keep the original 66x32 gizmo; compose its bitmap into the terminal frame.
+    row = 0
+    while row < 4:
+        i = 0
+        while i < 66:
+            address = TERMINAL_FRAME + row * 256 + 78 + i
+            poke8(address, peek8(address) | peek8(GIZMO_BITMAP + row * 66 + i))
+            i += 1
+        row += 1
 
 
 def turn_view(k):
@@ -373,7 +411,28 @@ def turn_view(k):
 
 
 def terminal():
-    return 0
+    render()
+    if not editing:
+        if projection:
+            text("ORTHO")
+        else:
+            text("PERSP")
+        text(" VIEW\nARROW:TURN +/-:ZOOM\nSPACE:EDIT\nP:PROJ H:AXES")
+    elif tool:
+        tool_values()
+        command_prompt()
+    else:
+        if projection:
+            text("ORTHO")
+        else:
+            text("PERSP")
+        if mode == 1:
+            text(" VERTICES\n")
+        elif mode == 2:
+            text(" EDGES\n")
+        else:
+            text(" FACES\n")
+        text("1:V 2:E 3:F ENT:SELECT\nARROW:MOVE TAB:NEXT\nSPACE:VIEW")
 
 
 def projection_hint():
@@ -386,62 +445,177 @@ def projection_hint():
 def error(code):
     global last_error
     last_error = code
-    return 0
+    render()
+    if code == 1:
+        text("ERR FORMAT")
+    elif code == 2:
+        text("ERR RANGE")
+    elif code == 3:
+        text("PRECISION")
+    elif code == 4:
+        text("ERR EMPTY")
+    elif code == 5:
+        text("CAPACITY")
+    elif code == 7:
+        text("AXIS x/y/z")
+    else:
+        text("TOPOLOGY")
+    text("\n\n\n")
+
+
+def draw_vertex(i, selected):
+    # Camera depth uses the original projection: 32 at the model origin.
+    radius = 0 if peek8(POINT_DEPTHS + i) < 24 else 1
+    radius += selected
+    x = projected_component(i, 0)
+    y = projected_component(i, 1)
+    row = -radius
+    while row <= radius:
+        line(x - radius, y + row, x + radius, y + row, 1)
+        row += 1
+
+
+def draw_edge(a, b, selected):
+    x = projected_component(a, 0)
+    y = projected_component(a, 1)
+    tx = projected_component(b, 0)
+    ty = projected_component(b, 1)
+    line(x, y, tx, ty, 1)
+    if selected:
+        if absolute(tx - x) >= absolute(ty - y):
+            line(x, y - 1, tx, ty - 1, 1)
+            line(x, y + 1, tx, ty + 1, 1)
+        else:
+            line(x - 1, y, tx - 1, ty, 1)
+            line(x + 1, y, tx + 1, ty, 1)
+
+
+def fill_triangle(ax, ay, bx, by, cx, cy):
+    # Horizontal spans cover the terminal canvas instead of the LCD's 16x16 scan.
+    if ay > by:
+        tx = ax
+        ty = ay
+        ax = bx
+        ay = by
+        bx = tx
+        by = ty
+    if by > cy:
+        tx = bx
+        ty = by
+        bx = cx
+        by = cy
+        cx = tx
+        cy = ty
+    if ay > by:
+        tx = ax
+        ty = ay
+        ax = bx
+        ay = by
+        bx = tx
+        by = ty
+    if cy == ay or (bx - ax) * (cy - ay) == (cx - ax) * (by - ay):
+        return 0
+    y = 0 if ay < 0 else ay
+    end = 71 if cy > 71 else cy
+    while y <= end:
+        left = ax + (cx - ax) * (y - ay) // (cy - ay)
+        if y <= by and by > ay:
+            right = ax + (bx - ax) * (y - ay) // (by - ay)
+        else:
+            right = bx + (cx - bx) * (y - by) // (cy - by)
+        if left > right:
+            tx = left
+            left = right
+            right = tx
+        left = 0 if left < 0 else left
+        right = 143 if right > 143 else right
+        if left <= right:
+            split = left + 120 if right - left > 120 else right
+            line(left, y, split, y, 2)
+            if split < right:
+                line(split + 1, y, right, y, 2)
+        y += 1
 
 
 def draw_element(m, i):
     if m == 1:
-        pixel(projected_component(i, 0), projected_component(i, 1), 3)
+        draw_vertex(i, 0)
     elif m == 2:
         a = peek8(EDGES + i * 2)
         b = peek8(EDGES + i * 2 + 1)
-        line(projected_component(a, 0), projected_component(a, 1), projected_component(b, 0), projected_component(b, 1), 3)
+        draw_edge(a, b, 0)
     else:
         a = peek8(FACES + i * 5 + 1)
         b = peek8(FACES + i * 5 + 2)
         c = peek8(FACES + i * 5 + 3)
-        triangle(projected_component(a, 0), projected_component(a, 1), projected_component(b, 0), projected_component(b, 1), projected_component(c, 0), projected_component(c, 1), 3)
+        fill_triangle(projected_component(a, 0), projected_component(a, 1), projected_component(b, 0), projected_component(b, 1), projected_component(c, 0), projected_component(c, 1))
         if peek8(FACES + i * 5) == 4:
             b = c
             c = peek8(FACES + i * 5 + 4)
-            triangle(projected_component(a, 0), projected_component(a, 1), projected_component(b, 0), projected_component(b, 1), projected_component(c, 0), projected_component(c, 1), 3)
+            fill_triangle(projected_component(a, 0), projected_component(a, 1), projected_component(b, 0), projected_component(b, 1), projected_component(c, 0), projected_component(c, 1))
+        draw_face_border(i, 0)
+
+
+def draw_face_border(i, selected):
+    n = peek8(FACES + i * 5)
+    j = 0
+    while j < n:
+        a = peek8(FACES + i * 5 + 1 + j)
+        b = peek8(FACES + i * 5 + 1 + (j + 1) % n)
+        draw_edge(a, b, selected)
+        j += 1
+
+
+def draw_selected(m, i):
+    if m == 1:
+        draw_vertex(i, 1)
+    elif m == 2:
+        draw_edge(peek8(EDGES + i * 2), peek8(EDGES + i * 2 + 1), 1)
+    else:
+        draw_face_border(i, 1)
 
 
 def render():
+    putc(12)
     poke8(STATE + 8, projection)
     i = 0
     while i < limit(1):
         if peek8(VLIVE + i):
             project(vertex_component(i, 0) // 16, vertex_component(i, 1) // 16, vertex_component(i, 2) // 16, view_yaw, view_pitch)
-            x = 72 + (peeks8(PROJECT_RESULT) - 8) * zoom * 7 // 10
-            y = 36 + (peeks8(PROJECT_RESULT + 1) - 8) * zoom * 7 // 10
+            x = 72 + (peeks8(PROJECT_RESULT) - 8) * zoom * 45 // 100
+            y = 36 + (peeks8(PROJECT_RESULT + 1) - 8) * zoom * 45 // 100
             poke16(POINTS + i * 4, x)
             poke16(POINTS + i * 4 + 2, y)
+            poke8(POINT_DEPTHS + i, peek8(PROJECT_RESULT + 3))
         i += 1
     begin()
-    i = 0
-    while i < limit(2):
-        if alive(2, i):
-            a = peek8(EDGES + i * 2)
-            b = peek8(EDGES + i * 2 + 1)
-            line(projected_component(a, 0), projected_component(a, 1), projected_component(b, 0), projected_component(b, 1), 1)
-        i += 1
-    i = 0
-    while i < limit(1):
-        if alive(1, i):
-            pixel(projected_component(i, 0), projected_component(i, 1), 1)
-        i += 1
-    if editing:
+    if not editing:
+        i = 0
+        while i < limit(2):
+            if alive(2, i):
+                a = peek8(EDGES + i * 2)
+                b = peek8(EDGES + i * 2 + 1)
+                line(projected_component(a, 0), projected_component(a, 1),
+                     projected_component(b, 0), projected_component(b, 1),
+                     1)
+            i += 1
+    else:
+        i = 0
+        while i < limit(mode):
+            if alive(mode, i):
+                draw_element(mode, i)
+            i += 1
         i = 0
         while i < limit(mode):
             if alive(mode, i) and peek8(selection_base(mode) + i):
-                pixel(center(mode, i, 0), center(mode, i, 1), 1)
+                draw_selected(mode, i)
             i += 1
         if cursor >= 0 and alive(mode, cursor):
             x = center(mode, cursor, 0)
             y = center(mode, cursor, 1)
             line(x - 4, y, x + 4, y, 1)
             line(x, y - 4, x, y + 4, 1)
+    draw_gizmo()
     present()
     blink(0)
 
@@ -811,7 +985,6 @@ def main():
     view_pitch = 3
     zoom = 10
     last_error = 0
-    render()
     terminal()
     while 1:
         k = keycode()
@@ -824,12 +997,11 @@ def main():
                     terminal()
             elif not editing and k >= 17 and k <= 20:
                 turn_view(k)
-                render()
-                draw_gizmo()
+                terminal()
         elif k == 104:
             gizmo_error = last_error
             gizmo = 1
-            draw_gizmo()
+            terminal()
         else:
             last_error = 0
             if tool:
@@ -846,7 +1018,6 @@ def main():
                     else:
                         tool = 0
                         input_length = 0
-                        render()
                         terminal()
                 elif k == 8:
                     if input_length > 1:
@@ -943,13 +1114,12 @@ def main():
                     origin_pivot = 1 - origin_pivot
                 elif k == 43 or k == 61:
                     zoom += 2
-                    if zoom > 11:
-                        zoom = 11
+                    if zoom > 30:
+                        zoom = 30
                 elif k == 45:
                     zoom -= 2
                     if zoom < 5:
                         zoom = 5
-                render()
                 if problem:
                     error(problem)
                 else:

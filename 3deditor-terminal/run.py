@@ -1,4 +1,4 @@
-"""Launch the ASM 3DEditor build with a 24x9 graphics terminal."""
+"""Launch the ASM 3DEditor build with a 24x13 terminal."""
 from pathlib import Path
 import subprocess
 import sys
@@ -9,7 +9,7 @@ command = [
     sys.executable,
     str(ROOT / 'emulator' / 'run.py'),
     str(ROOT / '3deditor-terminal' / '3deditor-terminal.asm'),
-    '--terminal-size', '24x9',
+    '--terminal-size', '24x13',
     '--hide-display',
     *sys.argv[1:],
 ]

@@ -1,7 +1,7 @@
 {
-  "image_bytes": 31563,
+  "image_bytes": 32325,
   "limit": 32768,
-  "bytecode_bytes": 11083,
+  "bytecode_bytes": 12997,
   "native_bytes": 5888,
   "constants": {
     "DISPATCH": 5888,
@@ -10,35 +10,38 @@
     "CONTEXT": 6272,
     "STATE": 6400,
     "TRI_STATE": 6528,
+    "GLOBAL_WORD_BYTES": 512,
+    "STRING_BYTES": 384,
     "GLOBAL_WORDS": 6656,
-    "STRINGS": 7680,
-    "COUNTS": 8704,
-    "VERTICES": 8707,
-    "VLIVE": 8899,
-    "EDGES": 8931,
-    "ELIVE": 9059,
-    "FACES": 9123,
-    "MESH": 8704,
+    "STRINGS": 7168,
+    "COUNTS": 7552,
+    "VERTICES": 7555,
+    "VLIVE": 7747,
+    "EDGES": 7779,
+    "ELIVE": 7907,
+    "FACES": 7971,
+    "MESH": 7552,
     "MESH_BYTES": 579,
-    "SELECT": 9283,
-    "ORDER": 9411,
-    "MARKS": 9443,
-    "POINTS": 9475,
-    "TRIAL": 9603,
-    "UNDO": 9795,
-    "BASE_MASK": 10374,
-    "SELECT_MASK": 10406,
-    "BLINK_FRAMES": 10496,
-    "STEADY_FRAME": 10560,
-    "INPUT": 10624,
-    "GIZMO_BITMAP": 10640,
-    "GIZMO_POINTS": 10904,
-    "GIZMO_LABELS": 10910,
-    "GIZMO_GLYPHS": 10916,
-    "SINE": 10931,
-    "TERMINAL_FRAME": 18176,
-    "TERMINAL_FRAME_BANK": 142,
-    "PROGRAM": 20480,
+    "SELECT": 8131,
+    "ORDER": 8259,
+    "MARKS": 8291,
+    "POINTS": 8323,
+    "POINT_DEPTHS": 8451,
+    "TRIAL": 8483,
+    "UNDO": 8675,
+    "BASE_MASK": 9254,
+    "SELECT_MASK": 9286,
+    "BLINK_FRAMES": 9344,
+    "STEADY_FRAME": 9408,
+    "INPUT": 9472,
+    "GIZMO_GLYPHS": 9488,
+    "GIZMO_BITMAP": 9503,
+    "GIZMO_POINTS": 9767,
+    "GIZMO_LABELS": 9773,
+    "SINE": 9779,
+    "TERMINAL_FRAME": 17024,
+    "TERMINAL_FRAME_BANK": 133,
+    "PROGRAM": 19328,
     "PROJECT_RESULT": 6276,
     "BLINK_PHASE": 6280,
     "BLINK_ACTIVE": 6281,
@@ -48,8 +51,8 @@
     "CONTEXT_BANK": 49,
     "STATE_BANK": 50,
     "TRI_STATE_BANK": 51,
-    "BLINK_FRAMES_BANK": 82,
-    "PROGRAM_BANK": 160,
+    "BLINK_FRAMES_BANK": 73,
+    "PROGRAM_BANK": 151,
     "CTX0": 128,
     "CTX1": 129,
     "CTX2": 130,
@@ -189,97 +192,145 @@
     "gizmo_fraction.value": 6860,
     "gizmo_fraction.length": 6862,
     "gizmo_fraction.result": 6864,
-    "turn_view.k": 6866,
-    "view_yaw": 6868,
-    "view_pitch": 6870,
-    "projection": 6872,
-    "error.code": 6874,
-    "last_error": 6876,
-    "draw_element.m": 6878,
-    "draw_element.i": 6880,
-    "draw_element.a": 6882,
-    "draw_element.b": 6884,
-    "draw_element.c": 6886,
-    "render.i": 6888,
-    "zoom": 6890,
-    "render.x": 6892,
-    "render.y": 6894,
-    "render.a": 6896,
-    "render.b": 6898,
+    "draw_gizmo.i": 6866,
+    "draw_gizmo.previous_projection": 6868,
+    "draw_gizmo.previous_x": 6870,
+    "draw_gizmo.previous_y": 6872,
+    "draw_gizmo.a": 6874,
+    "view_yaw": 6876,
+    "view_pitch": 6878,
+    "draw_gizmo.dx": 6880,
+    "draw_gizmo.dy": 6882,
+    "draw_gizmo.tx": 6884,
+    "draw_gizmo.ty": 6886,
+    "draw_gizmo.length": 6888,
+    "draw_gizmo.bx": 6890,
+    "draw_gizmo.by": 6892,
+    "draw_gizmo.row": 6894,
+    "draw_gizmo.address": 6896,
+    "turn_view.k": 6898,
     "editing": 6900,
-    "undo_valid": 6902,
-    "fraction_q4.result": 6904,
-    "fraction_q4.i": 6906,
-    "fraction_q4.numerator": 6908,
-    "fraction_q4.denominator": 6910,
-    "fraction_exact": 6912,
-    "rotate_coordinate.a": 6914,
-    "rotate_coordinate.c": 6916,
-    "rotate_coordinate.b": 6918,
-    "rotate_coordinate.d": 6920,
-    "rotate_coordinate.major": 6922,
-    "rotate_coordinate.minor": 6924,
-    "parse.a": 6926,
-    "axis": 6928,
-    "amount": 6930,
-    "parse.p": 6932,
-    "parse.sign": 6934,
-    "parse.digits": 6936,
-    "parse.whole": 6938,
-    "parse.fraction": 6940,
-    "parse.denominator": 6942,
-    "parse.decimals": 6944,
-    "parse.maximum": 6946,
-    "transform.problem": 6948,
-    "transform.angle": 6950,
-    "transform.sine": 6952,
-    "transform.cosine": 6954,
-    "transform.i": 6956,
-    "transform.x": 6958,
-    "transform.y": 6960,
-    "transform.z": 6962,
-    "transform.a": 6964,
-    "transform.b": 6966,
-    "edge_index.i": 6968,
-    "edge_index.v": 6970,
-    "edge_index.w": 6972,
-    "edge_index.a": 6974,
-    "edge_index.b": 6976,
-    "delete_selected.x": 6978,
-    "delete_selected.y": 6980,
-    "delete_selected.i": 6982,
-    "delete_selected.n": 6984,
-    "delete_selected.k": 6986,
-    "delete_selected.a": 6988,
-    "delete_selected.b": 6990,
-    "free_slot.i": 6992,
-    "free_slot.m": 6994,
-    "new_vertex.i": 6996,
-    "create_connection.a": 6998,
-    "create_connection.b": 7000,
-    "create_connection.e": 7002,
-    "create_face.n": 7004,
-    "create_face.i": 7006,
-    "create_face.a": 7008,
-    "create_face.b": 7010,
-    "create_face.count": 7012,
-    "create_face.start": 7014,
-    "create_face.degree": 7016,
-    "create_face.current": 7018,
-    "create_face.previous": 7020,
-    "create_face.k": 7022,
-    "create_face.next_vertex": 7024,
-    "create_face.matches": 7026,
-    "create_face.slot": 7028,
-    "accept_new_coordinate.problem": 7030,
-    "new_axis": 7032,
-    "gizmo": 7034,
-    "gizmo_error": 7036,
-    "main.k": 7038,
-    "main.problem": 7040,
-    "main.x": 7042,
-    "main.y": 7044,
-    "main.i": 7046
+    "projection": 6902,
+    "error.code": 6904,
+    "last_error": 6906,
+    "draw_vertex.i": 6908,
+    "draw_vertex.radius": 6910,
+    "draw_vertex.selected": 6912,
+    "draw_vertex.x": 6914,
+    "draw_vertex.y": 6916,
+    "draw_vertex.row": 6918,
+    "draw_edge.a": 6920,
+    "draw_edge.x": 6922,
+    "draw_edge.y": 6924,
+    "draw_edge.b": 6926,
+    "draw_edge.tx": 6928,
+    "draw_edge.ty": 6930,
+    "draw_edge.selected": 6932,
+    "fill_triangle.by": 6934,
+    "fill_triangle.ay": 6936,
+    "fill_triangle.ax": 6938,
+    "fill_triangle.tx": 6940,
+    "fill_triangle.ty": 6942,
+    "fill_triangle.bx": 6944,
+    "fill_triangle.cy": 6946,
+    "fill_triangle.cx": 6948,
+    "fill_triangle.y": 6950,
+    "fill_triangle.end": 6952,
+    "fill_triangle.left": 6954,
+    "fill_triangle.right": 6956,
+    "fill_triangle.split": 6958,
+    "draw_element.m": 6960,
+    "draw_element.i": 6962,
+    "draw_element.a": 6964,
+    "draw_element.b": 6966,
+    "draw_element.c": 6968,
+    "draw_face_border.selected": 6970,
+    "draw_face_border.i": 6972,
+    "draw_face_border.n": 6974,
+    "draw_face_border.j": 6976,
+    "draw_face_border.a": 6978,
+    "draw_face_border.b": 6980,
+    "draw_selected.m": 6982,
+    "draw_selected.i": 6984,
+    "render.i": 6986,
+    "zoom": 6988,
+    "render.x": 6990,
+    "render.y": 6992,
+    "render.a": 6994,
+    "render.b": 6996,
+    "undo_valid": 6998,
+    "fraction_q4.result": 7000,
+    "fraction_q4.i": 7002,
+    "fraction_q4.numerator": 7004,
+    "fraction_q4.denominator": 7006,
+    "fraction_exact": 7008,
+    "rotate_coordinate.a": 7010,
+    "rotate_coordinate.c": 7012,
+    "rotate_coordinate.b": 7014,
+    "rotate_coordinate.d": 7016,
+    "rotate_coordinate.major": 7018,
+    "rotate_coordinate.minor": 7020,
+    "parse.a": 7022,
+    "axis": 7024,
+    "amount": 7026,
+    "parse.p": 7028,
+    "parse.sign": 7030,
+    "parse.digits": 7032,
+    "parse.whole": 7034,
+    "parse.fraction": 7036,
+    "parse.denominator": 7038,
+    "parse.decimals": 7040,
+    "parse.maximum": 7042,
+    "transform.problem": 7044,
+    "transform.angle": 7046,
+    "transform.sine": 7048,
+    "transform.cosine": 7050,
+    "transform.i": 7052,
+    "transform.x": 7054,
+    "transform.y": 7056,
+    "transform.z": 7058,
+    "transform.a": 7060,
+    "transform.b": 7062,
+    "edge_index.i": 7064,
+    "edge_index.v": 7066,
+    "edge_index.w": 7068,
+    "edge_index.a": 7070,
+    "edge_index.b": 7072,
+    "delete_selected.x": 7074,
+    "delete_selected.y": 7076,
+    "delete_selected.i": 7078,
+    "delete_selected.n": 7080,
+    "delete_selected.k": 7082,
+    "delete_selected.a": 7084,
+    "delete_selected.b": 7086,
+    "free_slot.i": 7088,
+    "free_slot.m": 7090,
+    "new_vertex.i": 7092,
+    "create_connection.a": 7094,
+    "create_connection.b": 7096,
+    "create_connection.e": 7098,
+    "create_face.n": 7100,
+    "create_face.i": 7102,
+    "create_face.a": 7104,
+    "create_face.b": 7106,
+    "create_face.count": 7108,
+    "create_face.start": 7110,
+    "create_face.degree": 7112,
+    "create_face.current": 7114,
+    "create_face.previous": 7116,
+    "create_face.k": 7118,
+    "create_face.next_vertex": 7120,
+    "create_face.matches": 7122,
+    "create_face.slot": 7124,
+    "accept_new_coordinate.problem": 7126,
+    "new_axis": 7128,
+    "gizmo": 7130,
+    "gizmo_error": 7132,
+    "main.k": 7134,
+    "main.problem": 7136,
+    "main.x": 7138,
+    "main.y": 7140,
+    "main.i": 7142
   },
   "common": {
     "ret0_bank": 25,
@@ -478,6 +529,11 @@
       "address": 218,
       "physical": 602
     },
+    "triangle_inside": {
+      "bank": 4,
+      "address": 244,
+      "physical": 628
+    },
     "triangle_determinant": {
       "bank": 5,
       "address": 128,
@@ -538,12 +594,12 @@
       "address": 224,
       "physical": 864
     },
-    "op_drop": {
+    "op_jmp": {
       "bank": 6,
       "address": 234,
       "physical": 874
     },
-    "resume_op_drop_0": {
+    "resume_op_jmp_0": {
       "bank": 6,
       "address": 248,
       "physical": 888
@@ -653,25 +709,15 @@
       "address": 219,
       "physical": 1243
     },
-    "vm_address": {
+    "sine_fetch": {
       "bank": 9,
       "address": 225,
       "physical": 1249
     },
-    "vm_address_low": {
+    "sine_address_ready": {
       "bank": 9,
-      "address": 235,
-      "physical": 1259
-    },
-    "vm_address_banked": {
-      "bank": 9,
-      "address": 243,
-      "physical": 1267
-    },
-    "vm_address_done": {
-      "bank": 9,
-      "address": 246,
-      "physical": 1270
+      "address": 240,
+      "physical": 1264
     },
     "vm_blink": {
       "bank": 10,
@@ -708,16 +754,6 @@
       "address": 209,
       "physical": 1361
     },
-    "triangle_init1": {
-      "bank": 10,
-      "address": 224,
-      "physical": 1376
-    },
-    "triangle_init2": {
-      "bank": 10,
-      "address": 238,
-      "physical": 1390
-    },
     "op_project": {
       "bank": 11,
       "address": 128,
@@ -748,380 +784,370 @@
       "address": 214,
       "physical": 1494
     },
-    "gfx_advance_pointer": {
+    "triangle_init2": {
       "bank": 11,
       "address": 224,
       "physical": 1504
     },
-    "pointer_advanced": {
+    "triangle_area": {
       "bank": 11,
-      "address": 236,
-      "physical": 1516
+      "address": 238,
+      "physical": 1518
     },
-    "triangle_init0": {
-      "bank": 11,
-      "address": 242,
-      "physical": 1522
-    },
-    "op_mul": {
+    "gfx_pixel": {
       "bank": 12,
       "address": 128,
       "physical": 1536
     },
-    "resume_op_mul_0": {
+    "gfx_line_pixel": {
       "bank": 12,
-      "address": 142,
-      "physical": 1550
+      "address": 133,
+      "physical": 1541
     },
-    "mul16_loop": {
+    "pixel_prepare": {
       "bank": 12,
-      "address": 151,
-      "physical": 1559
+      "address": 137,
+      "physical": 1545
     },
-    "mul16_skip": {
+    "bridge_gfx_pixel_16": {
       "bank": 12,
-      "address": 177,
-      "physical": 1585
+      "address": 160,
+      "physical": 1568
     },
-    "resume_op_mul_37": {
+    "terminal_pixel_solid": {
+      "bank": 12,
+      "address": 160,
+      "physical": 1568
+    },
+    "bridge_gfx_pixel_21": {
+      "bank": 12,
+      "address": 173,
+      "physical": 1581
+    },
+    "bridge_gfx_pixel_25": {
+      "bank": 12,
+      "address": 186,
+      "physical": 1594
+    },
+    "bridge_gfx_pixel_37": {
+      "bank": 12,
+      "address": 210,
+      "physical": 1618
+    },
+    "pixel_masks": {
       "bank": 12,
       "address": 216,
       "physical": 1624
     },
-    "gfx_divide_projection": {
+    "gfx_advance_pointer": {
       "bank": 12,
-      "address": 222,
-      "physical": 1630
+      "address": 224,
+      "physical": 1632
     },
-    "division_positive": {
+    "pointer_advanced": {
       "bank": 12,
-      "address": 234,
-      "physical": 1642
+      "address": 236,
+      "physical": 1644
     },
-    "triangle_row": {
+    "triangle_init1": {
+      "bank": 12,
+      "address": 242,
+      "physical": 1650
+    },
+    "op_mul": {
       "bank": 13,
       "address": 128,
       "physical": 1664
     },
-    "triangle_rewind": {
+    "resume_op_mul_0": {
       "bank": 13,
-      "address": 160,
-      "physical": 1696
+      "address": 142,
+      "physical": 1678
     },
-    "resume_triangle_row_20": {
+    "mul16_loop": {
       "bank": 13,
-      "address": 174,
-      "physical": 1710
+      "address": 151,
+      "physical": 1687
     },
-    "resume_triangle_row_34": {
+    "mul16_skip": {
       "bank": 13,
-      "address": 210,
-      "physical": 1746
+      "address": 177,
+      "physical": 1713
     },
-    "triangle_done": {
+    "resume_op_mul_37": {
       "bank": 13,
       "address": 216,
       "physical": 1752
     },
-    "op_set": {
+    "gfx_divide_projection": {
       "bank": 13,
       "address": 222,
       "physical": 1758
     },
-    "resume_op_set_0": {
+    "division_positive": {
       "bank": 13,
-      "address": 236,
-      "physical": 1772
+      "address": 234,
+      "physical": 1770
     },
-    "resume_op_set_1": {
-      "bank": 13,
-      "address": 250,
-      "physical": 1786
-    },
-    "project_translate": {
+    "triangle_row": {
       "bank": 14,
       "address": 128,
       "physical": 1792
     },
-    "io_project_translate_0": {
+    "triangle_rewind": {
       "bank": 14,
-      "address": 140,
-      "physical": 1804
+      "address": 160,
+      "physical": 1824
     },
-    "io_project_translate_4": {
-      "bank": 14,
-      "address": 157,
-      "physical": 1821
-    },
-    "io_project_translate_8": {
+    "resume_triangle_row_20": {
       "bank": 14,
       "address": 174,
       "physical": 1838
     },
-    "bridge_project_translate_18": {
+    "resume_triangle_row_34": {
       "bank": 14,
-      "address": 197,
-      "physical": 1861
+      "address": 210,
+      "physical": 1874
     },
-    "bridge_project_translate_21": {
+    "triangle_done": {
       "bank": 14,
-      "address": 208,
-      "physical": 1872
+      "address": 216,
+      "physical": 1880
     },
-    "vm_operands": {
+    "op_set": {
       "bank": 14,
-      "address": 214,
-      "physical": 1878
+      "address": 222,
+      "physical": 1886
     },
-    "resume_vm_operands_0": {
+    "resume_op_set_0": {
       "bank": 14,
-      "address": 228,
-      "physical": 1892
+      "address": 236,
+      "physical": 1900
     },
-    "resume_vm_operands_5": {
+    "resume_op_set_1": {
       "bank": 14,
       "address": 250,
       "physical": 1914
     },
-    "vm_triangle_args": {
+    "project_translate": {
       "bank": 15,
       "address": 128,
       "physical": 1920
     },
-    "resume_vm_triangle_args_0": {
+    "io_project_translate_0": {
       "bank": 15,
-      "address": 142,
-      "physical": 1934
+      "address": 140,
+      "physical": 1932
     },
-    "resume_vm_triangle_args_3": {
+    "io_project_translate_4": {
       "bank": 15,
-      "address": 160,
-      "physical": 1952
+      "address": 157,
+      "physical": 1949
     },
-    "resume_vm_triangle_args_6": {
+    "io_project_translate_8": {
       "bank": 15,
-      "address": 178,
-      "physical": 1970
+      "address": 174,
+      "physical": 1966
     },
-    "resume_vm_triangle_args_7": {
+    "bridge_project_translate_18": {
       "bank": 15,
-      "address": 192,
-      "physical": 1984
+      "address": 197,
+      "physical": 1989
     },
-    "resume_vm_triangle_args_8": {
+    "bridge_project_translate_21": {
       "bank": 15,
-      "address": 206,
-      "physical": 1998
+      "address": 208,
+      "physical": 2000
     },
-    "op_const": {
+    "vm_operands": {
       "bank": 15,
-      "address": 212,
-      "physical": 2004
+      "address": 214,
+      "physical": 2006
     },
-    "resume_op_const_0": {
+    "resume_vm_operands_0": {
       "bank": 15,
-      "address": 226,
-      "physical": 2018
+      "address": 228,
+      "physical": 2020
     },
-    "resume_op_const_5": {
+    "resume_vm_operands_5": {
       "bank": 15,
-      "address": 248,
-      "physical": 2040
+      "address": 250,
+      "physical": 2042
     },
-    "native_continuation_1": {
+    "vm_triangle_args": {
       "bank": 16,
       "address": 128,
       "physical": 2048
     },
-    "resume_native_continuation_1_0": {
+    "resume_vm_triangle_args_0": {
       "bank": 16,
       "address": 142,
       "physical": 2062
     },
-    "resume_native_continuation_1_3": {
+    "resume_vm_triangle_args_3": {
       "bank": 16,
       "address": 160,
       "physical": 2080
     },
-    "resume_native_continuation_1_6": {
+    "resume_vm_triangle_args_6": {
       "bank": 16,
       "address": 178,
       "physical": 2098
     },
-    "resume_native_continuation_1_7": {
+    "resume_vm_triangle_args_7": {
       "bank": 16,
       "address": 192,
       "physical": 2112
     },
-    "resume_native_continuation_1_8": {
+    "resume_vm_triangle_args_8": {
       "bank": 16,
       "address": 206,
       "physical": 2126
     },
-    "op_ret": {
+    "op_const": {
       "bank": 16,
       "address": 212,
       "physical": 2132
     },
-    "io_op_ret_7": {
+    "resume_op_const_0": {
       "bank": 16,
-      "address": 231,
-      "physical": 2151
+      "address": 226,
+      "physical": 2146
     },
-    "io_op_ret_13": {
+    "resume_op_const_5": {
       "bank": 16,
       "address": 248,
       "physical": 2168
     },
-    "gfx_pixel": {
+    "native_continuation_1": {
       "bank": 17,
       "address": 128,
       "physical": 2176
     },
-    "gfx_line_pixel": {
+    "resume_native_continuation_1_0": {
       "bank": 17,
-      "address": 133,
-      "physical": 2181
+      "address": 142,
+      "physical": 2190
     },
-    "pixel_prepare": {
+    "resume_native_continuation_1_3": {
       "bank": 17,
-      "address": 137,
-      "physical": 2185
+      "address": 160,
+      "physical": 2208
     },
-    "bridge_gfx_pixel_10": {
+    "resume_native_continuation_1_6": {
       "bank": 17,
-      "address": 150,
-      "physical": 2198
+      "address": 178,
+      "physical": 2226
     },
-    "bridge_gfx_pixel_14": {
+    "resume_native_continuation_1_7": {
       "bank": 17,
-      "address": 163,
-      "physical": 2211
+      "address": 192,
+      "physical": 2240
     },
-    "bridge_gfx_pixel_26": {
+    "resume_native_continuation_1_8": {
       "bank": 17,
-      "address": 187,
-      "physical": 2235
+      "address": 206,
+      "physical": 2254
     },
-    "pixel_masks": {
+    "op_ret": {
       "bank": 17,
-      "address": 201,
-      "physical": 2249
+      "address": 212,
+      "physical": 2260
     },
-    "op_jz": {
+    "io_op_ret_7": {
       "bank": 17,
-      "address": 209,
-      "physical": 2257
+      "address": 231,
+      "physical": 2279
     },
-    "resume_op_jz_0": {
+    "io_op_ret_13": {
       "bank": 17,
-      "address": 223,
-      "physical": 2271
+      "address": 248,
+      "physical": 2296
     },
-    "resume_op_jz_1": {
-      "bank": 17,
-      "address": 237,
-      "physical": 2285
-    },
-    "bridge_op_jz_5": {
-      "bank": 17,
-      "address": 250,
-      "physical": 2298
-    },
-    "line_pixel": {
+    "native_continuation_2": {
       "bank": 18,
       "address": 128,
       "physical": 2304
     },
-    "resume_line_pixel_4": {
+    "pixel_x_low": {
       "bank": 18,
-      "address": 150,
-      "physical": 2326
+      "address": 140,
+      "physical": 2316
     },
-    "bridge_line_pixel_8": {
+    "pixel_address_ready": {
       "bank": 18,
-      "address": 163,
-      "physical": 2339
+      "address": 147,
+      "physical": 2323
     },
-    "bridge_line_pixel_11": {
+    "terminal_pixel_mask_loop": {
+      "bank": 18,
+      "address": 158,
+      "physical": 2334
+    },
+    "terminal_pixel_mask_done": {
       "bank": 18,
       "address": 174,
       "physical": 2350
     },
-    "op_store8": {
+    "io_native_continuation_2_30": {
       "bank": 18,
-      "address": 204,
-      "physical": 2380
+      "address": 186,
+      "physical": 2362
     },
-    "resume_op_store8_0": {
+    "io_native_continuation_2_35": {
       "bank": 18,
-      "address": 218,
-      "physical": 2394
+      "address": 205,
+      "physical": 2381
     },
-    "resume_op_store8_10": {
+    "terminal_pixel_done": {
       "bank": 18,
-      "address": 250,
-      "physical": 2426
+      "address": 205,
+      "physical": 2381
     },
-    "native_continuation_2": {
+    "project_roll": {
+      "bank": 18,
+      "address": 211,
+      "physical": 2387
+    },
+    "resume_project_roll_6": {
+      "bank": 18,
+      "address": 237,
+      "physical": 2413
+    },
+    "line_pixel": {
       "bank": 19,
       "address": 128,
       "physical": 2432
     },
-    "pixel_x_low": {
-      "bank": 19,
-      "address": 132,
-      "physical": 2436
-    },
-    "pixel_address_ready": {
-      "bank": 19,
-      "address": 139,
-      "physical": 2443
-    },
-    "terminal_pixel_mask_loop": {
+    "resume_line_pixel_4": {
       "bank": 19,
       "address": 150,
       "physical": 2454
     },
-    "terminal_pixel_mask_done": {
+    "bridge_line_pixel_8": {
       "bank": 19,
-      "address": 166,
-      "physical": 2470
+      "address": 163,
+      "physical": 2467
     },
-    "io_native_continuation_2_25": {
+    "bridge_line_pixel_11": {
       "bank": 19,
-      "address": 178,
-      "physical": 2482
+      "address": 174,
+      "physical": 2478
     },
-    "io_native_continuation_2_30": {
+    "op_store8": {
       "bank": 19,
-      "address": 197,
-      "physical": 2501
+      "address": 204,
+      "physical": 2508
     },
-    "terminal_pixel_done": {
+    "resume_op_store8_0": {
       "bank": 19,
-      "address": 197,
-      "physical": 2501
+      "address": 218,
+      "physical": 2522
     },
-    "vm_store_word": {
+    "resume_op_store8_10": {
       "bank": 19,
-      "address": 203,
-      "physical": 2507
-    },
-    "resume_vm_store_word_1": {
-      "bank": 19,
-      "address": 219,
-      "physical": 2523
-    },
-    "resume_vm_store_word_2": {
-      "bank": 19,
-      "address": 233,
-      "physical": 2537
-    },
-    "resume_vm_store_word_4": {
-      "bank": 19,
-      "address": 249,
-      "physical": 2553
+      "address": 250,
+      "physical": 2554
     },
     "gfx_project_vertex": {
       "bank": 20,
@@ -1198,25 +1224,25 @@
       "address": 194,
       "physical": 2754
     },
-    "gfx_begin": {
+    "vm_store_word": {
       "bank": 21,
       "address": 200,
       "physical": 2760
     },
-    "terminal_clear_row": {
-      "bank": 21,
-      "address": 212,
-      "physical": 2772
-    },
-    "terminal_clear_byte": {
+    "resume_vm_store_word_1": {
       "bank": 21,
       "address": 216,
       "physical": 2776
     },
-    "resume_gfx_begin_11": {
+    "resume_vm_store_word_2": {
       "bank": 21,
-      "address": 231,
-      "physical": 2791
+      "address": 230,
+      "physical": 2790
+    },
+    "resume_vm_store_word_4": {
+      "bank": 21,
+      "address": 246,
+      "physical": 2806
     },
     "vm_divide": {
       "bank": 22,
@@ -1373,20 +1399,25 @@
       "address": 188,
       "physical": 3260
     },
-    "project_perspective": {
+    "gfx_begin": {
       "bank": 25,
       "address": 198,
       "physical": 3270
     },
-    "resume_project_perspective_2": {
+    "terminal_clear_row": {
       "bank": 25,
-      "address": 216,
-      "physical": 3288
+      "address": 210,
+      "physical": 3282
     },
-    "resume_project_perspective_7": {
+    "terminal_clear_byte": {
       "bank": 25,
-      "address": 237,
-      "physical": 3309
+      "address": 214,
+      "physical": 3286
+    },
+    "resume_gfx_begin_11": {
+      "bank": 25,
+      "address": 229,
+      "physical": 3301
     },
     "triangle_inside_no": {
       "bank": 25,
@@ -1833,182 +1864,192 @@
       "address": 246,
       "physical": 4470
     },
-    "op_begin": {
+    "project_perspective": {
       "bank": 35,
       "address": 128,
       "physical": 4480
     },
+    "resume_project_perspective_2": {
+      "bank": 35,
+      "address": 146,
+      "physical": 4498
+    },
+    "resume_project_perspective_7": {
+      "bank": 35,
+      "address": 167,
+      "physical": 4519
+    },
+    "op_begin": {
+      "bank": 35,
+      "address": 179,
+      "physical": 4531
+    },
     "resume_op_begin_0": {
       "bank": 35,
-      "address": 142,
-      "physical": 4494
+      "address": 193,
+      "physical": 4545
     },
     "resume_op_begin_1": {
       "bank": 35,
-      "address": 156,
-      "physical": 4508
+      "address": 207,
+      "physical": 4559
     },
     "resume_op_begin_2": {
       "bank": 35,
-      "address": 170,
-      "physical": 4522
+      "address": 221,
+      "physical": 4573
+    },
+    "vm_address": {
+      "bank": 35,
+      "address": 229,
+      "physical": 4581
+    },
+    "vm_address_low": {
+      "bank": 35,
+      "address": 239,
+      "physical": 4591
+    },
+    "vm_address_banked": {
+      "bank": 35,
+      "address": 247,
+      "physical": 4599
+    },
+    "vm_address_done": {
+      "bank": 35,
+      "address": 250,
+      "physical": 4602
     },
     "op_present": {
-      "bank": 35,
-      "address": 178,
-      "physical": 4530
-    },
-    "resume_op_present_0": {
-      "bank": 35,
-      "address": 192,
-      "physical": 4544
-    },
-    "resume_op_present_1": {
-      "bank": 35,
-      "address": 206,
-      "physical": 4558
-    },
-    "resume_op_present_2": {
-      "bank": 35,
-      "address": 220,
-      "physical": 4572
-    },
-    "op_load16": {
-      "bank": 35,
-      "address": 228,
-      "physical": 4580
-    },
-    "resume_op_load16_0": {
-      "bank": 35,
-      "address": 242,
-      "physical": 4594
-    },
-    "op_not": {
       "bank": 36,
       "address": 128,
       "physical": 4608
     },
-    "resume_op_not_0": {
+    "resume_op_present_0": {
       "bank": 36,
       "address": 142,
       "physical": 4622
     },
+    "resume_op_present_1": {
+      "bank": 36,
+      "address": 156,
+      "physical": 4636
+    },
+    "resume_op_present_2": {
+      "bank": 36,
+      "address": 170,
+      "physical": 4650
+    },
+    "op_not": {
+      "bank": 36,
+      "address": 178,
+      "physical": 4658
+    },
+    "resume_op_not_0": {
+      "bank": 36,
+      "address": 192,
+      "physical": 4672
+    },
     "not_done": {
       "bank": 36,
-      "address": 152,
-      "physical": 4632
+      "address": 202,
+      "physical": 4682
     },
     "resume_op_not_11": {
       "bank": 36,
-      "address": 171,
-      "physical": 4651
+      "address": 221,
+      "physical": 4701
+    },
+    "op_load16": {
+      "bank": 36,
+      "address": 227,
+      "physical": 4707
+    },
+    "resume_op_load16_0": {
+      "bank": 36,
+      "address": 241,
+      "physical": 4721
     },
     "op_add": {
-      "bank": 36,
-      "address": 177,
-      "physical": 4657
-    },
-    "resume_op_add_0": {
-      "bank": 36,
-      "address": 191,
-      "physical": 4671
-    },
-    "resume_op_add_9": {
-      "bank": 36,
-      "address": 219,
-      "physical": 4699
-    },
-    "sine_fetch": {
-      "bank": 36,
-      "address": 225,
-      "physical": 4705
-    },
-    "sine_address_ready": {
-      "bank": 36,
-      "address": 240,
-      "physical": 4720
-    },
-    "op_sub": {
       "bank": 37,
       "address": 128,
       "physical": 4736
     },
-    "resume_op_sub_0": {
+    "resume_op_add_0": {
       "bank": 37,
       "address": 142,
       "physical": 4750
     },
-    "resume_op_sub_9": {
+    "resume_op_add_9": {
       "bank": 37,
       "address": 170,
       "physical": 4778
     },
-    "op_and": {
+    "op_sub": {
       "bank": 37,
       "address": 176,
       "physical": 4784
     },
-    "resume_op_and_0": {
+    "resume_op_sub_0": {
       "bank": 37,
       "address": 190,
       "physical": 4798
     },
-    "resume_op_and_9": {
+    "resume_op_sub_9": {
       "bank": 37,
       "address": 218,
       "physical": 4826
     },
-    "gfx_read_output": {
+    "vm_increment_address": {
       "bank": 37,
       "address": 224,
       "physical": 4832
     },
-    "io_gfx_read_output_0": {
+    "vm_increment_done": {
       "bank": 37,
       "address": 236,
       "physical": 4844
     },
-    "triangle_inside": {
+    "triangle_init0": {
       "bank": 37,
-      "address": 244,
-      "physical": 4852
+      "address": 242,
+      "physical": 4850
     },
-    "op_or": {
+    "op_and": {
       "bank": 38,
       "address": 128,
       "physical": 4864
     },
-    "resume_op_or_0": {
+    "resume_op_and_0": {
       "bank": 38,
       "address": 142,
       "physical": 4878
     },
-    "resume_op_or_9": {
+    "resume_op_and_9": {
       "bank": 38,
       "address": 170,
       "physical": 4906
     },
-    "op_xor": {
+    "op_or": {
       "bank": 38,
       "address": 176,
       "physical": 4912
     },
-    "resume_op_xor_0": {
+    "resume_op_or_0": {
       "bank": 38,
       "address": 190,
       "physical": 4926
     },
-    "resume_op_xor_9": {
+    "resume_op_or_9": {
       "bank": 38,
       "address": 218,
       "physical": 4954
     },
-    "gfx_write_next": {
+    "gfx_read_output": {
       "bank": 38,
       "address": 224,
       "physical": 4960
     },
-    "io_gfx_write_next_0": {
+    "io_gfx_read_output_0": {
       "bank": 38,
       "address": 236,
       "physical": 4972
@@ -2023,42 +2064,37 @@
       "address": 250,
       "physical": 4986
     },
-    "op_dup": {
+    "op_xor": {
       "bank": 39,
       "address": 128,
       "physical": 4992
     },
-    "resume_op_dup_0": {
+    "resume_op_xor_0": {
       "bank": 39,
       "address": 142,
       "physical": 5006
     },
-    "resume_op_dup_1": {
-      "bank": 39,
-      "address": 156,
-      "physical": 5020
-    },
-    "resume_op_dup_2": {
+    "resume_op_xor_9": {
       "bank": 39,
       "address": 170,
       "physical": 5034
     },
-    "op_blink": {
+    "op_dup": {
       "bank": 39,
       "address": 176,
       "physical": 5040
     },
-    "resume_op_blink_0": {
+    "resume_op_dup_0": {
       "bank": 39,
       "address": 190,
       "physical": 5054
     },
-    "io_op_blink_2": {
+    "resume_op_dup_1": {
       "bank": 39,
       "address": 204,
       "physical": 5068
     },
-    "io_op_blink_4": {
+    "resume_op_dup_2": {
       "bank": 39,
       "address": 218,
       "physical": 5082
@@ -2073,916 +2109,1039 @@
       "address": 247,
       "physical": 5111
     },
-    "vm_push": {
+    "op_blink": {
       "bank": 40,
       "address": 128,
       "physical": 5120
     },
-    "io_vm_push_5": {
+    "resume_op_blink_0": {
       "bank": 40,
-      "address": 145,
-      "physical": 5137
+      "address": 142,
+      "physical": 5134
     },
-    "io_vm_push_11": {
+    "io_op_blink_2": {
       "bank": 40,
-      "address": 162,
-      "physical": 5154
+      "address": 156,
+      "physical": 5148
     },
-    "op_neg": {
+    "io_op_blink_4": {
       "bank": 40,
-      "address": 174,
-      "physical": 5166
+      "address": 170,
+      "physical": 5162
     },
-    "resume_op_neg_0": {
+    "op_jz": {
       "bank": 40,
-      "address": 184,
-      "physical": 5176
+      "address": 176,
+      "physical": 5168
     },
-    "resume_op_neg_8": {
+    "resume_op_jz_0": {
       "bank": 40,
-      "address": 206,
-      "physical": 5198
+      "address": 190,
+      "physical": 5182
     },
-    "vm_pop": {
+    "resume_op_jz_1": {
       "bank": 40,
-      "address": 212,
-      "physical": 5204
+      "address": 204,
+      "physical": 5196
     },
-    "io_vm_pop_7": {
+    "bridge_op_jz_5": {
       "bank": 40,
-      "address": 231,
-      "physical": 5223
+      "address": 217,
+      "physical": 5209
     },
-    "io_vm_pop_13": {
-      "bank": 40,
-      "address": 248,
-      "physical": 5240
-    },
-    "line_step_y": {
+    "vm_push": {
       "bank": 41,
       "address": 128,
       "physical": 5248
     },
-    "bridge_line_step_y_8": {
+    "io_vm_push_5": {
       "bank": 41,
-      "address": 150,
-      "physical": 5270
+      "address": 145,
+      "physical": 5265
     },
-    "line_done": {
+    "io_vm_push_11": {
       "bank": 41,
-      "address": 168,
-      "physical": 5288
+      "address": 162,
+      "physical": 5282
     },
-    "triangle_sign0": {
+    "op_neg": {
       "bank": 41,
       "address": 174,
       "physical": 5294
     },
-    "triangle_negative0": {
+    "resume_op_neg_0": {
       "bank": 41,
-      "address": 190,
-      "physical": 5310
+      "address": 184,
+      "physical": 5304
     },
-    "triangle_sign_record0": {
+    "resume_op_neg_8": {
       "bank": 41,
-      "address": 194,
-      "physical": 5314
+      "address": 206,
+      "physical": 5326
     },
-    "bridge_triangle_sign0_17": {
+    "vm_pop": {
       "bank": 41,
-      "address": 208,
-      "physical": 5328
+      "address": 212,
+      "physical": 5332
     },
-    "triangle_sign1": {
+    "io_vm_pop_7": {
       "bank": 41,
-      "address": 210,
-      "physical": 5330
+      "address": 231,
+      "physical": 5351
     },
-    "bridge_triangle_sign1_5": {
+    "io_vm_pop_13": {
       "bank": 41,
-      "address": 226,
-      "physical": 5346
+      "address": 248,
+      "physical": 5368
     },
-    "triangle_negative1": {
-      "bank": 41,
-      "address": 232,
-      "physical": 5352
-    },
-    "triangle_sign_record1": {
-      "bank": 41,
-      "address": 236,
-      "physical": 5356
-    },
-    "bridge_triangle_sign1_17": {
-      "bank": 41,
-      "address": 250,
-      "physical": 5370
-    },
-    "triangle_sign2": {
+    "line_step_y": {
       "bank": 42,
       "address": 128,
       "physical": 5376
     },
-    "bridge_triangle_sign2_5": {
-      "bank": 42,
-      "address": 144,
-      "physical": 5392
-    },
-    "triangle_negative2": {
+    "bridge_line_step_y_8": {
       "bank": 42,
       "address": 150,
       "physical": 5398
     },
-    "triangle_sign_record2": {
-      "bank": 42,
-      "address": 154,
-      "physical": 5402
-    },
-    "bridge_triangle_sign2_17": {
+    "line_done": {
       "bank": 42,
       "address": 168,
       "physical": 5416
     },
-    "project_roll": {
+    "triangle_sign0": {
       "bank": 42,
       "address": 174,
       "physical": 5422
     },
-    "resume_project_roll_6": {
+    "triangle_negative0": {
       "bank": 42,
-      "address": 200,
-      "physical": 5448
+      "address": 190,
+      "physical": 5438
     },
-    "vm_write": {
+    "triangle_sign_record0": {
       "bank": 42,
-      "address": 214,
-      "physical": 5462
+      "address": 194,
+      "physical": 5442
     },
-    "vm_write_low": {
+    "bridge_triangle_sign0_17": {
+      "bank": 42,
+      "address": 208,
+      "physical": 5456
+    },
+    "triangle_sign1": {
+      "bank": 42,
+      "address": 210,
+      "physical": 5458
+    },
+    "bridge_triangle_sign1_5": {
       "bank": 42,
       "address": 226,
       "physical": 5474
     },
-    "vm_write_banked": {
+    "triangle_negative1": {
       "bank": 42,
-      "address": 234,
-      "physical": 5482
+      "address": 232,
+      "physical": 5480
     },
-    "vm_write_done": {
+    "triangle_sign_record1": {
       "bank": 42,
-      "address": 237,
-      "physical": 5485
+      "address": 236,
+      "physical": 5484
     },
-    "io_vm_write_19": {
+    "bridge_triangle_sign1_17": {
       "bank": 42,
-      "address": 247,
-      "physical": 5495
+      "address": 250,
+      "physical": 5498
     },
-    "projection_division_loop": {
+    "triangle_sign2": {
       "bank": 43,
       "address": 128,
       "physical": 5504
     },
+    "bridge_triangle_sign2_5": {
+      "bank": 43,
+      "address": 144,
+      "physical": 5520
+    },
+    "triangle_negative2": {
+      "bank": 43,
+      "address": 150,
+      "physical": 5526
+    },
+    "triangle_sign_record2": {
+      "bank": 43,
+      "address": 154,
+      "physical": 5530
+    },
+    "bridge_triangle_sign2_17": {
+      "bank": 43,
+      "address": 168,
+      "physical": 5544
+    },
+    "vm_write": {
+      "bank": 43,
+      "address": 174,
+      "physical": 5550
+    },
+    "vm_write_low": {
+      "bank": 43,
+      "address": 186,
+      "physical": 5562
+    },
+    "vm_write_banked": {
+      "bank": 43,
+      "address": 194,
+      "physical": 5570
+    },
+    "vm_write_done": {
+      "bank": 43,
+      "address": 197,
+      "physical": 5573
+    },
+    "io_vm_write_19": {
+      "bank": 43,
+      "address": 207,
+      "physical": 5583
+    },
+    "projection_division_loop": {
+      "bank": 43,
+      "address": 213,
+      "physical": 5589
+    },
+    "bridge_projection_division_loop_6": {
+      "bank": 43,
+      "address": 231,
+      "physical": 5607
+    },
     "projection_subtract": {
       "bank": 43,
-      "address": 140,
-      "physical": 5516
+      "address": 231,
+      "physical": 5607
     },
     "projection_division_round": {
-      "bank": 43,
-      "address": 161,
-      "physical": 5537
-    },
-    "projection_increment": {
-      "bank": 43,
-      "address": 178,
-      "physical": 5554
-    },
-    "projection_rounded": {
-      "bank": 43,
-      "address": 183,
-      "physical": 5559
-    },
-    "projection_positive": {
-      "bank": 43,
-      "address": 191,
-      "physical": 5567
-    },
-    "vm_fetch": {
-      "bank": 43,
-      "address": 200,
-      "physical": 5576
-    },
-    "io_vm_fetch_2": {
-      "bank": 43,
-      "address": 212,
-      "physical": 5588
-    },
-    "vm_fetch_done": {
-      "bank": 43,
-      "address": 230,
-      "physical": 5606
-    },
-    "vm_increment_address": {
-      "bank": 43,
-      "address": 238,
-      "physical": 5614
-    },
-    "vm_increment_done": {
-      "bank": 43,
-      "address": 250,
-      "physical": 5626
-    },
-    "vm_immediate": {
       "bank": 44,
       "address": 128,
       "physical": 5632
     },
-    "resume_vm_immediate_0": {
+    "projection_increment": {
       "bank": 44,
-      "address": 142,
-      "physical": 5646
+      "address": 145,
+      "physical": 5649
     },
-    "resume_vm_immediate_2": {
+    "projection_rounded": {
+      "bank": 44,
+      "address": 150,
+      "physical": 5654
+    },
+    "projection_positive": {
       "bank": 44,
       "address": 158,
       "physical": 5662
     },
+    "vm_fetch": {
+      "bank": 44,
+      "address": 167,
+      "physical": 5671
+    },
+    "io_vm_fetch_2": {
+      "bank": 44,
+      "address": 179,
+      "physical": 5683
+    },
+    "vm_fetch_done": {
+      "bank": 44,
+      "address": 197,
+      "physical": 5701
+    },
+    "vm_immediate": {
+      "bank": 44,
+      "address": 205,
+      "physical": 5709
+    },
+    "resume_vm_immediate_0": {
+      "bank": 44,
+      "address": 215,
+      "physical": 5719
+    },
+    "resume_vm_immediate_2": {
+      "bank": 44,
+      "address": 227,
+      "physical": 5731
+    },
+    "gfx_write_next": {
+      "bank": 44,
+      "address": 235,
+      "physical": 5739
+    },
+    "io_gfx_write_next_0": {
+      "bank": 44,
+      "address": 247,
+      "physical": 5751
+    },
     "op_store16": {
-      "bank": 44,
-      "address": 166,
-      "physical": 5670
-    },
-    "resume_op_store16_0": {
-      "bank": 44,
-      "address": 180,
-      "physical": 5684
-    },
-    "op_putc": {
-      "bank": 44,
-      "address": 202,
-      "physical": 5706
-    },
-    "resume_op_putc_0": {
-      "bank": 44,
-      "address": 216,
-      "physical": 5720
-    },
-    "op_jmp": {
-      "bank": 44,
-      "address": 238,
-      "physical": 5742
-    },
-    "resume_op_jmp_0": {
-      "bank": 44,
-      "address": 248,
-      "physical": 5752
-    },
-    "vm_read": {
       "bank": 45,
       "address": 128,
       "physical": 5760
     },
+    "resume_op_store16_0": {
+      "bank": 45,
+      "address": 142,
+      "physical": 5774
+    },
+    "op_putc": {
+      "bank": 45,
+      "address": 164,
+      "physical": 5796
+    },
+    "resume_op_putc_0": {
+      "bank": 45,
+      "address": 178,
+      "physical": 5810
+    },
+    "vm_read": {
+      "bank": 45,
+      "address": 200,
+      "physical": 5832
+    },
     "vm_read_low": {
       "bank": 45,
-      "address": 138,
-      "physical": 5770
+      "address": 210,
+      "physical": 5842
     },
     "vm_read_banked": {
       "bank": 45,
-      "address": 146,
-      "physical": 5778
+      "address": 218,
+      "physical": 5850
     },
     "vm_read_done": {
       "bank": 45,
-      "address": 149,
-      "physical": 5781
+      "address": 221,
+      "physical": 5853
     },
     "io_vm_read_17": {
       "bank": 45,
-      "address": 157,
-      "physical": 5789
+      "address": 229,
+      "physical": 5861
     },
-    "triangle_area": {
+    "op_drop": {
       "bank": 45,
-      "address": 163,
-      "physical": 5795
+      "address": 235,
+      "physical": 5867
+    },
+    "resume_op_drop_0": {
+      "bank": 45,
+      "address": 249,
+      "physical": 5881
     }
   },
   "bytecode_labels": {
-    "absolute": 20483,
-    "branch_1": 20500,
-    "branch_2": 20503,
-    "clear_selection": 20508,
-    "branch_3": 20514,
-    "branch_4": 20548,
-    "limit": 20558,
-    "alive": 20575,
-    "branch_5": 20592,
-    "branch_6": 20592,
-    "branch_7": 20614,
-    "branch_8": 20614,
-    "branch_9": 20636,
-    "branch_10": 20636,
-    "selection_base": 20653,
-    "branch_11": 20669,
-    "branch_13": 20689,
-    "branch_14": 20696,
-    "branch_12": 20696,
-    "vertex_component": 20701,
-    "projected_component": 20726,
-    "center": 20751,
-    "branch_17": 20777,
-    "branch_18": 20780,
-    "branch_15": 20784,
-    "branch_16": 20784,
-    "branch_19": 20813,
-    "branch_20": 20813,
-    "branch_21": 20896,
-    "branch_22": 20896,
-    "branch_23": 20923,
-    "branch_24": 20985,
-    "nearest": 20997,
-    "branch_25": 21016,
-    "branch_29": 21141,
-    "branch_30": 21141,
-    "branch_27": 21144,
-    "branch_28": 21144,
-    "branch_26": 21157,
-    "navigate": 21165,
-    "branch_31": 21206,
-    "branch_32": 21206,
-    "branch_33": 21272,
-    "branch_37": 21379,
-    "branch_39": 21395,
-    "branch_41": 21412,
-    "branch_42": 21415,
-    "branch_40": 21415,
-    "branch_38": 21415,
-    "branch_45": 21438,
-    "branch_43": 21453,
-    "branch_44": 21462,
-    "branch_48": 21514,
-    "branch_49": 21514,
-    "branch_46": 21517,
-    "branch_47": 21517,
-    "branch_35": 21520,
-    "branch_36": 21520,
-    "branch_34": 21533,
-    "cycle": 21543,
-    "branch_50": 21561,
-    "branch_52": 21617,
-    "branch_53": 21617,
-    "branch_51": 21630,
-    "toggle": 21641,
-    "branch_54": 21658,
-    "branch_55": 21658,
-    "branch_58": 21733,
-    "branch_60": 21739,
-    "branch_64": 21770,
-    "branch_65": 21817,
-    "branch_62": 21834,
-    "branch_63": 21834,
-    "branch_61": 21847,
-    "branch_59": 21847,
-    "branch_56": 21850,
-    "branch_57": 21850,
-    "mark_vertices": 21854,
-    "branch_66": 21860,
-    "branch_67": 21894,
-    "branch_68": 21900,
-    "branch_72": 21950,
-    "branch_73": 21977,
-    "branch_75": 22034,
-    "branch_77": 22040,
-    "branch_78": 22100,
-    "branch_76": 22100,
-    "branch_74": 22100,
-    "branch_70": 22103,
-    "branch_71": 22103,
-    "branch_69": 22116,
-    "branch_79": 22128,
-    "branch_80": 22166,
-    "pivot": 22174,
-    "branch_83": 22214,
-    "branch_81": 22224,
-    "branch_82": 22224,
-    "branch_84": 22230,
-    "branch_86": 22320,
-    "branch_87": 22320,
-    "branch_85": 22333,
-    "integer": 22371,
-    "branch_88": 22395,
-    "branch_89": 22395,
-    "branch_90": 22407,
-    "branch_94": 22452,
-    "branch_92": 22472,
-    "branch_93": 22472,
-    "branch_91": 22495,
-    "tool_limit": 22499,
-    "branch_95": 22515,
-    "branch_97": 22531,
-    "branch_99": 22547,
-    "branch_100": 22550,
-    "branch_98": 22550,
-    "branch_96": 22550,
-    "coordinate_prompt": 22555,
-    "branch_101": 22577,
-    "branch_102": 22580,
-    "branch_103": 22599,
-    "branch_104": 22599,
-    "branch_105": 22647,
-    "branch_106": 22650,
-    "branch_107": 22668,
-    "branch_109": 22685,
-    "branch_110": 22688,
-    "branch_108": 22688,
-    "branch_111": 22698,
-    "branch_112": 22731,
-    "branch_113": 22751,
-    "branch_114": 22754,
-    "branch_115": 22768,
-    "branch_116": 22768,
-    "branch_117": 22810,
-    "branch_118": 22855,
-    "branch_119": 22886,
-    "branch_120": 22886,
-    "tool_values": 22890,
-    "branch_123": 22910,
-    "branch_121": 22964,
-    "branch_124": 23001,
-    "branch_125": 23004,
-    "branch_122": 23007,
-    "command_prompt": 23011,
-    "branch_130": 23049,
-    "branch_128": 23058,
-    "branch_129": 23063,
-    "branch_126": 23066,
-    "branch_134": 23103,
-    "branch_133": 23103,
-    "branch_131": 23113,
-    "branch_132": 23113,
-    "branch_137": 23136,
-    "branch_135": 23147,
-    "branch_136": 23147,
-    "branch_138": 23160,
-    "branch_139": 23160,
-    "branch_140": 23166,
-    "branch_141": 23198,
-    "branch_127": 23198,
-    "gizmo_pixel": 23202,
-    "branch_144": 23247,
-    "branch_145": 23307,
-    "branch_146": 23323,
-    "branch_142": 23326,
-    "branch_143": 23326,
-    "gizmo_line": 23330,
-    "branch_147": 23379,
-    "branch_148": 23383,
-    "branch_149": 23402,
-    "branch_150": 23406,
-    "branch_151": 23419,
-    "branch_155": 23466,
-    "branch_153": 23476,
-    "branch_154": 23476,
-    "branch_156": 23520,
-    "branch_157": 23520,
-    "branch_158": 23554,
-    "branch_159": 23554,
-    "branch_152": 23557,
-    "gizmo_label": 23561,
-    "branch_160": 23674,
-    "branch_161": 23674,
-    "branch_162": 23686,
-    "branch_164": 23702,
-    "branch_165": 23744,
-    "branch_166": 23748,
-    "branch_167": 23779,
-    "branch_169": 23800,
-    "branch_170": 23803,
-    "branch_168": 23803,
-    "branch_171": 23823,
-    "branch_173": 23839,
-    "branch_174": 23842,
-    "branch_172": 23842,
-    "branch_175": 23861,
-    "branch_177": 23877,
-    "branch_178": 23880,
-    "branch_176": 23880,
-    "branch_179": 23902,
-    "branch_181": 23918,
-    "branch_182": 23928,
-    "branch_184": 23944,
-    "branch_187": 24012,
-    "branch_188": 24059,
-    "branch_189": 24059,
-    "branch_185": 24062,
-    "branch_186": 24062,
-    "branch_183": 24075,
-    "branch_180": 24088,
-    "branch_190": 24088,
-    "branch_194": 24159,
-    "branch_192": 24171,
-    "branch_193": 24171,
-    "branch_191": 24184,
-    "branch_195": 24200,
-    "branch_196": 24200,
-    "branch_163": 24213,
-    "branch_197": 24243,
-    "branch_198": 24243,
-    "branch_199": 24283,
-    "branch_201": 24318,
-    "branch_202": 24379,
-    "branch_200": 24392,
-    "gizmo_fraction": 24396,
-    "branch_203": 24437,
-    "branch_204": 24440,
-    "draw_gizmo": 24445,
-    "turn_view": 24498,
-    "branch_207": 24518,
-    "branch_208": 24540,
-    "branch_209": 24543,
-    "branch_205": 24554,
-    "branch_210": 24573,
-    "branch_211": 24576,
-    "branch_206": 24584,
-    "terminal": 24588,
-    "projection_hint": 24596,
-    "branch_212": 24608,
-    "branch_213": 24611,
-    "error": 24615,
-    "draw_element": 24629,
-    "branch_214": 24676,
-    "branch_216": 24787,
-    "branch_218": 25079,
-    "branch_219": 25079,
-    "branch_217": 25079,
-    "branch_215": 25079,
-    "render": 25083,
-    "branch_220": 25100,
-    "branch_222": 25286,
-    "branch_223": 25286,
-    "branch_221": 25299,
-    "branch_224": 25306,
-    "branch_226": 25441,
-    "branch_227": 25441,
-    "branch_225": 25454,
-    "branch_228": 25460,
-    "branch_230": 25531,
-    "branch_231": 25531,
-    "branch_229": 25544,
-    "branch_234": 25556,
-    "branch_238": 25606,
-    "branch_236": 25658,
-    "branch_237": 25658,
-    "branch_235": 25671,
-    "branch_241": 25699,
-    "branch_239": 25801,
-    "branch_240": 25801,
-    "branch_232": 25804,
-    "branch_233": 25804,
-    "remember": 25813,
-    "fraction_q4": 25833,
-    "branch_242": 25845,
-    "branch_244": 25909,
-    "branch_245": 25909,
-    "branch_243": 25922,
-    "branch_246": 25960,
-    "branch_247": 25960,
-    "rotate_coordinate": 25968,
-    "parse": 26056,
-    "branch_248": 26070,
-    "branch_249": 26070,
-    "branch_252": 26111,
-    "branch_255": 26136,
-    "branch_253": 26146,
-    "branch_254": 26146,
-    "branch_250": 26149,
-    "branch_251": 26149,
-    "branch_258": 26192,
-    "branch_259": 26192,
-    "branch_256": 26199,
-    "branch_257": 26199,
-    "branch_260": 26215,
-    "branch_261": 26222,
-    "branch_262": 26244,
-    "branch_263": 26247,
-    "branch_264": 26262,
-    "branch_266": 26305,
-    "branch_269": 26371,
-    "branch_267": 26381,
-    "branch_268": 26381,
-    "branch_265": 26384,
-    "branch_270": 26398,
-    "branch_271": 26398,
-    "branch_274": 26449,
-    "branch_275": 26449,
-    "branch_276": 26459,
-    "branch_278": 26502,
-    "branch_279": 26522,
-    "branch_280": 26522,
-    "branch_277": 26578,
-    "branch_281": 26592,
-    "branch_282": 26592,
-    "branch_272": 26595,
-    "branch_273": 26595,
-    "branch_283": 26613,
-    "branch_284": 26613,
-    "branch_289": 26646,
-    "branch_287": 26656,
-    "branch_288": 26656,
-    "branch_290": 26683,
-    "branch_291": 26686,
-    "branch_292": 26707,
-    "branch_293": 26707,
-    "branch_285": 26710,
-    "branch_294": 26726,
-    "branch_296": 26742,
-    "branch_297": 26745,
-    "branch_295": 26745,
-    "branch_301": 26776,
-    "branch_300": 26776,
-    "branch_298": 26786,
-    "branch_299": 26786,
-    "branch_304": 26828,
-    "branch_302": 26838,
-    "branch_303": 26838,
-    "branch_305": 26859,
-    "branch_306": 26859,
-    "branch_286": 26859,
-    "transform": 26877,
-    "branch_307": 26896,
-    "branch_308": 26896,
-    "branch_309": 26939,
-    "branch_310": 26939,
-    "branch_311": 26983,
-    "branch_317": 27091,
-    "branch_319": 27114,
-    "branch_320": 27124,
-    "branch_318": 27124,
-    "branch_315": 27127,
-    "branch_325": 27157,
-    "branch_323": 27185,
-    "branch_324": 27185,
-    "branch_328": 27205,
-    "branch_326": 27233,
-    "branch_327": 27233,
-    "branch_331": 27253,
-    "branch_329": 27281,
-    "branch_330": 27281,
-    "branch_321": 27284,
-    "branch_332": 27386,
-    "branch_334": 27488,
-    "branch_335": 27577,
-    "branch_333": 27577,
-    "branch_322": 27577,
-    "branch_316": 27577,
-    "branch_338": 27628,
-    "branch_336": 27638,
-    "branch_337": 27638,
-    "branch_313": 27694,
-    "branch_314": 27694,
-    "branch_312": 27707,
-    "edge_index": 27729,
-    "branch_339": 27735,
-    "branch_346": 27815,
-    "branch_347": 27840,
-    "branch_345": 27840,
-    "branch_343": 27850,
-    "branch_344": 27850,
-    "branch_341": 27853,
-    "branch_342": 27853,
-    "branch_340": 27866,
-    "delete_selected": 27875,
-    "branch_348": 27889,
-    "branch_349": 27889,
-    "branch_350": 27947,
-    "branch_354": 27996,
-    "branch_356": 28012,
-    "branch_357": 28015,
-    "branch_355": 28015,
-    "branch_358": 28034,
-    "branch_359": 28037,
-    "branch_352": 28046,
-    "branch_353": 28046,
-    "branch_351": 28059,
-    "branch_360": 28065,
-    "branch_366": 28138,
-    "branch_364": 28155,
-    "branch_365": 28155,
-    "branch_362": 28158,
-    "branch_363": 28158,
-    "branch_361": 28171,
-    "branch_367": 28177,
-    "branch_369": 28214,
-    "branch_373": 28312,
-    "branch_371": 28333,
-    "branch_372": 28333,
-    "branch_370": 28346,
-    "branch_368": 28359,
-    "free_slot": 28391,
-    "branch_374": 28397,
-    "branch_376": 28416,
-    "branch_377": 28419,
-    "branch_378": 28449,
-    "branch_379": 28449,
-    "branch_375": 28462,
-    "new_vertex": 28471,
-    "branch_380": 28500,
-    "branch_381": 28500,
-    "branch_382": 28599,
-    "branch_383": 28599,
-    "create_connection": 28627,
-    "branch_384": 28644,
-    "branch_385": 28644,
-    "branch_388": 28666,
-    "branch_386": 28676,
-    "branch_387": 28676,
-    "branch_389": 28724,
-    "branch_390": 28724,
-    "branch_391": 28753,
-    "branch_392": 28753,
-    "branch_393": 28837,
-    "branch_394": 28837,
-    "create_face": 28845,
-    "branch_395": 28857,
-    "branch_396": 28891,
-    "branch_397": 28897,
-    "branch_401": 28945,
-    "branch_399": 29035,
-    "branch_400": 29035,
-    "branch_398": 29048,
-    "branch_404": 29069,
-    "branch_402": 29079,
-    "branch_403": 29079,
-    "branch_405": 29098,
-    "branch_409": 29143,
-    "branch_410": 29143,
-    "branch_407": 29162,
-    "branch_408": 29162,
-    "branch_406": 29175,
-    "branch_411": 29193,
-    "branch_412": 29193,
-    "branch_413": 29212,
-    "branch_415": 29246,
-    "branch_419": 29294,
-    "branch_422": 29363,
-    "branch_420": 29375,
-    "branch_425": 29407,
-    "branch_423": 29419,
-    "branch_424": 29419,
-    "branch_421": 29419,
-    "branch_417": 29422,
-    "branch_418": 29422,
-    "branch_416": 29435,
-    "branch_426": 29452,
-    "branch_427": 29452,
-    "branch_414": 29477,
-    "branch_428": 29495,
-    "branch_429": 29495,
-    "branch_430": 29501,
-    "branch_434": 29548,
-    "branch_436": 29595,
-    "branch_437": 29598,
-    "branch_435": 29615,
-    "branch_438": 29632,
-    "branch_439": 29632,
-    "branch_432": 29635,
-    "branch_433": 29635,
-    "branch_431": 29648,
-    "branch_440": 29677,
-    "branch_441": 29677,
-    "branch_442": 29731,
-    "branch_443": 29731,
-    "branch_444": 29737,
-    "branch_445": 29788,
-    "accept_new_coordinate": 29796,
-    "branch_446": 29815,
-    "branch_447": 29815,
-    "branch_448": 29834,
-    "branch_450": 29853,
-    "branch_451": 29859,
-    "branch_449": 29859,
-    "branch_452": 29909,
-    "branch_453": 29909,
-    "main": 29917,
-    "branch_454": 30021,
-    "branch_460": 30072,
-    "branch_461": 30076,
-    "branch_458": 30079,
-    "branch_464": 30109,
-    "branch_462": 30133,
-    "branch_463": 30133,
-    "branch_459": 30133,
-    "branch_456": 30136,
-    "branch_465": 30165,
-    "branch_469": 30206,
-    "branch_473": 30226,
-    "branch_474": 30245,
-    "branch_475": 30248,
-    "branch_476": 30270,
-    "branch_480": 30289,
-    "branch_478": 30299,
-    "branch_479": 30319,
-    "branch_477": 30319,
-    "branch_471": 30322,
-    "branch_483": 30355,
-    "branch_485": 30382,
-    "branch_486": 30382,
-    "branch_484": 30382,
-    "branch_481": 30389,
-    "branch_490": 30435,
-    "branch_489": 30435,
-    "branch_487": 30452,
-    "branch_493": 30472,
-    "branch_494": 30491,
-    "branch_495": 30494,
-    "branch_491": 30504,
-    "branch_499": 30538,
-    "branch_498": 30538,
-    "branch_500": 30579,
-    "branch_501": 30589,
-    "branch_496": 30592,
-    "branch_497": 30602,
-    "branch_492": 30602,
-    "branch_488": 30602,
-    "branch_482": 30602,
-    "branch_472": 30602,
-    "branch_470": 30602,
-    "branch_467": 30605,
-    "branch_502": 30634,
-    "branch_504": 30657,
-    "branch_510": 30685,
-    "branch_508": 30701,
-    "branch_513": 30721,
-    "branch_514": 30744,
-    "branch_515": 30751,
-    "branch_511": 30757,
-    "branch_518": 30787,
-    "branch_519": 30794,
-    "branch_516": 30800,
-    "branch_517": 30800,
-    "branch_512": 30800,
-    "branch_509": 30800,
-    "branch_506": 30803,
-    "branch_522": 30824,
-    "branch_520": 30916,
-    "branch_525": 30937,
-    "branch_523": 30953,
-    "branch_526": 30970,
-    "branch_530": 30990,
-    "branch_528": 31000,
-    "branch_531": 31017,
-    "branch_535": 31050,
-    "branch_536": 31087,
-    "branch_537": 31093,
-    "branch_533": 31096,
-    "branch_538": 31113,
-    "branch_542": 31148,
-    "branch_543": 31197,
-    "branch_540": 31200,
-    "branch_544": 31219,
-    "branch_548": 31282,
-    "branch_549": 31282,
-    "branch_546": 31285,
-    "branch_552": 31305,
-    "branch_556": 31390,
-    "branch_557": 31390,
-    "branch_554": 31393,
-    "branch_555": 31393,
-    "branch_553": 31406,
-    "branch_550": 31409,
-    "branch_558": 31432,
-    "branch_562": 31452,
-    "branch_563": 31484,
-    "branch_564": 31484,
-    "branch_560": 31487,
-    "branch_567": 31526,
-    "branch_568": 31526,
-    "branch_565": 31529,
-    "branch_566": 31529,
-    "branch_561": 31529,
-    "branch_559": 31529,
-    "branch_551": 31529,
-    "branch_547": 31529,
-    "branch_545": 31529,
-    "branch_541": 31529,
-    "branch_539": 31529,
-    "branch_534": 31529,
-    "branch_532": 31529,
-    "branch_529": 31529,
-    "branch_527": 31529,
-    "branch_524": 31529,
-    "branch_521": 31529,
-    "branch_507": 31529,
-    "branch_505": 31529,
-    "branch_503": 31529,
-    "branch_569": 31552,
-    "branch_570": 31556,
-    "branch_468": 31556,
-    "branch_466": 31556,
-    "branch_457": 31556,
-    "branch_455": 31559
+    "absolute": 19331,
+    "branch_1": 19348,
+    "branch_2": 19351,
+    "clear_selection": 19356,
+    "branch_3": 19362,
+    "branch_4": 19396,
+    "limit": 19406,
+    "alive": 19423,
+    "branch_5": 19440,
+    "branch_6": 19440,
+    "branch_7": 19462,
+    "branch_8": 19462,
+    "branch_9": 19484,
+    "branch_10": 19484,
+    "selection_base": 19501,
+    "branch_11": 19517,
+    "branch_13": 19537,
+    "branch_14": 19544,
+    "branch_12": 19544,
+    "vertex_component": 19549,
+    "projected_component": 19574,
+    "center": 19599,
+    "branch_17": 19625,
+    "branch_18": 19628,
+    "branch_15": 19632,
+    "branch_16": 19632,
+    "branch_19": 19661,
+    "branch_20": 19661,
+    "branch_21": 19744,
+    "branch_22": 19744,
+    "branch_23": 19771,
+    "branch_24": 19833,
+    "nearest": 19845,
+    "branch_25": 19864,
+    "branch_29": 19989,
+    "branch_30": 19989,
+    "branch_27": 19992,
+    "branch_28": 19992,
+    "branch_26": 20005,
+    "navigate": 20013,
+    "branch_31": 20054,
+    "branch_32": 20054,
+    "branch_33": 20120,
+    "branch_37": 20227,
+    "branch_39": 20243,
+    "branch_41": 20260,
+    "branch_42": 20263,
+    "branch_40": 20263,
+    "branch_38": 20263,
+    "branch_45": 20286,
+    "branch_43": 20301,
+    "branch_44": 20310,
+    "branch_48": 20362,
+    "branch_49": 20362,
+    "branch_46": 20365,
+    "branch_47": 20365,
+    "branch_35": 20368,
+    "branch_36": 20368,
+    "branch_34": 20381,
+    "cycle": 20391,
+    "branch_50": 20409,
+    "branch_52": 20465,
+    "branch_53": 20465,
+    "branch_51": 20478,
+    "toggle": 20489,
+    "branch_54": 20506,
+    "branch_55": 20506,
+    "branch_58": 20581,
+    "branch_60": 20587,
+    "branch_64": 20618,
+    "branch_65": 20665,
+    "branch_62": 20682,
+    "branch_63": 20682,
+    "branch_61": 20695,
+    "branch_59": 20695,
+    "branch_56": 20698,
+    "branch_57": 20698,
+    "mark_vertices": 20702,
+    "branch_66": 20708,
+    "branch_67": 20742,
+    "branch_68": 20748,
+    "branch_72": 20798,
+    "branch_73": 20825,
+    "branch_75": 20882,
+    "branch_77": 20888,
+    "branch_78": 20948,
+    "branch_76": 20948,
+    "branch_74": 20948,
+    "branch_70": 20951,
+    "branch_71": 20951,
+    "branch_69": 20964,
+    "branch_79": 20976,
+    "branch_80": 21014,
+    "pivot": 21022,
+    "branch_83": 21062,
+    "branch_81": 21072,
+    "branch_82": 21072,
+    "branch_84": 21078,
+    "branch_86": 21168,
+    "branch_87": 21168,
+    "branch_85": 21181,
+    "integer": 21219,
+    "branch_88": 21243,
+    "branch_89": 21243,
+    "branch_90": 21255,
+    "branch_94": 21300,
+    "branch_92": 21320,
+    "branch_93": 21320,
+    "branch_91": 21343,
+    "tool_limit": 21347,
+    "branch_95": 21363,
+    "branch_97": 21379,
+    "branch_99": 21395,
+    "branch_100": 21398,
+    "branch_98": 21398,
+    "branch_96": 21398,
+    "coordinate_prompt": 21403,
+    "branch_101": 21425,
+    "branch_102": 21428,
+    "branch_103": 21447,
+    "branch_104": 21447,
+    "branch_105": 21495,
+    "branch_106": 21498,
+    "branch_107": 21516,
+    "branch_109": 21533,
+    "branch_110": 21536,
+    "branch_108": 21536,
+    "branch_111": 21546,
+    "branch_112": 21579,
+    "branch_113": 21599,
+    "branch_114": 21602,
+    "branch_115": 21616,
+    "branch_116": 21616,
+    "branch_117": 21658,
+    "branch_118": 21703,
+    "tool_values": 21725,
+    "branch_121": 21745,
+    "branch_119": 21799,
+    "branch_122": 21836,
+    "branch_123": 21839,
+    "branch_120": 21842,
+    "command_prompt": 21846,
+    "branch_128": 21884,
+    "branch_126": 21893,
+    "branch_127": 21898,
+    "branch_124": 21901,
+    "branch_132": 21938,
+    "branch_131": 21938,
+    "branch_129": 21948,
+    "branch_130": 21948,
+    "branch_135": 21971,
+    "branch_133": 21982,
+    "branch_134": 21982,
+    "branch_136": 21995,
+    "branch_137": 21995,
+    "branch_138": 22001,
+    "branch_139": 22033,
+    "branch_125": 22033,
+    "gizmo_pixel": 22037,
+    "branch_142": 22082,
+    "branch_143": 22142,
+    "branch_144": 22158,
+    "branch_140": 22161,
+    "branch_141": 22161,
+    "gizmo_line": 22165,
+    "branch_145": 22214,
+    "branch_146": 22218,
+    "branch_147": 22237,
+    "branch_148": 22241,
+    "branch_149": 22254,
+    "branch_153": 22301,
+    "branch_151": 22311,
+    "branch_152": 22311,
+    "branch_154": 22355,
+    "branch_155": 22355,
+    "branch_156": 22389,
+    "branch_157": 22389,
+    "branch_150": 22392,
+    "gizmo_label": 22396,
+    "branch_158": 22509,
+    "branch_159": 22509,
+    "branch_160": 22521,
+    "branch_162": 22537,
+    "branch_163": 22579,
+    "branch_164": 22583,
+    "branch_165": 22614,
+    "branch_167": 22635,
+    "branch_168": 22638,
+    "branch_166": 22638,
+    "branch_169": 22658,
+    "branch_171": 22674,
+    "branch_172": 22677,
+    "branch_170": 22677,
+    "branch_173": 22696,
+    "branch_175": 22712,
+    "branch_176": 22715,
+    "branch_174": 22715,
+    "branch_177": 22737,
+    "branch_179": 22753,
+    "branch_180": 22763,
+    "branch_182": 22779,
+    "branch_185": 22847,
+    "branch_186": 22894,
+    "branch_187": 22894,
+    "branch_183": 22897,
+    "branch_184": 22897,
+    "branch_181": 22910,
+    "branch_178": 22923,
+    "branch_188": 22923,
+    "branch_192": 22994,
+    "branch_190": 23006,
+    "branch_191": 23006,
+    "branch_189": 23019,
+    "branch_193": 23035,
+    "branch_194": 23035,
+    "branch_161": 23048,
+    "branch_195": 23078,
+    "branch_196": 23078,
+    "branch_197": 23118,
+    "branch_199": 23153,
+    "branch_200": 23214,
+    "branch_198": 23227,
+    "gizmo_fraction": 23231,
+    "branch_201": 23272,
+    "branch_202": 23275,
+    "draw_gizmo": 23280,
+    "branch_203": 23286,
+    "branch_204": 23320,
+    "branch_205": 23366,
+    "branch_207": 23392,
+    "branch_208": 23395,
+    "branch_209": 23411,
+    "branch_210": 23414,
+    "branch_211": 23430,
+    "branch_212": 23433,
+    "branch_213": 23582,
+    "branch_214": 23591,
+    "branch_217": 23664,
+    "branch_218": 23756,
+    "branch_215": 23759,
+    "branch_216": 23759,
+    "branch_206": 23772,
+    "branch_219": 23807,
+    "branch_220": 23840,
+    "branch_221": 23846,
+    "branch_223": 23862,
+    "branch_224": 23932,
+    "branch_222": 23945,
+    "turn_view": 23949,
+    "branch_227": 23969,
+    "branch_228": 23991,
+    "branch_229": 23994,
+    "branch_225": 24005,
+    "branch_230": 24024,
+    "branch_231": 24027,
+    "branch_226": 24035,
+    "terminal": 24039,
+    "branch_234": 24062,
+    "branch_235": 24065,
+    "branch_232": 24071,
+    "branch_236": 24088,
+    "branch_238": 24100,
+    "branch_239": 24103,
+    "branch_240": 24119,
+    "branch_242": 24135,
+    "branch_243": 24138,
+    "branch_241": 24138,
+    "branch_237": 24141,
+    "branch_233": 24141,
+    "projection_hint": 24145,
+    "branch_244": 24157,
+    "branch_245": 24160,
+    "error": 24164,
+    "branch_246": 24190,
+    "branch_248": 24206,
+    "branch_250": 24222,
+    "branch_252": 24238,
+    "branch_254": 24254,
+    "branch_256": 24270,
+    "branch_257": 24273,
+    "branch_255": 24273,
+    "branch_253": 24273,
+    "branch_251": 24273,
+    "branch_249": 24273,
+    "branch_247": 24273,
+    "draw_vertex": 24280,
+    "branch_258": 24301,
+    "branch_259": 24304,
+    "branch_260": 24360,
+    "branch_261": 24416,
+    "draw_edge": 24420,
+    "branch_264": 24596,
+    "branch_265": 24644,
+    "branch_262": 24647,
+    "branch_263": 24647,
+    "fill_triangle": 24651,
+    "branch_266": 24700,
+    "branch_267": 24700,
+    "branch_268": 24749,
+    "branch_269": 24749,
+    "branch_270": 24798,
+    "branch_271": 24798,
+    "branch_274": 24842,
+    "branch_272": 24852,
+    "branch_273": 24852,
+    "branch_275": 24868,
+    "branch_276": 24871,
+    "branch_277": 24890,
+    "branch_278": 24893,
+    "branch_279": 24896,
+    "branch_283": 24957,
+    "branch_281": 24993,
+    "branch_282": 25023,
+    "branch_284": 25054,
+    "branch_285": 25054,
+    "branch_286": 25070,
+    "branch_287": 25073,
+    "branch_288": 25092,
+    "branch_289": 25095,
+    "branch_292": 25133,
+    "branch_293": 25136,
+    "branch_294": 25188,
+    "branch_295": 25188,
+    "branch_290": 25191,
+    "branch_291": 25191,
+    "branch_280": 25204,
+    "draw_element": 25208,
+    "branch_296": 25237,
+    "branch_298": 25306,
+    "branch_300": 25634,
+    "branch_301": 25634,
+    "branch_299": 25650,
+    "branch_297": 25650,
+    "draw_face_border": 25654,
+    "branch_302": 25675,
+    "branch_303": 25774,
+    "draw_selected": 25778,
+    "branch_304": 25807,
+    "branch_306": 25864,
+    "branch_307": 25880,
+    "branch_305": 25880,
+    "render": 25884,
+    "branch_308": 25905,
+    "branch_310": 26107,
+    "branch_311": 26107,
+    "branch_309": 26120,
+    "branch_314": 26134,
+    "branch_316": 26269,
+    "branch_317": 26269,
+    "branch_315": 26282,
+    "branch_312": 26285,
+    "branch_318": 26291,
+    "branch_320": 26344,
+    "branch_321": 26344,
+    "branch_319": 26357,
+    "branch_322": 26363,
+    "branch_326": 26413,
+    "branch_324": 26435,
+    "branch_325": 26435,
+    "branch_323": 26448,
+    "branch_329": 26476,
+    "branch_327": 26578,
+    "branch_328": 26578,
+    "branch_313": 26578,
+    "remember": 26591,
+    "fraction_q4": 26611,
+    "branch_330": 26623,
+    "branch_332": 26687,
+    "branch_333": 26687,
+    "branch_331": 26700,
+    "branch_334": 26738,
+    "branch_335": 26738,
+    "rotate_coordinate": 26746,
+    "parse": 26834,
+    "branch_336": 26848,
+    "branch_337": 26848,
+    "branch_340": 26889,
+    "branch_343": 26914,
+    "branch_341": 26924,
+    "branch_342": 26924,
+    "branch_338": 26927,
+    "branch_339": 26927,
+    "branch_346": 26970,
+    "branch_347": 26970,
+    "branch_344": 26977,
+    "branch_345": 26977,
+    "branch_348": 26993,
+    "branch_349": 27000,
+    "branch_350": 27022,
+    "branch_351": 27025,
+    "branch_352": 27040,
+    "branch_354": 27083,
+    "branch_357": 27149,
+    "branch_355": 27159,
+    "branch_356": 27159,
+    "branch_353": 27162,
+    "branch_358": 27176,
+    "branch_359": 27176,
+    "branch_362": 27227,
+    "branch_363": 27227,
+    "branch_364": 27237,
+    "branch_366": 27280,
+    "branch_367": 27300,
+    "branch_368": 27300,
+    "branch_365": 27356,
+    "branch_369": 27370,
+    "branch_370": 27370,
+    "branch_360": 27373,
+    "branch_361": 27373,
+    "branch_371": 27391,
+    "branch_372": 27391,
+    "branch_377": 27424,
+    "branch_375": 27434,
+    "branch_376": 27434,
+    "branch_378": 27461,
+    "branch_379": 27464,
+    "branch_380": 27485,
+    "branch_381": 27485,
+    "branch_373": 27488,
+    "branch_382": 27504,
+    "branch_384": 27520,
+    "branch_385": 27523,
+    "branch_383": 27523,
+    "branch_389": 27554,
+    "branch_388": 27554,
+    "branch_386": 27564,
+    "branch_387": 27564,
+    "branch_392": 27606,
+    "branch_390": 27616,
+    "branch_391": 27616,
+    "branch_393": 27637,
+    "branch_394": 27637,
+    "branch_374": 27637,
+    "transform": 27655,
+    "branch_395": 27674,
+    "branch_396": 27674,
+    "branch_397": 27717,
+    "branch_398": 27717,
+    "branch_399": 27761,
+    "branch_405": 27869,
+    "branch_407": 27892,
+    "branch_408": 27902,
+    "branch_406": 27902,
+    "branch_403": 27905,
+    "branch_413": 27935,
+    "branch_411": 27963,
+    "branch_412": 27963,
+    "branch_416": 27983,
+    "branch_414": 28011,
+    "branch_415": 28011,
+    "branch_419": 28031,
+    "branch_417": 28059,
+    "branch_418": 28059,
+    "branch_409": 28062,
+    "branch_420": 28164,
+    "branch_422": 28266,
+    "branch_423": 28355,
+    "branch_421": 28355,
+    "branch_410": 28355,
+    "branch_404": 28355,
+    "branch_426": 28406,
+    "branch_424": 28416,
+    "branch_425": 28416,
+    "branch_401": 28472,
+    "branch_402": 28472,
+    "branch_400": 28485,
+    "edge_index": 28507,
+    "branch_427": 28513,
+    "branch_434": 28593,
+    "branch_435": 28618,
+    "branch_433": 28618,
+    "branch_431": 28628,
+    "branch_432": 28628,
+    "branch_429": 28631,
+    "branch_430": 28631,
+    "branch_428": 28644,
+    "delete_selected": 28653,
+    "branch_436": 28667,
+    "branch_437": 28667,
+    "branch_438": 28725,
+    "branch_442": 28774,
+    "branch_444": 28790,
+    "branch_445": 28793,
+    "branch_443": 28793,
+    "branch_446": 28812,
+    "branch_447": 28815,
+    "branch_440": 28824,
+    "branch_441": 28824,
+    "branch_439": 28837,
+    "branch_448": 28843,
+    "branch_454": 28916,
+    "branch_452": 28933,
+    "branch_453": 28933,
+    "branch_450": 28936,
+    "branch_451": 28936,
+    "branch_449": 28949,
+    "branch_455": 28955,
+    "branch_457": 28992,
+    "branch_461": 29090,
+    "branch_459": 29111,
+    "branch_460": 29111,
+    "branch_458": 29124,
+    "branch_456": 29137,
+    "free_slot": 29169,
+    "branch_462": 29175,
+    "branch_464": 29194,
+    "branch_465": 29197,
+    "branch_466": 29227,
+    "branch_467": 29227,
+    "branch_463": 29240,
+    "new_vertex": 29249,
+    "branch_468": 29278,
+    "branch_469": 29278,
+    "branch_470": 29377,
+    "branch_471": 29377,
+    "create_connection": 29405,
+    "branch_472": 29422,
+    "branch_473": 29422,
+    "branch_476": 29444,
+    "branch_474": 29454,
+    "branch_475": 29454,
+    "branch_477": 29502,
+    "branch_478": 29502,
+    "branch_479": 29531,
+    "branch_480": 29531,
+    "branch_481": 29615,
+    "branch_482": 29615,
+    "create_face": 29623,
+    "branch_483": 29635,
+    "branch_484": 29669,
+    "branch_485": 29675,
+    "branch_489": 29723,
+    "branch_487": 29813,
+    "branch_488": 29813,
+    "branch_486": 29826,
+    "branch_492": 29847,
+    "branch_490": 29857,
+    "branch_491": 29857,
+    "branch_493": 29876,
+    "branch_497": 29921,
+    "branch_498": 29921,
+    "branch_495": 29940,
+    "branch_496": 29940,
+    "branch_494": 29953,
+    "branch_499": 29971,
+    "branch_500": 29971,
+    "branch_501": 29990,
+    "branch_503": 30024,
+    "branch_507": 30072,
+    "branch_510": 30141,
+    "branch_508": 30153,
+    "branch_513": 30185,
+    "branch_511": 30197,
+    "branch_512": 30197,
+    "branch_509": 30197,
+    "branch_505": 30200,
+    "branch_506": 30200,
+    "branch_504": 30213,
+    "branch_514": 30230,
+    "branch_515": 30230,
+    "branch_502": 30255,
+    "branch_516": 30273,
+    "branch_517": 30273,
+    "branch_518": 30279,
+    "branch_522": 30326,
+    "branch_524": 30373,
+    "branch_525": 30376,
+    "branch_523": 30393,
+    "branch_526": 30410,
+    "branch_527": 30410,
+    "branch_520": 30413,
+    "branch_521": 30413,
+    "branch_519": 30426,
+    "branch_528": 30455,
+    "branch_529": 30455,
+    "branch_530": 30509,
+    "branch_531": 30509,
+    "branch_532": 30515,
+    "branch_533": 30566,
+    "accept_new_coordinate": 30574,
+    "branch_534": 30593,
+    "branch_535": 30593,
+    "branch_536": 30612,
+    "branch_538": 30631,
+    "branch_539": 30637,
+    "branch_537": 30637,
+    "branch_540": 30687,
+    "branch_541": 30687,
+    "main": 30695,
+    "branch_542": 30795,
+    "branch_548": 30846,
+    "branch_549": 30850,
+    "branch_546": 30853,
+    "branch_552": 30883,
+    "branch_550": 30903,
+    "branch_551": 30903,
+    "branch_547": 30903,
+    "branch_544": 30906,
+    "branch_553": 30935,
+    "branch_557": 30976,
+    "branch_561": 30996,
+    "branch_562": 31015,
+    "branch_563": 31018,
+    "branch_564": 31040,
+    "branch_568": 31059,
+    "branch_566": 31069,
+    "branch_567": 31085,
+    "branch_565": 31085,
+    "branch_559": 31088,
+    "branch_571": 31121,
+    "branch_573": 31148,
+    "branch_574": 31148,
+    "branch_572": 31148,
+    "branch_569": 31155,
+    "branch_578": 31201,
+    "branch_577": 31201,
+    "branch_575": 31218,
+    "branch_581": 31238,
+    "branch_582": 31257,
+    "branch_583": 31260,
+    "branch_579": 31270,
+    "branch_587": 31304,
+    "branch_586": 31304,
+    "branch_588": 31345,
+    "branch_589": 31355,
+    "branch_584": 31358,
+    "branch_585": 31368,
+    "branch_580": 31368,
+    "branch_576": 31368,
+    "branch_570": 31368,
+    "branch_560": 31368,
+    "branch_558": 31368,
+    "branch_555": 31371,
+    "branch_590": 31400,
+    "branch_592": 31423,
+    "branch_598": 31451,
+    "branch_596": 31467,
+    "branch_601": 31487,
+    "branch_602": 31510,
+    "branch_603": 31517,
+    "branch_599": 31523,
+    "branch_606": 31553,
+    "branch_607": 31560,
+    "branch_604": 31566,
+    "branch_605": 31566,
+    "branch_600": 31566,
+    "branch_597": 31566,
+    "branch_594": 31569,
+    "branch_610": 31590,
+    "branch_608": 31682,
+    "branch_613": 31703,
+    "branch_611": 31719,
+    "branch_614": 31736,
+    "branch_618": 31756,
+    "branch_616": 31766,
+    "branch_619": 31783,
+    "branch_623": 31816,
+    "branch_624": 31853,
+    "branch_625": 31859,
+    "branch_621": 31862,
+    "branch_626": 31879,
+    "branch_630": 31914,
+    "branch_631": 31963,
+    "branch_628": 31966,
+    "branch_632": 31985,
+    "branch_636": 32048,
+    "branch_637": 32048,
+    "branch_634": 32051,
+    "branch_640": 32071,
+    "branch_644": 32156,
+    "branch_645": 32156,
+    "branch_642": 32159,
+    "branch_643": 32159,
+    "branch_641": 32172,
+    "branch_638": 32175,
+    "branch_646": 32198,
+    "branch_650": 32218,
+    "branch_651": 32250,
+    "branch_652": 32250,
+    "branch_648": 32253,
+    "branch_655": 32292,
+    "branch_656": 32292,
+    "branch_653": 32295,
+    "branch_654": 32295,
+    "branch_649": 32295,
+    "branch_647": 32295,
+    "branch_639": 32295,
+    "branch_635": 32295,
+    "branch_633": 32295,
+    "branch_629": 32295,
+    "branch_627": 32295,
+    "branch_622": 32295,
+    "branch_620": 32295,
+    "branch_617": 32295,
+    "branch_615": 32295,
+    "branch_612": 32295,
+    "branch_609": 32295,
+    "branch_595": 32295,
+    "branch_593": 32295,
+    "branch_591": 32295,
+    "branch_657": 32314,
+    "branch_658": 32318,
+    "branch_556": 32318,
+    "branch_554": 32318,
+    "branch_545": 32318,
+    "branch_543": 32321
   },
   "library_source_sha256": "c6110535e03d6e41eb02caade86fb346faabcf6c3a70415a0a559d4a475de3e7",
   "max_vertices": 32,

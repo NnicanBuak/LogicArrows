@@ -46,6 +46,17 @@ gfx_line_pixel:
 ldi a, 1
 st a, wz
 pixel_prepare:
+ld a, color
+ldi b, 2
+xor a, b
+IF nz terminal_pixel_solid
+ld a, wx
+ld b, wy
+xor a, b
+ldi b, 1
+and a, b
+IF nz terminal_pixel_done
+terminal_pixel_solid:
 ld a, wx
 ldi b, 144
 sub a, b
@@ -239,8 +250,10 @@ def build(terminal=False, output_dir=None):
         state[23 + (phase - 1) * 4:27 + (phase - 1) * 4] = bytes(sum(bits[i + j] << j for j in range(8)) for i in range(0, 32, 8))
     reserve('STATE', 128, state, align=True)
     reserve('TRI_STATE', 128, align=True)
-    reserve('GLOBAL_WORDS', 1024, align=True)
-    reserve('STRINGS', 1024, align=True)
+    constants.update(GLOBAL_WORD_BYTES=(512 if terminal else 1024),
+                     STRING_BYTES=(384 if terminal else 1024))
+    reserve('GLOBAL_WORDS', constants['GLOBAL_WORD_BYTES'], align=True)
+    reserve('STRINGS', constants['STRING_BYTES'], align=True)
     mesh_start = next_address
     reserve('COUNTS', 3, bytes([8, 12, 6]))
     vertices = [[80 if i & bit else -80 for bit in (1, 2, 4)] for i in range(8)]
@@ -256,6 +269,7 @@ def build(terminal=False, output_dir=None):
     reserve('ORDER', 32)
     reserve('MARKS', 32)
     reserve('POINTS', 128)
+    reserve('POINT_DEPTHS', 32)
     reserve('TRIAL', 192)
     reserve('UNDO', constants['MESH_BYTES'])
     reserve('BASE_MASK', 32)
@@ -263,11 +277,11 @@ def build(terminal=False, output_dir=None):
     reserve('BLINK_FRAMES', 128, align=True)
     constants['STEADY_FRAME'] = constants['BLINK_FRAMES'] + 64
     reserve('INPUT', 16)
+    glyphs = [[17, 17, 10, 4, 10, 17, 17], [17, 17, 10, 4, 4, 4, 4], [31, 1, 2, 4, 8, 16, 31]]
+    reserve('GIZMO_GLYPHS', 15, bytes(sum(((row >> (4 - x)) & 1) << y for y, row in enumerate(rows)) for rows in glyphs for x in range(5)))
     reserve('GIZMO_BITMAP', 264)
     reserve('GIZMO_POINTS', 6)
     reserve('GIZMO_LABELS', 6)
-    glyphs = [[17, 17, 10, 4, 10, 17, 17], [17, 17, 10, 4, 4, 4, 4], [31, 1, 2, 4, 8, 16, 31]]
-    reserve('GIZMO_GLYPHS', 15, bytes(sum(((row >> (4 - x)) & 1) << y for y, row in enumerate(rows)) for rows in glyphs for x in range(5)))
     reserve('SINE', 7200, b''.join((round(256 * math.sin(i * math.tau / 3600)) & 65535).to_bytes(2, 'little') for i in range(3600)))
     if terminal:
         reserve('TERMINAL_FRAME', 9 * 256, align=True)
@@ -279,7 +293,8 @@ def build(terminal=False, output_dir=None):
     compiler = Compiler((target / 'editor.py').read_text(encoding='utf-8'), constants,
                         constants['GLOBAL_WORDS'], constants['STRINGS'])
     program = compiler.compile(constants['PROGRAM'])
-    assert len(compiler.strings) <= 1024
+    assert len(compiler.variables) * 2 <= constants['GLOBAL_WORD_BYTES']
+    assert len(compiler.strings) <= constants['STRING_BYTES']
     data[constants['STRINGS'] - native_end:constants['STRINGS'] - native_end + len(compiler.strings)] = compiler.strings
     data.extend(program)
     image_bytes = native_end + len(data)
