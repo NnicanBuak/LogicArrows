@@ -463,6 +463,100 @@ def error(code):
     text("\n\n\n")
 
 
+def multiply_divide(value, factor, divisor):
+    # Rounded signed value*factor/divisor without a 16-bit product overflow.
+    if divisor < 0:
+        divisor = -divisor
+        factor = -factor
+    negative = (value < 0) != (factor < 0)
+    value = absolute(value)
+    factor = absolute(factor)
+    whole = value // divisor
+    remainder = value % divisor
+    result = 0
+    carry = divisor // 2
+    while factor:
+        if factor & 1:
+            result += whole
+            carry += remainder
+            if carry >= divisor:
+                result += 1
+                carry -= divisor
+        factor = factor >> 1
+        whole *= 2
+        remainder *= 2
+        if remainder >= divisor:
+            whole += 1
+            remainder -= divisor
+    return -result if negative else result
+
+
+def project_model(i):
+    # Keep the mesh's Q4 fractions through camera rotation. Round only at pixels.
+    x = vertex_component(i, 0)
+    y = vertex_component(i, 1)
+    z = vertex_component(i, 2)
+    rx = rotate_coordinate(x, z, camera_cos_y, camera_sin_y)
+    rz = rotate_coordinate(z, x, camera_cos_y, -camera_sin_y)
+    ry = rotate_coordinate(y, rz, camera_cos_p, camera_sin_p)
+    depth = 512 + rotate_coordinate(rz, y, camera_cos_p, -camera_sin_p)
+    divisor = 640 if projection else depth * 10
+    factor = 9 if projection else 72
+    poke16(POINTS + i * 4, 72 + multiply_divide(rx * zoom, factor, divisor))
+    poke16(POINTS + i * 4 + 2, 36 - multiply_divide(ry * zoom, factor, divisor))
+    poke8(POINT_DEPTHS + i, depth // 16)
+
+
+def terminal_outcode(x, y):
+    code = 0
+    if x < 0:
+        code |= 1
+    elif x > 143:
+        code |= 2
+    if y < 0:
+        code |= 4
+    elif y > 71:
+        code |= 8
+    return code
+
+
+def terminal_line(x, y, tx, ty, color):
+    # Clip signed 16-bit endpoints before the native rasterizer reads low bytes.
+    start = terminal_outcode(x, y)
+    end = terminal_outcode(tx, ty)
+    while start or end:
+        if start & end:
+            return 0
+        code = start if start else end
+        if code & 8:
+            xx = x + multiply_divide(tx - x, 71 - y, ty - y)
+            yy = 71
+        elif code & 4:
+            xx = x + multiply_divide(tx - x, -y, ty - y)
+            yy = 0
+        elif code & 2:
+            yy = y + multiply_divide(ty - y, 143 - x, tx - x)
+            xx = 143
+        else:
+            yy = y + multiply_divide(ty - y, -x, tx - x)
+            xx = 0
+        if start:
+            x = xx
+            y = yy
+            start = terminal_outcode(x, y)
+        else:
+            tx = xx
+            ty = yy
+            end = terminal_outcode(tx, ty)
+    if absolute(tx - x) > 120:
+        xx = (x + tx) // 2
+        yy = (y + ty) // 2
+        line(x, y, xx, yy, color)
+        line(xx, yy, tx, ty, color)
+    else:
+        line(x, y, tx, ty, color)
+
+
 def draw_vertex(i, selected):
     # Camera depth uses the original projection: 32 at the model origin.
     radius = 0 if peek8(POINT_DEPTHS + i) < 24 else 1
@@ -471,7 +565,7 @@ def draw_vertex(i, selected):
     y = projected_component(i, 1)
     row = -radius
     while row <= radius:
-        line(x - radius, y + row, x + radius, y + row, 1)
+        terminal_line(x - radius, y + row, x + radius, y + row, 1)
         row += 1
 
 
@@ -480,14 +574,14 @@ def draw_edge(a, b, selected):
     y = projected_component(a, 1)
     tx = projected_component(b, 0)
     ty = projected_component(b, 1)
-    line(x, y, tx, ty, 1)
+    terminal_line(x, y, tx, ty, 1)
     if selected:
         if absolute(tx - x) >= absolute(ty - y):
-            line(x, y - 1, tx, ty - 1, 1)
-            line(x, y + 1, tx, ty + 1, 1)
+            terminal_line(x, y - 1, tx, ty - 1, 1)
+            terminal_line(x, y + 1, tx, ty + 1, 1)
         else:
-            line(x - 1, y, tx - 1, ty, 1)
-            line(x + 1, y, tx + 1, ty, 1)
+            terminal_line(x - 1, y, tx - 1, ty, 1)
+            terminal_line(x + 1, y, tx + 1, ty, 1)
 
 
 def fill_triangle(ax, ay, bx, by, cx, cy):
@@ -513,16 +607,19 @@ def fill_triangle(ax, ay, bx, by, cx, cy):
         ay = by
         bx = tx
         by = ty
-    if cy == ay or (bx - ax) * (cy - ay) == (cx - ax) * (by - ay):
+    if cy == ay:
+        return 0
+    # A nonzero area can wrap to zero in the VM's 16-bit multiplication.
+    if (bx - ax) * (cy - ay) == (cx - ax) * (by - ay) and bx - ax == multiply_divide(cx - ax, by - ay, cy - ay):
         return 0
     y = 0 if ay < 0 else ay
     end = 71 if cy > 71 else cy
     while y <= end:
-        left = ax + (cx - ax) * (y - ay) // (cy - ay)
+        left = ax + multiply_divide(cx - ax, y - ay, cy - ay)
         if y <= by and by > ay:
-            right = ax + (bx - ax) * (y - ay) // (by - ay)
+            right = ax + multiply_divide(bx - ax, y - ay, by - ay)
         else:
-            right = bx + (cx - bx) * (y - by) // (cy - by)
+            right = bx + multiply_divide(cx - bx, y - by, cy - by)
         if left > right:
             tx = left
             left = right
@@ -576,17 +673,17 @@ def draw_selected(m, i):
 
 
 def render():
+    global camera_sin_y, camera_cos_y, camera_sin_p, camera_cos_p
     putc(12)
     poke8(STATE + 8, projection)
+    camera_sin_y = peek16(VIEW_SINE + view_yaw * 2)
+    camera_cos_y = peek16(VIEW_SINE + ((view_yaw + 8) % 32) * 2)
+    camera_sin_p = peek16(VIEW_SINE + view_pitch * 2)
+    camera_cos_p = peek16(VIEW_SINE + ((view_pitch + 8) % 32) * 2)
     i = 0
     while i < limit(1):
         if peek8(VLIVE + i):
-            project(vertex_component(i, 0) // 16, vertex_component(i, 1) // 16, vertex_component(i, 2) // 16, view_yaw, view_pitch)
-            x = 72 + (peeks8(PROJECT_RESULT) - 8) * zoom * 45 // 100
-            y = 36 + (peeks8(PROJECT_RESULT + 1) - 8) * zoom * 45 // 100
-            poke16(POINTS + i * 4, x)
-            poke16(POINTS + i * 4 + 2, y)
-            poke8(POINT_DEPTHS + i, peek8(PROJECT_RESULT + 3))
+            project_model(i)
         i += 1
     begin()
     if not editing:
@@ -595,7 +692,7 @@ def render():
             if alive(2, i):
                 a = peek8(EDGES + i * 2)
                 b = peek8(EDGES + i * 2 + 1)
-                line(projected_component(a, 0), projected_component(a, 1),
+                terminal_line(projected_component(a, 0), projected_component(a, 1),
                      projected_component(b, 0), projected_component(b, 1),
                      1)
             i += 1
@@ -613,8 +710,8 @@ def render():
         if cursor >= 0 and alive(mode, cursor):
             x = center(mode, cursor, 0)
             y = center(mode, cursor, 1)
-            line(x - 4, y, x + 4, y, 1)
-            line(x, y - 4, x, y + 4, 1)
+            terminal_line(x - 4, y, x + 4, y, 1)
+            terminal_line(x, y - 4, x, y + 4, 1)
     draw_gizmo()
     present()
     blink(0)

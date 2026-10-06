@@ -1,4 +1,5 @@
 """Link 3DEditor, its word runtime, and the required 3DGraphics API functions."""
+import ast
 import hashlib
 import json
 import math
@@ -13,6 +14,36 @@ sys.path.insert(0, str(REPO / '3deditor'))
 from engine import api_blocks
 from compiler import Compiler, OPS
 from native_runtime import blocks
+
+
+class LinkedCompiler(Compiler):
+    """Record opcodes so the linker only includes native handlers in the image."""
+    def __init__(self, *args):
+        super().__init__(*args)
+        self.used_ops = set()
+
+    def emit(self, op, *args):
+        self.used_ops.add(op)
+        super().emit(op, *args)
+
+
+def reachable(raw, used_ops):
+    owners = {}
+    for name, lines, _ in raw:
+        owners[name] = name
+        owners.update({s[:-1]: name for s in lines if s.endswith(':')})
+    wanted = {'main'} | {'op_' + name.lower() for name in used_ops}
+    pending = list(wanted)
+    while pending:
+        name = pending.pop()
+        lines = next(lines for block_name, lines, _ in raw if block_name == name)
+        for line in lines:
+            for token in line.replace(',', ' ').split():
+                target = owners.get(token)
+                if target is not None and target not in wanted:
+                    wanted.add(target)
+                    pending.append(target)
+    return [entry for entry in raw if entry[0] in wanted]
 
 FIELDS = ('ret0_bank ret0_addr ret1_bank ret1_addr ret2_bank ret2_addr ret3_bank ret3_addr '
           'io_ret_bank ptr_bank ptr_addr vertex_count edge_count yaw pitch roll out_bank out_addr '
@@ -219,8 +250,16 @@ def packed(raw):
 
 def build(terminal=False, output_dir=None):
     target = Path(output_dir).resolve() if output_dir else ROOT
+    editor_source = (target / 'editor.py').read_text(encoding='utf-8')
+    source_constants = {n.id: 0 for n in ast.walk(ast.parse(editor_source))
+                        if isinstance(n, ast.Name) and n.id.isupper()}
+    probe = LinkedCompiler(editor_source, source_constants, 0, 0)
+    probe.compile(0)
     raw = [(n, [s.strip() for s in lines if s.strip()], c)
            for n, lines, c in blocks(terminal) + dependencies(terminal)]
+    if terminal:
+        raw = reachable(raw, probe.used_ops)
+        raw.append(('unsupported_opcode', ['hlt'], 'Unlinked opcode: stop instead of executing invalid memory'))
     bybank, banks = packed(raw)
     native_end = (max(bybank) + 1) * 128
     next_address = native_end
@@ -250,8 +289,8 @@ def build(terminal=False, output_dir=None):
         state[23 + (phase - 1) * 4:27 + (phase - 1) * 4] = bytes(sum(bits[i + j] << j for j in range(8)) for i in range(0, 32, 8))
     reserve('STATE', 128, state, align=True)
     reserve('TRI_STATE', 128, align=True)
-    constants.update(GLOBAL_WORD_BYTES=(512 if terminal else 1024),
-                     STRING_BYTES=(384 if terminal else 1024))
+    constants.update(GLOBAL_WORD_BYTES=(((len(probe.variables) * 2 + 127) // 128) * 128 if terminal else 1024),
+                     STRING_BYTES=(((len(probe.strings) + 127) // 128) * 128 if terminal else 1024))
     reserve('GLOBAL_WORDS', constants['GLOBAL_WORD_BYTES'], align=True)
     reserve('STRINGS', constants['STRING_BYTES'], align=True)
     mesh_start = next_address
@@ -282,6 +321,7 @@ def build(terminal=False, output_dir=None):
     reserve('GIZMO_BITMAP', 264)
     reserve('GIZMO_POINTS', 6)
     reserve('GIZMO_LABELS', 6)
+    reserve('VIEW_SINE', 64, b''.join((round(256 * math.sin(i * math.tau / 32)) & 65535).to_bytes(2, 'little') for i in range(32)))
     reserve('SINE', 7200, b''.join((round(256 * math.sin(i * math.tau / 3600)) & 65535).to_bytes(2, 'little') for i in range(3600)))
     if terminal:
         reserve('TERMINAL_FRAME', 9 * 256, align=True)
@@ -290,9 +330,9 @@ def build(terminal=False, output_dir=None):
     constants['PROJECT_RESULT'] = constants['CONTEXT'] + 4
     constants['BLINK_PHASE'] = constants['CONTEXT'] + 8
     constants['BLINK_ACTIVE'] = constants['CONTEXT'] + 9
-    compiler = Compiler((target / 'editor.py').read_text(encoding='utf-8'), constants,
-                        constants['GLOBAL_WORDS'], constants['STRINGS'])
+    compiler = LinkedCompiler(editor_source, constants, constants['GLOBAL_WORDS'], constants['STRINGS'])
     program = compiler.compile(constants['PROGRAM'])
+    assert compiler.used_ops == probe.used_ops
     assert len(compiler.variables) * 2 <= constants['GLOBAL_WORD_BYTES']
     assert len(compiler.strings) <= constants['STRING_BYTES']
     data[constants['STRINGS'] - native_end:constants['STRINGS'] - native_end + len(compiler.strings)] = compiler.strings
@@ -380,7 +420,8 @@ def build(terminal=False, output_dir=None):
             used += sum(ins_size(line) for line in expanded)
         assert used <= 128, (bank, used)
         source += [f'padding{bank} db ' + ','.join(['0'] * (128 - used))] if used < 128 else []
-    dispatch = b''.join(bytes([layout['op_' + name.lower()]['bank'], layout['op_' + name.lower()]['address']]) for name in OPS)
+    dispatch = b''.join(bytes([entry['bank'], entry['address']]) for name in OPS
+                        for entry in [layout.get('op_' + name.lower(), layout.get('unsupported_opcode'))])
     data[:len(dispatch)] = dispatch
     for offset in range(0, len(data), 128):
         source += [f'data_{native_end + offset} db ' + ','.join(str(v) for v in data[offset:offset + 128])]
