@@ -2,6 +2,17 @@
 
 Программы на ассемблере для компьютеров из логических стрелок Аркадия Чубрика.
 
+## Компилятор схем
+
+[**ArrowsHDL**](ArrowsHDL/README.md) — Verilog → карты «Стрелочек»:
+модель JSON, сохранения Base64, 8-битный сумматор из **58 стрелок** и CLI-автотесты с GraphDLC.
+Есть [восстановление пользовательской схемы по снимку](ArrowsHDL/examples/reference_adder8/README.md).
+Есть [**мультиплексоры 2→1, 4→1 и 8→1**](ArrowsHDL/examples/hdl/multiplexer/README.md) с полным перебором входов.
+Есть [**умножитель 4×4 бит из нескольких модулей**](ArrowsHDL/examples/hdl/candidates/mul4/README.md) с проверкой всех 256 пар входов.
+Есть [**цветной просмотр сигналов и разводки**](ArrowsHDL/examples/hdl/candidates/mul4/build/mul4.viewer.html).
+
+<img src="ArrowsHDL/examples/hdl/adder8/build/adder8.test.preview.png" alt="8-битный сумматор с упорядоченными шинами и тестовыми Source/Target" width="720">
+
 ## Компьютеры
 
 Оригинальные схемы, документация и примеры программ находятся в
