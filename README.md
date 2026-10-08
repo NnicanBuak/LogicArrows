@@ -10,15 +10,23 @@
 Есть [**мультиплексоры 2→1, 4→1 и 8→1**](ArrowsHDL/examples/hdl/multiplexer/README.md) с полным перебором входов.
 Есть [**умножитель 4×4 бит из нескольких модулей**](ArrowsHDL/examples/hdl/candidates/mul4/README.md) с проверкой всех 256 пар входов.
 Есть [**цветной просмотр сигналов и разводки**](ArrowsHDL/examples/hdl/candidates/mul4/build/mul4.viewer.html).
+Есть [**логический осциллограф с MUX8**](ArrowsHDL/examples/loop_mux8/README.md): восемь зацикленных генераторов, шифратор и дисплей истории из 64 бит.
+
+<img src="ArrowsHDL/examples/loop_mux8/build/loop_mux8.controls.preview.png" alt="Кнопки с Т-триггерами, приоритетный шифратор и блокировка вывода при коде 000" width="720">
 
 <img src="ArrowsHDL/examples/hdl/adder8/build/adder8.test.preview.png" alt="8-битный сумматор с упорядоченными шинами и тестовыми Source/Target" width="720">
 
 ## Модульные игровые схемы
 
-[**Сапёр v1**](minesweeper-v1/README.md) — поле 10×10 из одинаковых ячеек **96×96**,
-кнопка 3×3, собственная память мин, дисплей 0–8 и каскадное раскрытие.
+[**Ячейка «Жизни»**](map-life/README.md) — исходная схема с карты `map-life`:
+ячейка **20×20, 309 стрелок**, JSON, сохранение и извлечение через гостевой API.
 
-<img src="minesweeper-v1/build/cell.nets.preview.png" alt="Цветная разводка модульной ячейки сапёра 96×96 с центральным дисплеем и кнопкой" width="480">
+<img src="map-life/build/life-cell.preview.png" alt="Ячейка Жизни с карты Logic Arrows" width="480">
+
+[**Сапёр v1**](minesweeper-v1/README.md) — поле 10×10 из одинаковых ячеек **96×96**,
+кнопка 5×5 между числом и миной 8×8, дисплей 0–8 и каскадное раскрытие.
+
+<img src="minesweeper-v1/build/cell.nets.preview.png" alt="Цветная разводка модульной ячейки сапёра 96×96: число, кнопка 5×5, мина 8×8" width="480">
 
 ## Компьютеры
 

@@ -231,7 +231,7 @@ class Router:
             if vertex["kind"] == "gate":
                 node = vertex["node"]
                 key = x, y
-                self.add(key, "gate:" + node["id"], Cell(GATE_TYPES[node["op"]], vertex.get("rotation",1)))
+                self.add(key, "gate:" + node["id"], Cell(vertex.get('cell_type',GATE_TYPES[node["op"]]), vertex.get("rotation",1)))
                 self.gates[key] = node
                 flexible=vertex.get('flexible_output',False) and node['op'] in ('OR','BUF')
                 if flexible:

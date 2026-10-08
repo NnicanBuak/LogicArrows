@@ -25,42 +25,6 @@
         "net": "W:present"
       }
     ],
-    "W:NM": [
-      {
-        "index": 0,
-        "net": "W:NM"
-      }
-    ],
-    "W:NZ": [
-      {
-        "index": 0,
-        "net": "W:NZ"
-      }
-    ],
-    "W:NS": [
-      {
-        "index": 0,
-        "net": "W:NS"
-      }
-    ],
-    "W:SM": [
-      {
-        "index": 0,
-        "net": "W:SM"
-      }
-    ],
-    "W:SZ": [
-      {
-        "index": 0,
-        "net": "W:SZ"
-      }
-    ],
-    "W:SS": [
-      {
-        "index": 0,
-        "net": "W:SS"
-      }
-    ],
     "W:prefixReq": [
       {
         "index": 0,
@@ -131,42 +95,6 @@
       {
         "index": 0,
         "net": "E:present"
-      }
-    ],
-    "E:NM": [
-      {
-        "index": 0,
-        "net": "E:NM"
-      }
-    ],
-    "E:NZ": [
-      {
-        "index": 0,
-        "net": "E:NZ"
-      }
-    ],
-    "E:NS": [
-      {
-        "index": 0,
-        "net": "E:NS"
-      }
-    ],
-    "E:SM": [
-      {
-        "index": 0,
-        "net": "E:SM"
-      }
-    ],
-    "E:SZ": [
-      {
-        "index": 0,
-        "net": "E:SZ"
-      }
-    ],
-    "E:SS": [
-      {
-        "index": 0,
-        "net": "E:SS"
       }
     ],
     "E:rowReq": [
@@ -313,22 +241,82 @@
         "net": "S:busy"
       }
     ],
+    "DG:NWM": [
+      {
+        "index": 0,
+        "net": "DG:NWM"
+      }
+    ],
+    "DG:NWZ": [
+      {
+        "index": 0,
+        "net": "DG:NWZ"
+      }
+    ],
+    "DG:NWS": [
+      {
+        "index": 0,
+        "net": "DG:NWS"
+      }
+    ],
+    "DG:NEM": [
+      {
+        "index": 0,
+        "net": "DG:NEM"
+      }
+    ],
+    "DG:NEZ": [
+      {
+        "index": 0,
+        "net": "DG:NEZ"
+      }
+    ],
+    "DG:NES": [
+      {
+        "index": 0,
+        "net": "DG:NES"
+      }
+    ],
+    "DG:SWM": [
+      {
+        "index": 0,
+        "net": "DG:SWM"
+      }
+    ],
+    "DG:SWZ": [
+      {
+        "index": 0,
+        "net": "DG:SWZ"
+      }
+    ],
+    "DG:SWS": [
+      {
+        "index": 0,
+        "net": "DG:SWS"
+      }
+    ],
+    "DG:SEM": [
+      {
+        "index": 0,
+        "net": "DG:SEM"
+      }
+    ],
+    "DG:SEZ": [
+      {
+        "index": 0,
+        "net": "DG:SEZ"
+      }
+    ],
+    "DG:SES": [
+      {
+        "index": 0,
+        "net": "DG:SES"
+      }
+    ],
     "button0": [
       {
         "index": 0,
         "net": "button0"
-      }
-    ],
-    "button1": [
-      {
-        "index": 0,
-        "net": "button1"
-      }
-    ],
-    "button2": [
-      {
-        "index": 0,
-        "net": "button2"
       }
     ],
     "decoder:0": [
@@ -495,76 +483,76 @@
         "net": "port:S:busy"
       }
     ],
-    "W:NM": [
+    "DG:NWM": [
       {
         "index": 0,
-        "net": "port:W:NM"
+        "net": "port:DG:NWM"
       }
     ],
-    "W:NZ": [
+    "DG:NWZ": [
       {
         "index": 0,
-        "net": "port:W:NZ"
+        "net": "port:DG:NWZ"
       }
     ],
-    "W:NS": [
+    "DG:NWS": [
       {
         "index": 0,
-        "net": "port:W:NS"
+        "net": "port:DG:NWS"
       }
     ],
-    "W:SM": [
+    "DG:NEM": [
       {
         "index": 0,
-        "net": "port:W:SM"
+        "net": "port:DG:NEM"
       }
     ],
-    "W:SZ": [
+    "DG:NEZ": [
       {
         "index": 0,
-        "net": "port:W:SZ"
+        "net": "port:DG:NEZ"
       }
     ],
-    "W:SS": [
+    "DG:NES": [
       {
         "index": 0,
-        "net": "port:W:SS"
+        "net": "port:DG:NES"
       }
     ],
-    "E:NM": [
+    "DG:SWM": [
       {
         "index": 0,
-        "net": "port:E:NM"
+        "net": "port:DG:SWM"
       }
     ],
-    "E:NZ": [
+    "DG:SWZ": [
       {
         "index": 0,
-        "net": "port:E:NZ"
+        "net": "port:DG:SWZ"
       }
     ],
-    "E:NS": [
+    "DG:SWS": [
       {
         "index": 0,
-        "net": "port:E:NS"
+        "net": "port:DG:SWS"
       }
     ],
-    "E:SM": [
+    "DG:SEM": [
       {
         "index": 0,
-        "net": "port:E:SM"
+        "net": "port:DG:SEM"
       }
     ],
-    "E:SZ": [
+    "DG:SEZ": [
       {
         "index": 0,
-        "net": "port:E:SZ"
+        "net": "port:DG:SEZ"
       }
     ],
-    "E:SS": [
+    "DG:SES": [
       {
         "index": 0,
-        "net": "port:E:SS"
+        "net": "port:DG:SES"
       }
     ],
     "E:prefixReq": [
@@ -753,45 +741,19 @@
         "net": "port:decoder_bcd:3"
       }
     ],
-    "explosion:0": [
+    "mine_indicator": [
       {
         "index": 0,
-        "net": "port:explosion:0"
-      }
-    ],
-    "explosion:1": [
-      {
-        "index": 0,
-        "net": "port:explosion:1"
-      }
-    ],
-    "explosion:2": [
-      {
-        "index": 0,
-        "net": "port:explosion:2"
-      }
-    ],
-    "explosion:3": [
-      {
-        "index": 0,
-        "net": "port:explosion:3"
-      }
-    ],
-    "explosion:4": [
-      {
-        "index": 0,
-        "net": "port:explosion:4"
+        "net": "port:mine_indicator"
       }
     ]
   },
   "nodes": [
     {
       "id": "n0",
-      "op": "OR",
+      "op": "NOT",
       "inputs": [
-        "button0",
-        "button1",
-        "button2"
+        "W:present"
       ],
       "output": "n0",
       "scope": "control"
@@ -800,7 +762,7 @@
       "id": "n1",
       "op": "NOT",
       "inputs": [
-        "W:present"
+        "N:present"
       ],
       "output": "n1",
       "scope": "control"
@@ -809,7 +771,7 @@
       "id": "n2",
       "op": "NOT",
       "inputs": [
-        "N:present"
+        "E:present"
       ],
       "output": "n2",
       "scope": "control"
@@ -818,7 +780,7 @@
       "id": "n3",
       "op": "NOT",
       "inputs": [
-        "E:present"
+        "S:present"
       ],
       "output": "n3",
       "scope": "control"
@@ -827,47 +789,48 @@
       "id": "n4",
       "op": "NOT",
       "inputs": [
-        "S:present"
+        "busy"
       ],
       "output": "n4",
       "scope": "control"
     },
     {
       "id": "n5",
-      "op": "NOT",
-      "inputs": [
-        "busy"
-      ],
-      "output": "n5",
-      "scope": "control"
-    },
-    {
-      "id": "n6",
       "op": "AND",
       "inputs": [
-        "n0",
-        "n5"
+        "button0",
+        "n4"
       ],
-      "output": "n6",
+      "output": "n5",
       "scope": "control"
     },
     {
       "id": "request",
       "op": "SET",
       "inputs": [
-        "n6",
-        "n6"
+        "n5",
+        "n5"
       ],
       "output": "request",
+      "scope": "control"
+    },
+    {
+      "id": "n7",
+      "op": "OR",
+      "inputs": [
+        "request",
+        "W:busy",
+        "E:busy"
+      ],
+      "output": "n7",
       "scope": "control"
     },
     {
       "id": "n8",
       "op": "OR",
       "inputs": [
-        "request",
-        "W:busy",
-        "E:busy"
+        "N:busy",
+        "S:busy"
       ],
       "output": "n8",
       "scope": "control"
@@ -876,68 +839,68 @@
       "id": "n9",
       "op": "OR",
       "inputs": [
-        "N:busy",
-        "S:busy"
+        "n7",
+        "n8"
       ],
       "output": "n9",
-      "scope": "control"
-    },
-    {
-      "id": "n10",
-      "op": "OR",
-      "inputs": [
-        "n8",
-        "n9"
-      ],
-      "output": "n10",
       "scope": "control"
     },
     {
       "id": "busy",
       "op": "SET",
       "inputs": [
-        "n10",
-        "n10"
+        "n9",
+        "n9"
       ],
       "output": "busy",
       "scope": "control"
     },
     {
-      "id": "n12",
+      "id": "n11",
       "op": "AND",
       "inputs": [
-        "n1",
+        "n0",
         "N:carryReq"
+      ],
+      "output": "n11",
+      "scope": "control"
+    },
+    {
+      "id": "n12",
+      "op": "OR",
+      "inputs": [
+        "W:prefixReq",
+        "n11"
       ],
       "output": "n12",
       "scope": "control"
     },
     {
       "id": "n13",
-      "op": "OR",
+      "op": "AND",
       "inputs": [
-        "W:prefixReq",
-        "n12"
+        "n0",
+        "N:carryLoss"
       ],
       "output": "n13",
       "scope": "control"
     },
     {
       "id": "n14",
-      "op": "AND",
+      "op": "OR",
       "inputs": [
-        "n1",
-        "N:carryLoss"
+        "W:prefixLoss",
+        "n13"
       ],
       "output": "n14",
       "scope": "control"
     },
     {
       "id": "n15",
-      "op": "OR",
+      "op": "AND",
       "inputs": [
-        "W:prefixLoss",
-        "n14"
+        "n0",
+        "N:present"
       ],
       "output": "n15",
       "scope": "control"
@@ -946,8 +909,8 @@
       "id": "n16",
       "op": "AND",
       "inputs": [
-        "n1",
-        "N:present"
+        "n15",
+        "N:carrySat"
       ],
       "output": "n16",
       "scope": "control"
@@ -956,18 +919,19 @@
       "id": "n17",
       "op": "AND",
       "inputs": [
-        "n16",
-        "N:carrySat"
+        "n0",
+        "n1"
       ],
       "output": "n17",
       "scope": "control"
     },
     {
       "id": "n18",
-      "op": "AND",
+      "op": "OR",
       "inputs": [
-        "n1",
-        "n2"
+        "W:prefixSat",
+        "n16",
+        "n17"
       ],
       "output": "n18",
       "scope": "control"
@@ -976,89 +940,78 @@
       "id": "n19",
       "op": "OR",
       "inputs": [
-        "W:prefixSat",
-        "n17",
-        "n18"
-      ],
-      "output": "n19",
-      "scope": "control"
-    },
-    {
-      "id": "n20",
-      "op": "OR",
-      "inputs": [
         "W:choose",
         "N:choose"
       ],
-      "output": "n20",
+      "output": "n19",
       "scope": "control"
     },
     {
       "id": "phase:choose",
       "op": "SET",
       "inputs": [
-        "n20",
-        "n20"
+        "n19",
+        "n19"
       ],
       "output": "phase:choose",
       "scope": "control"
     },
     {
-      "id": "n22",
+      "id": "n21",
       "op": "OR",
       "inputs": [
         "W:sample",
         "N:sample"
       ],
-      "output": "n22",
+      "output": "n21",
       "scope": "control"
     },
     {
       "id": "phase:sample",
       "op": "SET",
       "inputs": [
-        "n22",
-        "n22"
+        "n21",
+        "n21"
       ],
       "output": "phase:sample",
       "scope": "control"
     },
     {
-      "id": "n24",
+      "id": "n23",
       "op": "OR",
       "inputs": [
         "W:ready",
         "N:ready"
       ],
-      "output": "n24",
+      "output": "n23",
       "scope": "control"
     },
     {
       "id": "phase:ready",
       "op": "SET",
       "inputs": [
-        "n24",
-        "n24"
+        "n23",
+        "n23"
       ],
       "output": "phase:ready",
       "scope": "control"
     },
     {
-      "id": "n26",
+      "id": "n25",
       "op": "OR",
       "inputs": [
         "W:stop",
         "N:stop"
       ],
-      "output": "n26",
+      "output": "n25",
       "scope": "control"
     },
     {
       "id": "phase:stop",
       "op": "SET",
       "inputs": [
-        "n26",
-        "n26"
+        "n25",
+        "n25"
       ],
       "output": "phase:stop",
       "scope": "control"
@@ -1102,10 +1055,20 @@
       "scope": "control"
     },
     {
-      "id": "n32",
+      "id": "n31",
       "op": "NOT",
       "inputs": [
-        "n13"
+        "n12"
+      ],
+      "output": "n31",
+      "scope": "control"
+    },
+    {
+      "id": "n32",
+      "op": "AND",
+      "inputs": [
+        "request",
+        "n31"
       ],
       "output": "n32",
       "scope": "control"
@@ -1114,39 +1077,40 @@
       "id": "n33",
       "op": "AND",
       "inputs": [
-        "request",
-        "n32"
-      ],
-      "output": "n33",
-      "scope": "control"
-    },
-    {
-      "id": "n34",
-      "op": "AND",
-      "inputs": [
-        "n33",
+        "n32",
         "edge:choose"
       ],
-      "output": "n34",
+      "output": "n33",
       "scope": "control"
     },
     {
       "id": "selected",
       "op": "SET",
       "inputs": [
-        "n34",
-        "n34"
+        "n33",
+        "n33"
       ],
       "output": "selected",
+      "scope": "control"
+    },
+    {
+      "id": "n35",
+      "op": "OR",
+      "inputs": [
+        "selected",
+        "DG:NWS",
+        "N:S"
+      ],
+      "output": "n35",
       "scope": "control"
     },
     {
       "id": "n36",
       "op": "OR",
       "inputs": [
-        "selected",
-        "W:NS",
-        "N:S"
+        "DG:NES",
+        "W:S",
+        "E:S"
       ],
       "output": "n36",
       "scope": "control"
@@ -1155,9 +1119,9 @@
       "id": "n37",
       "op": "OR",
       "inputs": [
-        "E:NS",
-        "W:S",
-        "E:S"
+        "DG:SWS",
+        "S:S",
+        "DG:SES"
       ],
       "output": "n37",
       "scope": "control"
@@ -1166,19 +1130,17 @@
       "id": "n38",
       "op": "OR",
       "inputs": [
-        "W:SS",
-        "S:S",
-        "E:SS"
+        "n35",
+        "n36",
+        "n37"
       ],
       "output": "n38",
       "scope": "control"
     },
     {
       "id": "n39",
-      "op": "OR",
+      "op": "NOT",
       "inputs": [
-        "n36",
-        "n37",
         "n38"
       ],
       "output": "n39",
@@ -1186,8 +1148,9 @@
     },
     {
       "id": "n40",
-      "op": "NOT",
+      "op": "AND",
       "inputs": [
+        "edge:sample",
         "n39"
       ],
       "output": "n40",
@@ -1195,9 +1158,8 @@
     },
     {
       "id": "n41",
-      "op": "AND",
+      "op": "RANDOM",
       "inputs": [
-        "edge:sample",
         "n40"
       ],
       "output": "n41",
@@ -1213,70 +1175,71 @@
       "scope": "control"
     },
     {
-      "id": "n43",
-      "op": "RANDOM",
-      "inputs": [
-        "n42"
-      ],
-      "output": "n43",
-      "scope": "control"
-    },
-    {
       "id": "mine",
       "op": "TOGGLE",
       "inputs": [
-        "n43"
+        "n42"
       ],
       "output": "mine",
       "scope": "control"
     },
     {
-      "id": "n45",
+      "id": "n44",
       "op": "XOR",
       "inputs": [
-        "W:NM",
+        "DG:NWM",
         "W:M",
-        "W:SM"
+        "DG:SWM"
+      ],
+      "output": "n44",
+      "scope": "count/west"
+    },
+    {
+      "id": "n45",
+      "op": "MAJ",
+      "inputs": [
+        "DG:NWM",
+        "W:M",
+        "DG:SWM"
       ],
       "output": "n45",
       "scope": "count/west"
     },
     {
       "id": "n46",
-      "op": "MAJ",
+      "op": "XOR",
       "inputs": [
-        "W:NM",
-        "W:M",
-        "W:SM"
+        "DG:NEM",
+        "E:M",
+        "DG:SEM"
       ],
       "output": "n46",
-      "scope": "count/west"
+      "scope": "count/east"
     },
     {
       "id": "n47",
-      "op": "XOR",
+      "op": "MAJ",
       "inputs": [
-        "E:NM",
+        "DG:NEM",
         "E:M",
-        "E:SM"
+        "DG:SEM"
       ],
       "output": "n47",
       "scope": "count/east"
     },
     {
       "id": "n48",
-      "op": "MAJ",
+      "op": "XOR",
       "inputs": [
-        "E:NM",
-        "E:M",
-        "E:SM"
+        "N:M",
+        "S:M"
       ],
       "output": "n48",
-      "scope": "count/east"
+      "scope": "count/vertical"
     },
     {
       "id": "n49",
-      "op": "XOR",
+      "op": "AND",
       "inputs": [
         "N:M",
         "S:M"
@@ -1286,123 +1249,124 @@
     },
     {
       "id": "n50",
-      "op": "AND",
+      "op": "XOR",
       "inputs": [
-        "N:M",
-        "S:M"
+        "n44",
+        "n46"
       ],
       "output": "n50",
-      "scope": "count/vertical"
+      "scope": "count/merge"
     },
     {
       "id": "n51",
-      "op": "XOR",
+      "op": "AND",
       "inputs": [
-        "n45",
-        "n47"
+        "n44",
+        "n46"
       ],
       "output": "n51",
       "scope": "count/merge"
     },
     {
       "id": "n52",
-      "op": "AND",
+      "op": "XOR",
       "inputs": [
         "n45",
-        "n47"
+        "n47",
+        "n51"
       ],
       "output": "n52",
       "scope": "count/merge"
     },
     {
       "id": "n53",
-      "op": "XOR",
+      "op": "MAJ",
       "inputs": [
-        "n46",
-        "n48",
-        "n52"
+        "n45",
+        "n47",
+        "n51"
       ],
       "output": "n53",
       "scope": "count/merge"
     },
     {
       "id": "n54",
-      "op": "MAJ",
+      "op": "XOR",
       "inputs": [
-        "n46",
-        "n48",
-        "n52"
+        "n50",
+        "n48"
       ],
       "output": "n54",
       "scope": "count/merge"
     },
     {
       "id": "n55",
-      "op": "XOR",
+      "op": "AND",
       "inputs": [
-        "n51",
-        "n49"
+        "n50",
+        "n48"
       ],
       "output": "n55",
       "scope": "count/merge"
     },
     {
       "id": "n56",
-      "op": "AND",
+      "op": "XOR",
       "inputs": [
-        "n51",
-        "n49"
+        "n52",
+        "n49",
+        "n55"
       ],
       "output": "n56",
       "scope": "count/merge"
     },
     {
       "id": "n57",
-      "op": "XOR",
+      "op": "MAJ",
       "inputs": [
-        "n53",
-        "n50",
-        "n56"
+        "n52",
+        "n49",
+        "n55"
       ],
       "output": "n57",
       "scope": "count/merge"
     },
     {
       "id": "n58",
-      "op": "MAJ",
+      "op": "XOR",
       "inputs": [
         "n53",
-        "n50",
-        "n56"
+        "n57"
       ],
       "output": "n58",
       "scope": "count/merge"
     },
     {
       "id": "n59",
-      "op": "XOR",
+      "op": "AND",
       "inputs": [
-        "n54",
-        "n58"
+        "n53",
+        "n57"
       ],
       "output": "n59",
       "scope": "count/merge"
     },
     {
       "id": "n60",
-      "op": "AND",
-      "inputs": [
-        "n54",
-        "n58"
-      ],
-      "output": "n60",
-      "scope": "count/merge"
-    },
-    {
-      "id": "n61",
       "op": "NOT",
       "inputs": [
         "mine"
+      ],
+      "output": "n60",
+      "scope": "game"
+    },
+    {
+      "id": "n61",
+      "op": "OR",
+      "inputs": [
+        "n54",
+        "n56",
+        "n58"
       ],
       "output": "n61",
       "scope": "game"
@@ -1411,8 +1375,7 @@
       "id": "n62",
       "op": "OR",
       "inputs": [
-        "n55",
-        "n57",
+        "n61",
         "n59"
       ],
       "output": "n62",
@@ -1420,10 +1383,9 @@
     },
     {
       "id": "n63",
-      "op": "OR",
+      "op": "NOT",
       "inputs": [
-        "n62",
-        "n60"
+        "n62"
       ],
       "output": "n63",
       "scope": "game"
@@ -1432,16 +1394,18 @@
       "id": "n64",
       "op": "NOT",
       "inputs": [
-        "n63"
+        "phase:stop"
       ],
       "output": "n64",
       "scope": "game"
     },
     {
       "id": "n65",
-      "op": "NOT",
+      "op": "OR",
       "inputs": [
-        "phase:stop"
+        "DG:NWZ",
+        "N:Z",
+        "DG:NEZ"
       ],
       "output": "n65",
       "scope": "game"
@@ -1450,9 +1414,9 @@
       "id": "n66",
       "op": "OR",
       "inputs": [
-        "W:NZ",
-        "N:Z",
-        "E:NZ"
+        "W:Z",
+        "E:Z",
+        "DG:SWZ"
       ],
       "output": "n66",
       "scope": "game"
@@ -1461,9 +1425,8 @@
       "id": "n67",
       "op": "OR",
       "inputs": [
-        "W:Z",
-        "E:Z",
-        "W:SZ"
+        "S:Z",
+        "DG:SEZ"
       ],
       "output": "n67",
       "scope": "game"
@@ -1472,18 +1435,18 @@
       "id": "n68",
       "op": "OR",
       "inputs": [
-        "S:Z",
-        "E:SZ"
+        "n65",
+        "n66",
+        "n67"
       ],
       "output": "n68",
       "scope": "game"
     },
     {
       "id": "n69",
-      "op": "OR",
+      "op": "AND",
       "inputs": [
-        "n66",
-        "n67",
+        "n60",
         "n68"
       ],
       "output": "n69",
@@ -1491,9 +1454,10 @@
     },
     {
       "id": "n70",
-      "op": "AND",
+      "op": "OR",
       "inputs": [
-        "n61",
+        "button0",
+        "selected",
         "n69"
       ],
       "output": "n70",
@@ -1501,11 +1465,10 @@
     },
     {
       "id": "n71",
-      "op": "OR",
+      "op": "AND",
       "inputs": [
-        "n0",
-        "selected",
-        "n70"
+        "phase:ready",
+        "n64"
       ],
       "output": "n71",
       "scope": "game"
@@ -1514,38 +1477,38 @@
       "id": "n72",
       "op": "AND",
       "inputs": [
-        "phase:ready",
-        "n65"
+        "n71",
+        "n70"
       ],
       "output": "n72",
-      "scope": "game"
-    },
-    {
-      "id": "n73",
-      "op": "AND",
-      "inputs": [
-        "n72",
-        "n71"
-      ],
-      "output": "n73",
       "scope": "game"
     },
     {
       "id": "opened",
       "op": "SET",
       "inputs": [
-        "n73",
-        "n73"
+        "n72",
+        "n72"
       ],
       "output": "opened",
+      "scope": "game"
+    },
+    {
+      "id": "n74",
+      "op": "AND",
+      "inputs": [
+        "opened",
+        "n60"
+      ],
+      "output": "n74",
       "scope": "game"
     },
     {
       "id": "n75",
       "op": "AND",
       "inputs": [
-        "opened",
-        "n61"
+        "n74",
+        "n63"
       ],
       "output": "n75",
       "scope": "game"
@@ -1554,18 +1517,18 @@
       "id": "n76",
       "op": "AND",
       "inputs": [
-        "n75",
-        "n64"
+        "opened",
+        "mine"
       ],
       "output": "n76",
       "scope": "game"
     },
     {
       "id": "n77",
-      "op": "AND",
+      "op": "OR",
       "inputs": [
-        "opened",
-        "mine"
+        "mine",
+        "opened"
       ],
       "output": "n77",
       "scope": "game"
@@ -1574,28 +1537,28 @@
       "id": "n78",
       "op": "OR",
       "inputs": [
-        "mine",
-        "opened"
+        "request",
+        "n12"
       ],
       "output": "n78",
-      "scope": "game"
+      "scope": "scan"
     },
     {
       "id": "n79",
       "op": "OR",
       "inputs": [
-        "request",
-        "n13"
+        "n76",
+        "n14"
       ],
       "output": "n79",
       "scope": "scan"
     },
     {
       "id": "n80",
-      "op": "OR",
+      "op": "AND",
       "inputs": [
         "n77",
-        "n15"
+        "n18"
       ],
       "output": "n80",
       "scope": "scan"
@@ -1604,130 +1567,120 @@
       "id": "n81",
       "op": "AND",
       "inputs": [
-        "n78",
-        "n19"
+        "n2",
+        "n78"
       ],
       "output": "n81",
       "scope": "scan"
     },
     {
       "id": "n82",
-      "op": "AND",
+      "op": "OR",
       "inputs": [
-        "n3",
-        "n79"
+        "n81",
+        "E:rowReq"
       ],
       "output": "n82",
       "scope": "scan"
     },
     {
       "id": "n83",
-      "op": "OR",
+      "op": "AND",
       "inputs": [
-        "n82",
-        "E:rowReq"
+        "n2",
+        "n79"
       ],
       "output": "n83",
       "scope": "scan"
     },
     {
       "id": "n84",
-      "op": "AND",
+      "op": "OR",
       "inputs": [
-        "n3",
-        "n80"
+        "n83",
+        "E:rowLoss"
       ],
       "output": "n84",
       "scope": "scan"
     },
     {
       "id": "n85",
-      "op": "OR",
+      "op": "AND",
       "inputs": [
-        "n84",
-        "E:rowLoss"
+        "n2",
+        "n80"
       ],
       "output": "n85",
       "scope": "scan"
     },
     {
       "id": "n86",
-      "op": "AND",
+      "op": "OR",
       "inputs": [
-        "n3",
-        "n81"
+        "n85",
+        "E:rowSat"
       ],
       "output": "n86",
       "scope": "scan"
     },
     {
       "id": "n87",
-      "op": "OR",
+      "op": "AND",
       "inputs": [
-        "n86",
-        "E:rowSat"
+        "n3",
+        "n82"
       ],
       "output": "n87",
       "scope": "scan"
     },
     {
       "id": "n88",
-      "op": "AND",
+      "op": "OR",
       "inputs": [
-        "n4",
-        "n83"
+        "n87",
+        "S:totalReq"
       ],
       "output": "n88",
       "scope": "scan"
     },
     {
       "id": "n89",
-      "op": "OR",
+      "op": "AND",
       "inputs": [
-        "n88",
-        "S:totalReq"
+        "n3",
+        "n84"
       ],
       "output": "n89",
       "scope": "scan"
     },
     {
       "id": "n90",
-      "op": "AND",
+      "op": "OR",
       "inputs": [
-        "n4",
-        "n85"
+        "n89",
+        "S:totalLoss"
       ],
       "output": "n90",
       "scope": "scan"
     },
     {
       "id": "n91",
-      "op": "OR",
+      "op": "AND",
       "inputs": [
-        "n90",
-        "S:totalLoss"
+        "n3",
+        "n86"
       ],
       "output": "n91",
       "scope": "scan"
     },
     {
       "id": "n92",
-      "op": "AND",
-      "inputs": [
-        "n4",
-        "n87"
-      ],
-      "output": "n92",
-      "scope": "scan"
-    },
-    {
-      "id": "n93",
       "op": "OR",
       "inputs": [
-        "n92",
+        "n91",
         "S:totalSat"
       ],
-      "output": "n93",
+      "output": "n92",
       "scope": "scan"
     },
     {
@@ -1743,7 +1696,7 @@
       "id": "port:W:Z",
       "op": "BUF",
       "inputs": [
-        "n76"
+        "n75"
       ],
       "output": "port:W:Z",
       "scope": "links"
@@ -1786,7 +1739,7 @@
       "id": "port:E:Z",
       "op": "BUF",
       "inputs": [
-        "n76"
+        "n75"
       ],
       "output": "port:E:Z",
       "scope": "links"
@@ -1829,7 +1782,7 @@
       "id": "port:N:Z",
       "op": "BUF",
       "inputs": [
-        "n76"
+        "n75"
       ],
       "output": "port:N:Z",
       "scope": "links"
@@ -1872,7 +1825,7 @@
       "id": "port:S:Z",
       "op": "BUF",
       "inputs": [
-        "n76"
+        "n75"
       ],
       "output": "port:S:Z",
       "scope": "links"
@@ -1903,118 +1856,118 @@
       "scope": "links"
     },
     {
-      "id": "port:W:NM",
+      "id": "port:DG:NWM",
       "op": "BUF",
       "inputs": [
-        "N:M"
+        "mine"
       ],
-      "output": "port:W:NM",
+      "output": "port:DG:NWM",
       "scope": "links"
     },
     {
-      "id": "port:W:NZ",
+      "id": "port:DG:NWZ",
       "op": "BUF",
       "inputs": [
-        "N:Z"
+        "n75"
       ],
-      "output": "port:W:NZ",
+      "output": "port:DG:NWZ",
       "scope": "links"
     },
     {
-      "id": "port:W:NS",
+      "id": "port:DG:NWS",
       "op": "BUF",
       "inputs": [
-        "N:S"
+        "selected"
       ],
-      "output": "port:W:NS",
+      "output": "port:DG:NWS",
       "scope": "links"
     },
     {
-      "id": "port:W:SM",
+      "id": "port:DG:NEM",
       "op": "BUF",
       "inputs": [
-        "S:M"
+        "mine"
       ],
-      "output": "port:W:SM",
+      "output": "port:DG:NEM",
       "scope": "links"
     },
     {
-      "id": "port:W:SZ",
+      "id": "port:DG:NEZ",
       "op": "BUF",
       "inputs": [
-        "S:Z"
+        "n75"
       ],
-      "output": "port:W:SZ",
+      "output": "port:DG:NEZ",
       "scope": "links"
     },
     {
-      "id": "port:W:SS",
+      "id": "port:DG:NES",
       "op": "BUF",
       "inputs": [
-        "S:S"
+        "selected"
       ],
-      "output": "port:W:SS",
+      "output": "port:DG:NES",
       "scope": "links"
     },
     {
-      "id": "port:E:NM",
+      "id": "port:DG:SWM",
       "op": "BUF",
       "inputs": [
-        "N:M"
+        "mine"
       ],
-      "output": "port:E:NM",
+      "output": "port:DG:SWM",
       "scope": "links"
     },
     {
-      "id": "port:E:NZ",
+      "id": "port:DG:SWZ",
       "op": "BUF",
       "inputs": [
-        "N:Z"
+        "n75"
       ],
-      "output": "port:E:NZ",
+      "output": "port:DG:SWZ",
       "scope": "links"
     },
     {
-      "id": "port:E:NS",
+      "id": "port:DG:SWS",
       "op": "BUF",
       "inputs": [
-        "N:S"
+        "selected"
       ],
-      "output": "port:E:NS",
+      "output": "port:DG:SWS",
       "scope": "links"
     },
     {
-      "id": "port:E:SM",
+      "id": "port:DG:SEM",
       "op": "BUF",
       "inputs": [
-        "S:M"
+        "mine"
       ],
-      "output": "port:E:SM",
+      "output": "port:DG:SEM",
       "scope": "links"
     },
     {
-      "id": "port:E:SZ",
+      "id": "port:DG:SEZ",
       "op": "BUF",
       "inputs": [
-        "S:Z"
+        "n75"
       ],
-      "output": "port:E:SZ",
+      "output": "port:DG:SEZ",
       "scope": "links"
     },
     {
-      "id": "port:E:SS",
+      "id": "port:DG:SES",
       "op": "BUF",
       "inputs": [
-        "S:S"
+        "selected"
       ],
-      "output": "port:E:SS",
+      "output": "port:DG:SES",
       "scope": "links"
     },
     {
       "id": "port:E:prefixReq",
       "op": "BUF",
       "inputs": [
-        "n79"
+        "n78"
       ],
       "output": "port:E:prefixReq",
       "scope": "links"
@@ -2023,7 +1976,7 @@
       "id": "port:W:rowReq",
       "op": "BUF",
       "inputs": [
-        "n83"
+        "n82"
       ],
       "output": "port:W:rowReq",
       "scope": "links"
@@ -2032,7 +1985,7 @@
       "id": "port:S:carryReq",
       "op": "BUF",
       "inputs": [
-        "n83"
+        "n82"
       ],
       "output": "port:S:carryReq",
       "scope": "links"
@@ -2041,7 +1994,7 @@
       "id": "port:N:totalReq",
       "op": "BUF",
       "inputs": [
-        "n89"
+        "n88"
       ],
       "output": "port:N:totalReq",
       "scope": "links"
@@ -2050,7 +2003,7 @@
       "id": "port:E:prefixLoss",
       "op": "BUF",
       "inputs": [
-        "n80"
+        "n79"
       ],
       "output": "port:E:prefixLoss",
       "scope": "links"
@@ -2059,7 +2012,7 @@
       "id": "port:W:rowLoss",
       "op": "BUF",
       "inputs": [
-        "n85"
+        "n84"
       ],
       "output": "port:W:rowLoss",
       "scope": "links"
@@ -2068,7 +2021,7 @@
       "id": "port:S:carryLoss",
       "op": "BUF",
       "inputs": [
-        "n85"
+        "n84"
       ],
       "output": "port:S:carryLoss",
       "scope": "links"
@@ -2077,7 +2030,7 @@
       "id": "port:N:totalLoss",
       "op": "BUF",
       "inputs": [
-        "n91"
+        "n90"
       ],
       "output": "port:N:totalLoss",
       "scope": "links"
@@ -2086,7 +2039,7 @@
       "id": "port:E:prefixSat",
       "op": "BUF",
       "inputs": [
-        "n81"
+        "n80"
       ],
       "output": "port:E:prefixSat",
       "scope": "links"
@@ -2095,7 +2048,7 @@
       "id": "port:W:rowSat",
       "op": "BUF",
       "inputs": [
-        "n87"
+        "n86"
       ],
       "output": "port:W:rowSat",
       "scope": "links"
@@ -2104,7 +2057,7 @@
       "id": "port:S:carrySat",
       "op": "BUF",
       "inputs": [
-        "n87"
+        "n86"
       ],
       "output": "port:S:carrySat",
       "scope": "links"
@@ -2113,7 +2066,7 @@
       "id": "port:N:totalSat",
       "op": "BUF",
       "inputs": [
-        "n93"
+        "n92"
       ],
       "output": "port:N:totalSat",
       "scope": "links"
@@ -2210,25 +2163,6 @@
       "scope": "display/west"
     },
     {
-      "id": "display_safe:east",
-      "op": "NOT",
-      "inputs": [
-        "mine"
-      ],
-      "output": "display_safe:east",
-      "scope": "display/east"
-    },
-    {
-      "id": "display_show:east",
-      "op": "AND",
-      "inputs": [
-        "opened",
-        "display_safe:east"
-      ],
-      "output": "display_show:east",
-      "scope": "display/east"
-    },
-    {
       "id": "segment_enable:0",
       "op": "AND",
       "inputs": [
@@ -2239,29 +2173,29 @@
       "scope": "display/west"
     },
     {
-      "id": "edge_delay:segment0",
+      "id": "segment_delay:0",
       "op": "BUF",
       "inputs": [
         "segment_enable:0"
       ],
-      "output": "edge_delay:segment0",
+      "output": "segment_delay:0",
       "scope": "display/west"
     },
     {
-      "id": "edge:segment0",
+      "id": "segment_pulse:0",
       "op": "XOR",
       "inputs": [
         "segment_enable:0",
-        "edge_delay:segment0"
+        "segment_delay:0"
       ],
-      "output": "edge:segment0",
+      "output": "segment_pulse:0",
       "scope": "display/west"
     },
     {
       "id": "port:display:0",
       "op": "BUF",
       "inputs": [
-        "edge:segment0"
+        "segment_pulse:0"
       ],
       "output": "port:display:0",
       "scope": "display/west"
@@ -2277,29 +2211,29 @@
       "scope": "display/west"
     },
     {
-      "id": "edge_delay:segment1",
+      "id": "segment_delay:1",
       "op": "BUF",
       "inputs": [
         "segment_enable:1"
       ],
-      "output": "edge_delay:segment1",
+      "output": "segment_delay:1",
       "scope": "display/west"
     },
     {
-      "id": "edge:segment1",
+      "id": "segment_pulse:1",
       "op": "XOR",
       "inputs": [
         "segment_enable:1",
-        "edge_delay:segment1"
+        "segment_delay:1"
       ],
-      "output": "edge:segment1",
+      "output": "segment_pulse:1",
       "scope": "display/west"
     },
     {
       "id": "port:display:1",
       "op": "BUF",
       "inputs": [
-        "edge:segment1"
+        "segment_pulse:1"
       ],
       "output": "port:display:1",
       "scope": "display/west"
@@ -2315,29 +2249,29 @@
       "scope": "display/west"
     },
     {
-      "id": "edge_delay:segment2",
+      "id": "segment_delay:2",
       "op": "BUF",
       "inputs": [
         "segment_enable:2"
       ],
-      "output": "edge_delay:segment2",
+      "output": "segment_delay:2",
       "scope": "display/west"
     },
     {
-      "id": "edge:segment2",
+      "id": "segment_pulse:2",
       "op": "XOR",
       "inputs": [
         "segment_enable:2",
-        "edge_delay:segment2"
+        "segment_delay:2"
       ],
-      "output": "edge:segment2",
+      "output": "segment_pulse:2",
       "scope": "display/west"
     },
     {
       "id": "port:display:2",
       "op": "BUF",
       "inputs": [
-        "edge:segment2"
+        "segment_pulse:2"
       ],
       "output": "port:display:2",
       "scope": "display/west"
@@ -2353,29 +2287,29 @@
       "scope": "display/west"
     },
     {
-      "id": "edge_delay:segment3",
+      "id": "segment_delay:3",
       "op": "BUF",
       "inputs": [
         "segment_enable:3"
       ],
-      "output": "edge_delay:segment3",
+      "output": "segment_delay:3",
       "scope": "display/west"
     },
     {
-      "id": "edge:segment3",
+      "id": "segment_pulse:3",
       "op": "XOR",
       "inputs": [
         "segment_enable:3",
-        "edge_delay:segment3"
+        "segment_delay:3"
       ],
-      "output": "edge:segment3",
+      "output": "segment_pulse:3",
       "scope": "display/west"
     },
     {
       "id": "port:display:3",
       "op": "BUF",
       "inputs": [
-        "edge:segment3"
+        "segment_pulse:3"
       ],
       "output": "port:display:3",
       "scope": "display/west"
@@ -2384,36 +2318,36 @@
       "id": "segment_enable:4",
       "op": "AND",
       "inputs": [
-        "display_show:east",
+        "display_show:west",
         "decoder:4"
       ],
       "output": "segment_enable:4",
       "scope": "display/east"
     },
     {
-      "id": "edge_delay:segment4",
+      "id": "segment_delay:4",
       "op": "BUF",
       "inputs": [
         "segment_enable:4"
       ],
-      "output": "edge_delay:segment4",
+      "output": "segment_delay:4",
       "scope": "display/east"
     },
     {
-      "id": "edge:segment4",
+      "id": "segment_pulse:4",
       "op": "XOR",
       "inputs": [
         "segment_enable:4",
-        "edge_delay:segment4"
+        "segment_delay:4"
       ],
-      "output": "edge:segment4",
+      "output": "segment_pulse:4",
       "scope": "display/east"
     },
     {
       "id": "port:display:4",
       "op": "BUF",
       "inputs": [
-        "edge:segment4"
+        "segment_pulse:4"
       ],
       "output": "port:display:4",
       "scope": "display/east"
@@ -2422,36 +2356,36 @@
       "id": "segment_enable:5",
       "op": "AND",
       "inputs": [
-        "display_show:east",
+        "display_show:west",
         "decoder:5"
       ],
       "output": "segment_enable:5",
       "scope": "display/east"
     },
     {
-      "id": "edge_delay:segment5",
+      "id": "segment_delay:5",
       "op": "BUF",
       "inputs": [
         "segment_enable:5"
       ],
-      "output": "edge_delay:segment5",
+      "output": "segment_delay:5",
       "scope": "display/east"
     },
     {
-      "id": "edge:segment5",
+      "id": "segment_pulse:5",
       "op": "XOR",
       "inputs": [
         "segment_enable:5",
-        "edge_delay:segment5"
+        "segment_delay:5"
       ],
-      "output": "edge:segment5",
+      "output": "segment_pulse:5",
       "scope": "display/east"
     },
     {
       "id": "port:display:5",
       "op": "BUF",
       "inputs": [
-        "edge:segment5"
+        "segment_pulse:5"
       ],
       "output": "port:display:5",
       "scope": "display/east"
@@ -2460,36 +2394,36 @@
       "id": "segment_enable:6",
       "op": "AND",
       "inputs": [
-        "display_show:east",
+        "display_show:west",
         "decoder:6"
       ],
       "output": "segment_enable:6",
       "scope": "display/east"
     },
     {
-      "id": "edge_delay:segment6",
+      "id": "segment_delay:6",
       "op": "BUF",
       "inputs": [
         "segment_enable:6"
       ],
-      "output": "edge_delay:segment6",
+      "output": "segment_delay:6",
       "scope": "display/east"
     },
     {
-      "id": "edge:segment6",
+      "id": "segment_pulse:6",
       "op": "XOR",
       "inputs": [
         "segment_enable:6",
-        "edge_delay:segment6"
+        "segment_delay:6"
       ],
-      "output": "edge:segment6",
+      "output": "segment_pulse:6",
       "scope": "display/east"
     },
     {
       "id": "port:display:6",
       "op": "BUF",
       "inputs": [
-        "edge:segment6"
+        "segment_pulse:6"
       ],
       "output": "port:display:6",
       "scope": "display/east"
@@ -2498,7 +2432,7 @@
       "id": "port:decoder_bcd:0",
       "op": "BUF",
       "inputs": [
-        "n55"
+        "n54"
       ],
       "output": "port:decoder_bcd:0",
       "scope": "display/east"
@@ -2507,7 +2441,7 @@
       "id": "port:decoder_bcd:1",
       "op": "BUF",
       "inputs": [
-        "n57"
+        "n56"
       ],
       "output": "port:decoder_bcd:1",
       "scope": "display/east"
@@ -2516,7 +2450,7 @@
       "id": "port:decoder_bcd:2",
       "op": "BUF",
       "inputs": [
-        "n59"
+        "n58"
       ],
       "output": "port:decoder_bcd:2",
       "scope": "display/east"
@@ -2525,54 +2459,28 @@
       "id": "port:decoder_bcd:3",
       "op": "BUF",
       "inputs": [
-        "n60"
+        "n59"
       ],
       "output": "port:decoder_bcd:3",
       "scope": "display/east"
     },
     {
-      "id": "port:explosion:0",
-      "op": "BUF",
+      "id": "n179",
+      "op": "AND",
       "inputs": [
-        "n77"
+        "mine",
+        "n90"
       ],
-      "output": "port:explosion:0",
+      "output": "n179",
       "scope": "display/east"
     },
     {
-      "id": "port:explosion:1",
+      "id": "port:mine_indicator",
       "op": "BUF",
       "inputs": [
-        "n77"
+        "n179"
       ],
-      "output": "port:explosion:1",
-      "scope": "display/east"
-    },
-    {
-      "id": "port:explosion:2",
-      "op": "BUF",
-      "inputs": [
-        "n77"
-      ],
-      "output": "port:explosion:2",
-      "scope": "display/east"
-    },
-    {
-      "id": "port:explosion:3",
-      "op": "BUF",
-      "inputs": [
-        "n77"
-      ],
-      "output": "port:explosion:3",
-      "scope": "display/east"
-    },
-    {
-      "id": "port:explosion:4",
-      "op": "BUF",
-      "inputs": [
-        "n77"
-      ],
-      "output": "port:explosion:4",
+      "output": "port:mine_indicator",
       "scope": "display/east"
     }
   ],
@@ -2584,34 +2492,6 @@
     [
       "edge_delay:sample",
       "edge:sample"
-    ],
-    [
-      "edge_delay:segment0",
-      "edge:segment0"
-    ],
-    [
-      "edge_delay:segment1",
-      "edge:segment1"
-    ],
-    [
-      "edge_delay:segment2",
-      "edge:segment2"
-    ],
-    [
-      "edge_delay:segment3",
-      "edge:segment3"
-    ],
-    [
-      "edge_delay:segment4",
-      "edge:segment4"
-    ],
-    [
-      "edge_delay:segment5",
-      "edge:segment5"
-    ],
-    [
-      "edge_delay:segment6",
-      "edge:segment6"
     ]
   ],
   "_segment_guards": [
@@ -2624,10 +2504,10 @@
     "segment_enable:6"
   ],
   "_count": [
-    "n55",
-    "n57",
-    "n59",
-    "n60"
+    "n54",
+    "n56",
+    "n58",
+    "n59"
   ],
   "_states": {
     "mine": "mine",
@@ -2635,8 +2515,8 @@
     "selected": "selected",
     "request": "request",
     "busy": "busy",
-    "cascade": "n76",
-    "loss": "n77"
+    "cascade": "n75",
+    "loss": "n76"
   },
   "_structured": true
 }

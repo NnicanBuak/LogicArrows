@@ -1,4 +1,4 @@
-"""Routes only the three timer leads outside the modular field."""
+"""Routes timer leads and result-display inputs outside the modular field."""
 from collections import defaultdict
 from logic import ModuleRouter, Cell, bounds_of
 from arrow_layout import destinations

@@ -1,31 +1,60 @@
 {
   "passed": true,
   "criteria": {
+    "configured_save_limit_respected": true,
     "export_hashes_match": true,
     "cell_stays_inside_frame": true,
-    "central_panel_at_most_25": true,
-    "center_button_3x3": true,
+    "central_panel_31x17": true,
+    "center_button_5x5": true,
     "native_mine_toggle": true,
     "native_open_memory": true,
     "supplied_visible_display_preserved": true,
     "all_four_connectors_match": true,
+    "wall_frame_preserves_connectors": true,
     "physical_gate_inputs_match": true,
     "identical_100_copies": true,
     "zero_intercell_connection_wires": true,
     "exhaustive_256_neighbor_masks": true,
+    "all_25_physical_button_squares": true,
     "simulation_evidence_matches_maps": true,
     "board_two_seeds_and_first_positions": true,
-    "win_and_loss_freeze": true
+    "win_and_loss_freeze": true,
+    "native_mine_shape_8x8": true,
+    "number_button_mine_horizontal": true,
+    "indicator_white_padding": true,
+    "defeat_reveals_all_mines_and_freezes_safe_cells": true,
+    "native_alphabet_at_exactly_2x": true,
+    "win_lose_all_pixels_and_startup_blank": true
   },
   "side": 96,
   "target_96_met": true,
   "target_64_met": false,
   "central_panel": [
-    12,
-    22
+    31,
+    17
   ],
-  "arrows": 5748,
-  "board_arrows": 677886,
-  "map_hash": "1d16730146dc977b0afe02f1b48d7ddaa4f934282602b9ff58bd4e9ab5a06c61",
-  "board_map_hash": "46e23300c880fbcec45a8a64dbb866d23cd136a6a21f657c080520f82c86a9ef"
+  "arrows": 5360,
+  "board_arrows": 641283,
+  "map_hash": "b29552c584253ba93331cd0eb00fe4233c6f0d02179f59238157bf721ccd4eda",
+  "board_map_hash": "aa014d0aea9bca0e6074acdd0698c23b720ab35fe72901f11ed0766d5a797f1a",
+  "save_limit_bytes": null,
+  "save_sizes": {
+    "cell-120.save.txt": 21486,
+    "cell-128.save.txt": 24918,
+    "cell-blocks-112.save.txt": 20230,
+    "cell.save.txt": 15249,
+    "minesweeper-10x10.save.txt": 1819781,
+    "minesweeper-3x3.save.txt": 170985,
+    "minesweeper-5x5.save.txt": 461037
+  },
+  "grid": [
+    10,
+    10
+  ],
+  "field_size": [
+    960,
+    960
+  ],
+  "phase_wait_ticks": 66378,
+  "save_bytes": 1819781
 }
