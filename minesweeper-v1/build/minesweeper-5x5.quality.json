@@ -1,0 +1,24 @@
+{
+  "passed": true,
+  "criteria": {
+    "side_96": true,
+    "grid_5x5": true,
+    "identical_25_modules": true,
+    "four_sides_match": true,
+    "zero_connection_wires": true,
+    "verified_cell": true,
+    "verified_board": true
+  },
+  "grid": [
+    5,
+    5
+  ],
+  "cell_side": 96,
+  "field_size": [
+    480,
+    480
+  ],
+  "arrows": 173203,
+  "phase_wait_ticks": 17342,
+  "map_hash": "38cdb11714cb600d5d2ddba9f32cb6980c7fde779575641d65eb111398cdd3ae"
+}

@@ -1,0 +1,9 @@
+{
+  "passed": true,
+  "neighbor_masks": 256,
+  "transition_vectors": 512,
+  "segment_checks": 3584,
+  "checked_samples": 7168,
+  "side": 96,
+  "map_hash": "1d16730146dc977b0afe02f1b48d7ddaa4f934282602b9ff58bd4e9ab5a06c61"
+}

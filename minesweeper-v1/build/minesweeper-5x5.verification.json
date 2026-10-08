@@ -1,0 +1,45 @@
+{
+  "passed": true,
+  "size": 5,
+  "seed": 987654321,
+  "first": 0,
+  "mines": [
+    4,
+    13,
+    17
+  ],
+  "first_opened": [
+    0,
+    1,
+    2,
+    3,
+    5,
+    6,
+    7,
+    8,
+    10,
+    11,
+    12,
+    15,
+    16,
+    20,
+    21
+  ],
+  "scenarios": [
+    "first-safe",
+    "neighbor-counts",
+    "cascade",
+    "closed-blank",
+    "visible-zero",
+    "stacked-connectors",
+    "mine-defeat",
+    "blocked-after-defeat",
+    "victory",
+    "blocked-after-victory"
+  ],
+  "map_hash": "38cdb11714cb600d5d2ddba9f32cb6980c7fde779575641d65eb111398cdd3ae",
+  "measured_outputs": 302,
+  "wait_ticks": 120818,
+  "identical_modules": true,
+  "connection_wires_added": 0
+}

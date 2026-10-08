@@ -1,0 +1,31 @@
+{
+  "passed": true,
+  "criteria": {
+    "export_hashes_match": true,
+    "cell_stays_inside_frame": true,
+    "central_panel_at_most_25": true,
+    "center_button_3x3": true,
+    "native_mine_toggle": true,
+    "native_open_memory": true,
+    "supplied_visible_display_preserved": true,
+    "all_four_connectors_match": true,
+    "physical_gate_inputs_match": true,
+    "identical_100_copies": true,
+    "zero_intercell_connection_wires": true,
+    "exhaustive_256_neighbor_masks": true,
+    "simulation_evidence_matches_maps": true,
+    "board_two_seeds_and_first_positions": true,
+    "win_and_loss_freeze": true
+  },
+  "side": 96,
+  "target_96_met": true,
+  "target_64_met": false,
+  "central_panel": [
+    12,
+    22
+  ],
+  "arrows": 5748,
+  "board_arrows": 677886,
+  "map_hash": "1d16730146dc977b0afe02f1b48d7ddaa4f934282602b9ff58bd4e9ab5a06c61",
+  "board_map_hash": "46e23300c880fbcec45a8a64dbb866d23cd136a6a21f657c080520f82c86a9ef"
+}

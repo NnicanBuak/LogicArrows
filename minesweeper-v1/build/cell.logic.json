@@ -1,0 +1,2642 @@
+{
+  "top": "minesweeper_snap_cell_v1",
+  "inputs": {
+    "W:M": [
+      {
+        "index": 0,
+        "net": "W:M"
+      }
+    ],
+    "W:Z": [
+      {
+        "index": 0,
+        "net": "W:Z"
+      }
+    ],
+    "W:S": [
+      {
+        "index": 0,
+        "net": "W:S"
+      }
+    ],
+    "W:present": [
+      {
+        "index": 0,
+        "net": "W:present"
+      }
+    ],
+    "W:NM": [
+      {
+        "index": 0,
+        "net": "W:NM"
+      }
+    ],
+    "W:NZ": [
+      {
+        "index": 0,
+        "net": "W:NZ"
+      }
+    ],
+    "W:NS": [
+      {
+        "index": 0,
+        "net": "W:NS"
+      }
+    ],
+    "W:SM": [
+      {
+        "index": 0,
+        "net": "W:SM"
+      }
+    ],
+    "W:SZ": [
+      {
+        "index": 0,
+        "net": "W:SZ"
+      }
+    ],
+    "W:SS": [
+      {
+        "index": 0,
+        "net": "W:SS"
+      }
+    ],
+    "W:prefixReq": [
+      {
+        "index": 0,
+        "net": "W:prefixReq"
+      }
+    ],
+    "W:prefixLoss": [
+      {
+        "index": 0,
+        "net": "W:prefixLoss"
+      }
+    ],
+    "W:prefixSat": [
+      {
+        "index": 0,
+        "net": "W:prefixSat"
+      }
+    ],
+    "W:choose": [
+      {
+        "index": 0,
+        "net": "W:choose"
+      }
+    ],
+    "W:sample": [
+      {
+        "index": 0,
+        "net": "W:sample"
+      }
+    ],
+    "W:ready": [
+      {
+        "index": 0,
+        "net": "W:ready"
+      }
+    ],
+    "W:stop": [
+      {
+        "index": 0,
+        "net": "W:stop"
+      }
+    ],
+    "W:busy": [
+      {
+        "index": 0,
+        "net": "W:busy"
+      }
+    ],
+    "E:M": [
+      {
+        "index": 0,
+        "net": "E:M"
+      }
+    ],
+    "E:Z": [
+      {
+        "index": 0,
+        "net": "E:Z"
+      }
+    ],
+    "E:S": [
+      {
+        "index": 0,
+        "net": "E:S"
+      }
+    ],
+    "E:present": [
+      {
+        "index": 0,
+        "net": "E:present"
+      }
+    ],
+    "E:NM": [
+      {
+        "index": 0,
+        "net": "E:NM"
+      }
+    ],
+    "E:NZ": [
+      {
+        "index": 0,
+        "net": "E:NZ"
+      }
+    ],
+    "E:NS": [
+      {
+        "index": 0,
+        "net": "E:NS"
+      }
+    ],
+    "E:SM": [
+      {
+        "index": 0,
+        "net": "E:SM"
+      }
+    ],
+    "E:SZ": [
+      {
+        "index": 0,
+        "net": "E:SZ"
+      }
+    ],
+    "E:SS": [
+      {
+        "index": 0,
+        "net": "E:SS"
+      }
+    ],
+    "E:rowReq": [
+      {
+        "index": 0,
+        "net": "E:rowReq"
+      }
+    ],
+    "E:rowLoss": [
+      {
+        "index": 0,
+        "net": "E:rowLoss"
+      }
+    ],
+    "E:rowSat": [
+      {
+        "index": 0,
+        "net": "E:rowSat"
+      }
+    ],
+    "E:busy": [
+      {
+        "index": 0,
+        "net": "E:busy"
+      }
+    ],
+    "N:M": [
+      {
+        "index": 0,
+        "net": "N:M"
+      }
+    ],
+    "N:Z": [
+      {
+        "index": 0,
+        "net": "N:Z"
+      }
+    ],
+    "N:S": [
+      {
+        "index": 0,
+        "net": "N:S"
+      }
+    ],
+    "N:present": [
+      {
+        "index": 0,
+        "net": "N:present"
+      }
+    ],
+    "N:carryReq": [
+      {
+        "index": 0,
+        "net": "N:carryReq"
+      }
+    ],
+    "N:carryLoss": [
+      {
+        "index": 0,
+        "net": "N:carryLoss"
+      }
+    ],
+    "N:carrySat": [
+      {
+        "index": 0,
+        "net": "N:carrySat"
+      }
+    ],
+    "N:choose": [
+      {
+        "index": 0,
+        "net": "N:choose"
+      }
+    ],
+    "N:sample": [
+      {
+        "index": 0,
+        "net": "N:sample"
+      }
+    ],
+    "N:ready": [
+      {
+        "index": 0,
+        "net": "N:ready"
+      }
+    ],
+    "N:stop": [
+      {
+        "index": 0,
+        "net": "N:stop"
+      }
+    ],
+    "N:busy": [
+      {
+        "index": 0,
+        "net": "N:busy"
+      }
+    ],
+    "S:M": [
+      {
+        "index": 0,
+        "net": "S:M"
+      }
+    ],
+    "S:Z": [
+      {
+        "index": 0,
+        "net": "S:Z"
+      }
+    ],
+    "S:S": [
+      {
+        "index": 0,
+        "net": "S:S"
+      }
+    ],
+    "S:present": [
+      {
+        "index": 0,
+        "net": "S:present"
+      }
+    ],
+    "S:totalReq": [
+      {
+        "index": 0,
+        "net": "S:totalReq"
+      }
+    ],
+    "S:totalLoss": [
+      {
+        "index": 0,
+        "net": "S:totalLoss"
+      }
+    ],
+    "S:totalSat": [
+      {
+        "index": 0,
+        "net": "S:totalSat"
+      }
+    ],
+    "S:busy": [
+      {
+        "index": 0,
+        "net": "S:busy"
+      }
+    ],
+    "button0": [
+      {
+        "index": 0,
+        "net": "button0"
+      }
+    ],
+    "button1": [
+      {
+        "index": 0,
+        "net": "button1"
+      }
+    ],
+    "button2": [
+      {
+        "index": 0,
+        "net": "button2"
+      }
+    ],
+    "decoder:0": [
+      {
+        "index": 0,
+        "net": "decoder:0"
+      }
+    ],
+    "decoder:1": [
+      {
+        "index": 0,
+        "net": "decoder:1"
+      }
+    ],
+    "decoder:2": [
+      {
+        "index": 0,
+        "net": "decoder:2"
+      }
+    ],
+    "decoder:3": [
+      {
+        "index": 0,
+        "net": "decoder:3"
+      }
+    ],
+    "decoder:4": [
+      {
+        "index": 0,
+        "net": "decoder:4"
+      }
+    ],
+    "decoder:5": [
+      {
+        "index": 0,
+        "net": "decoder:5"
+      }
+    ],
+    "decoder:6": [
+      {
+        "index": 0,
+        "net": "decoder:6"
+      }
+    ]
+  },
+  "outputs": {
+    "W:M": [
+      {
+        "index": 0,
+        "net": "port:W:M"
+      }
+    ],
+    "W:Z": [
+      {
+        "index": 0,
+        "net": "port:W:Z"
+      }
+    ],
+    "W:S": [
+      {
+        "index": 0,
+        "net": "port:W:S"
+      }
+    ],
+    "W:present": [
+      {
+        "index": 0,
+        "net": "port:W:present"
+      }
+    ],
+    "W:busy": [
+      {
+        "index": 0,
+        "net": "port:W:busy"
+      }
+    ],
+    "E:M": [
+      {
+        "index": 0,
+        "net": "port:E:M"
+      }
+    ],
+    "E:Z": [
+      {
+        "index": 0,
+        "net": "port:E:Z"
+      }
+    ],
+    "E:S": [
+      {
+        "index": 0,
+        "net": "port:E:S"
+      }
+    ],
+    "E:present": [
+      {
+        "index": 0,
+        "net": "port:E:present"
+      }
+    ],
+    "E:busy": [
+      {
+        "index": 0,
+        "net": "port:E:busy"
+      }
+    ],
+    "N:M": [
+      {
+        "index": 0,
+        "net": "port:N:M"
+      }
+    ],
+    "N:Z": [
+      {
+        "index": 0,
+        "net": "port:N:Z"
+      }
+    ],
+    "N:S": [
+      {
+        "index": 0,
+        "net": "port:N:S"
+      }
+    ],
+    "N:present": [
+      {
+        "index": 0,
+        "net": "port:N:present"
+      }
+    ],
+    "N:busy": [
+      {
+        "index": 0,
+        "net": "port:N:busy"
+      }
+    ],
+    "S:M": [
+      {
+        "index": 0,
+        "net": "port:S:M"
+      }
+    ],
+    "S:Z": [
+      {
+        "index": 0,
+        "net": "port:S:Z"
+      }
+    ],
+    "S:S": [
+      {
+        "index": 0,
+        "net": "port:S:S"
+      }
+    ],
+    "S:present": [
+      {
+        "index": 0,
+        "net": "port:S:present"
+      }
+    ],
+    "S:busy": [
+      {
+        "index": 0,
+        "net": "port:S:busy"
+      }
+    ],
+    "W:NM": [
+      {
+        "index": 0,
+        "net": "port:W:NM"
+      }
+    ],
+    "W:NZ": [
+      {
+        "index": 0,
+        "net": "port:W:NZ"
+      }
+    ],
+    "W:NS": [
+      {
+        "index": 0,
+        "net": "port:W:NS"
+      }
+    ],
+    "W:SM": [
+      {
+        "index": 0,
+        "net": "port:W:SM"
+      }
+    ],
+    "W:SZ": [
+      {
+        "index": 0,
+        "net": "port:W:SZ"
+      }
+    ],
+    "W:SS": [
+      {
+        "index": 0,
+        "net": "port:W:SS"
+      }
+    ],
+    "E:NM": [
+      {
+        "index": 0,
+        "net": "port:E:NM"
+      }
+    ],
+    "E:NZ": [
+      {
+        "index": 0,
+        "net": "port:E:NZ"
+      }
+    ],
+    "E:NS": [
+      {
+        "index": 0,
+        "net": "port:E:NS"
+      }
+    ],
+    "E:SM": [
+      {
+        "index": 0,
+        "net": "port:E:SM"
+      }
+    ],
+    "E:SZ": [
+      {
+        "index": 0,
+        "net": "port:E:SZ"
+      }
+    ],
+    "E:SS": [
+      {
+        "index": 0,
+        "net": "port:E:SS"
+      }
+    ],
+    "E:prefixReq": [
+      {
+        "index": 0,
+        "net": "port:E:prefixReq"
+      }
+    ],
+    "W:rowReq": [
+      {
+        "index": 0,
+        "net": "port:W:rowReq"
+      }
+    ],
+    "S:carryReq": [
+      {
+        "index": 0,
+        "net": "port:S:carryReq"
+      }
+    ],
+    "N:totalReq": [
+      {
+        "index": 0,
+        "net": "port:N:totalReq"
+      }
+    ],
+    "E:prefixLoss": [
+      {
+        "index": 0,
+        "net": "port:E:prefixLoss"
+      }
+    ],
+    "W:rowLoss": [
+      {
+        "index": 0,
+        "net": "port:W:rowLoss"
+      }
+    ],
+    "S:carryLoss": [
+      {
+        "index": 0,
+        "net": "port:S:carryLoss"
+      }
+    ],
+    "N:totalLoss": [
+      {
+        "index": 0,
+        "net": "port:N:totalLoss"
+      }
+    ],
+    "E:prefixSat": [
+      {
+        "index": 0,
+        "net": "port:E:prefixSat"
+      }
+    ],
+    "W:rowSat": [
+      {
+        "index": 0,
+        "net": "port:W:rowSat"
+      }
+    ],
+    "S:carrySat": [
+      {
+        "index": 0,
+        "net": "port:S:carrySat"
+      }
+    ],
+    "N:totalSat": [
+      {
+        "index": 0,
+        "net": "port:N:totalSat"
+      }
+    ],
+    "E:choose": [
+      {
+        "index": 0,
+        "net": "port:E:choose"
+      }
+    ],
+    "S:choose": [
+      {
+        "index": 0,
+        "net": "port:S:choose"
+      }
+    ],
+    "E:sample": [
+      {
+        "index": 0,
+        "net": "port:E:sample"
+      }
+    ],
+    "S:sample": [
+      {
+        "index": 0,
+        "net": "port:S:sample"
+      }
+    ],
+    "E:ready": [
+      {
+        "index": 0,
+        "net": "port:E:ready"
+      }
+    ],
+    "S:ready": [
+      {
+        "index": 0,
+        "net": "port:S:ready"
+      }
+    ],
+    "E:stop": [
+      {
+        "index": 0,
+        "net": "port:E:stop"
+      }
+    ],
+    "S:stop": [
+      {
+        "index": 0,
+        "net": "port:S:stop"
+      }
+    ],
+    "display:0": [
+      {
+        "index": 0,
+        "net": "port:display:0"
+      }
+    ],
+    "display:1": [
+      {
+        "index": 0,
+        "net": "port:display:1"
+      }
+    ],
+    "display:2": [
+      {
+        "index": 0,
+        "net": "port:display:2"
+      }
+    ],
+    "display:3": [
+      {
+        "index": 0,
+        "net": "port:display:3"
+      }
+    ],
+    "display:4": [
+      {
+        "index": 0,
+        "net": "port:display:4"
+      }
+    ],
+    "display:5": [
+      {
+        "index": 0,
+        "net": "port:display:5"
+      }
+    ],
+    "display:6": [
+      {
+        "index": 0,
+        "net": "port:display:6"
+      }
+    ],
+    "decoder_bcd:0": [
+      {
+        "index": 0,
+        "net": "port:decoder_bcd:0"
+      }
+    ],
+    "decoder_bcd:1": [
+      {
+        "index": 0,
+        "net": "port:decoder_bcd:1"
+      }
+    ],
+    "decoder_bcd:2": [
+      {
+        "index": 0,
+        "net": "port:decoder_bcd:2"
+      }
+    ],
+    "decoder_bcd:3": [
+      {
+        "index": 0,
+        "net": "port:decoder_bcd:3"
+      }
+    ],
+    "explosion:0": [
+      {
+        "index": 0,
+        "net": "port:explosion:0"
+      }
+    ],
+    "explosion:1": [
+      {
+        "index": 0,
+        "net": "port:explosion:1"
+      }
+    ],
+    "explosion:2": [
+      {
+        "index": 0,
+        "net": "port:explosion:2"
+      }
+    ],
+    "explosion:3": [
+      {
+        "index": 0,
+        "net": "port:explosion:3"
+      }
+    ],
+    "explosion:4": [
+      {
+        "index": 0,
+        "net": "port:explosion:4"
+      }
+    ]
+  },
+  "nodes": [
+    {
+      "id": "n0",
+      "op": "OR",
+      "inputs": [
+        "button0",
+        "button1",
+        "button2"
+      ],
+      "output": "n0",
+      "scope": "control"
+    },
+    {
+      "id": "n1",
+      "op": "NOT",
+      "inputs": [
+        "W:present"
+      ],
+      "output": "n1",
+      "scope": "control"
+    },
+    {
+      "id": "n2",
+      "op": "NOT",
+      "inputs": [
+        "N:present"
+      ],
+      "output": "n2",
+      "scope": "control"
+    },
+    {
+      "id": "n3",
+      "op": "NOT",
+      "inputs": [
+        "E:present"
+      ],
+      "output": "n3",
+      "scope": "control"
+    },
+    {
+      "id": "n4",
+      "op": "NOT",
+      "inputs": [
+        "S:present"
+      ],
+      "output": "n4",
+      "scope": "control"
+    },
+    {
+      "id": "n5",
+      "op": "NOT",
+      "inputs": [
+        "busy"
+      ],
+      "output": "n5",
+      "scope": "control"
+    },
+    {
+      "id": "n6",
+      "op": "AND",
+      "inputs": [
+        "n0",
+        "n5"
+      ],
+      "output": "n6",
+      "scope": "control"
+    },
+    {
+      "id": "request",
+      "op": "SET",
+      "inputs": [
+        "n6",
+        "n6"
+      ],
+      "output": "request",
+      "scope": "control"
+    },
+    {
+      "id": "n8",
+      "op": "OR",
+      "inputs": [
+        "request",
+        "W:busy",
+        "E:busy"
+      ],
+      "output": "n8",
+      "scope": "control"
+    },
+    {
+      "id": "n9",
+      "op": "OR",
+      "inputs": [
+        "N:busy",
+        "S:busy"
+      ],
+      "output": "n9",
+      "scope": "control"
+    },
+    {
+      "id": "n10",
+      "op": "OR",
+      "inputs": [
+        "n8",
+        "n9"
+      ],
+      "output": "n10",
+      "scope": "control"
+    },
+    {
+      "id": "busy",
+      "op": "SET",
+      "inputs": [
+        "n10",
+        "n10"
+      ],
+      "output": "busy",
+      "scope": "control"
+    },
+    {
+      "id": "n12",
+      "op": "AND",
+      "inputs": [
+        "n1",
+        "N:carryReq"
+      ],
+      "output": "n12",
+      "scope": "control"
+    },
+    {
+      "id": "n13",
+      "op": "OR",
+      "inputs": [
+        "W:prefixReq",
+        "n12"
+      ],
+      "output": "n13",
+      "scope": "control"
+    },
+    {
+      "id": "n14",
+      "op": "AND",
+      "inputs": [
+        "n1",
+        "N:carryLoss"
+      ],
+      "output": "n14",
+      "scope": "control"
+    },
+    {
+      "id": "n15",
+      "op": "OR",
+      "inputs": [
+        "W:prefixLoss",
+        "n14"
+      ],
+      "output": "n15",
+      "scope": "control"
+    },
+    {
+      "id": "n16",
+      "op": "AND",
+      "inputs": [
+        "n1",
+        "N:present"
+      ],
+      "output": "n16",
+      "scope": "control"
+    },
+    {
+      "id": "n17",
+      "op": "AND",
+      "inputs": [
+        "n16",
+        "N:carrySat"
+      ],
+      "output": "n17",
+      "scope": "control"
+    },
+    {
+      "id": "n18",
+      "op": "AND",
+      "inputs": [
+        "n1",
+        "n2"
+      ],
+      "output": "n18",
+      "scope": "control"
+    },
+    {
+      "id": "n19",
+      "op": "OR",
+      "inputs": [
+        "W:prefixSat",
+        "n17",
+        "n18"
+      ],
+      "output": "n19",
+      "scope": "control"
+    },
+    {
+      "id": "n20",
+      "op": "OR",
+      "inputs": [
+        "W:choose",
+        "N:choose"
+      ],
+      "output": "n20",
+      "scope": "control"
+    },
+    {
+      "id": "phase:choose",
+      "op": "SET",
+      "inputs": [
+        "n20",
+        "n20"
+      ],
+      "output": "phase:choose",
+      "scope": "control"
+    },
+    {
+      "id": "n22",
+      "op": "OR",
+      "inputs": [
+        "W:sample",
+        "N:sample"
+      ],
+      "output": "n22",
+      "scope": "control"
+    },
+    {
+      "id": "phase:sample",
+      "op": "SET",
+      "inputs": [
+        "n22",
+        "n22"
+      ],
+      "output": "phase:sample",
+      "scope": "control"
+    },
+    {
+      "id": "n24",
+      "op": "OR",
+      "inputs": [
+        "W:ready",
+        "N:ready"
+      ],
+      "output": "n24",
+      "scope": "control"
+    },
+    {
+      "id": "phase:ready",
+      "op": "SET",
+      "inputs": [
+        "n24",
+        "n24"
+      ],
+      "output": "phase:ready",
+      "scope": "control"
+    },
+    {
+      "id": "n26",
+      "op": "OR",
+      "inputs": [
+        "W:stop",
+        "N:stop"
+      ],
+      "output": "n26",
+      "scope": "control"
+    },
+    {
+      "id": "phase:stop",
+      "op": "SET",
+      "inputs": [
+        "n26",
+        "n26"
+      ],
+      "output": "phase:stop",
+      "scope": "control"
+    },
+    {
+      "id": "edge_delay:choose",
+      "op": "NOT",
+      "inputs": [
+        "phase:choose"
+      ],
+      "output": "edge_delay:choose",
+      "scope": "control"
+    },
+    {
+      "id": "edge:choose",
+      "op": "AND",
+      "inputs": [
+        "phase:choose",
+        "edge_delay:choose"
+      ],
+      "output": "edge:choose",
+      "scope": "control"
+    },
+    {
+      "id": "edge_delay:sample",
+      "op": "NOT",
+      "inputs": [
+        "phase:sample"
+      ],
+      "output": "edge_delay:sample",
+      "scope": "control"
+    },
+    {
+      "id": "edge:sample",
+      "op": "AND",
+      "inputs": [
+        "phase:sample",
+        "edge_delay:sample"
+      ],
+      "output": "edge:sample",
+      "scope": "control"
+    },
+    {
+      "id": "n32",
+      "op": "NOT",
+      "inputs": [
+        "n13"
+      ],
+      "output": "n32",
+      "scope": "control"
+    },
+    {
+      "id": "n33",
+      "op": "AND",
+      "inputs": [
+        "request",
+        "n32"
+      ],
+      "output": "n33",
+      "scope": "control"
+    },
+    {
+      "id": "n34",
+      "op": "AND",
+      "inputs": [
+        "n33",
+        "edge:choose"
+      ],
+      "output": "n34",
+      "scope": "control"
+    },
+    {
+      "id": "selected",
+      "op": "SET",
+      "inputs": [
+        "n34",
+        "n34"
+      ],
+      "output": "selected",
+      "scope": "control"
+    },
+    {
+      "id": "n36",
+      "op": "OR",
+      "inputs": [
+        "selected",
+        "W:NS",
+        "N:S"
+      ],
+      "output": "n36",
+      "scope": "control"
+    },
+    {
+      "id": "n37",
+      "op": "OR",
+      "inputs": [
+        "E:NS",
+        "W:S",
+        "E:S"
+      ],
+      "output": "n37",
+      "scope": "control"
+    },
+    {
+      "id": "n38",
+      "op": "OR",
+      "inputs": [
+        "W:SS",
+        "S:S",
+        "E:SS"
+      ],
+      "output": "n38",
+      "scope": "control"
+    },
+    {
+      "id": "n39",
+      "op": "OR",
+      "inputs": [
+        "n36",
+        "n37",
+        "n38"
+      ],
+      "output": "n39",
+      "scope": "control"
+    },
+    {
+      "id": "n40",
+      "op": "NOT",
+      "inputs": [
+        "n39"
+      ],
+      "output": "n40",
+      "scope": "control"
+    },
+    {
+      "id": "n41",
+      "op": "AND",
+      "inputs": [
+        "edge:sample",
+        "n40"
+      ],
+      "output": "n41",
+      "scope": "control"
+    },
+    {
+      "id": "n42",
+      "op": "RANDOM",
+      "inputs": [
+        "n41"
+      ],
+      "output": "n42",
+      "scope": "control"
+    },
+    {
+      "id": "n43",
+      "op": "RANDOM",
+      "inputs": [
+        "n42"
+      ],
+      "output": "n43",
+      "scope": "control"
+    },
+    {
+      "id": "mine",
+      "op": "TOGGLE",
+      "inputs": [
+        "n43"
+      ],
+      "output": "mine",
+      "scope": "control"
+    },
+    {
+      "id": "n45",
+      "op": "XOR",
+      "inputs": [
+        "W:NM",
+        "W:M",
+        "W:SM"
+      ],
+      "output": "n45",
+      "scope": "count/west"
+    },
+    {
+      "id": "n46",
+      "op": "MAJ",
+      "inputs": [
+        "W:NM",
+        "W:M",
+        "W:SM"
+      ],
+      "output": "n46",
+      "scope": "count/west"
+    },
+    {
+      "id": "n47",
+      "op": "XOR",
+      "inputs": [
+        "E:NM",
+        "E:M",
+        "E:SM"
+      ],
+      "output": "n47",
+      "scope": "count/east"
+    },
+    {
+      "id": "n48",
+      "op": "MAJ",
+      "inputs": [
+        "E:NM",
+        "E:M",
+        "E:SM"
+      ],
+      "output": "n48",
+      "scope": "count/east"
+    },
+    {
+      "id": "n49",
+      "op": "XOR",
+      "inputs": [
+        "N:M",
+        "S:M"
+      ],
+      "output": "n49",
+      "scope": "count/vertical"
+    },
+    {
+      "id": "n50",
+      "op": "AND",
+      "inputs": [
+        "N:M",
+        "S:M"
+      ],
+      "output": "n50",
+      "scope": "count/vertical"
+    },
+    {
+      "id": "n51",
+      "op": "XOR",
+      "inputs": [
+        "n45",
+        "n47"
+      ],
+      "output": "n51",
+      "scope": "count/merge"
+    },
+    {
+      "id": "n52",
+      "op": "AND",
+      "inputs": [
+        "n45",
+        "n47"
+      ],
+      "output": "n52",
+      "scope": "count/merge"
+    },
+    {
+      "id": "n53",
+      "op": "XOR",
+      "inputs": [
+        "n46",
+        "n48",
+        "n52"
+      ],
+      "output": "n53",
+      "scope": "count/merge"
+    },
+    {
+      "id": "n54",
+      "op": "MAJ",
+      "inputs": [
+        "n46",
+        "n48",
+        "n52"
+      ],
+      "output": "n54",
+      "scope": "count/merge"
+    },
+    {
+      "id": "n55",
+      "op": "XOR",
+      "inputs": [
+        "n51",
+        "n49"
+      ],
+      "output": "n55",
+      "scope": "count/merge"
+    },
+    {
+      "id": "n56",
+      "op": "AND",
+      "inputs": [
+        "n51",
+        "n49"
+      ],
+      "output": "n56",
+      "scope": "count/merge"
+    },
+    {
+      "id": "n57",
+      "op": "XOR",
+      "inputs": [
+        "n53",
+        "n50",
+        "n56"
+      ],
+      "output": "n57",
+      "scope": "count/merge"
+    },
+    {
+      "id": "n58",
+      "op": "MAJ",
+      "inputs": [
+        "n53",
+        "n50",
+        "n56"
+      ],
+      "output": "n58",
+      "scope": "count/merge"
+    },
+    {
+      "id": "n59",
+      "op": "XOR",
+      "inputs": [
+        "n54",
+        "n58"
+      ],
+      "output": "n59",
+      "scope": "count/merge"
+    },
+    {
+      "id": "n60",
+      "op": "AND",
+      "inputs": [
+        "n54",
+        "n58"
+      ],
+      "output": "n60",
+      "scope": "count/merge"
+    },
+    {
+      "id": "n61",
+      "op": "NOT",
+      "inputs": [
+        "mine"
+      ],
+      "output": "n61",
+      "scope": "game"
+    },
+    {
+      "id": "n62",
+      "op": "OR",
+      "inputs": [
+        "n55",
+        "n57",
+        "n59"
+      ],
+      "output": "n62",
+      "scope": "game"
+    },
+    {
+      "id": "n63",
+      "op": "OR",
+      "inputs": [
+        "n62",
+        "n60"
+      ],
+      "output": "n63",
+      "scope": "game"
+    },
+    {
+      "id": "n64",
+      "op": "NOT",
+      "inputs": [
+        "n63"
+      ],
+      "output": "n64",
+      "scope": "game"
+    },
+    {
+      "id": "n65",
+      "op": "NOT",
+      "inputs": [
+        "phase:stop"
+      ],
+      "output": "n65",
+      "scope": "game"
+    },
+    {
+      "id": "n66",
+      "op": "OR",
+      "inputs": [
+        "W:NZ",
+        "N:Z",
+        "E:NZ"
+      ],
+      "output": "n66",
+      "scope": "game"
+    },
+    {
+      "id": "n67",
+      "op": "OR",
+      "inputs": [
+        "W:Z",
+        "E:Z",
+        "W:SZ"
+      ],
+      "output": "n67",
+      "scope": "game"
+    },
+    {
+      "id": "n68",
+      "op": "OR",
+      "inputs": [
+        "S:Z",
+        "E:SZ"
+      ],
+      "output": "n68",
+      "scope": "game"
+    },
+    {
+      "id": "n69",
+      "op": "OR",
+      "inputs": [
+        "n66",
+        "n67",
+        "n68"
+      ],
+      "output": "n69",
+      "scope": "game"
+    },
+    {
+      "id": "n70",
+      "op": "AND",
+      "inputs": [
+        "n61",
+        "n69"
+      ],
+      "output": "n70",
+      "scope": "game"
+    },
+    {
+      "id": "n71",
+      "op": "OR",
+      "inputs": [
+        "n0",
+        "selected",
+        "n70"
+      ],
+      "output": "n71",
+      "scope": "game"
+    },
+    {
+      "id": "n72",
+      "op": "AND",
+      "inputs": [
+        "phase:ready",
+        "n65"
+      ],
+      "output": "n72",
+      "scope": "game"
+    },
+    {
+      "id": "n73",
+      "op": "AND",
+      "inputs": [
+        "n72",
+        "n71"
+      ],
+      "output": "n73",
+      "scope": "game"
+    },
+    {
+      "id": "opened",
+      "op": "SET",
+      "inputs": [
+        "n73",
+        "n73"
+      ],
+      "output": "opened",
+      "scope": "game"
+    },
+    {
+      "id": "n75",
+      "op": "AND",
+      "inputs": [
+        "opened",
+        "n61"
+      ],
+      "output": "n75",
+      "scope": "game"
+    },
+    {
+      "id": "n76",
+      "op": "AND",
+      "inputs": [
+        "n75",
+        "n64"
+      ],
+      "output": "n76",
+      "scope": "game"
+    },
+    {
+      "id": "n77",
+      "op": "AND",
+      "inputs": [
+        "opened",
+        "mine"
+      ],
+      "output": "n77",
+      "scope": "game"
+    },
+    {
+      "id": "n78",
+      "op": "OR",
+      "inputs": [
+        "mine",
+        "opened"
+      ],
+      "output": "n78",
+      "scope": "game"
+    },
+    {
+      "id": "n79",
+      "op": "OR",
+      "inputs": [
+        "request",
+        "n13"
+      ],
+      "output": "n79",
+      "scope": "scan"
+    },
+    {
+      "id": "n80",
+      "op": "OR",
+      "inputs": [
+        "n77",
+        "n15"
+      ],
+      "output": "n80",
+      "scope": "scan"
+    },
+    {
+      "id": "n81",
+      "op": "AND",
+      "inputs": [
+        "n78",
+        "n19"
+      ],
+      "output": "n81",
+      "scope": "scan"
+    },
+    {
+      "id": "n82",
+      "op": "AND",
+      "inputs": [
+        "n3",
+        "n79"
+      ],
+      "output": "n82",
+      "scope": "scan"
+    },
+    {
+      "id": "n83",
+      "op": "OR",
+      "inputs": [
+        "n82",
+        "E:rowReq"
+      ],
+      "output": "n83",
+      "scope": "scan"
+    },
+    {
+      "id": "n84",
+      "op": "AND",
+      "inputs": [
+        "n3",
+        "n80"
+      ],
+      "output": "n84",
+      "scope": "scan"
+    },
+    {
+      "id": "n85",
+      "op": "OR",
+      "inputs": [
+        "n84",
+        "E:rowLoss"
+      ],
+      "output": "n85",
+      "scope": "scan"
+    },
+    {
+      "id": "n86",
+      "op": "AND",
+      "inputs": [
+        "n3",
+        "n81"
+      ],
+      "output": "n86",
+      "scope": "scan"
+    },
+    {
+      "id": "n87",
+      "op": "OR",
+      "inputs": [
+        "n86",
+        "E:rowSat"
+      ],
+      "output": "n87",
+      "scope": "scan"
+    },
+    {
+      "id": "n88",
+      "op": "AND",
+      "inputs": [
+        "n4",
+        "n83"
+      ],
+      "output": "n88",
+      "scope": "scan"
+    },
+    {
+      "id": "n89",
+      "op": "OR",
+      "inputs": [
+        "n88",
+        "S:totalReq"
+      ],
+      "output": "n89",
+      "scope": "scan"
+    },
+    {
+      "id": "n90",
+      "op": "AND",
+      "inputs": [
+        "n4",
+        "n85"
+      ],
+      "output": "n90",
+      "scope": "scan"
+    },
+    {
+      "id": "n91",
+      "op": "OR",
+      "inputs": [
+        "n90",
+        "S:totalLoss"
+      ],
+      "output": "n91",
+      "scope": "scan"
+    },
+    {
+      "id": "n92",
+      "op": "AND",
+      "inputs": [
+        "n4",
+        "n87"
+      ],
+      "output": "n92",
+      "scope": "scan"
+    },
+    {
+      "id": "n93",
+      "op": "OR",
+      "inputs": [
+        "n92",
+        "S:totalSat"
+      ],
+      "output": "n93",
+      "scope": "scan"
+    },
+    {
+      "id": "port:W:M",
+      "op": "BUF",
+      "inputs": [
+        "mine"
+      ],
+      "output": "port:W:M",
+      "scope": "links"
+    },
+    {
+      "id": "port:W:Z",
+      "op": "BUF",
+      "inputs": [
+        "n76"
+      ],
+      "output": "port:W:Z",
+      "scope": "links"
+    },
+    {
+      "id": "port:W:S",
+      "op": "BUF",
+      "inputs": [
+        "selected"
+      ],
+      "output": "port:W:S",
+      "scope": "links"
+    },
+    {
+      "id": "port:W:present",
+      "op": "NOT",
+      "inputs": [],
+      "output": "port:W:present",
+      "scope": "links"
+    },
+    {
+      "id": "port:W:busy",
+      "op": "BUF",
+      "inputs": [
+        "busy"
+      ],
+      "output": "port:W:busy",
+      "scope": "links"
+    },
+    {
+      "id": "port:E:M",
+      "op": "BUF",
+      "inputs": [
+        "mine"
+      ],
+      "output": "port:E:M",
+      "scope": "links"
+    },
+    {
+      "id": "port:E:Z",
+      "op": "BUF",
+      "inputs": [
+        "n76"
+      ],
+      "output": "port:E:Z",
+      "scope": "links"
+    },
+    {
+      "id": "port:E:S",
+      "op": "BUF",
+      "inputs": [
+        "selected"
+      ],
+      "output": "port:E:S",
+      "scope": "links"
+    },
+    {
+      "id": "port:E:present",
+      "op": "NOT",
+      "inputs": [],
+      "output": "port:E:present",
+      "scope": "links"
+    },
+    {
+      "id": "port:E:busy",
+      "op": "BUF",
+      "inputs": [
+        "busy"
+      ],
+      "output": "port:E:busy",
+      "scope": "links"
+    },
+    {
+      "id": "port:N:M",
+      "op": "BUF",
+      "inputs": [
+        "mine"
+      ],
+      "output": "port:N:M",
+      "scope": "links"
+    },
+    {
+      "id": "port:N:Z",
+      "op": "BUF",
+      "inputs": [
+        "n76"
+      ],
+      "output": "port:N:Z",
+      "scope": "links"
+    },
+    {
+      "id": "port:N:S",
+      "op": "BUF",
+      "inputs": [
+        "selected"
+      ],
+      "output": "port:N:S",
+      "scope": "links"
+    },
+    {
+      "id": "port:N:present",
+      "op": "NOT",
+      "inputs": [],
+      "output": "port:N:present",
+      "scope": "links"
+    },
+    {
+      "id": "port:N:busy",
+      "op": "BUF",
+      "inputs": [
+        "busy"
+      ],
+      "output": "port:N:busy",
+      "scope": "links"
+    },
+    {
+      "id": "port:S:M",
+      "op": "BUF",
+      "inputs": [
+        "mine"
+      ],
+      "output": "port:S:M",
+      "scope": "links"
+    },
+    {
+      "id": "port:S:Z",
+      "op": "BUF",
+      "inputs": [
+        "n76"
+      ],
+      "output": "port:S:Z",
+      "scope": "links"
+    },
+    {
+      "id": "port:S:S",
+      "op": "BUF",
+      "inputs": [
+        "selected"
+      ],
+      "output": "port:S:S",
+      "scope": "links"
+    },
+    {
+      "id": "port:S:present",
+      "op": "NOT",
+      "inputs": [],
+      "output": "port:S:present",
+      "scope": "links"
+    },
+    {
+      "id": "port:S:busy",
+      "op": "BUF",
+      "inputs": [
+        "busy"
+      ],
+      "output": "port:S:busy",
+      "scope": "links"
+    },
+    {
+      "id": "port:W:NM",
+      "op": "BUF",
+      "inputs": [
+        "N:M"
+      ],
+      "output": "port:W:NM",
+      "scope": "links"
+    },
+    {
+      "id": "port:W:NZ",
+      "op": "BUF",
+      "inputs": [
+        "N:Z"
+      ],
+      "output": "port:W:NZ",
+      "scope": "links"
+    },
+    {
+      "id": "port:W:NS",
+      "op": "BUF",
+      "inputs": [
+        "N:S"
+      ],
+      "output": "port:W:NS",
+      "scope": "links"
+    },
+    {
+      "id": "port:W:SM",
+      "op": "BUF",
+      "inputs": [
+        "S:M"
+      ],
+      "output": "port:W:SM",
+      "scope": "links"
+    },
+    {
+      "id": "port:W:SZ",
+      "op": "BUF",
+      "inputs": [
+        "S:Z"
+      ],
+      "output": "port:W:SZ",
+      "scope": "links"
+    },
+    {
+      "id": "port:W:SS",
+      "op": "BUF",
+      "inputs": [
+        "S:S"
+      ],
+      "output": "port:W:SS",
+      "scope": "links"
+    },
+    {
+      "id": "port:E:NM",
+      "op": "BUF",
+      "inputs": [
+        "N:M"
+      ],
+      "output": "port:E:NM",
+      "scope": "links"
+    },
+    {
+      "id": "port:E:NZ",
+      "op": "BUF",
+      "inputs": [
+        "N:Z"
+      ],
+      "output": "port:E:NZ",
+      "scope": "links"
+    },
+    {
+      "id": "port:E:NS",
+      "op": "BUF",
+      "inputs": [
+        "N:S"
+      ],
+      "output": "port:E:NS",
+      "scope": "links"
+    },
+    {
+      "id": "port:E:SM",
+      "op": "BUF",
+      "inputs": [
+        "S:M"
+      ],
+      "output": "port:E:SM",
+      "scope": "links"
+    },
+    {
+      "id": "port:E:SZ",
+      "op": "BUF",
+      "inputs": [
+        "S:Z"
+      ],
+      "output": "port:E:SZ",
+      "scope": "links"
+    },
+    {
+      "id": "port:E:SS",
+      "op": "BUF",
+      "inputs": [
+        "S:S"
+      ],
+      "output": "port:E:SS",
+      "scope": "links"
+    },
+    {
+      "id": "port:E:prefixReq",
+      "op": "BUF",
+      "inputs": [
+        "n79"
+      ],
+      "output": "port:E:prefixReq",
+      "scope": "links"
+    },
+    {
+      "id": "port:W:rowReq",
+      "op": "BUF",
+      "inputs": [
+        "n83"
+      ],
+      "output": "port:W:rowReq",
+      "scope": "links"
+    },
+    {
+      "id": "port:S:carryReq",
+      "op": "BUF",
+      "inputs": [
+        "n83"
+      ],
+      "output": "port:S:carryReq",
+      "scope": "links"
+    },
+    {
+      "id": "port:N:totalReq",
+      "op": "BUF",
+      "inputs": [
+        "n89"
+      ],
+      "output": "port:N:totalReq",
+      "scope": "links"
+    },
+    {
+      "id": "port:E:prefixLoss",
+      "op": "BUF",
+      "inputs": [
+        "n80"
+      ],
+      "output": "port:E:prefixLoss",
+      "scope": "links"
+    },
+    {
+      "id": "port:W:rowLoss",
+      "op": "BUF",
+      "inputs": [
+        "n85"
+      ],
+      "output": "port:W:rowLoss",
+      "scope": "links"
+    },
+    {
+      "id": "port:S:carryLoss",
+      "op": "BUF",
+      "inputs": [
+        "n85"
+      ],
+      "output": "port:S:carryLoss",
+      "scope": "links"
+    },
+    {
+      "id": "port:N:totalLoss",
+      "op": "BUF",
+      "inputs": [
+        "n91"
+      ],
+      "output": "port:N:totalLoss",
+      "scope": "links"
+    },
+    {
+      "id": "port:E:prefixSat",
+      "op": "BUF",
+      "inputs": [
+        "n81"
+      ],
+      "output": "port:E:prefixSat",
+      "scope": "links"
+    },
+    {
+      "id": "port:W:rowSat",
+      "op": "BUF",
+      "inputs": [
+        "n87"
+      ],
+      "output": "port:W:rowSat",
+      "scope": "links"
+    },
+    {
+      "id": "port:S:carrySat",
+      "op": "BUF",
+      "inputs": [
+        "n87"
+      ],
+      "output": "port:S:carrySat",
+      "scope": "links"
+    },
+    {
+      "id": "port:N:totalSat",
+      "op": "BUF",
+      "inputs": [
+        "n93"
+      ],
+      "output": "port:N:totalSat",
+      "scope": "links"
+    },
+    {
+      "id": "port:E:choose",
+      "op": "BUF",
+      "inputs": [
+        "phase:choose"
+      ],
+      "output": "port:E:choose",
+      "scope": "links"
+    },
+    {
+      "id": "port:S:choose",
+      "op": "BUF",
+      "inputs": [
+        "phase:choose"
+      ],
+      "output": "port:S:choose",
+      "scope": "links"
+    },
+    {
+      "id": "port:E:sample",
+      "op": "BUF",
+      "inputs": [
+        "phase:sample"
+      ],
+      "output": "port:E:sample",
+      "scope": "links"
+    },
+    {
+      "id": "port:S:sample",
+      "op": "BUF",
+      "inputs": [
+        "phase:sample"
+      ],
+      "output": "port:S:sample",
+      "scope": "links"
+    },
+    {
+      "id": "port:E:ready",
+      "op": "BUF",
+      "inputs": [
+        "phase:ready"
+      ],
+      "output": "port:E:ready",
+      "scope": "links"
+    },
+    {
+      "id": "port:S:ready",
+      "op": "BUF",
+      "inputs": [
+        "phase:ready"
+      ],
+      "output": "port:S:ready",
+      "scope": "links"
+    },
+    {
+      "id": "port:E:stop",
+      "op": "BUF",
+      "inputs": [
+        "phase:stop"
+      ],
+      "output": "port:E:stop",
+      "scope": "links"
+    },
+    {
+      "id": "port:S:stop",
+      "op": "BUF",
+      "inputs": [
+        "phase:stop"
+      ],
+      "output": "port:S:stop",
+      "scope": "links"
+    },
+    {
+      "id": "display_safe:west",
+      "op": "NOT",
+      "inputs": [
+        "mine"
+      ],
+      "output": "display_safe:west",
+      "scope": "display/west"
+    },
+    {
+      "id": "display_show:west",
+      "op": "AND",
+      "inputs": [
+        "opened",
+        "display_safe:west"
+      ],
+      "output": "display_show:west",
+      "scope": "display/west"
+    },
+    {
+      "id": "display_safe:east",
+      "op": "NOT",
+      "inputs": [
+        "mine"
+      ],
+      "output": "display_safe:east",
+      "scope": "display/east"
+    },
+    {
+      "id": "display_show:east",
+      "op": "AND",
+      "inputs": [
+        "opened",
+        "display_safe:east"
+      ],
+      "output": "display_show:east",
+      "scope": "display/east"
+    },
+    {
+      "id": "segment_enable:0",
+      "op": "AND",
+      "inputs": [
+        "display_show:west",
+        "decoder:0"
+      ],
+      "output": "segment_enable:0",
+      "scope": "display/west"
+    },
+    {
+      "id": "edge_delay:segment0",
+      "op": "BUF",
+      "inputs": [
+        "segment_enable:0"
+      ],
+      "output": "edge_delay:segment0",
+      "scope": "display/west"
+    },
+    {
+      "id": "edge:segment0",
+      "op": "XOR",
+      "inputs": [
+        "segment_enable:0",
+        "edge_delay:segment0"
+      ],
+      "output": "edge:segment0",
+      "scope": "display/west"
+    },
+    {
+      "id": "port:display:0",
+      "op": "BUF",
+      "inputs": [
+        "edge:segment0"
+      ],
+      "output": "port:display:0",
+      "scope": "display/west"
+    },
+    {
+      "id": "segment_enable:1",
+      "op": "AND",
+      "inputs": [
+        "display_show:west",
+        "decoder:1"
+      ],
+      "output": "segment_enable:1",
+      "scope": "display/west"
+    },
+    {
+      "id": "edge_delay:segment1",
+      "op": "BUF",
+      "inputs": [
+        "segment_enable:1"
+      ],
+      "output": "edge_delay:segment1",
+      "scope": "display/west"
+    },
+    {
+      "id": "edge:segment1",
+      "op": "XOR",
+      "inputs": [
+        "segment_enable:1",
+        "edge_delay:segment1"
+      ],
+      "output": "edge:segment1",
+      "scope": "display/west"
+    },
+    {
+      "id": "port:display:1",
+      "op": "BUF",
+      "inputs": [
+        "edge:segment1"
+      ],
+      "output": "port:display:1",
+      "scope": "display/west"
+    },
+    {
+      "id": "segment_enable:2",
+      "op": "AND",
+      "inputs": [
+        "display_show:west",
+        "decoder:2"
+      ],
+      "output": "segment_enable:2",
+      "scope": "display/west"
+    },
+    {
+      "id": "edge_delay:segment2",
+      "op": "BUF",
+      "inputs": [
+        "segment_enable:2"
+      ],
+      "output": "edge_delay:segment2",
+      "scope": "display/west"
+    },
+    {
+      "id": "edge:segment2",
+      "op": "XOR",
+      "inputs": [
+        "segment_enable:2",
+        "edge_delay:segment2"
+      ],
+      "output": "edge:segment2",
+      "scope": "display/west"
+    },
+    {
+      "id": "port:display:2",
+      "op": "BUF",
+      "inputs": [
+        "edge:segment2"
+      ],
+      "output": "port:display:2",
+      "scope": "display/west"
+    },
+    {
+      "id": "segment_enable:3",
+      "op": "AND",
+      "inputs": [
+        "display_show:west",
+        "decoder:3"
+      ],
+      "output": "segment_enable:3",
+      "scope": "display/west"
+    },
+    {
+      "id": "edge_delay:segment3",
+      "op": "BUF",
+      "inputs": [
+        "segment_enable:3"
+      ],
+      "output": "edge_delay:segment3",
+      "scope": "display/west"
+    },
+    {
+      "id": "edge:segment3",
+      "op": "XOR",
+      "inputs": [
+        "segment_enable:3",
+        "edge_delay:segment3"
+      ],
+      "output": "edge:segment3",
+      "scope": "display/west"
+    },
+    {
+      "id": "port:display:3",
+      "op": "BUF",
+      "inputs": [
+        "edge:segment3"
+      ],
+      "output": "port:display:3",
+      "scope": "display/west"
+    },
+    {
+      "id": "segment_enable:4",
+      "op": "AND",
+      "inputs": [
+        "display_show:east",
+        "decoder:4"
+      ],
+      "output": "segment_enable:4",
+      "scope": "display/east"
+    },
+    {
+      "id": "edge_delay:segment4",
+      "op": "BUF",
+      "inputs": [
+        "segment_enable:4"
+      ],
+      "output": "edge_delay:segment4",
+      "scope": "display/east"
+    },
+    {
+      "id": "edge:segment4",
+      "op": "XOR",
+      "inputs": [
+        "segment_enable:4",
+        "edge_delay:segment4"
+      ],
+      "output": "edge:segment4",
+      "scope": "display/east"
+    },
+    {
+      "id": "port:display:4",
+      "op": "BUF",
+      "inputs": [
+        "edge:segment4"
+      ],
+      "output": "port:display:4",
+      "scope": "display/east"
+    },
+    {
+      "id": "segment_enable:5",
+      "op": "AND",
+      "inputs": [
+        "display_show:east",
+        "decoder:5"
+      ],
+      "output": "segment_enable:5",
+      "scope": "display/east"
+    },
+    {
+      "id": "edge_delay:segment5",
+      "op": "BUF",
+      "inputs": [
+        "segment_enable:5"
+      ],
+      "output": "edge_delay:segment5",
+      "scope": "display/east"
+    },
+    {
+      "id": "edge:segment5",
+      "op": "XOR",
+      "inputs": [
+        "segment_enable:5",
+        "edge_delay:segment5"
+      ],
+      "output": "edge:segment5",
+      "scope": "display/east"
+    },
+    {
+      "id": "port:display:5",
+      "op": "BUF",
+      "inputs": [
+        "edge:segment5"
+      ],
+      "output": "port:display:5",
+      "scope": "display/east"
+    },
+    {
+      "id": "segment_enable:6",
+      "op": "AND",
+      "inputs": [
+        "display_show:east",
+        "decoder:6"
+      ],
+      "output": "segment_enable:6",
+      "scope": "display/east"
+    },
+    {
+      "id": "edge_delay:segment6",
+      "op": "BUF",
+      "inputs": [
+        "segment_enable:6"
+      ],
+      "output": "edge_delay:segment6",
+      "scope": "display/east"
+    },
+    {
+      "id": "edge:segment6",
+      "op": "XOR",
+      "inputs": [
+        "segment_enable:6",
+        "edge_delay:segment6"
+      ],
+      "output": "edge:segment6",
+      "scope": "display/east"
+    },
+    {
+      "id": "port:display:6",
+      "op": "BUF",
+      "inputs": [
+        "edge:segment6"
+      ],
+      "output": "port:display:6",
+      "scope": "display/east"
+    },
+    {
+      "id": "port:decoder_bcd:0",
+      "op": "BUF",
+      "inputs": [
+        "n55"
+      ],
+      "output": "port:decoder_bcd:0",
+      "scope": "display/east"
+    },
+    {
+      "id": "port:decoder_bcd:1",
+      "op": "BUF",
+      "inputs": [
+        "n57"
+      ],
+      "output": "port:decoder_bcd:1",
+      "scope": "display/east"
+    },
+    {
+      "id": "port:decoder_bcd:2",
+      "op": "BUF",
+      "inputs": [
+        "n59"
+      ],
+      "output": "port:decoder_bcd:2",
+      "scope": "display/east"
+    },
+    {
+      "id": "port:decoder_bcd:3",
+      "op": "BUF",
+      "inputs": [
+        "n60"
+      ],
+      "output": "port:decoder_bcd:3",
+      "scope": "display/east"
+    },
+    {
+      "id": "port:explosion:0",
+      "op": "BUF",
+      "inputs": [
+        "n77"
+      ],
+      "output": "port:explosion:0",
+      "scope": "display/east"
+    },
+    {
+      "id": "port:explosion:1",
+      "op": "BUF",
+      "inputs": [
+        "n77"
+      ],
+      "output": "port:explosion:1",
+      "scope": "display/east"
+    },
+    {
+      "id": "port:explosion:2",
+      "op": "BUF",
+      "inputs": [
+        "n77"
+      ],
+      "output": "port:explosion:2",
+      "scope": "display/east"
+    },
+    {
+      "id": "port:explosion:3",
+      "op": "BUF",
+      "inputs": [
+        "n77"
+      ],
+      "output": "port:explosion:3",
+      "scope": "display/east"
+    },
+    {
+      "id": "port:explosion:4",
+      "op": "BUF",
+      "inputs": [
+        "n77"
+      ],
+      "output": "port:explosion:4",
+      "scope": "display/east"
+    }
+  ],
+  "_edges": [
+    [
+      "edge_delay:choose",
+      "edge:choose"
+    ],
+    [
+      "edge_delay:sample",
+      "edge:sample"
+    ],
+    [
+      "edge_delay:segment0",
+      "edge:segment0"
+    ],
+    [
+      "edge_delay:segment1",
+      "edge:segment1"
+    ],
+    [
+      "edge_delay:segment2",
+      "edge:segment2"
+    ],
+    [
+      "edge_delay:segment3",
+      "edge:segment3"
+    ],
+    [
+      "edge_delay:segment4",
+      "edge:segment4"
+    ],
+    [
+      "edge_delay:segment5",
+      "edge:segment5"
+    ],
+    [
+      "edge_delay:segment6",
+      "edge:segment6"
+    ]
+  ],
+  "_segment_guards": [
+    "segment_enable:0",
+    "segment_enable:1",
+    "segment_enable:2",
+    "segment_enable:3",
+    "segment_enable:4",
+    "segment_enable:5",
+    "segment_enable:6"
+  ],
+  "_count": [
+    "n55",
+    "n57",
+    "n59",
+    "n60"
+  ],
+  "_states": {
+    "mine": "mine",
+    "opened": "opened",
+    "selected": "selected",
+    "request": "request",
+    "busy": "busy",
+    "cascade": "n76",
+    "loss": "n77"
+  },
+  "_structured": true
+}
