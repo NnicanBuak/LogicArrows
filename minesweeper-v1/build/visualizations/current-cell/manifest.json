@@ -1,0 +1,692 @@
+{
+  "passed": true,
+  "map_hash": "b2d7f378272115992b12529730fc302a67196c8808673d891c4e35476ee714f7",
+  "images": [
+    {
+      "file": "01-overview.png",
+      "width": 2000,
+      "height": 1800,
+      "caption": "РќР°С‡РЅРёС‚Рµ СЃ request в†’ selected в†’ mine в†’ count в†’ opened в†’ РІС‹РІРѕРґ"
+    },
+    {
+      "file": "02-neighbor-data.png",
+      "width": 2000,
+      "height": 1630,
+      "caption": "РџСЂРёРјРµСЂ: РїСЏС‚СЊ СЃРѕСЃРµРґРЅРёС… РјРёРЅ, СЃРѕР±СЃС‚РІРµРЅРЅР°СЏ РєР»РµС‚РєР° РЅРµ СЃС‡РёС‚Р°РµС‚СЃСЏ"
+    },
+    {
+      "file": "03-control-and-panel.png",
+      "width": 2000,
+      "height": 1820,
+      "caption": "Р’С‹РІРѕРґ Р·Р°РєСЂС‹С‚РѕР№ РєР»РµС‚РєРё РїСѓСЃС‚РѕР№; РѕС‚РєСЂС‹С‚С‹Р№ Р±РµР·РѕРїР°СЃРЅС‹Р№ 0 РІРёРґРµРЅ"
+    },
+    {
+      "file": "04-physical-atlas.png",
+      "width": 2490,
+      "height": 2300,
+      "caption": "23 РІРЅРµС€РЅРёС… РІС…РѕРґР° + 23 РІС‹С…РѕРґР°; РјРµР¶СЃС‚СЂРѕС‡РЅС‹Р№ РєР°РЅР°Р» 6 РІРЅРµ СЂР°РјРєРё"
+    },
+    {
+      "file": "05-gate-catalog.png",
+      "width": 2490,
+      "height": 2350,
+      "caption": "РЎС‚СЂРµР»РєР° В«в†ђВ» РїРµСЂРµС‡РёСЃР»СЏРµС‚ СЂРµР°Р»СЊРЅС‹Рµ РІС…РѕРґС‹ РєР°Р¶РґРѕРіРѕ СЌР»РµРјРµРЅС‚Р° РіСЂР°С„Р°"
+    }
+  ],
+  "ports": [
+    {
+      "direction": "input",
+      "name": "W:MP",
+      "at": [
+        0,
+        22
+      ],
+      "external": true
+    },
+    {
+      "direction": "input",
+      "name": "W:MC",
+      "at": [
+        0,
+        25
+      ],
+      "external": true
+    },
+    {
+      "direction": "input",
+      "name": "W:Z",
+      "at": [
+        0,
+        28
+      ],
+      "external": true
+    },
+    {
+      "direction": "input",
+      "name": "W:S",
+      "at": [
+        0,
+        31
+      ],
+      "external": true
+    },
+    {
+      "direction": "input",
+      "name": "W:prefixReq",
+      "at": [
+        0,
+        4
+      ],
+      "external": true
+    },
+    {
+      "direction": "input",
+      "name": "W:prefixLoss",
+      "at": [
+        0,
+        7
+      ],
+      "external": true
+    },
+    {
+      "direction": "input",
+      "name": "W:prefixSat",
+      "at": [
+        0,
+        10
+      ],
+      "external": true
+    },
+    {
+      "direction": "input",
+      "name": "E:MP",
+      "at": [
+        55,
+        23
+      ],
+      "external": true
+    },
+    {
+      "direction": "input",
+      "name": "E:MC",
+      "at": [
+        55,
+        26
+      ],
+      "external": true
+    },
+    {
+      "direction": "input",
+      "name": "E:Z",
+      "at": [
+        55,
+        29
+      ],
+      "external": true
+    },
+    {
+      "direction": "input",
+      "name": "E:S",
+      "at": [
+        55,
+        32
+      ],
+      "external": true
+    },
+    {
+      "direction": "input",
+      "name": "N:M",
+      "at": [
+        2,
+        0
+      ],
+      "external": true
+    },
+    {
+      "direction": "input",
+      "name": "N:Z",
+      "at": [
+        5,
+        0
+      ],
+      "external": true
+    },
+    {
+      "direction": "input",
+      "name": "N:S",
+      "at": [
+        8,
+        0
+      ],
+      "external": true
+    },
+    {
+      "direction": "input",
+      "name": "N:choose",
+      "at": [
+        40,
+        0
+      ],
+      "external": true
+    },
+    {
+      "direction": "input",
+      "name": "N:sample",
+      "at": [
+        43,
+        0
+      ],
+      "external": true
+    },
+    {
+      "direction": "input",
+      "name": "N:ready",
+      "at": [
+        46,
+        0
+      ],
+      "external": true
+    },
+    {
+      "direction": "input",
+      "name": "N:stop",
+      "at": [
+        49,
+        0
+      ],
+      "external": true
+    },
+    {
+      "direction": "input",
+      "name": "N:busy",
+      "at": [
+        37,
+        0
+      ],
+      "external": true
+    },
+    {
+      "direction": "input",
+      "name": "S:M",
+      "at": [
+        3,
+        63
+      ],
+      "external": true
+    },
+    {
+      "direction": "input",
+      "name": "S:Z",
+      "at": [
+        6,
+        63
+      ],
+      "external": true
+    },
+    {
+      "direction": "input",
+      "name": "S:S",
+      "at": [
+        9,
+        63
+      ],
+      "external": true
+    },
+    {
+      "direction": "input",
+      "name": "button0",
+      "at": [
+        25,
+        32
+      ],
+      "external": false
+    },
+    {
+      "direction": "input",
+      "name": "N:defeat",
+      "at": [
+        52,
+        0
+      ],
+      "external": true
+    },
+    {
+      "direction": "output",
+      "name": "W:Z",
+      "at": [
+        0,
+        29
+      ],
+      "external": true
+    },
+    {
+      "direction": "output",
+      "name": "W:S",
+      "at": [
+        0,
+        32
+      ],
+      "external": true
+    },
+    {
+      "direction": "output",
+      "name": "W:MP",
+      "at": [
+        0,
+        23
+      ],
+      "external": true
+    },
+    {
+      "direction": "output",
+      "name": "W:MC",
+      "at": [
+        0,
+        26
+      ],
+      "external": true
+    },
+    {
+      "direction": "output",
+      "name": "E:Z",
+      "at": [
+        55,
+        28
+      ],
+      "external": true
+    },
+    {
+      "direction": "output",
+      "name": "E:S",
+      "at": [
+        55,
+        31
+      ],
+      "external": true
+    },
+    {
+      "direction": "output",
+      "name": "E:MP",
+      "at": [
+        55,
+        22
+      ],
+      "external": true
+    },
+    {
+      "direction": "output",
+      "name": "E:MC",
+      "at": [
+        55,
+        25
+      ],
+      "external": true
+    },
+    {
+      "direction": "output",
+      "name": "N:M",
+      "at": [
+        3,
+        0
+      ],
+      "external": true
+    },
+    {
+      "direction": "output",
+      "name": "N:Z",
+      "at": [
+        6,
+        0
+      ],
+      "external": true
+    },
+    {
+      "direction": "output",
+      "name": "N:S",
+      "at": [
+        9,
+        0
+      ],
+      "external": true
+    },
+    {
+      "direction": "output",
+      "name": "S:M",
+      "at": [
+        2,
+        63
+      ],
+      "external": true
+    },
+    {
+      "direction": "output",
+      "name": "S:Z",
+      "at": [
+        5,
+        63
+      ],
+      "external": true
+    },
+    {
+      "direction": "output",
+      "name": "S:S",
+      "at": [
+        8,
+        63
+      ],
+      "external": true
+    },
+    {
+      "direction": "output",
+      "name": "S:busy",
+      "at": [
+        37,
+        63
+      ],
+      "external": true
+    },
+    {
+      "direction": "output",
+      "name": "E:prefixReq",
+      "at": [
+        55,
+        4
+      ],
+      "external": true
+    },
+    {
+      "direction": "output",
+      "name": "E:prefixLoss",
+      "at": [
+        55,
+        7
+      ],
+      "external": true
+    },
+    {
+      "direction": "output",
+      "name": "E:prefixSat",
+      "at": [
+        55,
+        10
+      ],
+      "external": true
+    },
+    {
+      "direction": "output",
+      "name": "S:choose",
+      "at": [
+        40,
+        63
+      ],
+      "external": true
+    },
+    {
+      "direction": "output",
+      "name": "S:sample",
+      "at": [
+        43,
+        63
+      ],
+      "external": true
+    },
+    {
+      "direction": "output",
+      "name": "S:ready",
+      "at": [
+        46,
+        63
+      ],
+      "external": true
+    },
+    {
+      "direction": "output",
+      "name": "S:stop",
+      "at": [
+        49,
+        63
+      ],
+      "external": true
+    },
+    {
+      "direction": "output",
+      "name": "mine_indicator",
+      "at": [
+        37,
+        22
+      ],
+      "external": false
+    },
+    {
+      "direction": "output",
+      "name": "S:defeat",
+      "at": [
+        52,
+        63
+      ],
+      "external": true
+    },
+    {
+      "direction": "output",
+      "name": "panel_show",
+      "at": [
+        13,
+        42
+      ],
+      "external": false
+    },
+    {
+      "direction": "output",
+      "name": "panel_raw:0",
+      "at": [
+        15,
+        44
+      ],
+      "external": false
+    },
+    {
+      "direction": "output",
+      "name": "panel_raw:1",
+      "at": [
+        16,
+        44
+      ],
+      "external": false
+    },
+    {
+      "direction": "output",
+      "name": "panel_raw:2",
+      "at": [
+        17,
+        44
+      ],
+      "external": false
+    },
+    {
+      "direction": "output",
+      "name": "panel_raw:3",
+      "at": [
+        18,
+        44
+      ],
+      "external": false
+    },
+    {
+      "direction": "output",
+      "name": "panel_raw:4",
+      "at": [
+        19,
+        44
+      ],
+      "external": false
+    },
+    {
+      "direction": "output",
+      "name": "panel_raw:5",
+      "at": [
+        20,
+        44
+      ],
+      "external": false
+    },
+    {
+      "direction": "output",
+      "name": "panel_raw:6",
+      "at": [
+        21,
+        44
+      ],
+      "external": false
+    }
+  ],
+  "gate_groups": {
+    "A": [
+      "n4",
+      "n5",
+      "request",
+      "edge_delay:choose",
+      "edge:choose",
+      "n31",
+      "n32",
+      "n33",
+      "selected"
+    ],
+    "B": [
+      "edge_delay:sample",
+      "edge:sample",
+      "n38",
+      "n39",
+      "n40",
+      "n41",
+      "mine"
+    ],
+    "C": [
+      "n43",
+      "n44",
+      "n45",
+      "n46",
+      "n51",
+      "n47",
+      "n48",
+      "n49",
+      "n53",
+      "n50",
+      "n55",
+      "n56"
+    ],
+    "D": [
+      "n57",
+      "n60",
+      "n61",
+      "n63",
+      "n64",
+      "n65",
+      "n66",
+      "n67",
+      "opened",
+      "n69",
+      "n70",
+      "n71",
+      "n72"
+    ],
+    "E": [
+      "phase:choose",
+      "phase:sample",
+      "phase:ready",
+      "phase:stop",
+      "port:S:busy",
+      "port:S:choose",
+      "port:S:sample",
+      "port:S:ready",
+      "port:S:stop",
+      "phase:defeat",
+      "port:S:defeat",
+      "phase:busy"
+    ],
+    "F": [
+      "n73",
+      "n74",
+      "n75",
+      "port:E:prefixReq",
+      "port:E:prefixLoss",
+      "port:E:prefixSat"
+    ],
+    "G": [
+      "n86",
+      "n87",
+      "port:W:Z",
+      "port:W:S",
+      "port:W:MP",
+      "port:W:MC",
+      "port:E:Z",
+      "port:E:S",
+      "port:E:MP",
+      "port:E:MC",
+      "port:N:M",
+      "port:N:Z",
+      "port:N:S",
+      "port:S:M",
+      "port:S:Z",
+      "port:S:S"
+    ],
+    "H": [
+      "n129",
+      "n130",
+      "n131",
+      "n132",
+      "n133",
+      "n134",
+      "n135",
+      "n136",
+      "n137",
+      "n138",
+      "n139",
+      "n140",
+      "n141",
+      "n142",
+      "n143",
+      "n144",
+      "n145",
+      "n146",
+      "display_safe:west",
+      "display_show:west",
+      "n177",
+      "port:mine_indicator",
+      "port:panel_show",
+      "port:panel_raw:0",
+      "port:panel_raw:1",
+      "port:panel_raw:2",
+      "port:panel_raw:3",
+      "port:panel_raw:4",
+      "port:panel_raw:5",
+      "port:panel_raw:6"
+    ]
+  },
+  "criteria": {
+    "all_46_external_ports": true,
+    "all_10_internal_ports": true,
+    "all_105_gates": true,
+    "imported_physical_save": true,
+    "current_map_hash": true,
+    "actual_panel": true,
+    "independent_count_example": true,
+    "no_text_box_overflow": true
+  },
+  "source_files": [
+    "build/cell.save.txt",
+    "build/cell.layout.json",
+    "build/cell.logic.json"
+  ],
+  "text_boxes_checked": 83,
+  "visual_review": {
+    "passed": true,
+    "all_images_inspected": true,
+    "repaired": [
+      "text fit",
+      "bottom coordinate ruler spacing",
+      "internal interface labels",
+      "mine glyph boundary",
+      "input-output distinction"
+    ]
+  }
+}

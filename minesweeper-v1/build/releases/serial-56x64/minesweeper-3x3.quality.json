@@ -1,0 +1,33 @@
+{
+  "passed": false,
+  "criteria": {
+    "native_panel_unchanged": false,
+    "button_5x5": true,
+    "mine_8x8_red_splitters": true,
+    "four_memory_cells": true,
+    "all_actual_gate_inputs_match": true,
+    "footprint_respected": true,
+    "identical_modules_and_no_wiring_inside": true,
+    "cell_simulation": true,
+    "every_button_square": true,
+    "game_two_seeds": true,
+    "cold_simultaneous_clicks": true,
+    "hashes_match": true,
+    "shared_counter_timers": true,
+    "stage_gaps_proved": true,
+    "column_phases": true,
+    "total_bus_removed": true,
+    "no_html": true
+  },
+  "width": 56,
+  "height": 64,
+  "area": 3584,
+  "cell_arrows": 2231,
+  "board_arrows": 23188,
+  "map_hash": "fe543912aa460710e448175ee299b85b5df1e828057b6d19eda09c1703eb0a33",
+  "board_map_hash": "84f1f7da5e7944ddfda9357209f036bef798b3cacd106dfaa99229b4e01fabcf",
+  "cell_area_reduction": 2.361607142857143,
+  "cell_arrow_reduction": 2.2958314657104437,
+  "field_arrow_reduction": null,
+  "row_gap": 6
+}

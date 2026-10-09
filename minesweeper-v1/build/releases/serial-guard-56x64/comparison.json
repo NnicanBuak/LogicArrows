@@ -1,0 +1,77 @@
+{
+  "before": {
+    "map_hash": "edbc0f3cab09d77cdc23e5a5ca85a399b11dc29bc6647b9aeb9e40ff69dd4ba5",
+    "size": 10,
+    "first": 55,
+    "seed": 123456789,
+    "cold_ticks": 30000,
+    "events_after_click": {
+      "choose": 70443,
+      "sample": 137312,
+      "ready": 204201,
+      "last_ready": 206685,
+      "selected": 71477,
+      "opened": 205611
+    },
+    "preparation_ticks": 206685,
+    "arrows": 641283,
+    "timer_cells": null,
+    "timer_delay_cells": 99567
+  },
+  "previous_compact": {
+    "map_hash": "376c62b9393e8b020315d865d2dd0625db619b35296104b33478766c692f7155",
+    "size": 10,
+    "first": 55,
+    "seed": 123456789,
+    "cold_ticks": 30000,
+    "events_after_click": {
+      "choose": 9703,
+      "sample": 10846,
+      "ready": 11921,
+      "last_ready": 13406,
+      "selected": 10593,
+      "opened": 12829
+    },
+    "preparation_ticks": 13406,
+    "arrows": 513569,
+    "timer_cells": 120,
+    "timer_delay_cells": 0
+  },
+  "after": {
+    "map_hash": "706d5afd7587d45ecf5cfa72f89ee3cbc5292914605ca10fab97d6902a5f2ba8",
+    "size": 10,
+    "first": 55,
+    "seed": 123456789,
+    "cold_ticks": 30000,
+    "events_after_click": {
+      "choose": 12160,
+      "sample": 13251,
+      "ready": 14328,
+      "last_ready": 15096,
+      "selected": 12631,
+      "opened": 14776
+    },
+    "preparation_ticks": 15096,
+    "arrows": 259972,
+    "timer_cells": 120,
+    "timer_delay_cells": 0
+  },
+  "speedup": 13.69137519872814,
+  "relative_to_previous": 0.8880498145204028,
+  "before_cell": {
+    "width": 92,
+    "height": 92,
+    "arrows": 5122,
+    "hash": "008782f7177bbab80ba1ab4864c5f171ab03081e61bda44b83bdd44b1ac957ad"
+  },
+  "after_cell": {
+    "width": 56,
+    "height": 64,
+    "arrows": 2424,
+    "hash": "b2d7f378272115992b12529730fc302a67196c8808673d891c4e35476ee714f7"
+  },
+  "cell_area_reduction": 2.361607142857143,
+  "cell_arrow_reduction": 2.113036303630363,
+  "field_arrow_reduction": 1.9754781284138292,
+  "limitation": "Same seed 123456789, first 55 and 30000 cold ticks; latency increases relative to 92x92; no proof of minimal size"
+}

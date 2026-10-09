@@ -1,0 +1,1867 @@
+{
+  "passed": true,
+  "criteria": {
+    "fewer_arrows": true,
+    "same_size": true,
+    "button_request_shorter": true,
+    "button_open_shorter": true,
+    "mine_route_no_longer": true,
+    "same_logic": true,
+    "same_button_pixels": true,
+    "same_mine_pixels": true,
+    "native_direction_search": true,
+    "game_checks": true
+  },
+  "before": {
+    "map_hash": "b2d7f378272115992b12529730fc302a67196c8808673d891c4e35476ee714f7",
+    "width": 56,
+    "height": 64,
+    "arrows": 2424,
+    "button_exit": "bottom",
+    "button": {
+      "control": {
+        "ticks": 47,
+        "path": [
+          [
+            25,
+            32
+          ],
+          [
+            25,
+            34
+          ],
+          [
+            25,
+            36
+          ],
+          [
+            25,
+            37
+          ],
+          [
+            27,
+            37
+          ],
+          [
+            29,
+            37
+          ],
+          [
+            31,
+            37
+          ],
+          [
+            33,
+            37
+          ],
+          [
+            35,
+            37
+          ],
+          [
+            37,
+            37
+          ],
+          [
+            38,
+            38
+          ],
+          [
+            40,
+            38
+          ],
+          [
+            42,
+            38
+          ],
+          [
+            44,
+            38
+          ],
+          [
+            44,
+            36
+          ],
+          [
+            45,
+            36
+          ],
+          [
+            46,
+            35
+          ],
+          [
+            48,
+            35
+          ],
+          [
+            48,
+            33
+          ],
+          [
+            48,
+            31
+          ],
+          [
+            47,
+            31
+          ],
+          [
+            47,
+            29
+          ],
+          [
+            46,
+            28
+          ],
+          [
+            45,
+            27
+          ],
+          [
+            45,
+            25
+          ],
+          [
+            45,
+            23
+          ],
+          [
+            45,
+            21
+          ],
+          [
+            45,
+            19
+          ],
+          [
+            44,
+            18
+          ],
+          [
+            42,
+            18
+          ],
+          [
+            42,
+            17
+          ],
+          [
+            41,
+            16
+          ],
+          [
+            39,
+            16
+          ],
+          [
+            37,
+            16
+          ],
+          [
+            35,
+            16
+          ],
+          [
+            33,
+            16
+          ],
+          [
+            31,
+            16
+          ],
+          [
+            31,
+            17
+          ],
+          [
+            31,
+            19
+          ],
+          [
+            29,
+            19
+          ],
+          [
+            27,
+            19
+          ],
+          [
+            25,
+            19
+          ],
+          [
+            24,
+            18
+          ],
+          [
+            24,
+            16
+          ],
+          [
+            23,
+            15
+          ],
+          [
+            23,
+            13
+          ],
+          [
+            23,
+            12
+          ],
+          [
+            23,
+            11
+          ]
+        ]
+      },
+      "game": {
+        "ticks": 44,
+        "path": [
+          [
+            25,
+            32
+          ],
+          [
+            25,
+            34
+          ],
+          [
+            25,
+            36
+          ],
+          [
+            25,
+            37
+          ],
+          [
+            27,
+            37
+          ],
+          [
+            29,
+            37
+          ],
+          [
+            31,
+            37
+          ],
+          [
+            33,
+            37
+          ],
+          [
+            35,
+            37
+          ],
+          [
+            37,
+            37
+          ],
+          [
+            38,
+            38
+          ],
+          [
+            40,
+            38
+          ],
+          [
+            42,
+            38
+          ],
+          [
+            44,
+            38
+          ],
+          [
+            44,
+            36
+          ],
+          [
+            45,
+            36
+          ],
+          [
+            46,
+            35
+          ],
+          [
+            48,
+            35
+          ],
+          [
+            48,
+            33
+          ],
+          [
+            48,
+            31
+          ],
+          [
+            47,
+            31
+          ],
+          [
+            47,
+            29
+          ],
+          [
+            46,
+            28
+          ],
+          [
+            45,
+            27
+          ],
+          [
+            45,
+            25
+          ],
+          [
+            45,
+            23
+          ],
+          [
+            45,
+            21
+          ],
+          [
+            45,
+            19
+          ],
+          [
+            44,
+            18
+          ],
+          [
+            42,
+            18
+          ],
+          [
+            42,
+            17
+          ],
+          [
+            41,
+            16
+          ],
+          [
+            39,
+            16
+          ],
+          [
+            37,
+            16
+          ],
+          [
+            35,
+            16
+          ],
+          [
+            33,
+            16
+          ],
+          [
+            31,
+            16
+          ],
+          [
+            31,
+            17
+          ],
+          [
+            31,
+            19
+          ],
+          [
+            29,
+            19
+          ],
+          [
+            27,
+            19
+          ],
+          [
+            25,
+            19
+          ],
+          [
+            24,
+            18
+          ],
+          [
+            23,
+            18
+          ],
+          [
+            23,
+            17
+          ]
+        ]
+      }
+    },
+    "mine_display": {
+      "ticks": 4,
+      "path": [
+        [
+          38,
+          17
+        ],
+        [
+          38,
+          18
+        ],
+        [
+          37,
+          19
+        ],
+        [
+          37,
+          21
+        ],
+        [
+          37,
+          22
+        ]
+      ]
+    }
+  },
+  "after": {
+    "map_hash": "119360c2d8af2c6e586f6ebdb01dca0dc9c9226674b5a5c3ca0dc366b3897555",
+    "width": 56,
+    "height": 64,
+    "arrows": 2164,
+    "button_exit": "top",
+    "button": {
+      "control": {
+        "ticks": 7,
+        "path": [
+          [
+            25,
+            21
+          ],
+          [
+            25,
+            19
+          ],
+          [
+            25,
+            17
+          ],
+          [
+            25,
+            15
+          ],
+          [
+            23,
+            15
+          ],
+          [
+            23,
+            13
+          ],
+          [
+            23,
+            12
+          ],
+          [
+            23,
+            11
+          ]
+        ]
+      },
+      "game": {
+        "ticks": 4,
+        "path": [
+          [
+            25,
+            21
+          ],
+          [
+            25,
+            19
+          ],
+          [
+            24,
+            19
+          ],
+          [
+            23,
+            18
+          ],
+          [
+            23,
+            17
+          ]
+        ]
+      }
+    },
+    "mine_display": {
+      "ticks": 4,
+      "path": [
+        [
+          38,
+          17
+        ],
+        [
+          38,
+          18
+        ],
+        [
+          37,
+          19
+        ],
+        [
+          37,
+          21
+        ],
+        [
+          37,
+          22
+        ]
+      ]
+    }
+  },
+  "compiler": {
+    "backend": "ArrowsHDL.route_optimization",
+    "before_cells": 2345,
+    "after_cells": 2165,
+    "passes": 2,
+    "trials": 634,
+    "rejected_trials": 277,
+    "accepted_nets": 77,
+    "changes": [
+      {
+        "net": "E:MC",
+        "before": [
+          2345,
+          2344,
+          79
+        ],
+        "after": [
+          2342,
+          2341,
+          79
+        ],
+        "rotation_before": null,
+        "rotation_after": null,
+        "rerouted_neighbors": []
+      },
+      {
+        "net": "E:S",
+        "before": [
+          2342,
+          2341,
+          79
+        ],
+        "after": [
+          2339,
+          2338,
+          79
+        ],
+        "rotation_before": null,
+        "rotation_after": null,
+        "rerouted_neighbors": []
+      },
+      {
+        "net": "N:S",
+        "before": [
+          2339,
+          2338,
+          79
+        ],
+        "after": [
+          2338,
+          2336,
+          79
+        ],
+        "rotation_before": null,
+        "rotation_after": null,
+        "rerouted_neighbors": []
+      },
+      {
+        "net": "N:Z",
+        "before": [
+          2338,
+          2336,
+          79
+        ],
+        "after": [
+          2337,
+          2334,
+          79
+        ],
+        "rotation_before": null,
+        "rotation_after": null,
+        "rerouted_neighbors": []
+      },
+      {
+        "net": "N:busy",
+        "before": [
+          2337,
+          2334,
+          79
+        ],
+        "after": [
+          2336,
+          2333,
+          79
+        ],
+        "rotation_before": null,
+        "rotation_after": null,
+        "rerouted_neighbors": []
+      },
+      {
+        "net": "S:S",
+        "before": [
+          2336,
+          2333,
+          79
+        ],
+        "after": [
+          2334,
+          2330,
+          79
+        ],
+        "rotation_before": null,
+        "rotation_after": null,
+        "rerouted_neighbors": []
+      },
+      {
+        "net": "W:MC",
+        "before": [
+          2334,
+          2330,
+          79
+        ],
+        "after": [
+          2327,
+          2323,
+          79
+        ],
+        "rotation_before": null,
+        "rotation_after": null,
+        "rerouted_neighbors": []
+      },
+      {
+        "net": "W:prefixLoss",
+        "before": [
+          2327,
+          2323,
+          79
+        ],
+        "after": [
+          2323,
+          2319,
+          79
+        ],
+        "rotation_before": null,
+        "rotation_after": null,
+        "rerouted_neighbors": []
+      },
+      {
+        "net": "W:prefixReq",
+        "before": [
+          2323,
+          2319,
+          79
+        ],
+        "after": [
+          2322,
+          2318,
+          79
+        ],
+        "rotation_before": null,
+        "rotation_after": null,
+        "rerouted_neighbors": []
+      },
+      {
+        "net": "W:prefixSat",
+        "before": [
+          2322,
+          2318,
+          79
+        ],
+        "after": [
+          2317,
+          2313,
+          79
+        ],
+        "rotation_before": null,
+        "rotation_after": null,
+        "rerouted_neighbors": []
+      },
+      {
+        "net": "button0",
+        "before": [
+          2317,
+          2313,
+          79
+        ],
+        "after": [
+          2316,
+          2312,
+          79
+        ],
+        "rotation_before": null,
+        "rotation_after": null,
+        "rerouted_neighbors": []
+      },
+      {
+        "net": "display_show:west",
+        "before": [
+          2316,
+          2312,
+          79
+        ],
+        "after": [
+          2311,
+          2307,
+          79
+        ],
+        "rotation_before": 2,
+        "rotation_after": 2,
+        "rerouted_neighbors": []
+      },
+      {
+        "net": "edge:sample",
+        "before": [
+          2311,
+          2307,
+          79
+        ],
+        "after": [
+          2309,
+          2305,
+          79
+        ],
+        "rotation_before": 1,
+        "rotation_after": 0,
+        "rerouted_neighbors": []
+      },
+      {
+        "net": "mine",
+        "before": [
+          2309,
+          2305,
+          79
+        ],
+        "after": [
+          2305,
+          2288,
+          75
+        ],
+        "rotation_before": null,
+        "rotation_after": null,
+        "rerouted_neighbors": []
+      },
+      {
+        "net": "n129",
+        "before": [
+          2305,
+          2288,
+          75
+        ],
+        "after": [
+          2303,
+          2288,
+          75
+        ],
+        "rotation_before": 1,
+        "rotation_after": 2,
+        "rerouted_neighbors": [
+          "n51"
+        ]
+      },
+      {
+        "net": "n131",
+        "before": [
+          2303,
+          2288,
+          75
+        ],
+        "after": [
+          2302,
+          2285,
+          75
+        ],
+        "rotation_before": 0,
+        "rotation_after": 1,
+        "rerouted_neighbors": []
+      },
+      {
+        "net": "n133",
+        "before": [
+          2302,
+          2285,
+          75
+        ],
+        "after": [
+          2301,
+          2284,
+          75
+        ],
+        "rotation_before": 0,
+        "rotation_after": 0,
+        "rerouted_neighbors": []
+      },
+      {
+        "net": "n135",
+        "before": [
+          2301,
+          2284,
+          75
+        ],
+        "after": [
+          2297,
+          2279,
+          75
+        ],
+        "rotation_before": 0,
+        "rotation_after": 3,
+        "rerouted_neighbors": [
+          "n55"
+        ]
+      },
+      {
+        "net": "n136",
+        "before": [
+          2297,
+          2279,
+          75
+        ],
+        "after": [
+          2296,
+          2278,
+          75
+        ],
+        "rotation_before": null,
+        "rotation_after": null,
+        "rerouted_neighbors": []
+      },
+      {
+        "net": "n139",
+        "before": [
+          2296,
+          2278,
+          75
+        ],
+        "after": [
+          2294,
+          2276,
+          75
+        ],
+        "rotation_before": null,
+        "rotation_after": null,
+        "rerouted_neighbors": []
+      },
+      {
+        "net": "n141",
+        "before": [
+          2294,
+          2276,
+          75
+        ],
+        "after": [
+          2292,
+          2271,
+          75
+        ],
+        "rotation_before": 0,
+        "rotation_after": 1,
+        "rerouted_neighbors": [
+          "n129"
+        ]
+      },
+      {
+        "net": "n144",
+        "before": [
+          2292,
+          2271,
+          75
+        ],
+        "after": [
+          2288,
+          2267,
+          75
+        ],
+        "rotation_before": 3,
+        "rotation_after": 0,
+        "rerouted_neighbors": [
+          "E:MP"
+        ]
+      },
+      {
+        "net": "n146",
+        "before": [
+          2288,
+          2267,
+          75
+        ],
+        "after": [
+          2284,
+          2263,
+          75
+        ],
+        "rotation_before": null,
+        "rotation_after": null,
+        "rerouted_neighbors": []
+      },
+      {
+        "net": "n32",
+        "before": [
+          2284,
+          2263,
+          75
+        ],
+        "after": [
+          2284,
+          2261,
+          75
+        ],
+        "rotation_before": 2,
+        "rotation_after": 0,
+        "rerouted_neighbors": [
+          "request"
+        ]
+      },
+      {
+        "net": "n39",
+        "before": [
+          2284,
+          2261,
+          75
+        ],
+        "after": [
+          2283,
+          2260,
+          75
+        ],
+        "rotation_before": 3,
+        "rotation_after": 0,
+        "rerouted_neighbors": [
+          "n45"
+        ]
+      },
+      {
+        "net": "n41",
+        "before": [
+          2283,
+          2260,
+          75
+        ],
+        "after": [
+          2279,
+          2256,
+          75
+        ],
+        "rotation_before": 2,
+        "rotation_after": 3,
+        "rerouted_neighbors": [
+          "selected"
+        ]
+      },
+      {
+        "net": "n43",
+        "before": [
+          2279,
+          2256,
+          75
+        ],
+        "after": [
+          2274,
+          2251,
+          75
+        ],
+        "rotation_before": 1,
+        "rotation_after": 1,
+        "rerouted_neighbors": []
+      },
+      {
+        "net": "n44",
+        "before": [
+          2274,
+          2251,
+          75
+        ],
+        "after": [
+          2272,
+          2249,
+          75
+        ],
+        "rotation_before": 1,
+        "rotation_after": 1,
+        "rerouted_neighbors": []
+      },
+      {
+        "net": "n45",
+        "before": [
+          2272,
+          2249,
+          75
+        ],
+        "after": [
+          2270,
+          2246,
+          75
+        ],
+        "rotation_before": 1,
+        "rotation_after": 3,
+        "rerouted_neighbors": []
+      },
+      {
+        "net": "n46",
+        "before": [
+          2270,
+          2246,
+          75
+        ],
+        "after": [
+          2267,
+          2242,
+          75
+        ],
+        "rotation_before": 1,
+        "rotation_after": 1,
+        "rerouted_neighbors": []
+      },
+      {
+        "net": "n48",
+        "before": [
+          2267,
+          2242,
+          75
+        ],
+        "after": [
+          2266,
+          2241,
+          75
+        ],
+        "rotation_before": 1,
+        "rotation_after": 3,
+        "rerouted_neighbors": []
+      },
+      {
+        "net": "n49",
+        "before": [
+          2266,
+          2241,
+          75
+        ],
+        "after": [
+          2265,
+          2240,
+          75
+        ],
+        "rotation_before": 1,
+        "rotation_after": 1,
+        "rerouted_neighbors": []
+      },
+      {
+        "net": "n5",
+        "before": [
+          2265,
+          2240,
+          75
+        ],
+        "after": [
+          2263,
+          2238,
+          75
+        ],
+        "rotation_before": 3,
+        "rotation_after": 0,
+        "rerouted_neighbors": []
+      },
+      {
+        "net": "n50",
+        "before": [
+          2263,
+          2238,
+          75
+        ],
+        "after": [
+          2261,
+          2236,
+          75
+        ],
+        "rotation_before": 1,
+        "rotation_after": 1,
+        "rerouted_neighbors": []
+      },
+      {
+        "net": "n55",
+        "before": [
+          2261,
+          2236,
+          75
+        ],
+        "after": [
+          2260,
+          2230,
+          75
+        ],
+        "rotation_before": 1,
+        "rotation_after": 3,
+        "rerouted_neighbors": []
+      },
+      {
+        "net": "n56",
+        "before": [
+          2260,
+          2230,
+          75
+        ],
+        "after": [
+          2260,
+          2227,
+          75
+        ],
+        "rotation_before": 1,
+        "rotation_after": 1,
+        "rerouted_neighbors": []
+      },
+      {
+        "net": "n57",
+        "before": [
+          2260,
+          2227,
+          75
+        ],
+        "after": [
+          2258,
+          2225,
+          75
+        ],
+        "rotation_before": 3,
+        "rotation_after": 1,
+        "rerouted_neighbors": [
+          "E:S"
+        ]
+      },
+      {
+        "net": "n60",
+        "before": [
+          2258,
+          2225,
+          75
+        ],
+        "after": [
+          2256,
+          2223,
+          75
+        ],
+        "rotation_before": 1,
+        "rotation_after": 2,
+        "rerouted_neighbors": []
+      },
+      {
+        "net": "n61",
+        "before": [
+          2256,
+          2223,
+          75
+        ],
+        "after": [
+          2254,
+          2221,
+          75
+        ],
+        "rotation_before": 3,
+        "rotation_after": 1,
+        "rerouted_neighbors": [
+          "E:Z"
+        ]
+      },
+      {
+        "net": "n69",
+        "before": [
+          2254,
+          2221,
+          75
+        ],
+        "after": [
+          2251,
+          2218,
+          75
+        ],
+        "rotation_before": 3,
+        "rotation_after": 0,
+        "rerouted_neighbors": [
+          "selected"
+        ]
+      },
+      {
+        "net": "n70",
+        "before": [
+          2251,
+          2218,
+          75
+        ],
+        "after": [
+          2243,
+          2210,
+          75
+        ],
+        "rotation_before": 0,
+        "rotation_after": 0,
+        "rerouted_neighbors": []
+      },
+      {
+        "net": "n71",
+        "before": [
+          2243,
+          2210,
+          75
+        ],
+        "after": [
+          2242,
+          2209,
+          75
+        ],
+        "rotation_before": 0,
+        "rotation_after": 1,
+        "rerouted_neighbors": []
+      },
+      {
+        "net": "n73",
+        "before": [
+          2242,
+          2209,
+          75
+        ],
+        "after": [
+          2239,
+          2206,
+          75
+        ],
+        "rotation_before": null,
+        "rotation_after": null,
+        "rerouted_neighbors": []
+      },
+      {
+        "net": "n86",
+        "before": [
+          2239,
+          2206,
+          75
+        ],
+        "after": [
+          2238,
+          2205,
+          75
+        ],
+        "rotation_before": null,
+        "rotation_after": null,
+        "rerouted_neighbors": []
+      },
+      {
+        "net": "n87",
+        "before": [
+          2238,
+          2205,
+          75
+        ],
+        "after": [
+          2236,
+          2203,
+          75
+        ],
+        "rotation_before": null,
+        "rotation_after": null,
+        "rerouted_neighbors": []
+      },
+      {
+        "net": "opened",
+        "before": [
+          2236,
+          2203,
+          75
+        ],
+        "after": [
+          2235,
+          2202,
+          75
+        ],
+        "rotation_before": null,
+        "rotation_after": null,
+        "rerouted_neighbors": []
+      },
+      {
+        "net": "phase:choose",
+        "before": [
+          2235,
+          2202,
+          75
+        ],
+        "after": [
+          2234,
+          2201,
+          75
+        ],
+        "rotation_before": null,
+        "rotation_after": null,
+        "rerouted_neighbors": []
+      },
+      {
+        "net": "phase:defeat",
+        "before": [
+          2234,
+          2201,
+          75
+        ],
+        "after": [
+          2232,
+          2199,
+          75
+        ],
+        "rotation_before": null,
+        "rotation_after": null,
+        "rerouted_neighbors": []
+      },
+      {
+        "net": "phase:ready",
+        "before": [
+          2232,
+          2199,
+          75
+        ],
+        "after": [
+          2225,
+          2192,
+          75
+        ],
+        "rotation_before": null,
+        "rotation_after": null,
+        "rerouted_neighbors": []
+      },
+      {
+        "net": "phase:sample",
+        "before": [
+          2225,
+          2192,
+          75
+        ],
+        "after": [
+          2221,
+          2187,
+          75
+        ],
+        "rotation_before": null,
+        "rotation_after": null,
+        "rerouted_neighbors": []
+      },
+      {
+        "net": "request",
+        "before": [
+          2221,
+          2187,
+          75
+        ],
+        "after": [
+          2220,
+          2187,
+          75
+        ],
+        "rotation_before": null,
+        "rotation_after": null,
+        "rerouted_neighbors": []
+      },
+      {
+        "net": "selected",
+        "before": [
+          2220,
+          2187,
+          75
+        ],
+        "after": [
+          2218,
+          2185,
+          75
+        ],
+        "rotation_before": null,
+        "rotation_after": null,
+        "rerouted_neighbors": []
+      },
+      {
+        "net": "E:MC",
+        "before": [
+          2218,
+          2185,
+          75
+        ],
+        "after": [
+          2217,
+          2184,
+          75
+        ],
+        "rotation_before": null,
+        "rotation_after": null,
+        "rerouted_neighbors": []
+      },
+      {
+        "net": "E:S",
+        "before": [
+          2217,
+          2184,
+          75
+        ],
+        "after": [
+          2214,
+          2181,
+          75
+        ],
+        "rotation_before": null,
+        "rotation_after": null,
+        "rerouted_neighbors": []
+      },
+      {
+        "net": "E:Z",
+        "before": [
+          2214,
+          2181,
+          75
+        ],
+        "after": [
+          2213,
+          2180,
+          75
+        ],
+        "rotation_before": null,
+        "rotation_after": null,
+        "rerouted_neighbors": []
+      },
+      {
+        "net": "N:M",
+        "before": [
+          2213,
+          2180,
+          75
+        ],
+        "after": [
+          2212,
+          2178,
+          75
+        ],
+        "rotation_before": null,
+        "rotation_after": null,
+        "rerouted_neighbors": []
+      },
+      {
+        "net": "W:MP",
+        "before": [
+          2212,
+          2178,
+          75
+        ],
+        "after": [
+          2210,
+          2176,
+          75
+        ],
+        "rotation_before": null,
+        "rotation_after": null,
+        "rerouted_neighbors": []
+      },
+      {
+        "net": "W:S",
+        "before": [
+          2210,
+          2176,
+          75
+        ],
+        "after": [
+          2209,
+          2175,
+          75
+        ],
+        "rotation_before": null,
+        "rotation_after": null,
+        "rerouted_neighbors": []
+      },
+      {
+        "net": "W:prefixLoss",
+        "before": [
+          2209,
+          2175,
+          75
+        ],
+        "after": [
+          2206,
+          2172,
+          75
+        ],
+        "rotation_before": null,
+        "rotation_after": null,
+        "rerouted_neighbors": []
+      },
+      {
+        "net": "display_show:west",
+        "before": [
+          2206,
+          2172,
+          75
+        ],
+        "after": [
+          2202,
+          2168,
+          75
+        ],
+        "rotation_before": 2,
+        "rotation_after": 2,
+        "rerouted_neighbors": []
+      },
+      {
+        "net": "mine",
+        "before": [
+          2202,
+          2168,
+          75
+        ],
+        "after": [
+          2200,
+          2165,
+          74
+        ],
+        "rotation_before": null,
+        "rotation_after": null,
+        "rerouted_neighbors": []
+      },
+      {
+        "net": "n130",
+        "before": [
+          2200,
+          2165,
+          74
+        ],
+        "after": [
+          2198,
+          2164,
+          74
+        ],
+        "rotation_before": 0,
+        "rotation_after": 1,
+        "rerouted_neighbors": [
+          "n49"
+        ]
+      },
+      {
+        "net": "n131",
+        "before": [
+          2198,
+          2164,
+          74
+        ],
+        "after": [
+          2197,
+          2163,
+          74
+        ],
+        "rotation_before": 1,
+        "rotation_after": 0,
+        "rerouted_neighbors": []
+      },
+      {
+        "net": "n132",
+        "before": [
+          2197,
+          2163,
+          74
+        ],
+        "after": [
+          2195,
+          2161,
+          74
+        ],
+        "rotation_before": 0,
+        "rotation_after": 0,
+        "rerouted_neighbors": []
+      },
+      {
+        "net": "n135",
+        "before": [
+          2195,
+          2161,
+          74
+        ],
+        "after": [
+          2194,
+          2160,
+          74
+        ],
+        "rotation_before": 3,
+        "rotation_after": 0,
+        "rerouted_neighbors": []
+      },
+      {
+        "net": "n136",
+        "before": [
+          2194,
+          2160,
+          74
+        ],
+        "after": [
+          2182,
+          2148,
+          74
+        ],
+        "rotation_before": null,
+        "rotation_after": null,
+        "rerouted_neighbors": []
+      },
+      {
+        "net": "n32",
+        "before": [
+          2182,
+          2148,
+          74
+        ],
+        "after": [
+          2181,
+          2147,
+          74
+        ],
+        "rotation_before": 0,
+        "rotation_after": 2,
+        "rerouted_neighbors": []
+      },
+      {
+        "net": "n39",
+        "before": [
+          2181,
+          2147,
+          74
+        ],
+        "after": [
+          2180,
+          2146,
+          74
+        ],
+        "rotation_before": 0,
+        "rotation_after": 3,
+        "rerouted_neighbors": []
+      },
+      {
+        "net": "n46",
+        "before": [
+          2180,
+          2146,
+          74
+        ],
+        "after": [
+          2179,
+          2145,
+          74
+        ],
+        "rotation_before": 1,
+        "rotation_after": 1,
+        "rerouted_neighbors": []
+      },
+      {
+        "net": "n5",
+        "before": [
+          2179,
+          2145,
+          74
+        ],
+        "after": [
+          2174,
+          2138,
+          74
+        ],
+        "rotation_before": 0,
+        "rotation_after": 3,
+        "rerouted_neighbors": [
+          "mine"
+        ]
+      },
+      {
+        "net": "n50",
+        "before": [
+          2174,
+          2138,
+          74
+        ],
+        "after": [
+          2173,
+          2137,
+          74
+        ],
+        "rotation_before": 1,
+        "rotation_after": 3,
+        "rerouted_neighbors": [
+          "n87"
+        ]
+      },
+      {
+        "net": "n51",
+        "before": [
+          2173,
+          2137,
+          74
+        ],
+        "after": [
+          2172,
+          2136,
+          74
+        ],
+        "rotation_before": 1,
+        "rotation_after": 1,
+        "rerouted_neighbors": []
+      },
+      {
+        "net": "n57",
+        "before": [
+          2172,
+          2136,
+          74
+        ],
+        "after": [
+          2171,
+          2134,
+          74
+        ],
+        "rotation_before": 1,
+        "rotation_after": 3,
+        "rerouted_neighbors": []
+      },
+      {
+        "net": "n60",
+        "before": [
+          2171,
+          2134,
+          74
+        ],
+        "after": [
+          2170,
+          2133,
+          74
+        ],
+        "rotation_before": 2,
+        "rotation_after": 2,
+        "rerouted_neighbors": []
+      },
+      {
+        "net": "n61",
+        "before": [
+          2170,
+          2133,
+          74
+        ],
+        "after": [
+          2169,
+          2132,
+          74
+        ],
+        "rotation_before": 1,
+        "rotation_after": 3,
+        "rerouted_neighbors": []
+      },
+      {
+        "net": "n69",
+        "before": [
+          2169,
+          2132,
+          74
+        ],
+        "after": [
+          2167,
+          2130,
+          74
+        ],
+        "rotation_before": 0,
+        "rotation_after": 3,
+        "rerouted_neighbors": []
+      },
+      {
+        "net": "selected",
+        "before": [
+          2167,
+          2130,
+          74
+        ],
+        "after": [
+          2165,
+          2128,
+          74
+        ],
+        "rotation_before": null,
+        "rotation_after": null,
+        "rerouted_neighbors": []
+      }
+    ],
+    "objective": "min_cells_then_sum_all_receiver_ticks_then_longest_receiver_ticks",
+    "gate_directions": 4,
+    "fixed_native_blocks": true,
+    "fixed_receiver_contacts": true
+  },
+  "arrow_reduction_percent": 10.726072607260729,
+  "rejected_input_layout": {
+    "stem": "releases/routing-adaptive-56x64/cell",
+    "arrows": 2185,
+    "reason": "More total arrows than chosen routed layout"
+  },
+  "validation": {
+    "cell": {
+      "passed": true,
+      "neighbor_masks": 256,
+      "transition_vectors": 512,
+      "segment_checks": 3584,
+      "checked_samples": 7168,
+      "read_only_state_checks": true,
+      "button_squares": 25,
+      "button_press_release_checks": 50,
+      "side": 64,
+      "map_hash": "119360c2d8af2c6e586f6ebdb01dca0dc9c9226674b5a5c3ca0dc366b3897555"
+    },
+    "boards": {
+      "minesweeper-3x3": {
+        "map_hash": "2b7b9a0338292a5b7f3451ad1beebb0c358ecb479f75f2f4c07d0ea613a0ce98",
+        "seeds": 2,
+        "cold_cases": 5,
+        "late_cases": 5
+      },
+      "minesweeper-5x5": {
+        "map_hash": "0e96611160c3d4ba8e180b354659794006dc75dffa734a808d0b70c659b44a47",
+        "seeds": 2,
+        "cold_cases": 5,
+        "late_cases": 5
+      },
+      "minesweeper-10x10": {
+        "map_hash": "9af4dac2a6b5745b6562145e6f67f6b2dab9862cafc7e16d61b3e14d6ca17a13",
+        "seeds": 2,
+        "cold_cases": 5,
+        "late_cases": 5
+      }
+    },
+    "optimizer_regressions": {
+      "passed": true,
+      "tests": 5,
+      "command": "python -X utf8 -m unittest discover -s ArrowsHDL/tests -p test_route_optimization.py -v"
+    },
+    "project_autotests": {
+      "passed": true,
+      "tests": 20,
+      "seconds": 5.126,
+      "log": "minesweeper-v1/build/routing-project-tests.log"
+    },
+    "compiler_full_suite": {
+      "status": "interrupted",
+      "reason": "Пользователь попросил завершить работу; долгий общий прогон остановлен.",
+      "total_tests": 101,
+      "completed_successfully": 36,
+      "failures_logged": 0,
+      "errors_logged": 0,
+      "log": "ArrowsHDL/build/routing-final-tests.log",
+      "passed": null
+    },
+    "compiler_source_sha256": {
+      "ArrowsHDL/src/route_optimization.py": "20dfd14d5683e90c75fb64cdeea646b14de6405bd93a310696e6d1290e6a95f1",
+      "ArrowsHDL/src/compact_layout.py": "79dad46e86af739cae279168a677cf4f7ef1f8ad4fa45e60e39926a148566d64",
+      "ArrowsHDL/src/output_layout.py": "cc5444557d1a9f3b91da4b133621ec369ed29094df26ba30f3fae0fab9b9f94d",
+      "ArrowsHDL/tests/test_route_optimization.py": "2870883cc849a90763e69bf91b5054b7d4cd116fadd1e9a0af9eb5c22f0b9cc9"
+    }
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "passed": true,
+  "release": "releases/serial-guard-56x64",
+  "area_reduction": 2.361607142857143,
+  "arrows_reduction": 2.113036303630363,
+  "game_autotests": "autotests.json",
+  "quality": "quality.json",
+  "shared_backend": {
+    "project": "ArrowsHDL",
+    "routing": "negotiated_routing.CongestionRouting",
+    "pin_planning": "pin_planning.choose_input_contacts",
+    "grid": "grid_wiring.connect_grid",
+    "logic": "netlist_optimization",
+    "simulation": "simulation.simulate"
+  },
+  "tests": {
+    "shared": 26,
+    "project": 19,
+    "cell_masks": 256,
+    "cell_transitions": 512,
+    "button_positions": 25,
+    "gameplay_runs": 6,
+    "cold_click_cases": 15,
+    "late_preparation_click_cases": 15
+  },
+  "measured_preparation_ticks": 15096,
+  "speedup_from_initial": 13.69137519872814,
+  "smaller_guarded_candidates": {
+    "size": "56x60",
+    "placement_seeds": [
+      31,
+      67
+    ],
+    "compiled": false
+  },
+  "minimum_proved": false,
+  "tile_pitch": [
+    56,
+    70
+  ],
+  "tile_area_reduction_with_gutter": 2.159183673469388,
+  "full_grid_pitch_64_met": false
+}

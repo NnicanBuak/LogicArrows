@@ -1,0 +1,37 @@
+{
+  "before": 5413,
+  "after": 5370,
+  "before_request_ticks": 130,
+  "after_request_ticks": 87,
+  "attempts": [
+    {
+      "moves": {},
+      "arrows": 5370,
+      "request_ticks": 87
+    },
+    {
+      "moves": {
+        "n12": [
+          19,
+          33
+        ]
+      },
+      "arrows": 5434,
+      "request_ticks": 136
+    },
+    {
+      "moves": {
+        "n12": [
+          32,
+          31
+        ],
+        "n78": [
+          76,
+          34
+        ]
+      },
+      "arrows": 5383,
+      "request_ticks": 80
+    }
+  ]
+}

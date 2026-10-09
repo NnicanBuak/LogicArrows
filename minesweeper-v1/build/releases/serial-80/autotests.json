@@ -1,0 +1,21 @@
+{
+  "passed": true,
+  "cell": true,
+  "boards": [
+    {
+      "size": 3,
+      "seeds": 2,
+      "map_hash": "8d2e57ea8101ae1c7cd534a0dd6e703fbe71a6ebe522509f27b9a7bcf7941aac"
+    },
+    {
+      "size": 5,
+      "seeds": 2,
+      "map_hash": "b7fa2cef3960c880305f6ae00d1107966d9a1331015a6fda53de37283a40b4bd"
+    },
+    {
+      "size": 10,
+      "seeds": 2,
+      "map_hash": "faeeb733b68386a528685383e0d750f387b2711613d5a6ecfaad6288036bfc85"
+    }
+  ]
+}

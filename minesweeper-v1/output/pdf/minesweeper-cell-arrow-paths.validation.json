@@ -1,0 +1,189 @@
+{
+  "passed": true,
+  "pages": 25,
+  "bookmarks": 25,
+  "lossless_images": true,
+  "source_map_hash": "b2d7f378272115992b12529730fc302a67196c8808673d891c4e35476ee714f7",
+  "output": "C:\\Users\\Nnican\\Desktop\\vibe-projects\\LogicArrows\\minesweeper-v1\\output\\pdf\\minesweeper-cell-arrow-paths.pdf",
+  "size_bytes": 11938669,
+  "checks": [
+    {
+      "page": 1,
+      "source": "01-button-request.png",
+      "title": "01 · Кнопка: настоящая разводка до request",
+      "pixels_unchanged": true,
+      "pixel_hash": "da306a528b1aea80f2224e9ffcedaacdc29669f24d6efdd42ea2c3018cebf460"
+    },
+    {
+      "page": 2,
+      "source": "02-select.png",
+      "title": "02 · Как проводка выбирает первый ход",
+      "pixels_unchanged": true,
+      "pixel_hash": "a9d1086baba39491a45650fd7ee1f830b7503ddcb20b3c81439848b6e4834660"
+    },
+    {
+      "page": 3,
+      "source": "03-generate.png",
+      "title": "03 · Защита 3×3 и проводка генерации",
+      "pixels_unchanged": true,
+      "pixel_hash": "518e64f4ae4d01f2fa27f79063489357b9490677dcd4ab66d50a2709d9378657"
+    },
+    {
+      "page": 4,
+      "source": "04-send-mines.png",
+      "title": "04 · Исходящие мины: мои данные соседям",
+      "pixels_unchanged": true,
+      "pixel_hash": "234eecffa9f7f17f747913b339a28b77f8b6c402befb4d429848444934759b95"
+    },
+    {
+      "page": 5,
+      "source": "05-receive-count.png",
+      "title": "05 · Входящие мины: сложить соседние тройки",
+      "pixels_unchanged": true,
+      "pixel_hash": "4599d2ce264e6a0b411d96b2a488f52ebe3c73a4eb0b0692c4d00660ac00da15"
+    },
+    {
+      "page": 6,
+      "source": "06-carries.png",
+      "title": "06 · Реальная разводка переносов",
+      "pixels_unchanged": true,
+      "pixel_hash": "c93bc56198c78c0588a0d756e024310c013d488376812af8702089d048b5496d"
+    },
+    {
+      "page": 7,
+      "source": "07-open-reasons.png",
+      "title": "07 · Кнопка, старт и каскад: причины открытия",
+      "pixels_unchanged": true,
+      "pixel_hash": "8ff936ee311a9e94096fb2ece91b5761b181fe67c9988d620c347f200ae750ae"
+    },
+    {
+      "page": 8,
+      "source": "08-open-memory.png",
+      "title": "08 · Разрешение хода и память opened",
+      "pixels_unchanged": true,
+      "pixel_hash": "bf8c9019b386481b77b2151dbc9f6020312d8dd388859575dbded508a3b447d9"
+    },
+    {
+      "page": 9,
+      "source": "09-zero.png",
+      "title": "09 · Открытый безопасный ноль создаёт Z",
+      "pixels_unchanged": true,
+      "pixel_hash": "89ae611f706f1014c4aaa50f4ef4cacd8910da9195e00ffedca28a4dc8d2216b"
+    },
+    {
+      "page": 10,
+      "source": "10-send-s.png",
+      "title": "10 · Только S: разводка защиты старта",
+      "pixels_unchanged": true,
+      "pixel_hash": "956bd8a6f6ca5119c3f5ed319082fc8583327601e13191747f3e4a65f96724b3"
+    },
+    {
+      "page": 11,
+      "source": "11-send-z.png",
+      "title": "11 · Только Z: разводка каскада",
+      "pixels_unchanged": true,
+      "pixel_hash": "0ec1f00db2db6243b8863728756580b0c8b418be341f94909f17c8e46e0954bb"
+    },
+    {
+      "page": 12,
+      "source": "12-scan-request.png",
+      "title": "12 · Только prefixReq: действующий скан запросов",
+      "pixels_unchanged": true,
+      "pixel_hash": "0a3c98d28f53748d3dc2aa6b4198087431e44038c7d4bc36ec40af12f8bfa713"
+    },
+    {
+      "page": 13,
+      "source": "13-scan-loss.png",
+      "title": "13 · Только prefixLoss: проводка поражения",
+      "pixels_unchanged": true,
+      "pixel_hash": "f74205bb7b86496c1778af03a12775e79287e4d88e3a6f3dcf19bbc0e007bcc1"
+    },
+    {
+      "page": 14,
+      "source": "14-scan-sat.png",
+      "title": "14 · Только prefixSat: проводка готовности",
+      "pixels_unchanged": true,
+      "pixel_hash": "ec15ec7b8ff644bde5295f170a3d8ff7df0db5580a580b3801b3801434336ed0"
+    },
+    {
+      "page": 15,
+      "source": "15-phases.png",
+      "title": "15 · Настоящие столбцы шести управляющих фаз",
+      "pixels_unchanged": true,
+      "pixel_hash": "48889b8dbcfcde9d486c6c0a7b9239b6f39725c45217f4bb8598f0de2a06e4c0"
+    },
+    {
+      "page": 16,
+      "source": "16-show.png",
+      "title": "16 · Общая проводка разрешения числа",
+      "pixels_unchanged": true,
+      "pixel_hash": "2b044c40ef56a6c2b2729d20100a06f4c59e4aa59328f5bb77e284d1ddf5f166"
+    },
+    {
+      "page": 17,
+      "source": "17-segment-f.png",
+      "title": "17 · Стрелочная разводка сегмента f",
+      "pixels_unchanged": true,
+      "pixel_hash": "9cefb1ebbb4a555cdfd1a16d447a2360af1e60db2c9096fcc79334809b4e2014"
+    },
+    {
+      "page": 18,
+      "source": "18-segment-a.png",
+      "title": "18 · Стрелочная разводка сегмента a",
+      "pixels_unchanged": true,
+      "pixel_hash": "b4f746aeab0933d296a4b96505c197d5c89d6829a587a81136f60b3d6e6a500a"
+    },
+    {
+      "page": 19,
+      "source": "19-segment-e.png",
+      "title": "19 · Стрелочная разводка сегмента e",
+      "pixels_unchanged": true,
+      "pixel_hash": "62f8643c56d10e7fc18a66a9e63a1802ec85bb40d71c330ccff5c0935ec574b4"
+    },
+    {
+      "page": 20,
+      "source": "20-segment-g.png",
+      "title": "20 · Стрелочная разводка сегмента g",
+      "pixels_unchanged": true,
+      "pixel_hash": "74e9bf4ff2d570b8a53a26cfe405a11a7547b7e5d61612d0046883bcc5bd669d"
+    },
+    {
+      "page": 21,
+      "source": "21-segment-d.png",
+      "title": "21 · Стрелочная разводка сегмента d",
+      "pixels_unchanged": true,
+      "pixel_hash": "a119e912e65f3a75713a07616990f2652c7f4d2a0bfb142c6d8391fef53d85ac"
+    },
+    {
+      "page": 22,
+      "source": "22-segment-b.png",
+      "title": "22 · Стрелочная разводка сегмента b",
+      "pixels_unchanged": true,
+      "pixel_hash": "12fb4d0aecdccee9bba34885f73cb82eaeec0568b8eb9684fa9945b09bb60c52"
+    },
+    {
+      "page": 23,
+      "source": "23-segment-c.png",
+      "title": "23 · Стрелочная разводка сегмента c",
+      "pixels_unchanged": true,
+      "pixel_hash": "1342c5c2f866d8a8d9a1c0863953a0020796ad9aeb11a521f480e610ac925755"
+    },
+    {
+      "page": 24,
+      "source": "24-mine.png",
+      "title": "24 · Проводка до настоящего рисунка мины",
+      "pixels_unchanged": true,
+      "pixel_hash": "d96d42a47d12af9b4f35a9f1354f27432e9fa4659c10ee5418189c21098c89b4"
+    },
+    {
+      "page": 25,
+      "source": "25-native-inputs.png",
+      "title": "25 · Крупно: входы XOR и MAJ на стрелочках",
+      "pixels_unchanged": true,
+      "pixel_hash": "360ab3179a494d5e2d567bd4e3fcb7c18cecb840179c9479ad78a081bd27d443"
+    }
+  ],
+  "rendered_pages": 25,
+  "visual_review_passed": true,
+  "outline_destinations_verified": true
+}

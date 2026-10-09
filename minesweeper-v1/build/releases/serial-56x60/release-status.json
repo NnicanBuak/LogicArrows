@@ -1,0 +1,5 @@
+{
+  "accepted": false,
+  "reason": "Missing request capture guard; late clicks can invalidate first-click election",
+  "replacement": "../serial-guard-56x64"
+}

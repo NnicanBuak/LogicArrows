@@ -1,0 +1,37 @@
+{
+  "source": "local map-life snapshot",
+  "life_version": 195,
+  "life_period": {
+    "x": 40,
+    "y": 20
+  },
+  "selected_life_cell_diagonal_arrows": 69,
+  "selected_life_cell_direct_diagonal_neighbor_connections": 0,
+  "architecture": "native diagonal corner transit channels; no intermediate-cell logic",
+  "channel_checks": 49152,
+  "before": {
+    "side": 96,
+    "arrows": 5962,
+    "map_hash": "7fbb231f93bdb13cc75a62834a3002b44170a011daaaf69d080910f447caccaf",
+    "board_arrows": 180773,
+    "board_hash": "3c09f3f5af6510b24bc839c72737743ccb13eecf52f41f2ab2d6856669951f20"
+  },
+  "after": {
+    "side": 88,
+    "arrows": 5454,
+    "map_hash": "1d0f98bcfe6c5c7dd080d1dfefede878c6b6dbe7587303ec7a1bbb17595ea6c3",
+    "board_arrows": 162568,
+    "board_hash": "86b8280442900acae2202973dbd1a8b3736097fb155c364f518c275e66697c48"
+  },
+  "area_reduction_percent": 15.97,
+  "arrow_reduction_percent": 8.52,
+  "save_limit_bytes": null,
+  "unsuccessful_sizes": [
+    84,
+    80,
+    64
+  ],
+  "verified_sizes": [
+    88
+  ]
+}

@@ -1,0 +1,58 @@
+{
+  "source_sha256": "4d9ff76f14d9cee05ef2ef709645596d5ca14d465140a4baa907f1abf40d0d0c",
+  "graphs": [
+    {
+      "or_inputs": 2,
+      "aggregate_neighbors": false,
+      "gates": 185,
+      "inputs": 60,
+      "outputs": 64
+    },
+    {
+      "or_inputs": 2,
+      "aggregate_neighbors": true,
+      "gates": 166,
+      "inputs": 49,
+      "outputs": 53
+    },
+    {
+      "or_inputs": 3,
+      "aggregate_neighbors": false,
+      "gates": 174,
+      "inputs": 60,
+      "outputs": 64
+    },
+    {
+      "or_inputs": 3,
+      "aggregate_neighbors": true,
+      "gates": 158,
+      "inputs": 49,
+      "outputs": 53
+    },
+    {
+      "or_inputs": 4,
+      "aggregate_neighbors": false,
+      "gates": 170,
+      "inputs": 60,
+      "outputs": 64
+    },
+    {
+      "or_inputs": 4,
+      "aggregate_neighbors": true,
+      "gates": 154,
+      "inputs": 49,
+      "outputs": 53
+    }
+  ],
+  "physical_aggregation_passed": false,
+  "quality": {
+    "native_life_counter": true,
+    "native_life_rule_18_cases": true,
+    "native_binary_counter_256_masks": true,
+    "aggregate_logic_exhaustive": true,
+    "pruned_cell_7168_checks": true,
+    "pruned_board_3x3": true,
+    "pruned_board_5x5_multiple_seeds": true,
+    "minimum_size_achieved": false
+  }
+}

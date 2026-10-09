@@ -1,0 +1,96 @@
+{
+  "passed": true,
+  "map_hash": "920c0788481e2bdcef64beecde9c9ebb5eda02e505400061f9cf662afb42e55e",
+  "cold_ticks": 1,
+  "cases": [
+    {
+      "pressed": [
+        0,
+        24
+      ],
+      "selected": [
+        0
+      ],
+      "protected": [
+        0,
+        1,
+        5,
+        6
+      ],
+      "passed": true
+    },
+    {
+      "pressed": [
+        12,
+        13
+      ],
+      "selected": [
+        12
+      ],
+      "protected": [
+        6,
+        7,
+        8,
+        11,
+        12,
+        13,
+        16,
+        17,
+        18
+      ],
+      "passed": true
+    },
+    {
+      "pressed": [
+        4,
+        20
+      ],
+      "selected": [
+        4
+      ],
+      "protected": [
+        3,
+        4,
+        8,
+        9
+      ],
+      "passed": true
+    },
+    {
+      "pressed": [
+        7,
+        11
+      ],
+      "selected": [
+        7
+      ],
+      "protected": [
+        1,
+        2,
+        3,
+        6,
+        7,
+        8,
+        11,
+        12,
+        13
+      ],
+      "passed": true
+    },
+    {
+      "pressed": [
+        24
+      ],
+      "selected": [
+        24
+      ],
+      "protected": [
+        18,
+        19,
+        23,
+        24
+      ],
+      "passed": true
+    }
+  ]
+}

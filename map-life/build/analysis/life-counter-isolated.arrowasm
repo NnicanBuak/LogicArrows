@@ -1,0 +1,13 @@
+FORMAT 0
+; PLACE тип x y направление [mirrored]
+PLACE diagonal 8 2 right
+PLACE level_source 1 3 right
+PLACE blue_splitter_up_up 2 3 right
+PLACE flipflop 3 3 right
+PLACE and 4 3 right
+PLACE blue_splitter_up_up 5 3 right
+PLACE flipflop 6 3 right
+PLACE and 7 3 right
+PLACE blue_splitter_right_up 8 3 right mirrored
+PLACE latch 9 3 down
+PLACE arrow 10 3 left

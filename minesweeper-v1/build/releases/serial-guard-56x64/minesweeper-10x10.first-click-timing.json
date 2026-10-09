@@ -1,0 +1,50 @@
+{
+  "passed": true,
+  "map_hash": "706d5afd7587d45ecf5cfa72f89ee3cbc5292914605ca10fab97d6902a5f2ba8",
+  "size": 10,
+  "first": 55,
+  "second": 0,
+  "events_after_click": {
+    "busy_second": 3710,
+    "choose_second": 12159,
+    "choose_first": 12600,
+    "ready_first": 14753
+  },
+  "cases": [
+    {
+      "second_click_after_first": 3966,
+      "selected": [
+        55
+      ],
+      "passed": true
+    },
+    {
+      "second_click_after_first": 12031,
+      "selected": [
+        55
+      ],
+      "passed": true
+    },
+    {
+      "second_click_after_first": 12287,
+      "selected": [
+        55
+      ],
+      "passed": true
+    },
+    {
+      "second_click_after_first": 12472,
+      "selected": [
+        55
+      ],
+      "passed": true
+    },
+    {
+      "second_click_after_first": 14625,
+      "selected": [
+        55
+      ],
+      "passed": true
+    }
+  ]
+}

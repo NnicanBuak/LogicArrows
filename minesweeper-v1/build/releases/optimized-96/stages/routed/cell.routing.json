@@ -1,0 +1,36 @@
+{
+  "before": 5333,
+  "after": 5332,
+  "before_request_ticks": 87,
+  "after_request_ticks": 86,
+  "attempts": [
+    {
+      "moves": {},
+      "arrows": 5332,
+      "request_ticks": 86
+    },
+    {
+      "targets": {
+        "n12": [
+          24,
+          34
+        ]
+      },
+      "failed": "No free request gate slot"
+    },
+    {
+      "moves": {
+        "n12": [
+          36,
+          34
+        ],
+        "n78": [
+          76,
+          33
+        ]
+      },
+      "arrows": 5351,
+      "request_ticks": 77
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "source_map_hash": "476fde6be8e3526a7829b7f8f5ac9e873b686a827ceef2cde0383cc34f4b4ac0",
+  "map_hash": "476fde6be8e3526a7829b7f8f5ac9e873b686a827ceef2cde0383cc34f4b4ac0",
+  "before": 5333,
+  "after": 5333,
+  "removed": 0,
+  "removed_nets": [],
+  "side": 96,
+  "ports": 51,
+  "logic_nodes": 174
+}

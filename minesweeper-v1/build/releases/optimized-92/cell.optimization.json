@@ -1,0 +1,8 @@
+{
+  "before": 5122,
+  "after": 5122,
+  "before_nodes": 174,
+  "after_nodes": 174,
+  "removed_phase_memories": 0,
+  "contract": "initial zero; each input may rise once and stays high until map reload"
+}

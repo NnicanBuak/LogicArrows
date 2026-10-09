@@ -1,0 +1,26 @@
+{
+  "checked_date": "2026-10-08",
+  "client": {
+    "url": "https://logic-arrows.io/bundle.js?v=1_4",
+    "sha256": "0b044c5b83ef0686926753608efffb23061c7bd38082d480e22fc89bb8c08cee",
+    "condition": "if(i.length>2e6)return Promise.resolve(413)",
+    "base64_characters_limit": 2000000
+  },
+  "http_request_body": {
+    "unit": "MiB",
+    "limit_bytes": 1048576,
+    "route": "https://logic-arrows.io/api/update",
+    "authenticated": false,
+    "observations": [
+      {
+        "body_bytes": 1048576,
+        "status": 401
+      },
+      {
+        "body_bytes": 1048577,
+        "status": 413
+      }
+    ],
+    "full_authenticated_save_tested": false
+  }
+}

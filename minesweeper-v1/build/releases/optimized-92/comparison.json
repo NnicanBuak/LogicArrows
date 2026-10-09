@@ -1,0 +1,42 @@
+{
+  "before": {
+    "map_hash": "edbc0f3cab09d77cdc23e5a5ca85a399b11dc29bc6647b9aeb9e40ff69dd4ba5",
+    "size": 10,
+    "first": 55,
+    "seed": 123456789,
+    "cold_ticks": 30000,
+    "events_after_click": {
+      "choose": 70443,
+      "sample": 137312,
+      "ready": 204201,
+      "last_ready": 206685,
+      "selected": 71477,
+      "opened": 205611
+    },
+    "preparation_ticks": 206685,
+    "arrows": 641283,
+    "timer_cells": null,
+    "timer_delay_cells": 99567
+  },
+  "after": {
+    "map_hash": "376c62b9393e8b020315d865d2dd0625db619b35296104b33478766c692f7155",
+    "size": 10,
+    "first": 55,
+    "seed": 123456789,
+    "cold_ticks": 30000,
+    "events_after_click": {
+      "choose": 9703,
+      "sample": 10846,
+      "ready": 11921,
+      "last_ready": 13406,
+      "selected": 10593,
+      "opened": 12829
+    },
+    "preparation_ticks": 13406,
+    "arrows": 513569,
+    "timer_cells": 120,
+    "timer_delay_cells": 0
+  },
+  "speedup": 15.417350440101448,
+  "arrow_reduction": 127714
+}

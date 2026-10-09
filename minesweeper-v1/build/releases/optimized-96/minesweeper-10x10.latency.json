@@ -1,0 +1,19 @@
+{
+  "map_hash": "1a74d6889c87035ee1144400ec07bbca20e0ed19a0903d5cf98f208e8fc93842",
+  "size": 10,
+  "first": 55,
+  "seed": 123456789,
+  "cold_ticks": 30000,
+  "events_after_click": {
+    "choose": 9775,
+    "sample": 10870,
+    "ready": 11947,
+    "last_ready": 13531,
+    "selected": 10646,
+    "opened": 12856
+  },
+  "preparation_ticks": 13531,
+  "arrows": 534575,
+  "timer_cells": 120,
+  "timer_delay_cells": 0
+}

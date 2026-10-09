@@ -1,0 +1,107 @@
+{
+  "passed": true,
+  "runs": [
+    {
+      "passed": true,
+      "size": 5,
+      "seed": 123456789,
+      "first": 12,
+      "mines": [
+        0,
+        1,
+        3,
+        10,
+        14,
+        15,
+        23,
+        24
+      ],
+      "first_opened": [
+        6,
+        7,
+        8,
+        11,
+        12,
+        13,
+        16,
+        17,
+        18
+      ],
+      "scenarios": [
+        "first-safe",
+        "neighbor-counts",
+        "cascade",
+        "closed-blank",
+        "visible-zero",
+        "stacked-connectors",
+        "mine-defeat",
+        "blocked-after-defeat",
+        "all-mines-revealed",
+        "safe-cells-stay-closed-after-defeat",
+        "victory",
+        "blocked-after-victory",
+        "status-blank-before-start",
+        "win-lose-all-pixels"
+      ],
+      "map_hash": "5afb3f54e86c6ebb08c18d1c6b62583f240e211573abd4fa77051e620bd492cc",
+      "measured_outputs": 1397,
+      "status_pixels": 220,
+      "mine_indicator_pixels": 875,
+      "wait_ticks": 50000,
+      "identical_modules": true,
+      "connection_wires_added": 0
+    },
+    {
+      "passed": true,
+      "size": 5,
+      "seed": 987654321,
+      "first": 0,
+      "mines": [
+        13,
+        17,
+        18,
+        20
+      ],
+      "first_opened": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        15,
+        16
+      ],
+      "scenarios": [
+        "first-safe",
+        "neighbor-counts",
+        "cascade",
+        "closed-blank",
+        "visible-zero",
+        "stacked-connectors",
+        "mine-defeat",
+        "blocked-after-defeat",
+        "all-mines-revealed",
+        "safe-cells-stay-closed-after-defeat",
+        "victory",
+        "blocked-after-victory",
+        "status-blank-before-start",
+        "win-lose-all-pixels"
+      ],
+      "map_hash": "5afb3f54e86c6ebb08c18d1c6b62583f240e211573abd4fa77051e620bd492cc",
+      "measured_outputs": 1397,
+      "status_pixels": 220,
+      "mine_indicator_pixels": 875,
+      "wait_ticks": 50000,
+      "identical_modules": true,
+      "connection_wires_added": 0
+    }
+  ]
+}

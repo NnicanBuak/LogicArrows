@@ -1,0 +1,174 @@
+{
+  "source_save_sha256": "42d430e3112041d20b328513207a0fffefc2ac14cf3d3ff74262973c80784e36",
+  "life_types": {
+    "1": 12,
+    "3": 5,
+    "4": 17,
+    "5": 25,
+    "7": 3,
+    "10": 136,
+    "11": 53,
+    "12": 19,
+    "13": 9,
+    "14": 16,
+    "15": 3,
+    "16": 4,
+    "18": 2,
+    "19": 3,
+    "20": 1,
+    "24": 1
+  },
+  "life_counter": {
+    "passed": true,
+    "pulse_width": 1,
+    "gap_ticks": 24,
+    "count_states": [
+      [
+        0,
+        0,
+        0
+      ],
+      [
+        1,
+        0,
+        0
+      ],
+      [
+        0,
+        1,
+        0
+      ],
+      [
+        1,
+        1,
+        0
+      ],
+      [
+        0,
+        0,
+        1
+      ],
+      [
+        1,
+        0,
+        1
+      ],
+      [
+        0,
+        1,
+        1
+      ],
+      [
+        1,
+        1,
+        1
+      ],
+      [
+        0,
+        0,
+        1
+      ]
+    ],
+    "state_meaning": [
+      "bit0",
+      "bit1",
+      "at_least_four"
+    ],
+    "original_arrows": 10,
+    "fixture_arrows": 1
+  },
+  "life_rule": {
+    "passed": true,
+    "cases": 18,
+    "actual": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      1,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "expected": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      1,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "equation": "bit1 AND NOT at_least_four AND (bit0 OR alive)"
+  },
+  "binary_counter4": {
+    "passed": true,
+    "masks": 256,
+    "pulse_slots": 2048,
+    "checked_words": 2049,
+    "core_arrows": 11,
+    "core_width": 11,
+    "core_height": 1,
+    "registers": 4,
+    "carry_gates": 3,
+    "pulse_width": 1,
+    "gap_ticks": 32,
+    "limitation": "No reset, serializer, output fanout or board integration included; tested modulo 16."
+  },
+  "minesweeper": {
+    "side": 88,
+    "arrows": 5454,
+    "wires": 4705,
+    "nets": 173,
+    "wire_fraction": 0.8626696002933627,
+    "saved_graph_nodes": 188,
+    "map_hash": "1d0f98bcfe6c5c7dd080d1dfefede878c6b6dbe7587303ec7a1bbb17595ea6c3",
+    "arrow_types": {
+      "1": 822,
+      "3": 5,
+      "5": 6,
+      "6": 13,
+      "7": 23,
+      "8": 2,
+      "10": 3147,
+      "11": 938,
+      "12": 42,
+      "13": 63,
+      "14": 42,
+      "15": 22,
+      "16": 51,
+      "17": 30,
+      "18": 8,
+      "19": 8,
+      "20": 2,
+      "24": 9,
+      "25": 221
+    },
+    "lower_bound_arrows_to_remove_for_64": 1358,
+    "caution": "Saved graph is older than current snap.py; physical export metrics refer to the saved cell only."
+  },
+  "full_life_board_simulated": false,
+  "browser_simulated": false,
+  "simulation_profile": "GraphDLC-01232bd"
+}

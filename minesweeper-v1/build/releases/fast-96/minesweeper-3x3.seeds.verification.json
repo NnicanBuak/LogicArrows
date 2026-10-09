@@ -1,0 +1,79 @@
+{
+  "passed": true,
+  "runs": [
+    {
+      "passed": true,
+      "size": 3,
+      "seed": 123456789,
+      "first": 4,
+      "mines": [],
+      "first_opened": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "scenarios": [
+        "first-safe",
+        "neighbor-counts",
+        "cascade",
+        "closed-blank",
+        "visible-zero",
+        "stacked-connectors",
+        "victory",
+        "blocked-after-victory",
+        "status-blank-before-start",
+        "win-lose-all-pixels"
+      ],
+      "map_hash": "013284dcb4e3e82bfacd2e30316e991bf3c56a276f5e888a7f1ae621332e4d10",
+      "measured_outputs": 645,
+      "status_pixels": 220,
+      "mine_indicator_pixels": 315,
+      "wait_ticks": 50000,
+      "identical_modules": true,
+      "connection_wires_added": 0
+    },
+    {
+      "passed": true,
+      "size": 3,
+      "seed": 987654321,
+      "first": 0,
+      "mines": [],
+      "first_opened": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "scenarios": [
+        "first-safe",
+        "neighbor-counts",
+        "cascade",
+        "closed-blank",
+        "visible-zero",
+        "stacked-connectors",
+        "victory",
+        "blocked-after-victory",
+        "status-blank-before-start",
+        "win-lose-all-pixels"
+      ],
+      "map_hash": "013284dcb4e3e82bfacd2e30316e991bf3c56a276f5e888a7f1ae621332e4d10",
+      "measured_outputs": 645,
+      "status_pixels": 220,
+      "mine_indicator_pixels": 315,
+      "wait_ticks": 50000,
+      "identical_modules": true,
+      "connection_wires_added": 0
+    }
+  ]
+}

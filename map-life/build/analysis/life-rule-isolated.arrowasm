@@ -1,0 +1,20 @@
+FORMAT 0
+; PLACE тип x y направление [mirrored]
+PLACE level_source 11 2 down
+PLACE level_source 3 3 up
+PLACE level_source 6 3 up
+PLACE level_source 9 3 down
+PLACE blue_splitter_up_up 11 3 down
+PLACE detector 3 4 down
+PLACE detector 6 4 down
+PLACE detector 7 4 right
+PLACE not 8 4 right
+PLACE blocker 9 4 down
+PLACE blue_splitter_right_up 11 4 down
+PLACE blue_arrow 3 5 right
+PLACE blue_arrow 5 5 right
+PLACE blue_arrow 7 5 right
+PLACE blue_arrow 9 5 right
+PLACE and 11 5 down
+PLACE level_source 7 6 up
+PLACE latch 11 6 down

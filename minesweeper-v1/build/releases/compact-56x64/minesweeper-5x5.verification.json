@@ -1,0 +1,52 @@
+{
+  "passed": true,
+  "size": 5,
+  "seed": 987654321,
+  "first": 0,
+  "mines": [
+    16,
+    17,
+    18,
+    20
+  ],
+  "first_opened": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14
+  ],
+  "scenarios": [
+    "first-safe",
+    "neighbor-counts",
+    "cascade",
+    "closed-blank",
+    "visible-zero",
+    "stacked-connectors",
+    "mine-defeat",
+    "blocked-after-defeat",
+    "all-mines-revealed",
+    "safe-cells-stay-closed-after-defeat",
+    "victory",
+    "blocked-after-victory",
+    "status-blank-before-start",
+    "win-lose-all-pixels"
+  ],
+  "map_hash": "0e96611160c3d4ba8e180b354659794006dc75dffa734a808d0b70c659b44a47",
+  "measured_outputs": 1397,
+  "status_pixels": 220,
+  "mine_indicator_pixels": 875,
+  "wait_ticks": 50000,
+  "identical_modules": true,
+  "connection_wires_added": 4547
+}
