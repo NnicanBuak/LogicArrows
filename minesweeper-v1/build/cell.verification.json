@@ -4,8 +4,9 @@
   "transition_vectors": 512,
   "segment_checks": 3584,
   "checked_samples": 7168,
+  "read_only_state_checks": true,
   "button_squares": 25,
   "button_press_release_checks": 50,
-  "side": 96,
-  "map_hash": "b29552c584253ba93331cd0eb00fe4233c6f0d02179f59238157bf721ccd4eda"
+  "side": 64,
+  "map_hash": "119360c2d8af2c6e586f6ebdb01dca0dc9c9226674b5a5c3ca0dc366b3897555"
 }

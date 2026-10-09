@@ -10,9 +10,9 @@
         0,
         1,
         3,
+        4,
         10,
         14,
-        15,
         23,
         24
       ],
@@ -43,13 +43,13 @@
         "status-blank-before-start",
         "win-lose-all-pixels"
       ],
-      "map_hash": "e8c8e0f1c583bc53f414c015b7701a383cd5983e8821b749426bbbcc42bc38c1",
+      "map_hash": "0e96611160c3d4ba8e180b354659794006dc75dffa734a808d0b70c659b44a47",
       "measured_outputs": 1397,
       "status_pixels": 220,
       "mine_indicator_pixels": 875,
-      "wait_ticks": 114866,
+      "wait_ticks": 50000,
       "identical_modules": true,
-      "connection_wires_added": 0
+      "connection_wires_added": 4547
     },
     {
       "passed": true,
@@ -57,7 +57,7 @@
       "seed": 987654321,
       "first": 0,
       "mines": [
-        13,
+        16,
         17,
         18,
         20
@@ -76,8 +76,8 @@
         10,
         11,
         12,
-        15,
-        16
+        13,
+        14
       ],
       "scenarios": [
         "first-safe",
@@ -95,13 +95,13 @@
         "status-blank-before-start",
         "win-lose-all-pixels"
       ],
-      "map_hash": "e8c8e0f1c583bc53f414c015b7701a383cd5983e8821b749426bbbcc42bc38c1",
+      "map_hash": "0e96611160c3d4ba8e180b354659794006dc75dffa734a808d0b70c659b44a47",
       "measured_outputs": 1397,
       "status_pixels": 220,
       "mine_indicator_pixels": 875,
-      "wait_ticks": 114866,
+      "wait_ticks": 50000,
       "identical_modules": true,
-      "connection_wires_added": 0
+      "connection_wires_added": 4547
     }
   ]
 }

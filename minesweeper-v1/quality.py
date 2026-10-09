@@ -6,7 +6,7 @@ from snap_board import connector_check
 from mapdata import write_json
 from save_limits import parse_save_size
 from status_display import alphabet
-from mine_indicator import BITMAP as MINE_BITMAP
+from mine_indicator import BITMAP as MINE_BITMAP,indicator
 
 def audit(max_save_bytes=None,size=10):
     tile=read_map(BUILD/'cell.save.txt')
@@ -59,6 +59,9 @@ def audit(max_save_bytes=None,size=10):
     mine_shape={(ox+x,oy+y) for y,row in enumerate(MINE_BITMAP) for x,bit in enumerate(row) if bit=='1'}
     mine_box={(ox+x,oy+y) for x in range(8) for y in range(8)}
     criteria['native_mine_shape_8x8']=marker['width']==marker['height']==8 and mine_shape==set(map(tuple,marker['pixels'])) and all(p in tile for p in mine_shape) and not (mine_box-mine_shape)&set(tile)
+    local_mine,root=indicator()
+    mine_types=Counter(tile[p].type for p in mine_shape)
+    criteria['red_splitters_and_four_diagonals']=mine_types[11]==4 and sum(mine_types[k] for k in (6,7,8))==31 and all(tile[(ox+x,oy+y)]==c for (x,y),c in local_mine.items())
     dx,dy=meta['display_origin']
     criteria['number_button_mine_horizontal']=dx+6==center[0]-13 and ox==center[0]+6 and oy==dy+3 and max(x for x,y in button)<ox and dx+13<min(x for x,y in button)
     digit_padding={(x,y) for x in range(dx+4,dx+16) for y in range(dy-2,dy+15)
@@ -79,10 +82,24 @@ def audit(max_save_bytes=None,size=10):
         status_ok &= wanted==set(map(tuple,display['pixels'])) and all(board[p].type in (1,6,7,8,10,11,12,13,14) for p in wanted)
     criteria['native_alphabet_at_exactly_2x']=status_ok
     criteria['win_lose_all_pixels_and_startup_blank']=all({'status-blank-before-start','win-lose-all-pixels'}<=set(r['scenarios']) and r['status_pixels']==220 for r in runs)
+    criteria['parallel_requests']=meta.get('parallel_requests') is True and bool(graph.get('_distributed_rewrites'))
+    criteria['unused_total_request_removed']=meta.get('pruned_total_requests') is True and all(
+        n not in graph[table] for n,table in (('N:totalReq','outputs'),('S:totalReq','inputs')))
+    criteria['phase_levels_without_redundant_memory']=meta.get('monotone_phases') is True and all(
+        nodes['phase:'+name]['op']=='OR' and set(nodes['phase:'+name]['inputs'])=={'W:'+name,'N:'+name}
+        for name in ('choose','sample','ready','stop'))
+    criteria['compact_preparation_timers']=bm.get('timer_mode')=='counter' and bm.get('timer_delay_cells')==0
+    criteria['verified_stage_timing']=bm.get('preparation_contract_verified') is True and all(
+        bm['guaranteed_stage_gaps'][n]>=bm['stage_timing'][n] for n in ('sample','ready'))
+    if size==10:
+        latency=json.loads((BUILD/(stem+'.latency.json')).read_text())
+        criteria['measured_preparation_matches_export']=latency['map_hash']==bm['map_hash']
     result=dict(passed=all(criteria.values()),criteria=criteria,side=side,target_96_met=side<=96,target_64_met=side<=64,
                 central_panel=panel,arrows=len(tile),board_arrows=len(board),map_hash=meta['map_hash'],board_map_hash=bm['map_hash'],
                 save_limit_bytes=max_save_bytes,save_sizes=save_sizes,grid=[size,size],field_size=[side*size]*2,
-                phase_wait_ticks=bm['phase_wait_ticks'],save_bytes=bm['save_bytes'])
+                phase_wait_ticks=bm['phase_wait_ticks'],phase_waits=bm.get('phase_waits'),
+                timer_mode=bm.get('timer_mode'),timer_delay_cells=bm.get('timer_delay_cells'),
+                save_bytes=bm['save_bytes'])
     write_json(BUILD/(stem+'.quality.json'),result)
     if size==10:write_json(BUILD/'quality.json',result)
     assert result['passed'],[k for k,v in criteria.items() if not v]

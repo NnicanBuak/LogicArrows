@@ -57,7 +57,7 @@ def connector_check(template,meta):
     if meta.get('diagonal_contacts'):check_channels(template,meta)
     return True
 
-def build_board(size=10,max_save_bytes=None,cell_stem='cell',stem=None):
+def build_board(size=10,max_save_bytes=None,cell_stem='cell',stem=None,timer_mode='counter'):
     stem=stem or f'minesweeper-{size}x{size}'
     tile=read_map(BUILD/(cell_stem+'.save.txt'));meta=json.loads((BUILD/(cell_stem+'.layout.json')).read_text())
     connector_check(tile,meta);side=meta['side'];cells={};tiles=[];memories=[]
@@ -82,29 +82,23 @@ def build_board(size=10,max_save_bytes=None,cell_stem='cell',stem=None):
         e=hm['inputs'][name+'Clock'][0];p=tuple(e['fixture']);cells[p]=Cell(1,1);sockets[name]=list(p)
     boardmeta=dict(schema=2,size=size,side=side,tiles=tiles,cell=meta,header=hm,status=status,memories=memories,
         timer_input=list(start),timing_sockets=sockets,logic_settle_bound=bound,
-        identical_tiles=True,connection_wires_added=0,profile='GraphDLC-01232bd',verified_against_current_game=False)
-    add_level_timer(cells,boardmeta)
+        identical_tiles=True,connection_wires_added=0,cell_stem=cell_stem,profile='GraphDLC-01232bd',verified_against_current_game=False)
+    if timer_mode=='counter':
+        from preparation import add_compact_timer
+        graph=json.loads((BUILD/(cell_stem+'.logic.json')).read_text())
+        add_compact_timer(cells,boardmeta,graph)
+    elif timer_mode=='legacy':add_level_timer(cells,boardmeta)
+    else:raise ValueError('Unknown timer mode')
     boardmeta.update(cells=len(cells),bounds=bounds_of(cells),map_hash=map_hash(cells))
+    (BUILD/stem).parent.mkdir(parents=True,exist_ok=True)
     boardmeta.update(write_map(BUILD,stem,cells,max_save_bytes))
     write_json(BUILD/(stem+'.layout.json'),boardmeta)
     print(f'Snap board {size}x{size}: {len(cells)} arrows, {bound} preparation bound',flush=True)
     return cells,boardmeta
 
 def acyclic_bound_effective(cells,memories):
-    # Game arrow relations reject reciprocal ordinary links.
-    memory={tuple(p) for p in memories};links={p:set(q for q in destinations(p,c) if q in cells) for p,c in cells.items()}
-    effective={p:[q for q in qs if q not in memory and p not in links.get(q,())] for p,qs in links.items()}
-    degree=dict.fromkeys(cells,0);depth=dict.fromkeys(cells,1)
-    for qs in effective.values():
-        for q in qs:degree[q]+=1
-    queue=deque(p for p,d in degree.items() if not d);seen=0
-    while queue:
-        p=queue.popleft();seen+=1
-        for q in effective[p]:
-            depth[q]=max(depth[q],depth[p]+(2 if cells[p].type==4 else 1));degree[q]-=1
-            if not degree[q]:queue.append(q)
-    assert seen==len(cells),'Unexpected combinational feedback'
-    return max(depth.values())+10
+    from timing import propagation_bound
+    return propagation_bound(cells,memories)
 
 def add_level_timer(cells,meta):
     bound=meta['logic_settle_bound'];wait=3*bound
@@ -158,6 +152,7 @@ if __name__=='__main__':
     import argparse
     p=argparse.ArgumentParser();p.add_argument('--size',type=int,default=10)
     p.add_argument('--max-save-size',type=parse_save_size,default=None,help='Опциональный размер .save.txt: 3MB, 3MiB или байты; по умолчанию без лимита')
+    p.add_argument('--timer-mode',choices=('counter','legacy'),default='counter')
     a=p.parse_args()
-    try:build_board(a.size,a.max_save_size)
+    try:build_board(a.size,a.max_save_size,timer_mode=a.timer_mode)
     except SaveSizeError as ex:p.exit(2,str(ex)+'\n')

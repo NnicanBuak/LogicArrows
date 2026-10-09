@@ -9,9 +9,6 @@ from arrowasm import Cell
 from placement_backend import Router
 from arrow_layout import GATE_TYPES, edges, bounds_of
 
-# Local use only: the shared compiler is left unchanged.
-GATE_TYPES.update(SET=18, TOGGLE=19, RANDOM=20)
-
 class ModuleRouter(Router):
     def route_allowed(self, position):
         # Embedded screen contacts are deliberately inside the module's frame.

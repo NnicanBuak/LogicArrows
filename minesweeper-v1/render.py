@@ -51,7 +51,7 @@ def panel_preview(stem='cell'):
     cells=read_map(BUILD/(stem+'.save.txt'));meta=json.loads((BUILD/(stem+'.layout.json')).read_text())
     a,b,c,e=meta['panel_bounds'];a-=3;b-=3;c+=3;e+=3;scale=18
     im=Image.new('RGB',((c-a+1)*scale+56,(e-b+1)*scale+175),'#f8fafc');d=ImageDraw.Draw(im)
-    d.text((24,17),'Дисплей числа и мина 8×8',font=font(26),fill='#172c45')
+    d.text((24,17),'Число → кнопка 5×5 → мина 8×8',font=font(26),fill='#172c45')
     d.text((24,57),'Физическая компоновка центра ячейки',font=font(18),fill='#55647a')
     pa,pb,pc,pe=meta['panel_bounds']
     d.rectangle((28+(pa-a)*scale,92+(pb-b)*scale,28+(pc-a+1)*scale-1,92+(pe-b+1)*scale-1),fill='white')
